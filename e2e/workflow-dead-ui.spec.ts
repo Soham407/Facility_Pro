@@ -897,6 +897,13 @@ test.describe("Admin — Services Config Pages", () => {
     }
   });
 
+  test("company/users: user master loads without query errors", async ({ page }) => {
+    await page.goto("/company/users");
+    await page.waitForLoadState("networkidle");
+    await expect(page.locator("main")).toBeVisible();
+    await expect(page.getByText(/something went wrong|failed to load users list/i)).not.toBeVisible();
+  });
+
   test("assets/qr-codes: batch generation button is live", async ({ page }) => {
     await page.goto("/assets/qr-codes");
     await page.waitForLoadState("networkidle");
