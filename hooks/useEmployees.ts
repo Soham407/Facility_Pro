@@ -91,7 +91,7 @@ export function useEmployees(options?: { includeInactive?: boolean }): UseEmploy
           created_at,
           photo_url,
           date_of_joining,
-          designations:designation_id(designation_name)
+          designations:designations!designation_id(designation_name)
         `)
         .order("first_name");
 
@@ -113,7 +113,7 @@ export function useEmployees(options?: { includeInactive?: boolean }): UseEmploy
         ? await Promise.all([
             supabase
               .from("users")
-              .select("id, employee_id, must_change_password, roles(role_name)")
+              .select("id, employee_id, must_change_password, roles!role_id(role_name)")
               .in("employee_id", employeeIds),
             supabase
               .from("security_guards")
@@ -123,7 +123,7 @@ export function useEmployees(options?: { includeInactive?: boolean }): UseEmploy
                 guard_code,
                 assigned_location_id,
                 is_active,
-                assigned_location:company_locations(location_name)
+                assigned_location:company_locations!assigned_location_id(location_name)
               `)
               .in("employee_id", employeeIds),
             supabase
