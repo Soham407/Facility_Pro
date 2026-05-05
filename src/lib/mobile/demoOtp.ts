@@ -1,6 +1,11 @@
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 
 import { createServiceRoleClient } from "@/src/lib/platform/server";
+import {
+  getDevPreviewCredentials,
+  isDevPreviewBuild,
+  isDevPreviewPhone,
+} from "@/src/lib/mobile/previewAuth";
 import { resolveWorkforceIdentityByPhone } from "@/src/lib/workforce/boundary";
 
 type DemoRole = "resident" | "security_guard";
@@ -35,26 +40,12 @@ export function normalizeDemoPhoneNumber(input: string) {
   return trimmed;
 }
 
-function buildPhoneCandidates(phone: string) {
-  const normalized = normalizeDemoPhoneNumber(phone);
-  const digits = normalized.replace(/\D/g, "");
-  const candidates = new Set<string>([normalized, digits]);
-
-  if (digits.length >= 10) {
-    const lastTen = digits.slice(-10);
-    candidates.add(lastTen);
-    candidates.add(`+91${lastTen}`);
-  }
-
-  return [...candidates].filter(Boolean);
-}
-
 export function isDemoOtpEnabled() {
-  return process.env.DEMO_OTP_ENABLED === "true";
+  return process.env.DEMO_OTP_ENABLED === "true" && isDevPreviewBuild();
 }
 
 export function getDemoOtpCode() {
-  return (process.env.DEMO_OTP_CODE || "").trim();
+  return getDevPreviewCredentials()?.otp || "";
 }
 
 export function getAllowedDemoRoles() {
@@ -71,17 +62,7 @@ export function getAllowedDemoRoles() {
 }
 
 export function isAllowedDemoPhone(phone: string) {
-  const configured = (process.env.DEMO_OTP_ALLOWED_PHONES || "")
-    .split(",")
-    .map((value) => normalizeDemoPhoneNumber(value))
-    .filter(Boolean);
-
-  if (configured.length === 0) {
-    return false;
-  }
-
-  const candidateSet = new Set(buildPhoneCandidates(phone));
-  return configured.some((value) => candidateSet.has(value));
+  return isDevPreviewPhone(phone);
 }
 
 function createAnonAuthClient() {
