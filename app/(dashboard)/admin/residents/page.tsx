@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
   Select,
   SelectContent,
@@ -36,6 +37,7 @@ import {
   UpdateResidentPayload,
   useResidents,
 } from "@/hooks/useResidents";
+import { probeAdminResidenceSetupReads } from "@/src/lib/admin/residenceSetupReadProbe";
 import { toast } from "sonner";
 import { supabase } from "@/src/lib/supabaseClient";
 
@@ -104,6 +106,30 @@ export default function ResidentsPage() {
   const [buildings, setBuildings] = useState<BuildingOption[]>([]);
   const [flats, setFlats] = useState<FlatOption[]>([]);
   const [selectedBuildingId, setSelectedBuildingId] = useState("");
+  const [setupReadError, setSetupReadError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let active = true;
+
+    async function verifyResidenceSetupReads() {
+      try {
+        await probeAdminResidenceSetupReads(supabase);
+        if (active) {
+          setSetupReadError(null);
+        }
+      } catch (error) {
+        if (!active) return;
+        const details = error instanceof Error ? error.message : "Unknown error";
+        setSetupReadError(`Residence setup data check failed: ${details}`);
+      }
+    }
+
+    void verifyResidenceSetupReads();
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   useEffect(() => {
     let active = true;
@@ -354,6 +380,12 @@ export default function ResidentsPage() {
           </Button>
         }
       />
+
+      {setupReadError ? (
+        <Alert variant="destructive">
+          <AlertDescription>{setupReadError}</AlertDescription>
+        </Alert>
+      ) : null}
 
       <div className="grid gap-4 md:grid-cols-2">
         <StatCard label="Total Residents" value={stats.total} />
