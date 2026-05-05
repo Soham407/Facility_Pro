@@ -174,7 +174,13 @@ export function useProducts(initialFilters?: ProductFilters) {
 
       // Apply filters
       if (filters.status && filters.status !== "all") {
-        query = query.eq("status", filters.status);
+        if (filters.status === "active") {
+          query = query.eq("is_active", true);
+        } else if (filters.status === "inactive") {
+          query = query.eq("is_active", false);
+        } else {
+          query = query.eq("status", filters.status);
+        }
       }
 
       if (filters.categoryId) {

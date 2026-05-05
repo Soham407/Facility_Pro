@@ -38,7 +38,7 @@ export function useServices(): UseServicesReturn {
       const { data, error } = await supabase
         .from("services")
         .select("*")
-        .eq("is_active", true)
+        .or("is_active.eq.true,is_active.is.null")
         .order("service_name");
 
       if (error) throw error;

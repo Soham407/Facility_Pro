@@ -21,6 +21,42 @@ test.describe("Admin Procurement Flow", () => {
     await expect(createButton).toBeVisible({ timeout: 10_000 });
   });
 
+  test("loads at least one supplier in admin procurement setup", async ({ page }) => {
+    await page.goto("/inventory/purchase-orders");
+    await page.getByRole("button", { name: /raise new po/i }).click();
+
+    const dialog = page.getByRole("dialog", { name: /raise new purchase order/i });
+    await expect(dialog).toBeVisible({ timeout: 10_000 });
+
+    await dialog.locator("#supplier").click();
+    await expect(page.getByRole("option").first()).toBeVisible({ timeout: 15_000 });
+  });
+
+  test("loads at least one product in admin procurement setup", async ({ page }) => {
+    await page.goto("/inventory/indents/create");
+    await page.getByRole("button", { name: /new indent/i }).click();
+
+    const dialog = page.getByRole("dialog", { name: /create new indent/i });
+    await expect(dialog).toBeVisible({ timeout: 10_000 });
+    await dialog.getByRole("button", { name: /add item/i }).click();
+
+    const productSelect = dialog.locator("label:has-text('Product *')").locator("..").locator('[role=\"combobox\"]');
+    await productSelect.click();
+    await expect(page.getByRole("option").first()).toBeVisible({ timeout: 15_000 });
+  });
+
+  test("loads at least one service in admin service setup", async ({ page }) => {
+    await page.goto("/services/masters/vendor-services");
+    await page.getByRole("button", { name: /new authorization/i }).click();
+
+    const dialog = page.getByRole("dialog", { name: /new vendor authorization/i });
+    await expect(dialog).toBeVisible({ timeout: 10_000 });
+
+    const serviceSelect = dialog.getByRole("combobox").nth(1);
+    await serviceSelect.click();
+    await expect(page.getByRole("option").first()).toBeVisible({ timeout: 15_000 });
+  });
+
   test("Purchase Orders list renders data or an empty state", async ({ page }) => {
     await page.goto("/inventory/purchase-orders");
 
