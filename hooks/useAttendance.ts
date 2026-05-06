@@ -474,27 +474,46 @@ export function useAttendance(employeeId?: string, guardId?: string | null) {
         }
       }
 
-      const { data, error } = await supabase
+      const { data: mainGateLocation, error: mainGateError } = await supabase
         .from("company_locations")
         .select("id, latitude, longitude, geo_fence_radius, location_name")
         .eq("location_code", MAIN_GATE_CODE)
-        .single();
+        .eq("is_active", true)
+        .limit(1)
+        .maybeSingle();
 
-      if (error) throw error;
+      if (mainGateError) throw mainGateError;
 
-      if (data) {
+      let activeLocationRow = mainGateLocation;
+      if (!activeLocationRow) {
+        const { data: fallbackLocation, error: fallbackError } = await supabase
+          .from("company_locations")
+          .select("id, latitude, longitude, geo_fence_radius, location_name")
+          .eq("is_active", true)
+          .order("location_name", { ascending: true })
+          .limit(1)
+          .maybeSingle();
+
+        if (fallbackError) throw fallbackError;
+        activeLocationRow = fallbackLocation;
+      }
+
+      if (activeLocationRow) {
         setState((prev) => ({
           ...prev,
           gateLocation: {
-            id: data.id,
-            latitude: Number(data.latitude),
-            longitude: Number(data.longitude),
+            id: activeLocationRow.id,
+            latitude: Number(activeLocationRow.latitude),
+            longitude: Number(activeLocationRow.longitude),
             geo_fence_radius:
-              Number(data.geo_fence_radius) || defaultGeoFenceRadius,
-            location_name: data.location_name,
+              Number(activeLocationRow.geo_fence_radius) || defaultGeoFenceRadius,
+            location_name: activeLocationRow.location_name,
           },
         }));
+        return;
       }
+
+      throw new Error("No active gate/location found");
     } catch (err: unknown) {
       console.error("Error fetching gate location:", err);
       setState((prev) => ({

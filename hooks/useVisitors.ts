@@ -19,7 +19,7 @@ import {
 export type { Visitor, VisitorStats, CreateVisitorDTO, VisitorFilters } from "@/src/lib/visitors/visitorTransforms";
 
 export function useVisitors(initialFilters?: VisitorFilters) {
-  const { role, userId } = useAuth();
+  const { role } = useAuth();
   const { toast } = useToast();
   const [visitors, setVisitors] = useState<Visitor[]>([]);
   const [activeVisitors, setActiveVisitors] = useState<Visitor[]>([]);
@@ -46,28 +46,101 @@ export function useVisitors(initialFilters?: VisitorFilters) {
     setError(null);
 
     try {
-      // Fetch managed societies for non-admin roles to enable explicit filtering
       let managedSocietyIds: string[] = [];
       const isAdmin = role === "admin" || role === "super_admin";
-      
+
       if (!isAdmin && role) {
-        const { data: societies } = await supabase.rpc("get_my_managed_societies");
-        managedSocietyIds = societies || [];
+        const { data: societies, error: societiesError } = await supabase.rpc(
+          "get_my_managed_societies",
+        );
+        if (societiesError) throw societiesError;
+        managedSocietyIds = Array.isArray(societies)
+          ? societies.filter((id): id is string => typeof id === "string")
+          : [];
+      }
+
+      const resolveFlatIdsForSocieties = async (
+        societyIds: string[],
+      ): Promise<string[]> => {
+        if (societyIds.length === 0) return [];
+
+        const { data: buildings, error: buildingError } = await supabase
+          .from("buildings")
+          .select("id")
+          .eq("is_active", true)
+          .in("society_id", societyIds);
+
+        if (buildingError) throw buildingError;
+
+        const buildingIds = (buildings ?? [])
+          .map((building) => building.id)
+          .filter((id): id is string => typeof id === "string");
+        if (buildingIds.length === 0) return [];
+
+        const { data: flats, error: flatError } = await supabase
+          .from("flats")
+          .select("id")
+          .eq("is_active", true)
+          .in("building_id", buildingIds);
+
+        if (flatError) throw flatError;
+
+        return (flats ?? [])
+          .map((flat) => flat.id)
+          .filter((id): id is string => typeof id === "string");
+      };
+
+      let managedFlatIds: string[] = [];
+      if (!isAdmin && managedSocietyIds.length === 0) {
+        setVisitors([]);
+        setActiveVisitors([]);
+        setDailyHelpers([]);
+        return;
+      }
+
+      if (!isAdmin) {
+        managedFlatIds = await resolveFlatIdsForSocieties(managedSocietyIds);
+        if (managedFlatIds.length === 0) {
+          setVisitors([]);
+          setActiveVisitors([]);
+          setDailyHelpers([]);
+          return;
+        }
       }
 
       let query = supabase
         .from("visitors")
         .select(
           `
-          *,
-          flat:flats!inner(
+          id,
+          visitor_name,
+          visitor_type,
+          phone,
+          vehicle_number,
+          photo_url,
+          flat_id,
+          resident_id,
+          purpose,
+          entry_time,
+          exit_time,
+          entry_guard_id,
+          exit_guard_id,
+          entry_location_id,
+          approved_by_resident,
+          approval_status,
+          rejection_reason,
+          bypass_reason,
+          visitor_pass_number,
+          is_frequent_visitor,
+          created_at,
+          flat:flats!visitors_flat_id_fkey(
             flat_number,
-            building:buildings!inner(
+            building:buildings!flats_building_id_fkey(
               building_name,
               society_id
             )
           ),
-          resident:residents(full_name, phone),
+          resident:residents!visitors_resident_id_fkey(full_name, phone),
           entry_guard:security_guards!visitors_entry_guard_id_fkey(
             guard_code,
             employee:employees(first_name, last_name)
@@ -76,11 +149,17 @@ export function useVisitors(initialFilters?: VisitorFilters) {
         )
         .order("entry_time", { ascending: false });
 
-      // Apply tenant filter for non-admins
-      if (!isAdmin && managedSocietyIds.length > 0) {
-        query = query.in("flat.building.society_id", managedSocietyIds);
+      if (!isAdmin) {
+        query = query.in("flat_id", managedFlatIds);
       } else if (filters.societyId) {
-        query = query.eq("flat.building.society_id", filters.societyId);
+        const filteredFlatIds = await resolveFlatIdsForSocieties([filters.societyId]);
+        if (filteredFlatIds.length === 0) {
+          setVisitors([]);
+          setActiveVisitors([]);
+          setDailyHelpers([]);
+          return;
+        }
+        query = query.in("flat_id", filteredFlatIds);
       }
 
       // Apply filters
@@ -135,7 +214,7 @@ export function useVisitors(initialFilters?: VisitorFilters) {
     } finally {
       setIsLoading(false);
     }
-  }, [filters, toast]);
+  }, [filters, role, toast]);
 
   // Fetch visitor statistics
   const fetchStats = useCallback(async () => {

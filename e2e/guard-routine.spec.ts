@@ -90,3 +90,28 @@ test.describe("Guard Daily Routine", () => {
     }
   });
 });
+
+test.describe("Society Manager Operations Smoke", () => {
+  test("society manager can load one visitor and one resident record on operations surfaces", async ({ page }) => {
+    await loginAsRole(page, "society_manager");
+
+    await page.goto("/society/visitors", { waitUntil: "networkidle" });
+    const visitorRow = page.locator("table tbody tr").first();
+    await expect(visitorRow).toBeVisible({ timeout: 20_000 });
+    await expect(visitorRow).toContainText(
+      /awaiting approval|entry denied|in building|checked out/i,
+      { timeout: 20_000 },
+    );
+
+    await page.goto("/society/residents", { waitUntil: "networkidle" });
+    const residentRow = page.locator("table tbody tr").first();
+    await expect(residentRow).toBeVisible({ timeout: 20_000 });
+  });
+
+  test("guard gate console resolves Main gate location from active source", async ({ page }) => {
+    await loginAsRole(page, "security_guard");
+
+    await page.goto("/guard", { waitUntil: "networkidle" });
+    await expect(page.getByText(/main gate not configured/i)).toHaveCount(0);
+  });
+});
