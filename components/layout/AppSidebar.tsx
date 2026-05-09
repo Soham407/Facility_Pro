@@ -329,7 +329,7 @@ function isPortalGroupVisible(
   }
 
   if (groupTitle === "Supplier Portal") {
-    return role === "supplier" || role === "vendor";
+    return role === "supplier";
   }
 
   return true;
@@ -365,7 +365,7 @@ export function AppSidebar({ collapsed, onToggle, className, isMobile }: AppSide
     if (href === "/dashboard") {
       // Portal roles redirect /dashboard → their portal page, so keep Main Dashboard active there
       if (role === "buyer" && pathname?.startsWith("/buyer")) return true;
-      if ((role === "supplier" || role === "vendor") && pathname?.startsWith("/supplier")) return true;
+      if (role === "supplier" && pathname?.startsWith("/supplier")) return true;
       if (role === "resident" && pathname?.startsWith("/resident")) return true;
       return pathname === "/dashboard";
     }

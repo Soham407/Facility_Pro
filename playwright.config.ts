@@ -1,4 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
+import dotenv from "dotenv";
+
+dotenv.config({ path: "./.env.local" });
 
 const suiteMode = process.env.E2E_SUITE ?? (process.env.CI ? "smoke" : "full");
 const visualEnabled = process.env.E2E_VISUAL === "1";

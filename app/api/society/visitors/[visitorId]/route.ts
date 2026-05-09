@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { createServiceRoleClient } from "@/src/lib/platform/server";
 import { createClient as createServerClient } from "@/src/lib/supabase/server";
+import { getManagedSocietyIdsForUser } from "@/src/lib/society/managedSocieties";
 
 const VisitorActionSchema = z.discriminatedUnion("action", [
   z.object({
@@ -87,17 +88,6 @@ async function getAuthorizedVisitorManager() {
   return { error: null, roleName, userId: user.id };
 }
 
-async function getManagedSocietyIds(userId: string) {
-  const supabaseAdmin = createServiceRoleClient();
-  const { data, error } = await supabaseAdmin
-    .from("societies")
-    .select("id")
-    .eq("society_manager_id", userId);
-
-  if (error) throw error;
-  return new Set((data ?? []).map((row) => row.id as string));
-}
-
 async function canManageVisitor(visitorId: string, userId: string, roleName: string | null) {
   const supabaseAdmin = createServiceRoleClient();
   const { data: visitorRecord, error: visitorError } = await supabaseAdmin
@@ -114,7 +104,7 @@ async function canManageVisitor(visitorId: string, userId: string, roleName: str
     return true;
   }
 
-  const managedSocietyIds = await getManagedSocietyIds(userId);
+  const managedSocietyIds = await getManagedSocietyIdsForUser(supabaseAdmin, userId);
   const visitorRow = visitorRecord as VisitorFlatRow | null;
   const flatRecord = Array.isArray(visitorRow?.flats) ? visitorRow.flats[0] : visitorRow?.flats;
   const buildingRecord = Array.isArray(flatRecord?.buildings)

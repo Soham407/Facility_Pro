@@ -33,20 +33,20 @@ const ROLE_NAME_OPTIONS = new Set([
   "company_md",
   "company_hod",
   "account",
-  "delivery_boy",
+  "delivery_agent",
   "buyer",
   "supplier",
-  "vendor",
   "security_guard",
   "security_supervisor",
-  "society_manager",
-  "service_boy",
+  "field_technician",
   "resident",
   "storekeeper",
   "site_supervisor",
   "super_admin",
   "ac_technician",
   "pest_control_technician",
+  // Deprecated — users being migrated to site_supervisor via PR-C.
+  "society_manager",
 ]);
 
 function normalizeRoleKey(name: string) {

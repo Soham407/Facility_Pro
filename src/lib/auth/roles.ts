@@ -3,14 +3,17 @@ export type AppRole =
   | "company_md"
   | "company_hod"
   | "account"
-  | "delivery_boy"
+  | "delivery_agent"
   | "buyer"
   | "supplier"
-  | "vendor"
+  // security_guard and security_supervisor are sub-contracted person-roles (ADR-0010 §3).
+  // They have personal logins for shift-log, visitor-log, panic-alerts, checklists.
+  // NOT tracked in HRMS payroll — attendance informs SLA only.
   | "security_guard"
   | "security_supervisor"
+  // society_manager is deprecated — migrate existing users to site_supervisor (PR-C).
   | "society_manager"
-  | "service_boy"
+  | "field_technician"
   | "resident"
   | "storekeeper"
   | "site_supervisor"
@@ -21,9 +24,8 @@ export type AppRole =
 export const ROLE_LANDING_PATHS: Partial<Record<AppRole, string>> = {
   buyer: "/buyer",
   supplier: "/supplier",
-  vendor: "/supplier",
   resident: "/resident",
-  delivery_boy: "/delivery",
+  delivery_agent: "/delivery",
 };
 
 /**
@@ -31,15 +33,24 @@ export const ROLE_LANDING_PATHS: Partial<Record<AppRole, string>> = {
  * Each role can access paths starting with these prefixes
  */
 export const ROLE_ACCESS: Record<AppRole, string[]> = {
-  admin: ["/"], // Admin can access everything
+  admin: ["/"],
   company_md: ["/dashboard", "/reports", "/finance"],
   company_hod: ["/dashboard", "/hrms", "/service-requests", "/tickets", "/services", "/company"],
   account: ["/dashboard", "/finance", "/reports", "/hrms/payroll"],
-  delivery_boy: ["/dashboard", "/delivery"],
+  delivery_agent: ["/dashboard", "/delivery"],
   buyer: ["/dashboard", "/buyer"],
   supplier: ["/dashboard", "/supplier"],
-  vendor: ["/dashboard", "/supplier"],
-  security_guard: ["/dashboard", "/guard", "/society", "/hrms/attendance", "/hrms/leave"],
+  // Guards access the guard portal + specific society sub-routes for visitor/resident lookup.
+  // /society (broad) is excluded — guards must not reach society admin, billing, or management routes.
+  security_guard: [
+    "/dashboard",
+    "/guard",
+    "/society/visitors",
+    "/society/residents",
+    "/society/panic-alerts",
+    "/hrms/attendance",
+    "/hrms/leave",
+  ],
   security_supervisor: [
     "/dashboard",
     "/tickets/behavior",
@@ -49,10 +60,11 @@ export const ROLE_ACCESS: Record<AppRole, string[]> = {
     "/society/panic-alerts",
     "/hrms/attendance",
     "/services/security",
-    "/admin/guards"
+    "/admin/guards",
   ],
+  // Deprecated — migrate users to site_supervisor via PR-C migration.
   society_manager: ["/dashboard", "/society", "/resident", "/tickets", "/finance/compliance", "/service-requests", "/hrms/attendance", "/hrms/leave"],
-  service_boy: ["/dashboard", "/service-boy", "/service-requests"],
+  field_technician: ["/dashboard", "/field-technician", "/service-requests"],
   resident: ["/resident", "/society/my-flat"],
   storekeeper: ["/dashboard", "/inventory", "/tickets/quality", "/tickets/returns"],
   site_supervisor: ["/dashboard", "/society", "/tickets", "/hrms/attendance", "/service-requests", "/services/plantation"],

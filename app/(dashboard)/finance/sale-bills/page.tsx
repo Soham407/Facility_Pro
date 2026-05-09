@@ -107,7 +107,7 @@ export default function SaleBillsPage() {
     const [socRes, reqRes, serRes, proRes] = await Promise.all([
       supabase.from("societies").select("id, society_name"),
       supabase.from("requests").select("id, request_number, title").eq("status", "accepted"),
-      supabase.from("services").select("id, service_name"),
+      supabase.from("services").select("id, service_name").eq("is_v1", true),
       supabase.from("products").select("id, product_name"),
     ]);
 

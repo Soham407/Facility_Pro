@@ -46,8 +46,36 @@ export function useVisitors(initialFilters?: VisitorFilters) {
     setError(null);
 
     try {
-      let managedSocietyIds: string[] = [];
       const isAdmin = role === "admin" || role === "super_admin";
+
+      if (role === "society_manager") {
+        const params = new URLSearchParams();
+        if (filters.status) params.set("status", filters.status);
+        if (filters.type) params.set("type", filters.type);
+        if (filters.flatId) params.set("flatId", filters.flatId);
+        if (filters.dateFrom) params.set("dateFrom", filters.dateFrom);
+        if (filters.dateTo) params.set("dateTo", filters.dateTo);
+        if (filters.searchTerm) params.set("searchTerm", filters.searchTerm);
+        if (filters.societyId) params.set("societyId", filters.societyId);
+
+        const response = await fetch(`/api/society/visitors${params.toString() ? `?${params.toString()}` : ""}`, {
+          method: "GET",
+        });
+        const payload = await response.json();
+        if (!response.ok) {
+          throw new Error(payload.error || "Failed to load visitors");
+        }
+
+        const typedData = normalizeVisitorRows(payload.visitors || []);
+        setVisitors(typedData);
+
+        const collections = buildVisitorCollections(typedData);
+        setActiveVisitors(collections.activeVisitors);
+        setDailyHelpers(collections.dailyHelpers);
+        return;
+      }
+
+      let managedSocietyIds: string[] = [];
 
       if (!isAdmin && role) {
         const { data: societies, error: societiesError } = await supabase.rpc(

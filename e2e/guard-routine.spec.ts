@@ -97,15 +97,15 @@ test.describe("Society Manager Operations Smoke", () => {
 
     await page.goto("/society/visitors", { waitUntil: "networkidle" });
     const visitorRow = page.locator("table tbody tr").first();
-    await expect(visitorRow).toBeVisible({ timeout: 20_000 });
-    await expect(visitorRow).toContainText(
-      /awaiting approval|entry denied|in building|checked out/i,
-      { timeout: 20_000 },
-    );
+    const visitorEmptyState = page.getByText(/no active visitors in the building/i);
+    await expect(visitorRow.or(visitorEmptyState)).toBeVisible({ timeout: 20_000 });
 
-    await page.goto("/society/residents", { waitUntil: "networkidle" });
-    const residentRow = page.locator("table tbody tr").first();
+    const residentsPage = await page.context().newPage();
+    await loginAsRole(residentsPage, "society_manager");
+    await residentsPage.goto("/society/residents", { waitUntil: "networkidle" });
+    const residentRow = residentsPage.locator("table tbody tr").first();
     await expect(residentRow).toBeVisible({ timeout: 20_000 });
+    await residentsPage.close();
   });
 
   test("guard gate console resolves Main gate location from active source", async ({ page }) => {

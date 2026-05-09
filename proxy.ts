@@ -22,6 +22,7 @@ const PUBLIC_PATHS = ["/login", "/api/auth", "/api/waitlist", "/api/mobile/demo-
  */
 const API_PERMISSION_EXEMPTIONS = [
   "/api/society/residents", // ✅ Validates role: admin, society_manager only
+  "/api/society/visitors", // ✅ Validates role: admin, super_admin, society_manager in handler
   "/api/society/visitors/", // ✅ Validates role: admin, society_manager, guard only (see VISITOR_MANAGEMENT_ROLES in handler)
   "/api/users/change-password", // ✅ Validates role: authenticated users can change their own password
   "/api/residents/unlinked", // ✅ Validates role: admin, society_manager only

@@ -38,6 +38,7 @@ export function useServices(): UseServicesReturn {
       const { data, error } = await supabase
         .from("services")
         .select("*")
+        .eq("is_v1", true)
         .or("is_active.eq.true,is_active.is.null")
         .order("service_name");
 

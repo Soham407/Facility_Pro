@@ -64,19 +64,19 @@ const roles = [
   { id: "company_md", label: "Company MD", icon: TrendingUp },
   { id: "company_hod", label: "Company HOD", icon: Briefcase },
   { id: "account", label: "Account", icon: Calculator },
-  { id: "delivery_boy", label: "Delivery Boy", icon: Truck },
+  { id: "delivery_agent", label: "Delivery Agent", icon: Truck },
   { id: "buyer", label: "Buyer", icon: ShoppingCart },
-  { id: "supplier", label: "Supplier / Vendor", icon: Package },
+  { id: "supplier", label: "Supplier", icon: Package },
   { id: "storekeeper", label: "Storekeeper", icon: Package },
   { id: "site_supervisor", label: "Site Supervisor", icon: Building2 },
   { id: "security_guard", label: "Security Guard", icon: Shield },
   { id: "security_supervisor", label: "Security Supervisor", icon: UserCircle },
-
-  { id: "society_manager", label: "Society Manager", icon: Building2 },
-  { id: "service_boy", label: "Service Boy", icon: Wrench },
+  { id: "field_technician", label: "Field Technician", icon: Wrench },
   { id: "resident", label: "Resident", icon: Home },
   { id: "ac_technician", label: "AC Technician", icon: Wrench },
   { id: "pest_control_technician", label: "Pest Control Technician", icon: Shovel },
+  // Deprecated role — no new users; retained until PR-C data migration to site_supervisor.
+  { id: "society_manager", label: "Society Manager (Deprecated)", icon: Building2 },
 ];
 
 export default function DashboardPage() {
@@ -99,7 +99,7 @@ function DashboardPageContent() {
   // Redirect portal roles to their dedicated pages — avoids duplicate dashboard
   useEffect(() => {
     if (role === "buyer") router.replace("/buyer");
-    else if (role === "supplier" || role === "vendor") router.replace("/supplier");
+    else if (role === "supplier") router.replace("/supplier");
     else if (role === "resident") router.replace("/resident");
   }, [role, router]);
 
@@ -115,16 +115,15 @@ function DashboardPageContent() {
       case "company_md": return <MDDashboard />;
       case "company_hod": return <HODDashboard />;
       case "account": return <AccountsDashboard />;
-      case "delivery_boy": return <DeliveryDashboard />;
+      case "delivery_agent": return <DeliveryDashboard />;
       case "buyer": return <BuyerDashboard />;
-      case "supplier":
-      case "vendor": return <SupplierDashboard />;
+      case "supplier": return <SupplierDashboard />;
       case "security_guard": return <GuardDashboard />;
       case "security_supervisor": return <SecuritySupervisorDashboard />;
       case "storekeeper": return <StorekeeperDashboard />;
       case "site_supervisor": return <SiteSupervisorDashboard />;
       case "society_manager": return <SocietyManagerDashboard />;
-      case "service_boy": return <ServiceBoyDashboard />;
+      case "field_technician": return <ServiceBoyDashboard />;
       case "resident": return <ResidentDashboard />;
       case "super_admin": return <SuperAdminDashboard />;
       case "ac_technician": return <ACTechnicianDashboard />;

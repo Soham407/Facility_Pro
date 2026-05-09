@@ -7,7 +7,165 @@
 
 ## What Is This?
 
-**FacilityPro** is a comprehensive Facility Management & Services platform that connects three stakeholders â€” **Company Admins**, **Buyers**, and **Suppliers** â€” in a unified digital ecosystem. It manages security deployments, housekeeping, AC servicing, pest control, plantation, printing, and material supply across residential societies and corporate facilities.
+**FacilityPro** is the operations platform for **Solvesxx Powerful Solutions Pvt. Ltd.** — an ISO 9001:2015 certified Pune-based facility services company founded in 2026 (CIN U81100PN2026PTC251309, GSTIN 27ABSCS5790H1ZJ — Maharashtra). It is **single-tenant**: this codebase serves only Solvesxx. Customers (societies, corporates, individual residents) buy services from Solvesxx; Suppliers fulfill material/manpower needs.
+
+**The 5 founders** (2 lawyers, 2 administrative experts, 1 manufacturing-ops specialist) operate as a flat admin team. Functional specialization exists in real life but is not enforced by RBAC in v1 — they all share the `admin` role. (See ADR-0009 for the simple-mode pivot away from specialized admin roles.)
+
+**v1 service catalog (from the original client scope, ADR-0009 §7):**
+
+Services (5 lines):
+1. Facility Management & Security (with Grade A/B/C/D, Gunman, Door Keeper, Housekeeping, Pantry, Office Boys as employee designations)
+2. Air Conditioner Services
+3. Plantation Services
+4. Printing & Advertising Services
+5. Pest Control Services
+
+Material categories (8): Security Panel & Door Controller, Hot & Cold Beverages, Eco-Friendly Disposables, Cleaning Essentials, Pest Control Materials, Air Fresheners, Stationery, Corporate Gifting.
+
+Brochure-only items (Legal Services CMS, AI Door Camera, Import/Export consultancy) are **deferred to v2** — not built in v1.
+
+---
+
+## Domain Glossary
+
+> Canonical terms for this product. If a discussion uses one of these terms in a different sense, stop and reconcile before continuing.
+
+### Company
+The single facility services agency that owns this deployment. There is exactly one Company per instance. The Company has admins, employees, and contracts with both **Customers** (revenue side) and **Suppliers** (cost side).
+
+### Buyer
+A Buyer is a Customer Account in the system — the billable counterparty for any sale. Three types:
+
+- **`society`** — Residential complex / corporate facility with an ongoing service relationship. Has residents, buildings, flats. Onboarded by admin only.
+- **`corporate`** — Business with no residency dimension (office hiring housekeepers, etc.). Onboarded by admin only.
+- **`individual_resident`** — A natural person who lives in a `society` Buyer and also wants to order things personally (paper cups, printing). They onboard as their own Buyer account, separate from their society's account.
+
+**Buyer is a role**, not a capability. Residents who want to place orders on behalf of their society do so via the society's Buyer admin user. Individual residents wanting to order things personally have a separate `individual_resident` Buyer account.
+
+### Supplier
+External vendor providing **materials only** to the Company. (Earlier docs described suppliers also providing manpower — that path is dropped per ADR-0009. All deployed personnel are direct Company employees.)
+
+### Service Request (the unified sales entity)
+All customer-facing sales flow through a single `service_requests` table with a `type` discriminator:
+
+| `type` value | Meaning | Example | Billing |
+|---|---|---|---|
+| `deployment` | Long-running personnel deployment to a customer site | "4 Grade-A guards, 12-hr shift, 6 months" | Recurring fixed monthly invoice |
+| `material_order` | One-shot material delivery | "100 paper cups to flat 304" | Single sale invoice |
+| `ticket` | Operational complaint or repair | "AC not cooling in flat 304" | Single sale invoice (or free-of-charge under active deployment) |
+
+The codebase already has `service_requests.type` (per migration `20260430000000`). Extend the enum rather than splitting tables. Conditional UI / billing logic by `type` is acceptable for v1.
+
+### Personnel
+**All deployed personnel are Company employees** managed through HRMS — including guards (Grade A/B/C/D), Gunman, Door Keeper, housekeeping, pantry, office boys, AC technicians, pest control technicians, plantation staff.
+
+- HRMS handles selfie clock-in, geofence, payroll, leave, BGV, PSARA, document expiry, certifications, PPE checklist.
+- A `deployment`-type service request has a `deployment_assignments` child table linking the contract to specific employees. When an employee can't be there (leave, termination), admin reassigns from the existing roster.
+- Suppliers provide *materials*, never personnel. (See ADR-0009.)
+
+### Identity & Roles (single role per user)
+Each user has exactly one role on `users.role`. No multi-membership, no context-switcher. If a person has two genuinely different relationships with the Company (rare — e.g., an employee who also lives in a serviced society), they get two separate accounts.
+
+**Active roles in v1:**
+
+- **Company-side:** `super_admin`, `admin`, `company_md`, `company_hod`, `account`, `storekeeper`, `site_supervisor`, `ac_technician`, `pest_control_technician`, `field_technician` (rename of `service_boy`), `delivery_agent` (rename of `delivery_boy`), `security_guard`, `security_supervisor`.
+- **Customer-side:** `buyer` (umbrella for society admin / corporate admin / individual resident in their Buyer role), `resident` (a person inside an onboarded society, view-only of their society's data + visitor approval).
+- **Supplier-side:** `supplier` (replaces both `supplier` and `vendor`, which were duplicates).
+
+`security_guard` and `security_supervisor` stay as person-roles because guards are direct-employed Company employees who use the Guard mobile interface tied to their employee identity (not a posting kiosk).
+
+### Service Catalog (the shape of a service line)
+Each row in the `services` catalog declares:
+
+- `service_code` — short stable code (e.g. `PST-CON`, `AC-SVC`). Used for lookups; never hardcode UUIDs.
+- `service_name`
+- `category` — one of: `Facility Management`, `AC Services`, `Plantation`, `Printing & Ads`, `Pest Control`, `Material Supply`.
+- `default_sales_modes` — subset of `{deployment, ticket, material_order}` declaring which `service_request.type` values can be opened against this service.
+- `default_unit_rate_basis` — pointer to the rate table used for default pricing.
+
+**v1 catalog content** is locked to the original scope's 5 services + 8 material categories (per ADR-0009 §7). Brochure-only items (Legal CMS, AI Camera, Import/Export) are deferred to v2.
+
+### Personnel Substitution
+When an assigned employee can't fulfill their deployment shift (leave, sickness, termination), admin reassigns from the available employee roster. Standard HRMS leave + attendance handle this. Repeated gaps surface in the deployment dashboard for SLA visibility — but they do **not** automatically affect billing. If a major SLA breach occurs, admin issues a manual credit note on the next invoice.
+
+### Resident Ordering (defaults to society's Buyer account)
+A resident wanting to order through their society does so by reaching out to their society's Buyer admin (offline) — the Buyer admin places the order on the system. **Residents do not place orders directly against the Company in v1.**
+
+If a resident wants to order something personally (paper cups, etc.), they create their own `individual_resident` Buyer account and place the order against it.
+
+(This is the simple v1 model. A "resident self-service order with society approval" workflow may be added in v2.)
+
+### Contract Lifecycle
+`service_contract.status: draft → active → terminated | expired | cancelled`. Termination is one-sided with default 30-day notice (overridable per contract). `termination_reason: cause | convenience` — for-cause termination skips notice-period billing; for-convenience honors it. The customer-facing portal exposes only "request termination"; admin executes the state change.
+
+### Renewal
+Contracts have an `end_date`. The system raises an "Expiring Soon" alert at `end_date - 60 days`. **Renewal creates a new contract** (preserves rate-freezing semantics) pre-filled from the old one's terms. Auto-renewal is opt-in per-contract (`auto_renew_terms` JSONB) and defaults to **off**.
+
+### Notification Rules
+Three priority tiers drive routing and channel selection:
+
+| Tier | Channels | Quiet hours? |
+|---|---|---|
+| `critical` | Push + SMS (MSG91) + In-app, non-dismissable on mobile until acknowledged | Never suppressed |
+| `high` | Push + In-app | Suppressed 22:00–07:00 |
+| `normal` | In-app only | Suppressed 22:00–07:00 |
+
+SMS fires only for `critical` (cost discipline). Per-user opt-out is allowed for `normal` only.
+
+### Compliance & Document Expiry
+Each compliance-relevant entity (Company employee, Supplier, sub-contracted personnel via Service Delivery Note, Customer site fire-safety certs, technician certifications) carries a `compliance_documents` set. Edge function `check-document-expiry` escalates: D-90 dashboard notice → D-30 push → D-7 critical → D+1 blocks dependent operations (expired PSARA blocks a guard posting; expired gas-handling cert blocks the AC technician from starting cert-required tickets).
+
+### Visitor Types
+- `guest` — one-shot, photo + phone + vehicle captured at gate.
+- `daily_help` — recurring (maid, driver, milkman). Saved profile; subsequent visits are quick-tap.
+- `vendor` — third-party service person not affiliated with the Company (Amazon, Swiggy, resident's own plumber). Logged but never linked to a `service_ticket`.
+- `contractor` — long-duration third-party (renovation crew). Multi-day pass.
+- `family_visit` — pre-declared by the resident.
+
+### Tenancy Lifecycle
+A `flat` has zero or more `flat_occupancies`. An occupancy row carries `flat_id`, `resident_user_id`, `relationship: owner | tenant | family`, `start_date`, `end_date` (null when active). Ownership transfer or tenant move = close the current occupancy and open a new one. Resident portal access is bound to **active occupancy only** — historical residents lose access cleanly. The privacy-safe `resident_directory` view exposes only active occupancies.
+
+### Customer Onboarding (Hybrid)
+- **Society & Corporate accounts:** admin-provisioned only. Sales conversation → handshake → admin enters the customer manually. Self-serve corporate signup is **not** offered. The existing waitlist (`useWaitlist`) is for inbound interest capture only — it never auto-provisions a Customer Account.
+- **Individual Resident accounts:** self-serve, but only after their parent society is onboarded. A resident registers via SMS OTP or a society-supplied invite code.
+
+### Rate Freezing (per-contract, not per-customer)
+The catalog (`services.default_sale_unit_rate`, `default_supplier_unit_rate`) holds **suggested defaults** only. The moment a `service_contract` or `material_order` line is created, both the customer-side rate and the supplier-side rate are **copied into the contract/order row and frozen** for its lifetime. Catalog rate changes never retroactively affect existing contracts. There is no separate `customer_rate_overrides` table — a customer with negotiated pricing simply has a contract whose `sale_unit_rate` differs from the catalog default. **No formal quote entity in v1** — negotiation happens offline; the system only records the agreed terms after handshake.
+
+### Recurring Contract Billing — Fixed Monthly
+A `deployment`-type service request has a fixed `monthly_amount` agreed at contract signing. That amount is invoiced monthly on a calendar-aligned cycle (1st → last of month). First cycle is **prorated by days** (e.g. start on 12 May → first invoice = 20/31 × monthly_amount).
+
+- Attendance is tracked via HRMS for **operational and SLA visibility**, not for billing.
+- For major SLA breaches, admin issues a **manual credit note** on the next invoice. No automated attendance-driven discounting.
+- No supplier-side reconciliation for service contracts (no service-side suppliers in v1).
+
+### Mobile App Surface (the "Time-Critical Action" rule)
+The product ships as **two clients sharing one Supabase backend**:
+
+- **Web app** (this Next.js codebase) — covers every role and every feature.
+- **Mobile app** (separate React Native codebase) — covers a *subset* of features defined by a single rule:
+
+> **A feature belongs in the mobile app if and only if it requires immediate action from the user.** Everything else stays web-only.
+
+This is the **client's stated filter**. It overrides any role-based instinct ("guards are mobile, admins are web"). A finance officer might rarely receive an emergency notification — that *one* feature belongs on mobile, not the rest of finance. An admin might need to acknowledge a panic alert at 2am — that one acknowledgment screen belongs on mobile, not the admin dashboard.
+
+**Concrete consequence:** the PRD must declare, for every feature, one of:
+
+| Surface tag | Meaning |
+|---|---|
+| `web-only` | Feature only exists on web. (default for desk-work) |
+| `mobile-only` | Feature only exists on mobile. (rare — site kiosk panic button is one) |
+| `both` | Feature exists on both, must be specified in both codebases. (anything immediate-action that is also useful from the desk) |
+
+**Implication for cross-codebase consistency:** every `both` feature has double implementation cost. The PRD should resist marking features `both` unless they meet the immediate-action filter. When in doubt, default to `web-only`.
+
+### Site Kiosk Login (vs Person Login)
+Two distinct login concepts — do not conflate:
+
+- **Person login** — Tied to a specific human (Company employee, resident, customer contact). Has identity, payroll, leave balance, etc.
+- **Site Kiosk login** — Tied to a **posting** (a specific gate, lobby, or station at a customer site). The current human operating the kiosk authenticates by clocking in (selfie + GPS), but the kiosk itself is the durable identity. Used by sub-contracted personnel — the kiosk lets them log visitors, fire panic alerts, complete daily checklists, without each individual guard having a Company login.
+
+Sub-contracted personnel: **kiosk only, no person login**. Direct-employed personnel: **person login, no kiosk needed** (their phone IS the kiosk for attendance purposes).
 
 ---
 

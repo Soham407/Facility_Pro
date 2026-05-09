@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { createServiceRoleClient } from "@/src/lib/platform/server";
 import { createClient as createServerClient } from "@/src/lib/supabase/server";
+import { getManagedSocietyIdsForUser } from "@/src/lib/society/managedSocieties";
 
 const UNLINKED_RESIDENT_ROLES = new Set(["admin", "super_admin", "society_manager"]);
 const ProvisionResidentAuthSchema = z.object({
@@ -111,19 +112,6 @@ async function getAuthorizedResidentManager(): Promise<AuthorizedResidentManager
   };
 }
 
-async function getManagedSocietyIds(
-  supabaseAdmin: ReturnType<typeof createServiceRoleClient>,
-  userId: string
-) {
-  const { data, error } = await supabaseAdmin
-    .from("societies")
-    .select("id")
-    .eq("society_manager_id", userId);
-
-  if (error) throw error;
-  return new Set((data ?? []).map((row) => row.id as string));
-}
-
 /** Returns residents that have no auth_user_id yet (not provisioned as a login account). */
 export async function GET() {
   try {
@@ -134,7 +122,7 @@ export async function GET() {
 
     const managedSocietyIds =
       auth.roleName === "society_manager"
-        ? await getManagedSocietyIds(auth.supabaseAdmin, auth.userId)
+        ? await getManagedSocietyIdsForUser(auth.supabaseAdmin, auth.userId)
         : null;
 
     const { data, error } = await auth.supabaseAdmin
@@ -198,7 +186,7 @@ export async function POST(request: Request) {
     }
 
     if (auth.roleName === "society_manager") {
-      const managedSocietyIds = await getManagedSocietyIds(auth.supabaseAdmin, auth.userId);
+      const managedSocietyIds = await getManagedSocietyIdsForUser(auth.supabaseAdmin, auth.userId);
       const { data: scopedResident, error: scopedResidentError } = await auth.supabaseAdmin
         .from("residents")
         .select("id, flats(buildings(society_id))")

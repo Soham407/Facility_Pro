@@ -3,6 +3,7 @@ import { z } from "zod";
 
 import { createServiceRoleClient } from "@/src/lib/platform/server";
 import { createClient as createServerClient } from "@/src/lib/supabase/server";
+import { getManagedSocietyIdsForUser } from "@/src/lib/society/managedSocieties";
 
 interface RoleRecord {
   role_name: string | null;
@@ -133,20 +134,6 @@ type RoleRow = {
   return { error: null, userId: user.id, roleName };
 }
 
-async function getManagedSocietyIds(userId: string) {
-  const supabaseAdmin = createServiceRoleClient();
-  const { data, error } = await supabaseAdmin
-    .from("societies")
-    .select("id")
-    .eq("society_manager_id", userId);
-
-  if (error) {
-    throw error;
-  }
-
-  return new Set((data ?? []).map((row) => row.id as string));
-}
-
 async function canManageFlat(flatId: string, userId: string, roleName: string | null) {
   const supabaseAdmin = createServiceRoleClient();
   const { data: flatRecord, error: flatError } = await supabaseAdmin
@@ -163,7 +150,7 @@ async function canManageFlat(flatId: string, userId: string, roleName: string | 
     return true;
   }
 
-  const managedSocietyIds = await getManagedSocietyIds(userId);
+  const managedSocietyIds = await getManagedSocietyIdsForUser(supabaseAdmin, userId);
   const buildingRecord = Array.isArray(flatRecord.buildings)
     ? flatRecord.buildings[0]
     : flatRecord.buildings;
@@ -176,13 +163,12 @@ export async function GET() {
     const auth = await getAuthorizedResidentManager();
     if (auth.error) return auth.error;
 
+    const supabaseAdmin = createServiceRoleClient();
     let managedSocietyIds: Set<string> | null = null;
     if (auth.roleName === "society_manager") {
-      managedSocietyIds = await getManagedSocietyIds(auth.userId!);
+      managedSocietyIds = await getManagedSocietyIdsForUser(supabaseAdmin, auth.userId!);
     }
 
-    const supabaseAdmin = createServiceRoleClient();
-    
     // Build query - fetch all active residents with their flat and building info
     const query = supabaseAdmin
       .from("residents")

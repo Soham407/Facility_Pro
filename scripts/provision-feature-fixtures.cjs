@@ -737,6 +737,34 @@ async function main() {
     (await maybeSingle(supabase.from("societies").select("*").eq("id", "11111111-1111-1111-1111-111111111111").maybeSingle())) ||
     (await maybeSingle(supabase.from("societies").select("*").order("created_at").limit(1).maybeSingle()));
 
+  if (flat) {
+    await runMutation(
+      supabase
+        .from("visitors")
+        .upsert(
+          {
+            id: stableUuid("visitor:society-manager-active"),
+            visitor_name: "Active Visitor E2E",
+            visitor_type: "guest",
+            phone: "9876500000",
+            vehicle_number: null,
+            photo_url: null,
+            flat_id: flat.id,
+            resident_id: resident.id,
+            purpose: "Society manager smoke test",
+            entry_time: new Date().toISOString(),
+            exit_time: null,
+            approved_by_resident: true,
+            approval_status: "approved",
+            is_frequent_visitor: false,
+          },
+          { onConflict: "id" }
+        )
+        .select()
+        .single()
+    );
+  }
+
   const designations = {
     admin: await ensureDesignation(supabase, {
       id: stableUuid("designation:admin"),
@@ -874,6 +902,15 @@ async function main() {
       designationId: designations.siteSupervisor.id,
     }),
   };
+
+  if (society && society.society_manager_id !== employees.societyManager.id) {
+    await runMutation(
+      supabase
+        .from("societies")
+        .update({ society_manager_id: employees.societyManager.id })
+        .eq("id", society.id)
+    );
+  }
 
   for (const employeeId of [
     employees.guard.id,
@@ -1032,4 +1069,3 @@ main().catch((error) => {
   console.error(error);
   process.exit(1);
 });
-

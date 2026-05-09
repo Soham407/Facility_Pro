@@ -1,17 +1,20 @@
--- RPC functions for panic alert SMS and push notifications
--- These call the send-notification edge function via pg_net
+-- Security remediation: remove hardcoded service role key from
+-- send_panic_alert_sms, send_push_notification_to_manager, send_custom_sms.
 --
--- SECURITY NOTE: This file previously contained a hardcoded service role key.
--- The key has been removed. These functions are superseded by
--- 20260509000001_fix_hardcoded_service_key.sql which reads the key via
--- current_setting('app.settings.service_role_key', true) at runtime.
--- If you are running a fresh migration, the functions in this file will be
--- immediately overwritten by the remediation migration. Do not restore the key.
+-- The original migration (20260421150000_sms_push_rpc_functions.sql) embedded
+-- the Supabase service role JWT as a SQL CONSTANT. Any authenticated user with
+-- access to pg_proc could read it. The key must be rotated in the Supabase
+-- dashboard before deploying this migration.
+--
+-- After rotation, set the new key as a custom DB parameter in
+-- Supabase Dashboard → Project Settings → Database → Configuration:
+--   app.settings.service_role_key = <new service role key>
+--
+-- This pattern matches the existing safe usage in
+-- 20260316172102_schedule_check_checklist_hourly.sql.
 
 -- ============================================================
 -- 1. send_panic_alert_sms
--- Called by guard app when panic button is triggered
--- Sends SMS to the provided manager phone, and FCM push to all admins
 -- ============================================================
 CREATE OR REPLACE FUNCTION public.send_panic_alert_sms(
   p_alert_type    TEXT,
@@ -31,8 +34,14 @@ DECLARE
   v_title        TEXT;
   v_body_text    TEXT;
   v_manager      RECORD;
-  v_service_key  CONSTANT TEXT := 'REDACTED — see 20260509000001_fix_hardcoded_service_key.sql';
+  v_service_key  TEXT;
 BEGIN
+  v_service_key := current_setting('app.settings.service_role_key', true);
+
+  IF v_service_key IS NULL OR v_service_key = '' THEN
+    RETURN jsonb_build_object('success', false, 'error', 'app.settings.service_role_key not configured');
+  END IF;
+
   IF p_latitude IS NOT NULL AND p_longitude IS NOT NULL THEN
     v_location_msg := format('Location: %s, %s', round(p_latitude::NUMERIC, 5), round(p_longitude::NUMERIC, 5));
   ELSE
@@ -42,7 +51,6 @@ BEGIN
   v_title     := format('PANIC ALERT: %s', upper(p_alert_type));
   v_body_text := format('Guard %s triggered a %s alert. %s', p_guard_name, p_alert_type, v_location_msg);
 
-  -- Send SMS to the provided manager phone number
   IF p_manager_phone IS NOT NULL AND p_manager_phone <> '' THEN
     PERFORM net.http_post(
       url     := 'https://wwhbdgwfodumognpkgrf.supabase.co/functions/v1/send-notification',
@@ -59,7 +67,6 @@ BEGIN
     );
   END IF;
 
-  -- Send FCM push to all admin/manager users
   FOR v_manager IN
     SELECT u.id
     FROM   users u
@@ -98,7 +105,6 @@ GRANT EXECUTE ON FUNCTION public.send_panic_alert_sms(TEXT, TEXT, TEXT, NUMERIC,
 
 -- ============================================================
 -- 2. send_push_notification_to_manager
--- Called by guard app to push FCM alert to all admin/manager users
 -- ============================================================
 CREATE OR REPLACE FUNCTION public.send_push_notification_to_manager(
   p_alert_type TEXT,
@@ -116,8 +122,14 @@ DECLARE
   v_title        TEXT;
   v_body_text    TEXT;
   v_manager      RECORD;
-  v_service_key  CONSTANT TEXT := 'REDACTED — see 20260509000001_fix_hardcoded_service_key.sql';
+  v_service_key  TEXT;
 BEGIN
+  v_service_key := current_setting('app.settings.service_role_key', true);
+
+  IF v_service_key IS NULL OR v_service_key = '' THEN
+    RETURN jsonb_build_object('success', false, 'error', 'app.settings.service_role_key not configured');
+  END IF;
+
   IF p_latitude IS NOT NULL AND p_longitude IS NOT NULL THEN
     v_location_msg := format('Location: %s, %s', round(p_latitude::NUMERIC, 5), round(p_longitude::NUMERIC, 5));
   ELSE
@@ -165,7 +177,6 @@ GRANT EXECUTE ON FUNCTION public.send_push_notification_to_manager(TEXT, TEXT, N
 
 -- ============================================================
 -- 3. send_custom_sms
--- Called by guard app to send a free-form SMS to any phone number
 -- ============================================================
 CREATE OR REPLACE FUNCTION public.send_custom_sms(
   p_phone_number TEXT,
@@ -177,8 +188,14 @@ SECURITY DEFINER
 SET search_path = public
 AS $$
 DECLARE
-  v_service_key CONSTANT TEXT := 'REDACTED — see 20260509000001_fix_hardcoded_service_key.sql';
+  v_service_key TEXT;
 BEGIN
+  v_service_key := current_setting('app.settings.service_role_key', true);
+
+  IF v_service_key IS NULL OR v_service_key = '' THEN
+    RETURN jsonb_build_object('success', false, 'error', 'app.settings.service_role_key not configured');
+  END IF;
+
   IF auth.uid() IS NULL THEN
     RAISE EXCEPTION 'Authentication required';
   END IF;

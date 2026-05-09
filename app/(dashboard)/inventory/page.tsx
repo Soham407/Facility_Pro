@@ -97,6 +97,23 @@ const stockLevelColumns: ColumnDef<StockLevel>[] = [
       return <Badge variant="outline" className="border-green-500 text-green-500">OK</Badge>;
     },
   },
+  { // Added Actions column
+    id: "actions",
+    header: "Actions",
+    cell: ({ row }) => {
+      const product = row.original;
+      if (product.needs_reorder) {
+        return (
+          <Link href={`/inventory/indents/create?productId=${product.product_id}`}>
+            <Button variant="outline" size="sm" className="gap-1">
+              <Plus className="h-3.5 w-3.5" /> Create Indent
+            </Button>
+          </Link>
+        );
+      }
+      return null;
+    },
+  },
 ];
 
 export default function InventoryDashboardPage() {
@@ -344,12 +361,7 @@ export default function InventoryDashboardPage() {
                   Items that need to be reordered
                 </CardDescription>
               </div>
-              <Button variant="outline" size="sm" asChild>
-                <Link href="/inventory/purchase-orders">
-                  Create Purchase Order
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              {/* Removed global "Create Indent" button, now per-row action */}
             </CardHeader>
             <CardContent>
               {lowStockItems.length === 0 ? (
