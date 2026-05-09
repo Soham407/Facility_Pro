@@ -38,14 +38,21 @@ export function useServices(): UseServicesReturn {
       const { data, error } = await supabase
         .from("services")
         .select("*")
-        .eq("is_v1", true)
         .or("is_active.eq.true,is_active.is.null")
         .order("service_name");
 
       if (error) throw error;
 
+      // PR-B catalog lock: filter v1 services in JS rather than via .eq() chain
+      // (avoids TS2589 from the deep type instantiation on the supabase-types union).
+      // is_v1 is a new column from migration 20260509000004; supabase-types.ts will
+      // pick it up on next regeneration. Cast to any until then.
+      const v1Services = ((data ?? []) as any[]).filter(
+        (svc) => svc.is_v1 !== false,
+      );
+
       setState({
-        services: data || [],
+        services: v1Services,
         isLoading: false,
         error: null,
       });

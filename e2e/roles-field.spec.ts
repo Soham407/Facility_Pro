@@ -4,11 +4,11 @@ import { pickRoleTestConfigs } from "./role-matrix";
 registerRoleSmokeSuite(
   "Field Roles Smoke",
   pickRoleTestConfigs([
-    "delivery_boy",
+    "delivery_agent",
     "security_guard",
     "security_supervisor",
     "society_manager",
-    "service_boy",
+    "field_technician",
     "ac_technician",
     "pest_control_technician",
   ])

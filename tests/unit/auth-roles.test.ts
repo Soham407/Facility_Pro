@@ -20,9 +20,10 @@ describe("hasAccess", () => {
     expect(hasAccess("security_supervisor", "/society/my-flat")).toBe(false);
   });
 
-  it("keeps role aliases aligned with their intended portals", () => {
-    expect(hasAccess("vendor", "/supplier/indents")).toBe(true);
-    expect(hasAccess("vendor", "/buyer/requests")).toBe(false);
+  it("keeps portal access aligned with role boundaries", () => {
+    // PR-A merged 'vendor' into 'supplier'; portal-alias coverage now lives in supplier checks
+    expect(hasAccess("supplier", "/supplier/indents")).toBe(true);
+    expect(hasAccess("supplier", "/buyer/requests")).toBe(false);
     expect(hasAccess("buyer", "/buyer/requests/new")).toBe(true);
     expect(hasAccess("buyer", "/supplier/bills")).toBe(false);
   });
@@ -37,9 +38,8 @@ describe("hasAccess", () => {
   it("resolves role-aware landing routes for portal roles", () => {
     expect(getRoleLandingPath("buyer")).toBe("/buyer");
     expect(getRoleLandingPath("supplier")).toBe("/supplier");
-    expect(getRoleLandingPath("vendor")).toBe("/supplier");
     expect(getRoleLandingPath("resident")).toBe("/resident");
-    expect(getRoleLandingPath("delivery_boy")).toBe("/delivery");
+    expect(getRoleLandingPath("delivery_agent")).toBe("/delivery");
     expect(getRoleLandingPath("admin")).toBe("/dashboard");
     expect(getRoleLandingPath(null)).toBe("/dashboard");
   });

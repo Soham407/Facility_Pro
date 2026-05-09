@@ -916,11 +916,11 @@ test.describe("Admin — Services Config Pages", () => {
   });
 });
 
-// ─── DELIVERY BOY ───────────────────────────────────────────────────────────
+// ─── DELIVERY AGENT ─────────────────────────────────────────────────────────
 
-test.describe("Delivery Boy — Workflow & Dead-UI Audit", () => {
+test.describe("Delivery Agent — Workflow & Dead-UI Audit", () => {
   test.beforeEach(async ({ page }) => {
-    await loginAsRole(page, "delivery_boy");
+    await loginAsRole(page, "delivery_agent");
   });
 
   test("delivery dashboard loads", async ({ page }) => {

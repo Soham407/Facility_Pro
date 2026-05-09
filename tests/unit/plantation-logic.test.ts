@@ -267,7 +267,7 @@ describe("plantation page state helpers", () => {
     expect(canUpdatePlantationTask(sampleTasks[0], "admin", null)).toBe(true);
     expect(canUpdatePlantationTask(sampleTasks[0], "pest_control_technician", "emp-1")).toBe(true);
     expect(canUpdatePlantationTask(sampleTasks[0], "pest_control_technician", "emp-9")).toBe(false);
-    expect(canUpdatePlantationTask(sampleTasks[0], "service_boy", "emp-1")).toBe(false);
+    expect(canUpdatePlantationTask(sampleTasks[0], "field_technician", "emp-1")).toBe(false);
   });
 
   it("shows the page loader only while auth or data are still empty", () => {

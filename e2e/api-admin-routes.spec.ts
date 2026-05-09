@@ -46,9 +46,9 @@ test.describe("Admin API Route Authorization", () => {
     expect(response.status()).toBe(400);
   });
 
-  test("delivery_boy cannot change a user role via admin route (403)", async ({ page, browserName }) => {
+  test("delivery_agent cannot change a user role via admin route (403)", async ({ page, browserName }) => {
     test.skip(browserName !== "chromium", "API auth tests run on chromium only.");
-    await loginAsRole(page, "delivery_boy");
+    await loginAsRole(page, "delivery_agent");
     const response = await page.request.put(
       "/api/admin/users/00000000-0000-0000-0000-000000000001/role",
       { data: { role_id: "some-role-id" } },
