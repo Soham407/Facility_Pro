@@ -100,15 +100,15 @@ CREATE POLICY "Site managers view attendance" ON attendance_logs
   );
 
 -- Behavior tickets (accessible to site_supervisor/society_manager for review)
-DROP POLICY IF EXISTS "View behavior tickets" ON behavior_tickets;
-CREATE POLICY "View behavior tickets" ON behavior_tickets
+DROP POLICY IF EXISTS "View behavior tickets" ON employee_behavior_tickets;
+CREATE POLICY "View behavior tickets" ON employee_behavior_tickets
   FOR SELECT TO authenticated
   USING (
     get_user_role() IN ('admin', 'super_admin', 'site_supervisor', 'society_manager', 'company_hod')
   );
 
-DROP POLICY IF EXISTS "Insert behavior tickets" ON behavior_tickets;
-CREATE POLICY "Insert behavior tickets" ON behavior_tickets
+DROP POLICY IF EXISTS "Insert behavior tickets" ON employee_behavior_tickets;
+CREATE POLICY "Insert behavior tickets" ON employee_behavior_tickets
   FOR INSERT TO authenticated
   WITH CHECK (
     get_user_role() IN ('admin', 'super_admin', 'site_supervisor', 'society_manager', 'company_hod')
