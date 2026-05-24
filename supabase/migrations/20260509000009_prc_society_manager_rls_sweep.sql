@@ -60,7 +60,9 @@ CREATE POLICY "Users can read panic alerts for their society" ON panic_alerts
     OR (get_user_role() = 'resident' AND auth.uid() IN (
       SELECT auth_user_id FROM residents
       WHERE flat_id IN (
-        SELECT id FROM flats WHERE society_id IN (
+        SELECT f.id FROM flats f
+        JOIN buildings b ON b.id = f.building_id
+        WHERE b.society_id IN (
           SELECT society_id FROM company_locations WHERE id = panic_alerts.location_id
         )
       )
