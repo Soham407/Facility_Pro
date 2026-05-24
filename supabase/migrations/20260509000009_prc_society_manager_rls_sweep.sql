@@ -19,8 +19,22 @@ CREATE POLICY "View visitors (society-only)" ON visitors
   FOR SELECT TO authenticated
   USING (
     get_user_role() IN ('admin', 'super_admin', 'site_supervisor', 'society_manager', 'security_guard', 'security_supervisor')
-    OR (get_user_role() = 'buyer' AND society_id IN (SELECT society_id FROM buyers WHERE auth_user_id = auth.uid()))
-    OR (get_user_role() = 'resident' AND auth.uid() IN (SELECT auth_user_id FROM residents WHERE flat_id IN (SELECT id FROM flats WHERE society_id = visitors.society_id)))
+    OR (
+      get_user_role() = 'buyer'
+      AND flat_id IN (
+        SELECT f.id
+        FROM flats f
+        JOIN buildings b ON b.id = f.building_id
+        JOIN buyer_accounts ba ON ba.society_id = b.society_id
+        WHERE ba.auth_user_id = auth.uid()
+      )
+    )
+    OR (
+      get_user_role() = 'resident'
+      AND resident_id IN (
+        SELECT id FROM residents WHERE auth_user_id = auth.uid()
+      )
+    )
   );
 
 DROP POLICY IF EXISTS "Insert visitors" ON visitors;
@@ -45,7 +59,11 @@ CREATE POLICY "Users can read panic alerts for their society" ON panic_alerts
     get_user_role() IN ('admin', 'super_admin', 'site_supervisor', 'society_manager', 'security_guard', 'security_supervisor')
     OR (get_user_role() = 'resident' AND auth.uid() IN (
       SELECT auth_user_id FROM residents
-      WHERE flat_id IN (SELECT id FROM flats WHERE society_id = panic_alerts.society_id)
+      WHERE flat_id IN (
+        SELECT id FROM flats WHERE society_id IN (
+          SELECT society_id FROM company_locations WHERE id = panic_alerts.location_id
+        )
+      )
     ))
   );
 
@@ -73,7 +91,10 @@ CREATE POLICY "Site managers view attendance" ON attendance_logs
   FOR SELECT TO authenticated
   USING (
     get_user_role() IN ('admin', 'super_admin', 'site_supervisor', 'society_manager')
-    OR (get_user_role() = 'buyer' AND auth.uid() IN (SELECT auth_user_id FROM buyers LIMIT 1))
+    OR (
+      get_user_role() = 'buyer'
+      AND EXISTS (SELECT 1 FROM buyer_accounts WHERE auth_user_id = auth.uid())
+    )
   );
 
 -- Behavior tickets (accessible to site_supervisor/society_manager for review)
@@ -97,7 +118,7 @@ CREATE POLICY "Managers can view service requests" ON service_requests
   FOR SELECT TO authenticated
   USING (
     get_user_role() IN ('admin', 'super_admin', 'site_supervisor', 'society_manager', 'company_hod')
-    OR (get_user_role() = 'buyer' AND society_id IN (SELECT society_id FROM buyers WHERE auth_user_id = auth.uid()))
+    OR (get_user_role() = 'buyer' AND society_id IN (SELECT society_id FROM buyer_accounts WHERE auth_user_id = auth.uid()))
   );
 
 -- ============================================
@@ -109,7 +130,7 @@ CREATE POLICY "Managers can view service requests" ON service_requests
 -- These are updated in subsequent migrations as needed
 
 -- NOTE: Additional policies and function body updates may exist in earlier migrations
--- A complete list per pr-c-scope.md includes 18 occurrences:
+-- A complete list per docs/archive/plans/pr-c-scope.md includes 18 occurrences:
 -- - 4 policies in 20260208175334_phase_a_final_patch.sql
 -- - 1 policy in 20260210113624_phase_c_03_procurement_tables.sql
 -- - 1 policy in 20260215064232_create_buyer_requests_table.sql
