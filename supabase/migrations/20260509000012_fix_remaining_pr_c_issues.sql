@@ -32,15 +32,19 @@ CREATE POLICY "View visitors (society-only)" ON visitors
     get_user_role() IN ('admin', 'super_admin', 'site_supervisor', 'society_manager', 'security_guard', 'security_supervisor')
     OR (
       get_user_role() = 'buyer'
-      AND society_id IN (
-        SELECT society_id FROM buyer_accounts WHERE auth_user_id = auth.uid()
+      AND flat_id IN (
+        SELECT f.id
+        FROM flats f
+        JOIN buildings b ON b.id = f.building_id
+        JOIN buyer_accounts ba ON ba.society_id = b.society_id
+        WHERE ba.auth_user_id = auth.uid()
       )
     )
     OR (
       get_user_role() = 'resident'
       AND auth.uid() IN (
         SELECT auth_user_id FROM residents
-        WHERE flat_id IN (SELECT id FROM flats WHERE society_id = visitors.society_id)
+        WHERE id = visitors.resident_id
       )
     )
   );
@@ -51,7 +55,7 @@ CREATE POLICY "View visitors (society-only)" ON visitors
 -- buyer sees all logs if any buyer exists"). Replaced with: a buyer with a
 -- buyer_account can read attendance. Tightening to society-scoped requires
 -- attendance_logs to gain a society_id column or join through
--- employees/employee_postings — tracked in demo-blockers.md as A-5.
+-- employees/employee_postings — tracked in docs/archive/demo/2026-05-09-demo-blockers.md as A-5.
 DROP POLICY IF EXISTS "Site managers view attendance" ON attendance_logs;
 CREATE POLICY "Site managers view attendance" ON attendance_logs
   FOR SELECT TO authenticated

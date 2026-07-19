@@ -4,8 +4,10 @@ export type AppRole =
   | "company_hod"
   | "account"
   | "delivery_agent"
+  | "delivery_boy"
   | "buyer"
   | "supplier"
+  | "vendor"
   // security_guard and security_supervisor are sub-contracted person-roles (ADR-0010 §3).
   // They have personal logins for shift-log, visitor-log, panic-alerts, checklists.
   // NOT tracked in HRMS payroll — attendance informs SLA only.
@@ -14,6 +16,7 @@ export type AppRole =
   // society_manager is deprecated — migrate existing users to site_supervisor (PR-C).
   | "society_manager"
   | "field_technician"
+  | "service_boy"
   | "resident"
   | "storekeeper"
   | "site_supervisor"
@@ -24,8 +27,10 @@ export type AppRole =
 export const ROLE_LANDING_PATHS: Partial<Record<AppRole, string>> = {
   buyer: "/buyer",
   supplier: "/supplier",
+  vendor: "/supplier",
   resident: "/resident",
   delivery_agent: "/delivery",
+  delivery_boy: "/delivery",
 };
 
 /**
@@ -38,15 +43,16 @@ export const ROLE_ACCESS: Record<AppRole, string[]> = {
   company_hod: ["/dashboard", "/hrms", "/service-requests", "/tickets", "/services", "/company"],
   account: ["/dashboard", "/finance", "/reports", "/hrms/payroll"],
   delivery_agent: ["/dashboard", "/delivery"],
+  delivery_boy: ["/dashboard", "/delivery"],
   buyer: ["/dashboard", "/buyer"],
   supplier: ["/dashboard", "/supplier"],
+  vendor: ["/dashboard", "/supplier"],
   // Guards access the guard portal + specific society sub-routes for visitor/resident lookup.
   // /society (broad) is excluded — guards must not reach society admin, billing, or management routes.
   security_guard: [
     "/dashboard",
     "/guard",
     "/society/visitors",
-    "/society/residents",
     "/society/panic-alerts",
     "/hrms/attendance",
     "/hrms/leave",
@@ -54,17 +60,17 @@ export const ROLE_ACCESS: Record<AppRole, string[]> = {
   security_supervisor: [
     "/dashboard",
     "/tickets/behavior",
-    "/tickets/incidents",
     "/society/visitors",
-    "/society/residents",
     "/society/panic-alerts",
     "/hrms/attendance",
+    "/hrms/leave",
     "/services/security",
     "/admin/guards",
   ],
   // Deprecated — migrate users to site_supervisor via PR-C migration.
   society_manager: ["/dashboard", "/society", "/resident", "/tickets", "/finance/compliance", "/service-requests", "/hrms/attendance", "/hrms/leave"],
-  field_technician: ["/dashboard", "/field-technician", "/service-requests"],
+  field_technician: ["/dashboard", "/service-boy", "/service-requests"],
+  service_boy: ["/dashboard", "/service-boy", "/service-requests"],
   resident: ["/resident", "/society/my-flat"],
   storekeeper: ["/dashboard", "/inventory", "/tickets/quality", "/tickets/returns"],
   site_supervisor: ["/dashboard", "/society", "/tickets", "/hrms/attendance", "/service-requests", "/services/plantation"],

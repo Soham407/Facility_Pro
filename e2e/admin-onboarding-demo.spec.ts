@@ -92,7 +92,7 @@ test.describe("Admin onboarding demo", () => {
 
     const { data: guard } = await client
       .from("security_guards")
-      .select("id, employee_id, assigned_location_id")
+      .select("id, employee_id, assigned_location_id, guard_code")
       .eq("employee_id", employee!.id)
       .single();
 
@@ -120,7 +120,11 @@ test.describe("Admin onboarding demo", () => {
 
     if (alternateLocation) {
       await dialog.getByRole("button", { name: /^close$/i }).first().click();
+      await expect(page.locator("table")).toBeVisible({ timeout: 15_000 });
+
+      await page.getByPlaceholder(/search guard_code/i).fill(guard!.guard_code);
       const guardRow = page.locator("tr").filter({ hasText: guardName }).first();
+      await expect(guardRow).toBeVisible({ timeout: 10_000 });
       await guardRow.getByRole("button").last().click();
       await page.getByRole("menuitem", { name: /edit assignment/i }).click();
       const editDialog = page.getByRole("dialog", { name: /edit guard assignment/i });
@@ -219,7 +223,7 @@ test.describe("Admin onboarding demo", () => {
       .eq("id", resident!.auth_user_id)
       .single();
 
-    expect(linkedUser?.phone).toBeNull();
+    expect(linkedUser?.phone).toBe(residentPhone);
     expect(linkedUser?.must_change_password).toBe(true);
     const roleRecord = Array.isArray((linkedUser as any)?.roles) ? (linkedUser as any).roles[0] : (linkedUser as any)?.roles;
     expect(roleRecord?.role_name).toBe("resident");

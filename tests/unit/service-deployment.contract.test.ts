@@ -67,14 +67,29 @@ describe("service deployment contracts", () => {
         "approveIndent",
         "linkRequestToIndent",
         'status: "indent_forwarded"',
+        'useBuyerRequests({ scope: "all", userId: user?.id ?? null })',
+        "user?.id ?? null",
       ])
     ).toBe(true);
 
     expect(
       sourceContainsAll(buyerRequestsHookSource, [
+        'scope?: "mine" | "all"',
+        "userId?: string | null",
+        "options?.userId ??",
+        'if (scope === "mine")',
+        '.eq("buyer_id", currentUserId)',
+        'supabase.auth.onAuthStateChange',
         'FORWARDABLE_INDENT_STATUSES',
         'Only approved indents can be forwarded to suppliers.',
         '.or("indent_id.is.null,status.eq.indent_rejected")',
+      ])
+    ).toBe(true);
+
+    expect(
+      sourceContainsAll(adminPageSource, [
+        'useBuyerRequests({ scope: "all", userId: user?.id ?? null })',
+        "user?.id ?? null",
       ])
     ).toBe(true);
 
@@ -83,6 +98,9 @@ describe("service deployment contracts", () => {
 
   it("keeps service indents visible and supplier-safe in the supplier portal", async () => {
     const supplierPortalHookSource = await readRepoFile("hooks/useSupplierPortal.ts");
+    const supplierPortalActionsSource = await readRepoFile(
+      "src/lib/supplier-portal/supplierPortalActions.ts"
+    );
     const supplierIndentsPageSource = await readRepoFile("app/(dashboard)/supplier/indents/page.tsx");
     const supplierServiceIndentRouteSource = await readRepoFile("app/api/supplier/service-indent-response/route.ts");
     const migrationSource = await readRepoFile(
@@ -93,6 +111,12 @@ describe("service deployment contracts", () => {
       sourceContainsAll(supplierPortalHookSource, [
         "site_location:company_locations!site_location_id",
         "site_location_name",
+        "respondToIndentAction",
+      ])
+    ).toBe(true);
+
+    expect(
+      sourceContainsAll(supplierPortalActionsSource, [
         "is_service_request === true",
         'rejected_at: new Date().toISOString()',
         'fetch("/api/supplier/service-indent-response"',
@@ -186,6 +210,8 @@ describe("service deployment contracts", () => {
         'case "service_deployment_chain":',
         "return runServiceDeploymentChain(browser, feature, testInfo);",
         'await page.goto("/admin/service-indents");',
+        'waitForResponse((response) =>',
+        'response.url().includes("/api/supplier/service-indent-response")',
         'await page.goto("/supplier/service-orders");',
         'await page.goto("/inventory/service-purchase-orders");',
         'await page.goto("/supplier/bills/new");',

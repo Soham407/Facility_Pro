@@ -99,7 +99,31 @@ describe("asset module contracts", () => {
     expect(
       sourceContainsAll(jobPanelSource, [
         "const [requestState, setRequestState] = useState(serviceRequest)",
-        "const updatedRequest = await getRequestById(requestState.id)",
+      "const updatedRequest = await getRequestById(requestState.id)",
+      ])
+    ).toBe(true);
+  });
+
+  it("keeps AC photo evidence request-scoped when no job session exists yet", async () => {
+    const photoDialogSource = await readRepoFile("components/dialogs/PhotoUploadDialog.tsx");
+    const jobSessionsSource = await readRepoFile("hooks/useJobSessions.ts");
+
+    expect(
+      sourceContainsAll(photoDialogSource, [
+        "Then link photo rows only if a real job session exists.",
+        "requestEvidencePatch.before_photo_url = beforeUrls[0];",
+        "requestEvidencePatch.after_photo_url = afterUrls[0];",
+        "if (latestSession?.id) {",
+        "await supabase.from(\"job_photos\").insert(allPhotos);",
+      ])
+    ).toBe(true);
+
+    expect(
+      sourceContainsAll(jobSessionsSource, [
+        "if (!session) {",
+        "const sessionData: JobSessionInsert = {",
+        'status: "started"',
+        "fetchSessions();",
       ])
     ).toBe(true);
   });

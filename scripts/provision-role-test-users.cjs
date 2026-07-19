@@ -9,6 +9,12 @@ loadEnvConfig(process.cwd());
 const ROLE_TEST_PASSWORD = "Test@1234";
 const ROLE_MATRIX_PATH = path.join(process.cwd(), "e2e", "role-matrix.data.json");
 const roleMatrix = JSON.parse(fs.readFileSync(ROLE_MATRIX_PATH, "utf8"));
+const LEGACY_ROLE_FALLBACKS = {
+  delivery_agent: "delivery_boy",
+  field_technician: "service_boy",
+  delivery_boy: "delivery_agent",
+  service_boy: "field_technician",
+};
 
 function requireEnv(name) {
   const value = process.env[name];
@@ -60,16 +66,18 @@ async function main() {
     },
   });
 
-  const roleNames = roleMatrix.map((entry) => entry.role);
+  const roleNames = Array.from(
+    new Set(roleMatrix.flatMap((entry) => [entry.role, LEGACY_ROLE_FALLBACKS[entry.role]].filter(Boolean)))
+  );
   const emails = roleMatrix.map((entry) => normalizeEmail(entry.email));
 
   const [{ data: roles, error: rolesError }, authUsers, { data: publicUsers, error: publicError }] =
     await Promise.all([
-      supabase.from("roles").select("id, role_name").in("role_name", roleNames),
+      supabase.from("roles").select("id, role_name"),
       listAllAuthUsers(supabase),
       supabase
         .from("users")
-        .select("id, email, username, full_name, is_active, role_id")
+        .select("id, email, username, full_name, is_active, must_change_password, role_id")
         .in("email", emails),
     ]);
 
@@ -82,11 +90,21 @@ async function main() {
   }
 
   const roleIdByName = Object.fromEntries((roles ?? []).map((role) => [role.role_name, role.id]));
+  const provisionRoleByTargetRole = {};
 
   for (const roleName of roleNames) {
-    if (!roleIdByName[roleName]) {
+    const fallbackRoleName = LEGACY_ROLE_FALLBACKS[roleName];
+    const provisionRoleName = roleIdByName[roleName]
+      ? roleName
+      : fallbackRoleName && roleIdByName[fallbackRoleName]
+        ? fallbackRoleName
+        : null;
+
+    if (!provisionRoleName) {
       throw new Error(`Role "${roleName}" was not found in public.roles.`);
     }
+
+    provisionRoleByTargetRole[roleName] = provisionRoleName;
   }
 
   const authByEmail = new Map(
@@ -144,13 +162,15 @@ async function main() {
     }
 
     let publicUser = publicByEmail.get(email);
+    const provisionRoleName = provisionRoleByTargetRole[entry.role];
     const publicPayload = {
       id: authUser.id,
       email: entry.email,
       full_name: entry.fullName,
       username: entry.username,
-      role_id: roleIdByName[entry.role],
+      role_id: roleIdByName[provisionRoleName],
       is_active: true,
+      must_change_password: false,
       updated_at: new Date().toISOString(),
     };
 
@@ -200,8 +220,9 @@ async function main() {
       const needsUpdate =
         publicUser.full_name !== entry.fullName ||
         publicUser.username !== entry.username ||
-        publicUser.role_id !== roleIdByName[entry.role] ||
-        publicUser.is_active !== true;
+        publicUser.role_id !== publicPayload.role_id ||
+        publicUser.is_active !== true ||
+        publicUser.must_change_password !== false;
 
       if (needsUpdate) {
         const { error } = await supabase

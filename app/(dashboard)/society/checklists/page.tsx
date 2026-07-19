@@ -205,7 +205,19 @@ export default function ChecklistsPage() {
             required: Boolean(question.required),
           })) || [];
 
-        const taskDefinitions = normalizedTasks.length > 0 ? normalizedTasks : fallbackQuestions;
+        const seenTasks = new Set<string>();
+        const taskDefinitions: Array<{ id: string; task: string; required: boolean }> = [];
+        normalizedTasks.forEach((t) => {
+          taskDefinitions.push(t);
+          seenTasks.add(t.task.toLowerCase());
+        });
+        fallbackQuestions.forEach((q) => {
+          if (!seenTasks.has(q.task.toLowerCase())) {
+            taskDefinitions.push(q);
+            seenTasks.add(q.task.toLowerCase());
+          }
+        });
+
         const checklistResponses = responseRows.filter((row) => row.checklist_id === checklist.id);
 
         const rowsToRender = checklistResponses;

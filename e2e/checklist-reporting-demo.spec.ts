@@ -98,6 +98,20 @@ test.describe("Checklist Reporting Demo Pack", () => {
     const checklistId = await getSecurityChecklistId();
     await resetTodayChecklistResponse(guard.employeeId, checklistId);
 
+    // Ensure the checklist is assigned to this guard employee
+    const client = createServiceRoleClient();
+    const { error: assignError } = await client
+      .from("checklist_assignments")
+      .upsert(
+        {
+          checklist_id: checklistId,
+          employee_id: guard.employeeId,
+          is_active: true,
+        },
+        { onConflict: "checklist_id,employee_id" },
+      );
+    if (assignError) throw assignError;
+
     await loginAndOpen(page, "security_guard", "/dashboard");
 
     await expect(page.getByText(CHECKLIST_TASK)).toBeVisible({ timeout: 20_000 });

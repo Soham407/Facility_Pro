@@ -63,7 +63,7 @@ self.addEventListener('notificationclick', (event) => {
   if (data?.type === 'panic_alert') {
     url = '/society/panic-alerts';
   } else if (data?.type === 'checklist_reminder') {
-    url = '/test-guard'; // Guard dashboard
+    url = '/society/checklists';
   } else if (data?.type === 'visitor_arrived') {
     url = '/society/visitors';
   }

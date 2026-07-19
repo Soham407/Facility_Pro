@@ -81,7 +81,7 @@ export function ServiceAcknowledgmentDialog({
       .from("service_purchase_order_items")
       .select("quantity")
       .eq("spo_id", spo.id)
-        .then(({ data, error }) => {
+      .then(({ data, error }) => {
         if (!error && data && data.length > 0) {
           const total = data.reduce((sum, item) => sum + (item.quantity ?? 0), 0);
           setExpectedHeadcount(total);
@@ -106,66 +106,37 @@ export function ServiceAcknowledgmentDialog({
     }
     setIsSubmitting(true);
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      const { data: employeeRecord, error: employeeError } = await supabase
-        .from("employees")
-        .select("id")
-        .eq("auth_user_id", user?.id ?? "")
-        .maybeSingle();
-
-      if (employeeError) throw employeeError;
-      if (!employeeRecord?.id) {
-        throw new Error("Deployment acknowledgment requires a linked employee profile.");
-      }
-
-      const { data: deliveryNote, error: deliveryNoteError } = await supabase
-        .from("service_delivery_notes")
-        .select("id")
-        .eq("po_id", spo.id)
-        .order("created_at", { ascending: false })
-        .limit(1)
-        .maybeSingle();
-
-      if (deliveryNoteError) throw deliveryNoteError;
-      if (!deliveryNote?.id) {
-        throw new Error("A delivery note must exist before deployment can be acknowledged.");
-      }
-
-      const { error: upsertError } = await supabase
+      const { data: acknowledgedDeployment, error: acknowledgmentCheckError } = await supabase
         .from("service_acknowledgments")
-        .upsert({
-          spo_id: spo.id,
-          acknowledged_by: user?.id ?? null,
-          headcount_expected: expectedHeadcount,
-          headcount_received: values.headcount_received,
-          grade_verified: values.grade_verified,
+        .select("status")
+        .eq("spo_id", spo.id)
+        .eq("status", "acknowledged")
+        .maybeSingle();
+
+      if (acknowledgmentCheckError) {
+        throw acknowledgmentCheckError;
+      }
+
+      if (!acknowledgedDeployment) {
+        throw new Error("Deployment acknowledgment is required before confirming billing.");
+      }
+
+      // The acknowledge-deployment route keeps service_acknowledgments at status: 'acknowledged'
+      // and follows up with update({ status: "deployment_confirmed" ... }) after validation.
+      const response = await fetch("/api/service-orders/acknowledge-deployment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          spoId: spo.id,
+          headcountReceived: values.headcount_received,
+          gradeVerified: values.grade_verified,
           notes: values.notes || null,
-          // Billing gates key off the supplier acknowledgment row remaining in the
-          // acknowledged state even after the site/admin confirms deployment quality.
-          status: 'acknowledged',
-          updated_at: new Date().toISOString(),
-        }, { onConflict: 'spo_id' });
-
-      if (upsertError) throw upsertError;
-
-      const { error: deliveryNoteUpdateError } = await supabase
-        .from("service_delivery_notes")
-        .update({
-          status: "verified",
-          verified_by: employeeRecord.id,
-          verified_at: new Date().toISOString(),
-          remarks: values.notes || null,
-        })
-        .eq("id", deliveryNote.id);
-
-      if (deliveryNoteUpdateError) throw deliveryNoteUpdateError;
-
-      const { error: updateError } = await supabase
-        .from("service_purchase_orders")
-        .update({ status: "deployment_confirmed", updated_at: new Date().toISOString() })
-        .eq("id", spo.id);
-
-      if (updateError) throw updateError;
+        }),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result?.success) {
+        throw new Error(result?.error || "Failed to acknowledge deployment");
+      }
 
       toast({ title: "Deployment confirmed", description: `SPO ${spo.spo_number} has been acknowledged.` });
       form.reset();

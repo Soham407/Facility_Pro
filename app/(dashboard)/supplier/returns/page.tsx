@@ -27,7 +27,7 @@ function statusClassName(status?: string | null) {
 
 export default function SupplierReturnsPage() {
   const { supplierId } = useSupplierPortal();
-  const { tickets, isLoading, updateStatus } = useRTVTickets();
+  const { tickets, isLoading, updateStatus } = useRTVTickets({ portalMode: "supplier" });
 
   const supplierTickets = useMemo(
     () => tickets.filter((ticket) => !supplierId || ticket.supplier_id === supplierId),

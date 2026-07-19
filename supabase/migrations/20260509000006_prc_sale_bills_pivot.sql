@@ -30,7 +30,7 @@ CREATE INDEX IF NOT EXISTS idx_sale_bills_buyer_account_id ON sale_bills(buyer_a
 -- For now, we assume payment_status already supports the full set
 
 -- 6. Document the transition:
--- IMPORTANT: Steps 5 and 6 in pr-c-scope.md are MANUAL post-verify operations:
+-- IMPORTANT: Steps 5 and 6 in docs/archive/plans/pr-c-scope.md are MANUAL post-verify operations:
 -- Step 5: ALTER TABLE sale_bills ALTER COLUMN buyer_account_id SET NOT NULL;
 -- Step 6: ALTER TABLE sale_bills DROP COLUMN client_id;
 -- Do NOT run these in this migration — verify zero NULLs first and deploy code changes

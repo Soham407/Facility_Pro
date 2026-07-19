@@ -11214,6 +11214,7 @@ export type Database = {
         | "company_hod"
         | "account"
         | "delivery_boy"
+        | "delivery_agent"
         | "buyer"
         | "supplier"
         | "vendor"
@@ -11221,6 +11222,7 @@ export type Database = {
         | "security_supervisor"
         | "society_manager"
         | "service_boy"
+        | "field_technician"
         | "resident"
         | "storekeeper"
         | "site_supervisor"
@@ -11549,6 +11551,7 @@ export const Constants = {
         "company_hod",
         "account",
         "delivery_boy",
+        "delivery_agent",
         "buyer",
         "supplier",
         "vendor",
@@ -11556,6 +11559,7 @@ export const Constants = {
         "security_supervisor",
         "society_manager",
         "service_boy",
+        "field_technician",
         "resident",
         "storekeeper",
         "site_supervisor",

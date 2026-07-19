@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   Menu,
   ChevronDown,
@@ -64,8 +65,8 @@ export function TopNav({ onToggleSidebar, sidebarCollapsed }: TopNavProps) {
   const [selectedCompany, setSelectedCompany] = useState(companies[0]);
   const { signOut, user, role, permissions } = useAuth();
   const [isSigningOut, setIsSigningOut] = useState(false);
-  const settingsHref = getDefaultSettingsRoute(permissions);
-  const canAccessSettings = hasAnySettingsPermission(permissions);
+  const settingsHref = role === "super_admin" ? "/settings/admins" : getDefaultSettingsRoute(permissions);
+  const canAccessSettings = role === "super_admin" || hasAnySettingsPermission(permissions);
 
   const handleSignOut = async () => {
     setIsSigningOut(true);
@@ -169,8 +170,47 @@ export function TopNav({ onToggleSidebar, sidebarCollapsed }: TopNavProps) {
               <span className="text-sm">Platform Settings</span>
             </DropdownMenuItem>
           )}
-        </DropdownMenuContent>
-      </DropdownMenu>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+      {canAccessSettings && (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="hidden gap-2 rounded-full border border-transparent px-4 hover:border-border/80 hover:bg-secondary/70 hover:text-foreground sm:flex">
+              <Settings className="h-4 w-4" />
+              <span className="text-sm font-semibold">Platform</span>
+              <ChevronDown className="h-4 w-4 text-muted-foreground transition-transform group-data-[state=open]:rotate-180" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" className="w-72 p-2 animate-in fade-in slide-in-from-top-2">
+            <DropdownMenuLabel className="text-xs uppercase tracking-widest text-muted-foreground pb-3 pt-2 px-3">
+              Platform Settings
+            </DropdownMenuLabel>
+            <div className="space-y-1">
+              <DropdownMenuItem asChild className="gap-3 p-2 rounded-md cursor-pointer">
+                <Link href="/settings/admins">
+                  <span className="text-sm">Admin Management</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="gap-3 p-2 rounded-md cursor-pointer">
+                <Link href="/settings/permissions">
+                  <span className="text-sm">Role & Permissions</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="gap-3 p-2 rounded-md cursor-pointer">
+                <Link href="/settings/audit-logs">
+                  <span className="text-sm">Audit Logs</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="gap-3 p-2 rounded-md cursor-pointer">
+                <Link href="/settings/company">
+                  <span className="text-sm">System Configuration</span>
+                </Link>
+              </DropdownMenuItem>
+            </div>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
 
       {/* Search */}
       <div className="hidden min-w-0 flex-1 md:block md:max-w-md lg:max-w-lg">

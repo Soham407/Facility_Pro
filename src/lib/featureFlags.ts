@@ -92,7 +92,6 @@ const ROUTE_FLAG_MAP: Record<string, keyof typeof FEATURE_FLAGS> = {
   "/assets/maintenance": "MAINTENANCE_SCHEDULING",
   "/inventory/warehouses": "MULTI_WAREHOUSE",
   "/assets/categories": "ASSET_CATEGORY_HIERARCHY",
-  "/service-boy": "SERVICE_BOY_PAGE",
 
   // Bonus module routes
   "/assets": "ASSET_MODULE",
@@ -122,7 +121,6 @@ const NAV_ITEM_FLAG_MAP: Record<string, keyof typeof FEATURE_FLAGS> = {
   "Warehouses": "MULTI_WAREHOUSE",
   "Asset Categories": "ASSET_CATEGORY_HIERARCHY",
   "Indent Verification": "INDENT_VERIFICATION",
-  "My Jobs": "SERVICE_BOY_PAGE",
 
   // Bonus module nav items
   "Assets & Maintenance": "ASSET_MODULE",

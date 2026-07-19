@@ -10,6 +10,7 @@ import type { Database } from "@/src/types/supabase";
 import type { SPOStatus } from "./useServicePurchaseOrders";
 import { toast } from "@/components/ui/use-toast";
 import {
+  respondToIndentAction,
   acknowledgePurchaseOrderAction,
   dispatchPurchaseOrderAction,
 } from "@/src/lib/supplier-portal/supplierPortalActions";
@@ -75,6 +76,10 @@ function getErrorMessage(err: unknown, fallback: string): string {
   }
 
   return fallback;
+}
+
+function logPortalQueryError(context: string, error: unknown) {
+  console.error(`Error fetching supplier portal ${context}:`, getErrorMessage(error, "Unknown supplier portal error"));
 }
 
 export function useSupplierPortal() {
@@ -193,7 +198,6 @@ export function useSupplierPortal() {
             last_payment_date,
             purchase_order_id,
             service_purchase_order_id,
-            document_url,
             supplier_id,
             created_at
           `)
@@ -223,26 +227,42 @@ export function useSupplierPortal() {
           .order("created_at", { ascending: false }),
       ]);
 
-      if (supplierProfileResult.error) throw supplierProfileResult.error;
-      if (requestResult.error) throw requestResult.error;
-      if (purchaseOrdersResult.error) throw purchaseOrdersResult.error;
-      if (purchaseBillsResult.error) throw purchaseBillsResult.error;
-      if (serviceOrdersResult.error) throw serviceOrdersResult.error;
-      if (serviceAcknowledgmentsResult.error) throw serviceAcknowledgmentsResult.error;
+      if (supplierProfileResult.error) logPortalQueryError("profile", supplierProfileResult.error);
+      if (requestResult.error) logPortalQueryError("requests", requestResult.error);
+      if (purchaseOrdersResult.error) logPortalQueryError("purchase orders", purchaseOrdersResult.error);
+      if (purchaseBillsResult.error) logPortalQueryError("purchase bills", purchaseBillsResult.error);
+      if (serviceOrdersResult.error) logPortalQueryError("service orders", serviceOrdersResult.error);
+      if (serviceAcknowledgmentsResult.error) {
+        logPortalQueryError("service acknowledgments", serviceAcknowledgmentsResult.error);
+      }
 
-      setSupplierProfile((supplierProfileResult.data ?? null) as SupplierExtended | null);
-      setIndents(mapSupplierIndents(normalizeRows<RequestRow>(requestResult.data)));
-      setPos(mapSupplierPurchaseOrders(normalizeRows<SupplierPORow>(purchaseOrdersResult.data)));
-      setBills(mapSupplierBills(normalizeRows<SupplierBillRow>(purchaseBillsResult.data)));
+      setSupplierProfile(
+        supplierProfileResult.error ? null : ((supplierProfileResult.data ?? null) as SupplierExtended | null)
+      );
+      setIndents(
+        requestResult.error ? [] : mapSupplierIndents(normalizeRows<RequestRow>(requestResult.data))
+      );
+      setPos(
+        purchaseOrdersResult.error
+          ? []
+          : mapSupplierPurchaseOrders(normalizeRows<SupplierPORow>(purchaseOrdersResult.data))
+      );
+      setBills(
+        purchaseBillsResult.error ? [] : mapSupplierBills(normalizeRows<SupplierBillRow>(purchaseBillsResult.data))
+      );
       setServiceOrders(
-        normalizeRows<SupplierServiceOrderRow>(serviceOrdersResult.data).map((serviceOrder) => ({
-          ...serviceOrder,
-          site_location_id: serviceOrder.request?.site_location_id ?? null,
-          site_location_name: serviceOrder.request?.site_location?.location_name ?? null,
-        })) as SupplierServiceOrder[]
+        serviceOrdersResult.error
+          ? []
+          : (normalizeRows<SupplierServiceOrderRow>(serviceOrdersResult.data).map((serviceOrder) => ({
+              ...serviceOrder,
+              site_location_id: serviceOrder.request?.site_location_id ?? null,
+              site_location_name: serviceOrder.request?.site_location?.location_name ?? null,
+            })) as SupplierServiceOrder[])
       );
       setServiceAcknowledgments(
-        mapSupplierServiceAcknowledgments(normalizeRows<SupplierServiceAckRow>(serviceAcknowledgmentsResult.data))
+        serviceAcknowledgmentsResult.error
+          ? []
+          : mapSupplierServiceAcknowledgments(normalizeRows<SupplierServiceAckRow>(serviceAcknowledgmentsResult.data))
       );
     } catch (err) {
       console.error("Error fetching supplier portal data:", err);
@@ -274,75 +294,18 @@ export function useSupplierPortal() {
   }, [fetchPortalData, user?.id]);
 
   const respondToIndent = async (
-    requestId: string,
+    targetIndent: SupplierIndent | null | undefined,
     decision: "indent_accepted" | "indent_rejected",
     reason?: string
   ) => {
-    try {
-      const targetIndent = indents.find((indent) => indent.id === requestId);
-
-      if (decision === "indent_rejected") {
-        const { data: authData } = await supabase.auth.getUser();
-        const { error } = await supabase
-          .from("requests")
-          .update({
-            status: decision,
-            rejection_reason: reason || null,
-            rejected_at: new Date().toISOString(),
-            rejected_by: authData.user?.id ?? null,
-            updated_at: new Date().toISOString(),
-          })
-          .eq("id", requestId);
-        if (error) throw error;
-        await notifyAdminTierUsers({
-          title: "Indent Rejected by Supplier",
-          body: `${targetIndent?.request_number || requestId} was rejected by the supplier${reason ? `: ${reason}` : "."}`,
-          notificationType: "supplier_indent_rejected",
-          referenceId: requestId,
-          referenceType: "request",
-        });
-      } else if (targetIndent?.is_service_request === true) {
-        const response = await fetch("/api/supplier/service-indent-response", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ requestId }),
-        });
-        const result = await response.json().catch(() => null);
-        if (!response.ok || !result?.success) {
-          throw new Error(result?.error || "Failed to accept the service deployment request.");
-        }
-        await notifyAdminTierUsers({
-          title: "Service Indent Accepted",
-          body: `${targetIndent?.request_number || requestId} was accepted by the supplier.`,
-          notificationType: "supplier_indent_accepted",
-          referenceId: requestId,
-          referenceType: "request",
-        });
-      } else {
-        const { data, error } = await supabase.rpc("create_po_from_supplier_request", {
-          p_request_id: requestId,
-        });
-        if (error) throw error;
-        const rpcResult = data as SupplierPortalRpcResult | null;
-        if (!rpcResult?.success) {
-          throw new Error(rpcResult?.error || "Failed to create purchase order from accepted indent");
-        }
-        await notifyAdminTierUsers({
-          title: "Indent Accepted by Supplier",
-          body: `${targetIndent?.request_number || requestId} was accepted and converted into a purchase order.`,
-          notificationType: "supplier_indent_accepted",
-          referenceId: requestId,
-          referenceType: "request",
-        });
-      }
-
-      await fetchPortalData();
-      return true;
-    } catch (err: unknown) {
-      const message = getErrorMessage(err, "Failed to respond to indent");
-      toast({ title: "Indent Update Failed", description: message, variant: "destructive" });
-      return false;
-    }
+    return respondToIndentAction({
+      requestId: targetIndent?.id ?? "",
+      decision,
+      reason,
+      targetIndent: targetIndent ?? undefined,
+      refresh: fetchPortalData,
+      toast,
+    });
   };
 
   const acknowledgePO = async (poId: string) => {

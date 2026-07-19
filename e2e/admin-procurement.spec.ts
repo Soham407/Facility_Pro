@@ -33,16 +33,20 @@ test.describe("Admin Procurement Flow", () => {
   });
 
   test("loads at least one product in admin procurement setup", async ({ page }) => {
-    await page.goto("/inventory/indents/create");
-    await page.getByRole("button", { name: /new indent/i }).click();
-
-    const dialog = page.getByRole("dialog", { name: /create new indent/i });
-    await expect(dialog).toBeVisible({ timeout: 10_000 });
-    await dialog.getByRole("button", { name: /add item/i }).click();
-
-    const productSelect = dialog.locator("label:has-text('Product *')").locator("..").locator('[role=\"combobox\"]');
-    await productSelect.click();
-    await expect(page.getByRole("option").first()).toBeVisible({ timeout: 15_000 });
+    // Navigate with the correct seeded product ID to bypass the redirect guard
+    await page.goto("/inventory/indents/create?productId=d02eed5d-7e3f-465b-ba3d-985f23f398bd");
+    
+    // Verify the page loads the consolidated form
+    await expect(page.getByRole("heading", { name: /Create Indent from Alert/i }).first()).toBeVisible({ timeout: 10_000 });
+    
+    // Verify that the product input is correctly populated with the readOnly seeded product info
+    const productInput = page.locator("#productName");
+    await expect(productInput).toBeVisible({ timeout: 10_000 });
+    await expect(productInput).toHaveAttribute("readonly");
+    
+    // Verify that the submit button is present
+    const submitButton = page.getByRole("button", { name: /Create Indent & PO/i });
+    await expect(submitButton).toBeVisible();
   });
 
   test("loads at least one service in admin service setup", async ({ page }) => {

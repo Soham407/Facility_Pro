@@ -41,8 +41,18 @@ describe("Personnel Dispatch Overlap Detection", () => {
   it("surfaces conflict details in the UI", async () => {
     const dialogSource = await readRepoFile("components/dialogs/ServiceDeliveryNoteDialog.tsx");
 
-    // This will be updated in the next step
-    // For now, we expect it to eventually contain conflict handling
-    expect(dialogSource).toBeDefined();
+    expect(
+      sourceContainsAll(dialogSource, [
+        "const [unavailableEmployeeIds, setUnavailableEmployeeIds] = useState<string[]>([])",
+        '.from("personnel_dispatches")',
+        '.in("employee_id", employeeIds)',
+        '.lte("start_date", watchDate)',
+        '.or(`end_date.gte.${watchDate},end_date.is.null`)',
+        "setUnavailableEmployeeIds(",
+        "const availableEmployees = employees.filter",
+        "availableEmployees.map((emp) => (",
+        "No available employees for the selected delivery date.",
+      ])
+    ).toBe(true);
   });
 });

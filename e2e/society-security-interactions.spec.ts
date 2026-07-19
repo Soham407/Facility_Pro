@@ -51,7 +51,7 @@ async function insertVisitor(
   return data as { id: string; visitor_name: string };
 }
 
-async function insertPanicAlert() {
+async function insertPanicAlert(alertType: "panic" | "inactivity" = "panic") {
   const client = createServiceRoleClient();
   const fixtureIds = ids();
 
@@ -61,11 +61,11 @@ async function insertPanicAlert() {
       id: crypto.randomUUID(),
       guard_id: fixtureIds.guardRecordId,
       location_id: fixtureIds.locationId,
-      alert_type: "panic",
+      alert_type: alertType,
       latitude: 18.5194,
       longitude: 73.8519,
       alert_time: new Date().toISOString(),
-      description: `Interaction alert ${token("panic")}`,
+      description: `Interaction alert ${token(alertType)}`,
       is_resolved: false,
     })
     .select("id")
@@ -425,6 +425,30 @@ test.describe("Society Security Interaction Pack", () => {
     const resolveDialog = page.getByRole("dialog", { name: /resolve incident/i });
     await expect(resolveDialog).toBeVisible();
     await resolveDialog.locator("textarea").fill("Resolved by interaction pack");
+    await resolveDialog.getByRole("button", { name: /mark as resolved/i }).click();
+
+    await waitForPanicAlertResolved(alertId, 30_000);
+  });
+
+  test("inactivity alerts page filters and resolve action work", async ({ page }) => {
+    const alertId = await insertPanicAlert("inactivity");
+
+    await loginAndOpen(page, "society_manager", "/society/panic-alerts");
+
+    const comboboxes = page.getByRole("combobox");
+    await comboboxes.nth(0).click();
+    await page.getByRole("option", { name: /active only/i }).click();
+    await comboboxes.nth(1).click();
+    await page.getByRole("option", { name: /inactivity/i }).click();
+    await page.getByRole("button", { name: /refresh/i }).click();
+
+    const alertCard = page.locator(".shadow-premium").filter({ hasText: alertId.slice(0, 8) }).first();
+    await expect(alertCard).toBeVisible({ timeout: 20_000 });
+    await expect(alertCard.getByText(/inactivity/i).first()).toBeVisible({ timeout: 10_000 });
+    await alertCard.getByRole("button", { name: /resolve incident/i }).click();
+    const resolveDialog = page.getByRole("dialog", { name: /resolve incident/i });
+    await expect(resolveDialog).toBeVisible();
+    await resolveDialog.locator("textarea").fill("Resolved inactivity branch in interaction pack");
     await resolveDialog.getByRole("button", { name: /mark as resolved/i }).click();
 
     await waitForPanicAlertResolved(alertId, 30_000);

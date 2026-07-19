@@ -150,19 +150,20 @@ export function useServiceDeliveryNotes(poId?: string) {
   const createNote = async (dto: CreateDeliveryNoteDTO) => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
-      const { data, error: insertError } = await supabase
+      const deliveryNoteNumber = `SDN-${Date.now()}`;
+      const submittedAt = new Date().toISOString();
+
+      const { error: insertError } = await supabase
         .from("service_delivery_notes")
         .insert({
-          delivery_note_number: `SDN-${Date.now()}`,
+          delivery_note_number: deliveryNoteNumber,
           po_id: dto.po_id,
           delivery_date: dto.delivery_date,
           personnel_details: toPersonnelDetailsJson(dto.personnel_details),
           remarks: dto.remarks || null,
           status: "pending",
           created_by: user?.id,
-        })
-        .select()
-        .single();
+        });
 
       if (insertError) throw insertError;
 
@@ -181,9 +182,24 @@ export function useServiceDeliveryNotes(poId?: string) {
         throw new Error(rpcResult?.error || "Failed to advance service order after delivery note upload");
       }
 
+      const optimisticNote: ServiceDeliveryNote = {
+        id: "",
+        delivery_note_number: deliveryNoteNumber,
+        po_id: dto.po_id,
+        delivery_date: dto.delivery_date,
+        personnel_details: dto.personnel_details,
+        verified_by: null,
+        verified_at: null,
+        status: "pending",
+        remarks: dto.remarks || null,
+        created_by: user?.id ?? null,
+        created_at: submittedAt,
+        updated_at: submittedAt,
+      };
+
       toast({ title: "Delivery Note Submitted", description: "Awaiting admin verification." });
       fetchNotes();
-      return { success: true, data };
+      return { success: true, data: optimisticNote };
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Failed to create delivery note";
       toast({ title: "Error", description: msg, variant: "destructive" });

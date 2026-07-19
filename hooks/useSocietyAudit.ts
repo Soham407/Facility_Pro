@@ -67,7 +67,7 @@ function normalizeChecklistRows(rows: unknown): ChecklistResponseRow[] {
   return Array.isArray(rows) ? (rows as ChecklistResponseRow[]) : [];
 }
 
-export function useSocietyAudit(societyId?: string) {
+export function useSocietyAudit(_societyId?: string) {
   const [visitorAudit, setVisitorAudit] = useState<VisitorAudit>({
     total: 0,
     pending: 0,
@@ -136,7 +136,7 @@ export function useSocietyAudit(societyId?: string) {
         .eq("alert_type", "inactivity")
         .gte("alert_time", `${today}T00:00:00Z`);
 
-      let guardQuery = supabase
+      const guardQuery = supabase
         .from("security_guards")
         .select("id", { count: "exact", head: true });
 

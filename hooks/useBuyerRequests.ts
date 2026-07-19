@@ -36,11 +36,18 @@ export type BuyerServiceDeploymentInput = {
   site_location_id?: string;
 };
 
+type UseBuyerRequestsOptions = {
+  scope?: "mine" | "all";
+  userId?: string | null;
+};
+
 // ============================================
 // HOOK
 // ============================================
 
-export function useBuyerRequests() {
+export function useBuyerRequests(options?: UseBuyerRequestsOptions) {
+  const scope = options?.scope ?? "mine";
+  const userId = options?.userId ?? null;
   const [requests, setRequests] = useState<BuyerRequest[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -50,13 +57,15 @@ export function useBuyerRequests() {
       setIsLoading(true);
       setError(null);
 
-      const currentUserId = (await supabase.auth.getUser()).data.user?.id;
+      const currentUserId =
+        options?.userId ??
+        (await supabase.auth.getUser()).data.user?.id;
       if (!currentUserId) {
         setRequests([]);
         return;
       }
 
-      const { data, error } = await supabase
+      let query = supabase
         .from("requests")
         .select(`
           *,
@@ -64,8 +73,13 @@ export function useBuyerRequests() {
           company_locations!location_id (location_name),
           site_location:company_locations!site_location_id (location_name)
         `)
-        .eq("buyer_id", currentUserId)
         .order("created_at", { ascending: false });
+
+      if (scope === "mine") {
+        query = query.eq("buyer_id", currentUserId);
+      }
+
+      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -78,7 +92,7 @@ export function useBuyerRequests() {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [scope, userId]);
 
   const fetchRequestItems = useCallback(async (requestId: string): Promise<BuyerRequestItem[]> => {
     try {
@@ -348,6 +362,23 @@ export function useBuyerRequests() {
 
   useEffect(() => {
     fetchRequests();
+  }, [fetchRequests]);
+
+  useEffect(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_OUT" || !session?.user) {
+        setRequests([]);
+        return;
+      }
+
+      fetchRequests();
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, [fetchRequests]);
 
   useEffect(() => {

@@ -25,6 +25,33 @@ export type RTVTicketRow = {
   purchase_order?: { po_number?: string | null } | null;
 };
 
+function isRTVTicketRow(value: unknown): value is RTVTicketRow {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return false;
+  }
+
+  const row = value as Record<string, unknown>;
+
+  return (
+    typeof row.id === "string" &&
+    typeof row.rtv_number === "string" &&
+    (typeof row.po_id === "string" || row.po_id === null || row.po_id === undefined) &&
+    typeof row.supplier_id === "string" &&
+    typeof row.product_id === "string" &&
+    (typeof row.receipt_id === "string" || row.receipt_id === null || row.receipt_id === undefined) &&
+    typeof row.return_reason === "string" &&
+    typeof row.quantity === "number"
+  );
+}
+
+export function coerceRTVTicketRows(rows: unknown): RTVTicketRow[] {
+  if (!Array.isArray(rows)) {
+    return [];
+  }
+
+  return rows.filter(isRTVTicketRow);
+}
+
 export function mapRTVTicketRow(ticket: RTVTicketRow): RTVTicketDisplay {
   return {
     id: ticket.id,

@@ -104,7 +104,7 @@ export default function CreateIndentPage() {
         router.push("/inventory/purchase-orders"); // Redirect to PO list
       } else {
         toast.error("Failed to create Purchase Order. Please create it manually.");
-        router.push("/inventory/indents"); // Redirect to Indent list
+        router.push("/inventory/requests"); // Redirect to the implemented request review list.
       }
     } else {
       toast.error("Failed to create indent.");

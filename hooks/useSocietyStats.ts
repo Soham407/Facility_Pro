@@ -32,7 +32,7 @@ function countPendingVisitorCheckouts(rows: Array<{ entry_time: string | null; e
   return rows?.filter((visitor) => visitor.entry_time && !visitor.exit_time).length || 0;
 }
 
-export function useSocietyStats(societyId?: string): UseSocietyStatsReturn {
+export function useSocietyStats(_societyId?: string): UseSocietyStatsReturn {
   const [stats, setStats] = useState<SocietyStats>({
     activeGuards: 0,
     totalGuards: 0,
@@ -53,7 +53,7 @@ export function useSocietyStats(societyId?: string): UseSocietyStatsReturn {
       const today = new Date().toISOString().split("T")[0];
 
       // Get total and active guards for society
-      let guardQuery = supabase
+      const guardQuery = supabase
         .from("security_guards")
         .select("id", { count: "exact" });
 

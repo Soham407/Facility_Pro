@@ -55,7 +55,7 @@ test.describe("Buyer Order Flow", () => {
 
   test("order status badge is visible when orders exist", async ({ page }) => {
     await page.goto("/buyer/requests");
-    await page.waitForLoadState("networkidle");
+    await page.waitForSelector("table", { timeout: 15_000 });
     // If any rows exist, check for a status badge
     const firstRow = page.locator("table tbody tr").first();
     if (await firstRow.isVisible({ timeout: 3_000 })) {
@@ -67,7 +67,7 @@ test.describe("Buyer Order Flow", () => {
 
   test("buyer can view order details when orders exist", async ({ page }) => {
     await page.goto("/buyer/requests");
-    await page.waitForLoadState("networkidle");
+    await page.waitForSelector("table", { timeout: 15_000 });
     const firstRow = page.locator("table tbody tr").first();
     if (await firstRow.isVisible({ timeout: 3_000 })) {
       await firstRow.click();

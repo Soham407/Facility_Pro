@@ -21,6 +21,10 @@ function getRoleName(userRecord: SupplierUserRecord | null): string | null {
   return roleRecord?.role_name ?? null;
 }
 
+function isSupplierPortalRole(roleName: string | null) {
+  return roleName === "supplier" || roleName === "vendor";
+}
+
 function calculateServiceEndDate(startDate?: string | null, durationMonths?: number | null) {
   if (!startDate || !durationMonths || durationMonths <= 0) {
     return null;
@@ -113,7 +117,7 @@ export async function POST(request: NextRequest) {
 
     const supplierId = (userRecord as SupplierUserRecord).supplier_id ?? null;
     const roleName = getRoleName(userRecord as SupplierUserRecord);
-    if (!supplierId || !roleName || !["supplier", "vendor"].includes(roleName)) {
+    if (!supplierId || !isSupplierPortalRole(roleName)) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 

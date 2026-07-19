@@ -56,6 +56,10 @@ type LookupRow = {
   product_name?: string;
 };
 
+type LookupQuery = {
+  eq(column: string, value: unknown): PromiseLike<{ data: LookupRow[] | null }>;
+} & PromiseLike<{ data: LookupRow[] | null }>;
+
 function getPaymentStatusMeta(status: SaleBill["payment_status"]) {
   return PAYMENT_STATUS_CONFIG[status] || { label: status, className: "" };
 }
@@ -84,6 +88,10 @@ function buildBillItems(items: SaleBillLineItem[], services: LookupRow[], produc
   }));
 }
 
+function selectLookupRows(table: string, columns: string): LookupQuery {
+  return supabase.from(table as never).select(columns) as unknown as LookupQuery;
+}
+
 export default function SaleBillsPage() {
   const { bills, isLoading, createBill, markPaid } = useSaleBills();
   const { getSaleRate } = useSaleProductRates();
@@ -105,10 +113,10 @@ export default function SaleBillsPage() {
 
   const loadFormData = async () => {
     const [socRes, reqRes, serRes, proRes] = await Promise.all([
-      supabase.from("societies").select("id, society_name"),
-      supabase.from("requests").select("id, request_number, title").eq("status", "accepted"),
-      supabase.from("services").select("id, service_name").eq("is_v1", true),
-      supabase.from("products").select("id, product_name"),
+      selectLookupRows("societies", "id, society_name"),
+      selectLookupRows("requests", "id, request_number, title").eq("status", "accepted"),
+      selectLookupRows("services", "id, service_name").eq("is_v1", true),
+      selectLookupRows("products", "id, product_name"),
     ]);
 
     if (socRes.data) setSocieties(socRes.data);

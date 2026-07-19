@@ -6,8 +6,8 @@ import { useToast } from "@/components/ui/use-toast";
 import { RTVTicketDisplay, RTVDashboardStats } from "@/src/types/operations";
 import {
   buildRTVDashboardStats,
+  coerceRTVTicketRows,
   mapRTVTicketRow,
-  type RTVTicketRow,
 } from "@/src/lib/rtv/rtvTransforms";
 
 export interface CreateRTVTicketDTO {
@@ -25,6 +25,7 @@ export interface CreateRTVTicketDTO {
 interface UseRTVTicketsOptions {
   statuses?: readonly string[];
   supplierId?: string;
+  portalMode?: "default" | "supplier";
 }
 
 export function useRTVTickets(options: UseRTVTicketsOptions = {}) {
@@ -38,10 +39,36 @@ export function useRTVTickets(options: UseRTVTicketsOptions = {}) {
     monthlyReturnsCount: 0,
   });
   const statusFilterKey = options.statuses?.join(",") ?? "";
+  const isSupplierPortalMode = options.portalMode === "supplier";
 
   const fetchTickets = useCallback(async () => {
     setIsLoading(true);
     try {
+      if (isSupplierPortalMode) {
+        const searchParams = new URLSearchParams();
+        if (statusFilterKey) {
+          searchParams.set("statuses", statusFilterKey);
+        }
+
+        const response = await fetch(
+          `/api/supplier/returns${searchParams.toString() ? `?${searchParams.toString()}` : ""}`,
+          {
+            method: "GET",
+            credentials: "same-origin",
+          }
+        );
+        const payload = (await response.json()) as { error?: string; tickets?: RTVTicketDisplay[] };
+
+        if (!response.ok) {
+          throw new Error(payload.error || "Failed to load Return to Vendor tickets");
+        }
+
+        const supplierTickets = payload.tickets ?? [];
+        setTickets(supplierTickets);
+        setStats(buildRTVDashboardStats(supplierTickets));
+        return;
+      }
+
       let query = supabase
         .from('rtv_tickets')
         .select(`
@@ -63,8 +90,7 @@ export function useRTVTickets(options: UseRTVTicketsOptions = {}) {
 
       if (error) throw error;
 
-      // Ensure data exists before mapping
-      const mappedData: RTVTicketDisplay[] = ((data || []) as RTVTicketRow[]).map(mapRTVTicketRow);
+      const mappedData: RTVTicketDisplay[] = coerceRTVTicketRows(data).map(mapRTVTicketRow);
       setTickets(mappedData);
 
       setStats(buildRTVDashboardStats(mappedData));
@@ -78,7 +104,7 @@ export function useRTVTickets(options: UseRTVTicketsOptions = {}) {
     } finally {
       setIsLoading(false);
     }
-  }, [options.supplierId, statusFilterKey, toast]);
+  }, [isSupplierPortalMode, options.supplierId, statusFilterKey, toast]);
 
   const createTicket = async (ticket: CreateRTVTicketDTO) => {
     try {
@@ -127,6 +153,31 @@ export function useRTVTickets(options: UseRTVTicketsOptions = {}) {
 
   const updateStatus = async (id: string, status: string, additionalData?: Record<string, unknown>) => {
     try {
+      if (isSupplierPortalMode) {
+        const response = await fetch("/api/supplier/returns", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          credentials: "same-origin",
+          body: JSON.stringify({
+            ticketId: id,
+            status,
+            additionalData: additionalData || undefined,
+          }),
+        });
+        const payload = (await response.json()) as { error?: string };
+
+        if (!response.ok) {
+          throw new Error(payload.error || "Failed to update return ticket status");
+        }
+
+        toast({
+          title: "Status Updated",
+          description: `Return ticket status updated successfully.`,
+        });
+        fetchTickets();
+        return { success: true };
+      }
+
       const updatePayload: Record<string, unknown> = { status, ...(additionalData || {}) };
       
       // Handle timestamping for specific statuses

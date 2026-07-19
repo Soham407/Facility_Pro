@@ -296,8 +296,9 @@ export default function PanicAlertsPage() {
                                   Alert
                                 </Badge>
                               </div>
-                              <span className="text-sm font-medium text-muted-foreground">
+                              <span className="text-sm font-medium text-muted-foreground flex items-center gap-2">
                                 {getGuardName(alert)}
+                                <span className="text-[10px] text-muted-foreground/30 font-mono">({alert.id.slice(0, 8)})</span>
                               </span>
                             </div>
                           </div>

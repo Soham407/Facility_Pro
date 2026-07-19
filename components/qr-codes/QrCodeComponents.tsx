@@ -167,8 +167,7 @@ export function QrScanner({ onScan, onClose }: QrScannerProps) {
           await videoRef.current.play();
         }
 
-        // In production, use a library like @zxing/browser for actual QR scanning
-        // This is a placeholder for the camera preview
+        // Live camera preview; manual entry remains the fallback when scanning is unavailable.
       } catch (err: unknown) {
         console.error("Camera error:", err);
         setError(err instanceof Error ? err.message : "Failed to access camera");

@@ -9,6 +9,9 @@ import {
 describe("supplier portal contracts", () => {
   it("keeps the supplier portal hook wired to supplier-scoped goods and service flows", async () => {
     const supplierPortalSource = await readRepoFile("hooks/useSupplierPortal.ts");
+    const supplierPortalActionsSource = await readRepoFile(
+      "src/lib/supplier-portal/supplierPortalActions.ts"
+    );
     const serviceIndentRouteSource = await readRepoFile("app/api/supplier/service-indent-response/route.ts");
 
     expect(
@@ -16,12 +19,20 @@ describe("supplier portal contracts", () => {
         "supplierProfile",
         "serviceOrders",
         "serviceAcknowledgments",
-        'rpc("create_po_from_supplier_request"',
-        'rpc("supplier_transition_service_po_status"',
+        "respondToIndentAction",
+        "acknowledgeServiceOrder",
         "updateSupplierProfile",
         '"po_issued"',
         "products (product_name, unit_of_measurement)",
+      ])
+    ).toBe(true);
+
+    expect(
+      sourceContainsAll(supplierPortalActionsSource, [
         'fetch("/api/supplier/service-indent-response"',
+        'rpc("create_po_from_supplier_request"',
+        'targetIndent?.is_service_request === true',
+        'rpc("supplier_transition_service_po_status"',
       ])
     ).toBe(true);
 
@@ -49,7 +60,7 @@ describe("supplier portal contracts", () => {
       sourceContainsAll(serviceIndentRouteSource, [
         'supabase.auth.getUser()',
         'select("supplier_id, roles(role_name)")',
-        '!["supplier", "vendor"].includes(roleName)',
+        "isSupplierPortalRole(roleName)",
         'targetRequest.supplier_id !== supplierId',
       ])
     ).toBe(true);
@@ -131,7 +142,7 @@ describe("supplier portal contracts", () => {
   });
 
   it("routes service requests via is_service_request flag, not field presence", async () => {
-    const source = await readRepoFile("hooks/useSupplierPortal.ts");
+    const source = await readRepoFile("src/lib/supplier-portal/supplierPortalActions.ts");
 
     // Discriminator must use the explicit flag
     expect(source.includes("is_service_request === true")).toBe(true);
@@ -181,5 +192,42 @@ describe("supplier portal contracts", () => {
       "app/(dashboard)/buyer/requests/new/page.tsx"
     );
     expect(source.includes("is_service_request: isServiceRequest")).toBe(true);
+  });
+
+  it("does not project non-existent purchase_bills columns in the supplier portal hook", async () => {
+    const source = await readRepoFile("hooks/useSupplierPortal.ts");
+
+    expect(
+      sourceContainsAll(source, [
+        'from("purchase_bills")',
+        "supplier_invoice_number",
+        "purchase_order_id",
+        "service_purchase_order_id",
+      ])
+    ).toBe(true);
+
+    expect(sourceContainsNone(source, ["document_url"])).toBe(true);
+  });
+
+  it("passes the clicked indent record through the supplier accept path", async () => {
+    const hookSource = await readRepoFile("hooks/useSupplierPortal.ts");
+    const supplierIndentsPageSource = await readRepoFile("app/(dashboard)/supplier/indents/page.tsx");
+
+    expect(
+      sourceContainsAll(hookSource, [
+        "respondToIndentAction({",
+        "targetIndent: targetIndent ?? undefined",
+        "refresh: fetchPortalData",
+        "requestId: targetIndent?.id ?? \"\"",
+      ])
+    ).toBe(true);
+
+    expect(
+      sourceContainsAll(supplierIndentsPageSource, [
+        "const handleAccept = async (indent: SupplierIndent)",
+        'respondToIndent(indent, "indent_accepted")',
+        "respondToIndent(selectedIndent, \"indent_rejected\", rejectionReason)",
+      ])
+    ).toBe(true);
   });
 });

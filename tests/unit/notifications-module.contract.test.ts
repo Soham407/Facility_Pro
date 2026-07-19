@@ -7,6 +7,19 @@ import {
 } from "../helpers/source-files";
 
 describe("notifications module contracts", () => {
+  it("does not route push notification clicks to test-only surfaces", async () => {
+    const source = await readRepoFile("public/firebase-messaging-sw.js");
+
+    expect(source.includes("/test-guard")).toBe(false);
+    expect(
+      sourceContainsAll(source, [
+        "notificationclick",
+        "checklist_reminder",
+        "'/society/checklists'",
+      ])
+    ).toBe(true);
+  });
+
   it("hardens notifications inserts and keeps the table in the realtime publication", async () => {
     const migrationSource = await readRepoFile(
       "supabase/migrations/20260316124145_notifications.sql"

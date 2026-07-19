@@ -11,6 +11,11 @@ const eslintConfig = defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    "playwright-report/**",
+    "test-results/**",
+    ".sandcastle/**",
+    "public/sw.js",
+    "public/workbox-*.js",
     "next-env.d.ts",
     // Supabase Edge Functions use Deno runtime
     "supabase/functions/**",

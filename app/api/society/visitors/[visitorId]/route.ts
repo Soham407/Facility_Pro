@@ -38,12 +38,53 @@ const VISITOR_MANAGEMENT_ROLES = new Set([
 type RoleRow = { role_name?: string | null };
 type UserRoleRow = { roles?: RoleRow | RoleRow[] | null };
 type VisitorFlatRow = {
+  entry_guard_id?: string | null;
+  entry_location_id?: string | null;
   flats?: {
     buildings?: { society_id?: string | null } | { society_id?: string | null }[] | null;
   } | {
     buildings?: { society_id?: string | null } | { society_id?: string | null }[] | null;
   }[] | null;
 };
+
+type GuardScope = {
+  guardIds: Set<string>;
+  locationIds: Set<string>;
+};
+
+async function getSecurityScopeForUser(
+  supabaseAdmin: ReturnType<typeof createServiceRoleClient>,
+  authUserId: string,
+): Promise<GuardScope> {
+  const { data: employee, error: employeeError } = await supabaseAdmin
+    .from("employees")
+    .select("id")
+    .eq("auth_user_id", authUserId)
+    .maybeSingle();
+
+  if (employeeError || !employee?.id) {
+    return { guardIds: new Set(), locationIds: new Set() };
+  }
+
+  const { data: guards, error: guardError } = await supabaseAdmin
+    .from("security_guards")
+    .select("id, assigned_location_id")
+    .eq("employee_id", employee.id)
+    .eq("is_active", true);
+
+  if (guardError) {
+    throw guardError;
+  }
+
+  return {
+    guardIds: new Set((guards ?? []).map((guard) => guard.id).filter((id): id is string => Boolean(id))),
+    locationIds: new Set(
+      (guards ?? [])
+        .map((guard) => guard.assigned_location_id)
+        .filter((id): id is string => Boolean(id)),
+    ),
+  };
+}
 
 async function getAuthorizedVisitorManager() {
   const supabase = await createServerClient();
@@ -92,7 +133,7 @@ async function canManageVisitor(visitorId: string, userId: string, roleName: str
   const supabaseAdmin = createServiceRoleClient();
   const { data: visitorRecord, error: visitorError } = await supabaseAdmin
     .from("visitors")
-    .select("id, flats(buildings(society_id))")
+    .select("id, entry_guard_id, entry_location_id, flats(buildings(society_id))")
     .eq("id", visitorId)
     .maybeSingle();
 
@@ -100,12 +141,21 @@ async function canManageVisitor(visitorId: string, userId: string, roleName: str
     return false;
   }
 
-  if (roleName !== "society_manager") {
+  if (roleName === "admin" || roleName === "super_admin") {
     return true;
   }
 
-  const managedSocietyIds = await getManagedSocietyIdsForUser(supabaseAdmin, userId);
   const visitorRow = visitorRecord as VisitorFlatRow | null;
+
+  if (roleName === "security_guard" || roleName === "security_supervisor") {
+    const scope = await getSecurityScopeForUser(supabaseAdmin, userId);
+    return Boolean(
+      (visitorRow?.entry_guard_id && scope.guardIds.has(visitorRow.entry_guard_id)) ||
+        (visitorRow?.entry_location_id && scope.locationIds.has(visitorRow.entry_location_id)),
+    );
+  }
+
+  const managedSocietyIds = await getManagedSocietyIdsForUser(supabaseAdmin, userId);
   const flatRecord = Array.isArray(visitorRow?.flats) ? visitorRow.flats[0] : visitorRow?.flats;
   const buildingRecord = Array.isArray(flatRecord?.buildings)
     ? flatRecord.buildings[0]
@@ -133,10 +183,7 @@ export async function PATCH(
       );
     }
 
-    if (
-      auth.roleName === "society_manager" &&
-      !(await canManageVisitor(visitorId, auth.userId!, auth.roleName))
-    ) {
+    if (!(await canManageVisitor(visitorId, auth.userId!, auth.roleName))) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 

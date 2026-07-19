@@ -37,7 +37,7 @@ BEGIN
     END IF;
 
     -- 1. Platform-wide roles
-    IF v_role IN ('super_admin', 'admin', 'account', 'company_md', 'supplier', 'vendor') THEN
+    IF v_role IN ('super_admin', 'admin', 'account', 'company_md', 'supplier', 'vendor', 'pest_control_technician', 'ac_technician', 'field_technician', 'delivery_agent', 'employee') THEN
         RETURN QUERY SELECT id FROM public.societies;
         RETURN;
     END IF;

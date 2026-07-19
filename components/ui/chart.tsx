@@ -146,7 +146,7 @@ const ChartTooltipContent = React.forwardRef<HTMLDivElement, ChartTooltipContent
     const { config } = useChart();
     const tooltipPayload = payload ?? [];
 
-    const tooltipLabel = React.useMemo(() => {
+    const tooltipLabel = (() => {
       if (hideLabel || !tooltipPayload.length) {
         return null;
       }
@@ -168,7 +168,7 @@ const ChartTooltipContent = React.forwardRef<HTMLDivElement, ChartTooltipContent
       }
 
       return <div className={cn("font-medium", labelClassName)}>{value}</div>;
-    }, [label, labelFormatter, payload, hideLabel, labelClassName, config, labelKey]);
+    })();
 
     if (!active || !tooltipPayload.length) {
       return null;

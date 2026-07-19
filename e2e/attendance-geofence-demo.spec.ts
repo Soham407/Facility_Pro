@@ -152,6 +152,7 @@ test.describe("Attendance Geofence Demo Pack", () => {
     try {
       const page = await farContext.newPage();
       await loginAndOpen(page, "security_guard", "/dashboard");
+      await expect(page.getByText(/main gate/i).first()).toBeVisible({ timeout: 15_000 });
 
       await page.getByRole("button", { name: /start shift \(clock in\)/i }).click();
       await expect(page.getByText(/identity verification/i)).toHaveCount(0);
@@ -178,6 +179,7 @@ test.describe("Attendance Geofence Demo Pack", () => {
     try {
       const guardPage = await guardContext.newPage();
       await loginAndOpen(guardPage, "security_guard", "/dashboard");
+      await expect(guardPage.getByText(/main gate/i).first()).toBeVisible({ timeout: 15_000 });
 
       await guardPage.getByRole("button", { name: /start shift \(clock in\)/i }).click();
       await expect(guardPage.getByText(/identity verification/i)).toBeVisible({ timeout: 10_000 });

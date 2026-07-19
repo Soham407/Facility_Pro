@@ -79,6 +79,8 @@ export function ServiceDeliveryNoteDialog({
   const [isDownloading, setIsDownloading] = useState(false);
   const [conflicts, setConflicts] = useState<Record<number, string>>({});
   const [dispatchIssues, setDispatchIssues] = useState<string[]>([]);
+  const [isLoadingAvailability, setIsLoadingAvailability] = useState(false);
+  const [unavailableEmployeeIds, setUnavailableEmployeeIds] = useState<string[]>([]);
   
   const { createNote } = useServiceDeliveryNotes(poId);
   const { employees } = useEmployees();
@@ -101,6 +103,28 @@ export function ServiceDeliveryNoteDialog({
   const watchPersonnel = form.watch("personnel");
   const watchDate = form.watch("delivery_date");
 
+  const findDeploymentConflict = async (employeeId: string, deliveryDate: string) => {
+    const { data: overlaps } = await supabase
+      .from("personnel_dispatches")
+      .select(`
+        start_date, 
+        end_date, 
+        deployment_site:company_locations!deployment_site_id (location_name)
+      `)
+      .eq("employee_id", employeeId)
+      .in("status", ["dispatched", "confirmed", "active"])
+      .lte("start_date", deliveryDate)
+      .or(`end_date.gte.${deliveryDate},end_date.is.null`)
+      .limit(1);
+
+    if (!overlaps || overlaps.length === 0) {
+      return null;
+    }
+
+    const overlap = overlaps[0];
+    return `Already deployed at ${overlap.deployment_site?.location_name || "another site"} (${overlap.start_date} to ${overlap.end_date || "Open"})`;
+  };
+
   // Check for overlaps when employee or date changes
   useEffect(() => {
     const checkAllOverlaps = async () => {
@@ -109,25 +133,9 @@ export function ServiceDeliveryNoteDialog({
       for (let i = 0; i < watchPersonnel.length; i++) {
         const p = watchPersonnel[i];
         if (p.employee_id && watchDate) {
-          // We use createDispatch's logic or a separate check
-          // For simplicity, we just use a direct query here or assume the hook will handle it
-          // But the task says "highlight ... before the user submits"
-          const { data: overlaps } = await supabase
-            .from("personnel_dispatches")
-            .select(`
-              start_date, 
-              end_date, 
-              deployment_site:company_locations!deployment_site_id (location_name)
-            `)
-            .eq("employee_id", p.employee_id)
-            .in("status", ["dispatched", "confirmed", "active"])
-            .lte("start_date", watchDate)
-            .or(`end_date.gte.${watchDate},end_date.is.null`)
-            .limit(1);
-
-          if (overlaps && overlaps.length > 0) {
-            const o = overlaps[0];
-            newConflicts[i] = `Already deployed at ${o.deployment_site?.location_name || "another site"} (${o.start_date} to ${o.end_date || 'Open'})`;
+          const conflictMessage = await findDeploymentConflict(p.employee_id, watchDate);
+          if (conflictMessage) {
+            newConflicts[i] = conflictMessage;
           }
         }
       }
@@ -137,7 +145,83 @@ export function ServiceDeliveryNoteDialog({
     if (open) checkAllOverlaps();
   }, [watchPersonnel, watchDate, open]);
 
+  useEffect(() => {
+    const loadUnavailableEmployees = async () => {
+      if (!open || !watchDate || employees.length === 0) {
+        setIsLoadingAvailability(false);
+        setUnavailableEmployeeIds([]);
+        return;
+      }
+
+      const employeeIds = employees.map((employee) => employee.id).filter(Boolean);
+      if (employeeIds.length === 0) {
+        setIsLoadingAvailability(false);
+        setUnavailableEmployeeIds([]);
+        return;
+      }
+
+      setIsLoadingAvailability(true);
+
+      const { data: overlaps, error } = await supabase
+        .from("personnel_dispatches")
+        .select("employee_id")
+        .in("employee_id", employeeIds)
+        .in("status", ["dispatched", "confirmed", "active"])
+        .lte("start_date", watchDate)
+        .or(`end_date.gte.${watchDate},end_date.is.null`);
+
+      if (error) {
+        console.error("Error loading unavailable employees:", error);
+        setUnavailableEmployeeIds([]);
+        setIsLoadingAvailability(false);
+        return;
+      }
+
+      const nextUnavailableEmployeeIds = Array.from(
+        new Set((overlaps ?? []).map((row) => row.employee_id).filter((value): value is string => Boolean(value)))
+      );
+
+      setUnavailableEmployeeIds(nextUnavailableEmployeeIds);
+      setIsLoadingAvailability(false);
+    };
+
+    void loadUnavailableEmployees();
+  }, [employees, open, watchDate]);
+
+  const availableEmployees = employees.filter(
+    (employee) => !unavailableEmployeeIds.includes(employee.id)
+  );
+
   const handleSubmit = async (values: FormValues) => {
+    if (isLoadingAvailability) {
+      toast({
+        title: "Checking availability",
+        description: "Please wait for personnel availability to finish loading before submitting.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const nextConflicts: Record<number, string> = {};
+    for (let i = 0; i < values.personnel.length; i++) {
+      const person = values.personnel[i];
+      const conflictMessage = await findDeploymentConflict(person.employee_id, values.delivery_date);
+      if (conflictMessage) {
+        nextConflicts[i] = conflictMessage;
+      }
+    }
+
+    setConflicts(nextConflicts);
+
+    if (Object.keys(nextConflicts).length > 0) {
+      toast({
+        title: "Deployment Conflict",
+        description: "Please resolve the overlapping deployments before submitting.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     if (Object.keys(conflicts).length > 0) {
       toast({
         title: "Deployment Conflict",
@@ -400,18 +484,30 @@ export function ServiceDeliveryNoteDialog({
                                 form.setValue(`personnel.${index}.contact`, emp.phone || "");
                               }
                             }}
+                            disabled={isLoadingAvailability || availableEmployees.length === 0}
                           >
                             <SelectTrigger className={cn("h-8 text-sm", conflicts[index] && "border-destructive ring-destructive")}>
                               <SelectValue placeholder="Select existing employee" />
                             </SelectTrigger>
                             <SelectContent>
-                              {employees.map((emp) => (
-                                <SelectItem key={emp.id} value={emp.id}>
-                                  {emp.full_name} ({emp.employee_code})
-                                </SelectItem>
-                              ))}
+                              {isLoadingAvailability ? (
+                                <div className="px-2 py-1.5 text-sm text-muted-foreground">
+                                  Loading available employees...
+                                </div>
+                              ) : (
+                                availableEmployees.map((emp) => (
+                                  <SelectItem key={emp.id} value={emp.id}>
+                                    {emp.full_name} ({emp.employee_code})
+                                  </SelectItem>
+                                ))
+                              )}
                             </SelectContent>
                           </Select>
+                          {!isLoadingAvailability && availableEmployees.length === 0 && (
+                            <div className="mt-1 text-[10px] font-semibold text-destructive">
+                              No available employees for the selected delivery date.
+                            </div>
+                          )}
                           {conflicts[index] && (
                             <div className="flex items-center gap-1 mt-1 text-[10px] text-destructive font-semibold">
                               <AlertCircle className="h-3 w-3" />
@@ -469,7 +565,7 @@ export function ServiceDeliveryNoteDialog({
             <Button type="button" variant="outline" onClick={handleClose}>
               Cancel
             </Button>
-            <Button type="submit" disabled={isSubmitting} className="gap-2">
+            <Button type="submit" disabled={isSubmitting || isLoadingAvailability} className="gap-2">
               {isSubmitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Users className="h-4 w-4" />}
               Submit Delivery Note
             </Button>

@@ -94,7 +94,33 @@ describe("service delivery contracts", () => {
         "ppeVerified",
         "PPE",
         "Verified",
-        "Pending",
+      "Pending",
+    ])
+    ).toBe(true);
+  });
+
+  it("keeps pest PPE submissions request-scoped with a latest-session fallback", async () => {
+    const inventorySource = await readRepoFile("hooks/usePestControlInventory.ts");
+    const panelSource = await readRepoFile("components/jobs/JobSessionPanel.tsx");
+
+    expect(
+      sourceContainsAll(inventorySource, [
+        "let jobSessionId = input.job_session_id || null;",
+        "if (!jobSessionId && input.service_request_id) {",
+        '.from("job_sessions")',
+        '.eq("service_request_id", input.service_request_id)',
+        "jobSessionId = latestSession?.id || null;",
+        "service_request_id: input.service_request_id,",
+        "job_session_id: jobSessionId,",
+      ])
+    ).toBe(true);
+
+    expect(
+      sourceContainsAll(panelSource, [
+        "const { sessions } = useJobSessions(serviceRequest.id);",
+        "const activeSession = sessions.find(s => s.status === 'started' || s.status === 'paused');",
+        "const { ppeVerification, submitPPEChecklist } = usePestControlPPE(activeSession?.id, serviceRequest.id);",
+        "isPestControl",
       ])
     ).toBe(true);
   });
@@ -127,12 +153,18 @@ describe("service delivery contracts", () => {
     const acknowledgmentDialogSource = await readRepoFile("components/dialogs/ServiceAcknowledgmentDialog.tsx");
     const deliveryDialogSource = await readRepoFile("components/dialogs/ServiceDeliveryNoteDialog.tsx");
     const supplierServiceOrdersPageSource = await readRepoFile("app/(dashboard)/supplier/service-orders/page.tsx");
+    const acknowledgmentRouteSource = await readRepoFile(
+      "app/api/service-orders/acknowledge-deployment/route.ts"
+    );
 
     expect(
       sourceContainsAll(deliveryNotesSource, [
         "service_purchase_order:service_purchase_orders!service_delivery_notes_po_id_fkey",
         "po_number: row.service_purchase_order?.spo_number",
         "supplier_name: row.service_purchase_order?.supplier?.supplier_name",
+        "const deliveryNoteNumber = `SDN-${Date.now()}`",
+        "const { error: insertError } = await supabase",
+        "delivery_note_number: deliveryNoteNumber",
       ])
     ).toBe(true);
 
@@ -152,8 +184,12 @@ describe("service delivery contracts", () => {
         'from("personnel_dispatches")',
         '.in("status", ["dispatched", "confirmed", "active"])',
         '.lte("start_date", watchDate)',
+        "const [isLoadingAvailability, setIsLoadingAvailability] = useState(false);",
+        "Loading available employees...",
+        "Please wait for personnel availability to finish loading before submitting.",
         "deployment_site:company_locations!deployment_site_id (location_name)",
-        "o.deployment_site?.location_name",
+        'overlap.deployment_site?.location_name || "another site"',
+        "const nextConflicts: Record<number, string> = {};",
         "deployment_site_id: deploymentSiteId || undefined",
         "Dispatch Ledger Incomplete",
       ])
@@ -161,10 +197,22 @@ describe("service delivery contracts", () => {
 
     expect(
       sourceContainsAll(acknowledgmentDialogSource, [
+        'fetch("/api/service-orders/acknowledge-deployment"',
+        "spoId: spo.id",
+        "headcountReceived: values.headcount_received",
+      ])
+    ).toBe(true);
+
+    expect(
+      sourceContainsAll(acknowledgmentRouteSource, [
+        "createServiceRoleClient",
+        "createClient as createServerClient",
         'from("service_delivery_notes")',
-        'status: "verified"',
-        "verified_by: employeeRecord.id",
+        'from("service_acknowledgments")',
+        'from("service_purchase_orders")',
         "A delivery note must exist before deployment can be acknowledged.",
+        'status: "verified"',
+        'status: "deployment_confirmed"',
       ])
     ).toBe(true);
 

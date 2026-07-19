@@ -61,8 +61,8 @@ export default function SupplierIndentsPage() {
     setIsDetailOpen(true);
   };
 
-  const handleAccept = async (id: string) => {
-    const success = await respondToIndent(id, "indent_accepted");
+  const handleAccept = async (indent: SupplierIndent) => {
+    const success = await respondToIndent(indent, "indent_accepted");
     if (success) {
       toast({
         title: "Indent Accepted",
@@ -74,7 +74,7 @@ export default function SupplierIndentsPage() {
   const handleRejectSubmit = async () => {
     if (!selectedIndent?.id || !rejectionReason) return;
 
-    const success = await respondToIndent(selectedIndent.id, "indent_rejected", rejectionReason);
+    const success = await respondToIndent(selectedIndent, "indent_rejected", rejectionReason);
     if (success) {
       toast({
         title: "Indent Rejected",
@@ -193,7 +193,7 @@ export default function SupplierIndentsPage() {
                             size="sm"
                             variant="outline"
                             className="text-success hover:text-success border-success/30 hover:bg-success/10"
-                            onClick={() => handleAccept(indent.id)}
+                            onClick={() => handleAccept(indent)}
                           >
                             <Check className="h-3 w-3 mr-1" /> Accept
                           </Button>

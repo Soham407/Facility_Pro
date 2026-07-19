@@ -9,7 +9,7 @@
 
 - **Name**: Solvesxx_web (FacilityPro web app)
 - **Type**: Next.js 16 App Router + Supabase + TailwindCSS
-- **Context files**: Read `CONTEXT-MAP.md` first, then the active context file it points to (`.ai_context/CONTEXT.md` today). Read `PHASES.md` for module status & PRD gaps.
+- **Context files**: Read `docs/product/context-map.md` first, then the active context file it points to (`.ai_context/CONTEXT.md` today). Read `PHASES.md` for module status & PRD gaps.
 
 ## Agent skills
 
@@ -23,14 +23,14 @@ Canonical triage labels map 1:1 to the repo labels. See `docs/agents/triage-labe
 
 ### Domain docs
 
-Multi-context docs rooted at `CONTEXT-MAP.md`, with the active context currently in `.ai_context/CONTEXT.md`. See `docs/agents/domain.md`.
+Multi-context docs rooted at `docs/product/context-map.md`, with the active context currently in `.ai_context/CONTEXT.md`. See `docs/agents/domain.md`.
 
 ---
 
 ## ⚡ Before You Start Coding
 
 1. **Check PHASES.md** — It has the real status of every module (✅ FULL / 🟡 PARTIAL / 🔵 UI-ONLY / 🔴 NOT BUILT). This prevents building something that already exists.
-2. **Check the hooks list** — the active context file referenced by `CONTEXT-MAP.md` has all 92 hooks categorized. Always search for an existing hook before creating one.
+2. **Check the hooks list** — the active context file referenced by `docs/product/context-map.md` has all 92 hooks categorized. Always search for an existing hook before creating one.
 3. **Check the "Known Mock Data" section** — PHASES.md lists every place where data is still hardcoded. If you're working on a module, check if it has known mocks.
 4. **Check the "Not Yet Built" section** — Lists PRD features with actionable "What's Needed" columns.
 

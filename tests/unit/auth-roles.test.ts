@@ -35,6 +35,11 @@ describe("hasAccess", () => {
     expect(hasAccess("ac_technician", "/services/pest-control")).toBe(false);
   });
 
+  it("keeps supervisor HRMS approvals reachable", () => {
+    expect(hasAccess("security_supervisor", "/hrms/attendance")).toBe(true);
+    expect(hasAccess("security_supervisor", "/hrms/leave")).toBe(true);
+  });
+
   it("resolves role-aware landing routes for portal roles", () => {
     expect(getRoleLandingPath("buyer")).toBe("/buyer");
     expect(getRoleLandingPath("supplier")).toBe("/supplier");

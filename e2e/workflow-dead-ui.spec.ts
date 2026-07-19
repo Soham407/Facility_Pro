@@ -676,6 +676,22 @@ test.describe("Company HOD — Workflow & Dead-UI Audit", () => {
     }
   });
 
+  test("hrms/leave: add configuration navigates to leave type master", async ({ page }) => {
+    await page.goto("/hrms/leave");
+    await page.waitForLoadState("networkidle");
+
+    const configLink = page.getByRole("link", { name: /add configuration/i }).first();
+    await expect(configLink).toBeVisible({ timeout: 5_000 });
+    await configLink.click();
+    await expect(page).toHaveURL(/\/hrms\/leave\/config(?:$|[?#])/i);
+    await expect(page.getByRole("heading", { name: /leave configuration/i })).toBeVisible({
+      timeout: 10_000,
+    });
+    await expect(page.getByRole("button", { name: /define leave type/i })).toBeVisible({
+      timeout: 10_000,
+    });
+  });
+
   test("hrms/recruitment: candidate pipeline renders", async ({ page }) => {
     await page.goto("/hrms/recruitment");
     await page.waitForLoadState("networkidle");
@@ -859,10 +875,17 @@ test.describe("Admin — Services Config Pages", () => {
     await loginAsRole(page, "admin");
   });
 
-  test("services/printing: removed production surface stays inaccessible", async ({ page }) => {
+  test("services/printing: printing and ad-space surface loads", async ({ page }) => {
     await page.goto("/services/printing");
-    await expect(page.getByRole("heading", { name: /module not found/i })).toBeVisible();
-    await expect(page.getByRole("button", { name: /book space|book/i })).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: /printing & advertising/i })).toBeVisible();
+    await expect(page.getByRole("tab", { name: /id printing/i })).toBeVisible();
+    await page.getByRole("tab", { name: /ad spaces/i }).click();
+    const bookSpaceButtons = page.getByRole("button", { name: /book space/i });
+    if (await bookSpaceButtons.count()) {
+      await expect(bookSpaceButtons.first()).toBeVisible();
+    } else {
+      await expect(page.getByText(/no ad spaces found/i)).toBeVisible();
+    }
   });
 
   test("services/security: guard list and GPS tracking load", async ({ page }) => {

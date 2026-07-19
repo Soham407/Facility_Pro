@@ -1129,7 +1129,6 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
     },
     expectedEntities: ["service_requests", "job_sessions", "job_materials_used", "pest_control_ppe_verifications"],
     expectedNotifications: [],
-    deferredReason: "Pest PPE verification is not reliably request-scoped in the current implementation, so a deterministic end-to-end technician flow is blocked until the product bug is fixed.",
   }),
 ];
 

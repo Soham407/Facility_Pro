@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS public.buyer_accounts (
   display_name TEXT NOT NULL,
   gstin        TEXT,                                -- nullable; individual_resident typically null
   society_id   UUID REFERENCES societies(id),      -- set when account_type = 'society'
+  auth_user_id UUID REFERENCES auth.users(id),
   is_active    BOOLEAN NOT NULL DEFAULT true,
   created_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at   TIMESTAMPTZ NOT NULL DEFAULT now()
@@ -29,7 +30,7 @@ CREATE POLICY "buyer_accounts_buyer_read_own" ON buyer_accounts
   FOR SELECT TO authenticated
   USING (
     get_user_role() = 'buyer'
-    AND id = (SELECT buyer_account_id FROM buyers WHERE auth_user_id = auth.uid())
+    AND auth_user_id = auth.uid()
   );
 
 -- Backfill: Create one buyer_accounts row per existing society
@@ -50,3 +51,4 @@ ON CONFLICT DO NOTHING;
 -- Add index for performance
 CREATE INDEX IF NOT EXISTS idx_buyer_accounts_society_id ON buyer_accounts(society_id);
 CREATE INDEX IF NOT EXISTS idx_buyer_accounts_account_type ON buyer_accounts(account_type);
+CREATE INDEX IF NOT EXISTS idx_buyer_accounts_auth_user_id ON buyer_accounts(auth_user_id);

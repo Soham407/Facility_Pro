@@ -28,7 +28,7 @@ COMMENT ON COLUMN service_requests.notice_days IS 'Termination notice period (de
 COMMENT ON COLUMN service_requests.auto_renew_terms IS 'JSON configuration for auto-renewal (opt-in, default off)';
 COMMENT ON COLUMN service_requests.frozen_rates IS 'JSON map of rate overrides frozen at contract creation time';
 
--- NOTE: Backfill strategy for contracts → service_requests is documented in pr-c-scope.md
+-- NOTE: Backfill strategy for contracts → service_requests is documented in docs/archive/plans/pr-c-scope.md
 -- Recommended: manual post-migration data entry via admin UI (safer than automated UPDATE)
 -- If automated backfill is attempted:
 --   UPDATE service_requests sr

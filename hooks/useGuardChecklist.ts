@@ -24,12 +24,13 @@ export type {
  * Hook to fetch guard's assigned checklist and responses for today
  */
 export function useGuardChecklist(employeeId: string | null) {
-  const [data, setData] = useState<ChecklistData>({
+  const [data, setData] = useState<ChecklistData & { locationId: string | null }>({
     items: [],
     totalItems: 0,
     completedItems: 0,
     checklistId: null,
     checklistName: null,
+    locationId: null,
     isLoading: true,
     error: null,
   });
@@ -45,14 +46,25 @@ export function useGuardChecklist(employeeId: string | null) {
       const today = new Date();
       const todayStr = today.toISOString().split("T")[0];
 
-      // Fetch the first active checklist assigned to this guard
-      const { data: assignment, error: assignmentError } = await supabase
-        .from("checklist_assignments")
-        .select("checklist:daily_checklists(id, checklist_name, questions)")
-        .eq("employee_id", employeeId)
-        .eq("is_active", true)
-        .limit(1)
-        .maybeSingle();
+      // Fetch the first active checklist assigned to this guard and their guard profile
+      const [assignmentResult, guardProfileResult] = await Promise.all([
+        supabase
+          .from("checklist_assignments")
+          .select("checklist:daily_checklists(id, checklist_name, questions)")
+          .eq("employee_id", employeeId)
+          .eq("is_active", true)
+          .limit(1)
+          .maybeSingle(),
+        supabase
+          .from("security_guards")
+          .select("assigned_location_id")
+          .eq("employee_id", employeeId)
+          .maybeSingle(),
+      ]);
+
+      const assignmentError = assignmentResult.error;
+      const assignment = assignmentResult.data;
+      const assignedLocationId = guardProfileResult.data?.assigned_location_id ?? null;
 
       if (assignmentError) {
         throw assignmentError;
@@ -72,6 +84,7 @@ export function useGuardChecklist(employeeId: string | null) {
           completedItems: 0,
           checklistId: null,
           checklistName: null,
+          locationId: assignedLocationId,
           isLoading: false,
           error: null,
         });
@@ -96,7 +109,10 @@ export function useGuardChecklist(employeeId: string | null) {
       // Build items list
       const items: ChecklistItem[] = buildChecklistItems(questions, responses);
 
-      setData(buildChecklistData(checklist.id, checklist.checklist_name, items));
+      setData({
+        ...buildChecklistData(checklist.id, checklist.checklist_name, items),
+        locationId: assignedLocationId,
+      });
     } catch (err) {
       console.error("Error fetching checklist:", err);
       setData((prev) => ({
@@ -159,6 +175,7 @@ export function useGuardChecklist(employeeId: string | null) {
           const { error } = await supabase.from("checklist_responses").insert({
             checklist_id: data.checklistId,
             employee_id: employeeId,
+            location_id: data.locationId,
             response_date: todayStr,
             responses: updatedResponses,
             latitude: coords?.latitude,
@@ -221,6 +238,7 @@ export function useGuardChecklist(employeeId: string | null) {
           const { error } = await supabase.from("checklist_responses").insert({
             checklist_id: data.checklistId,
             employee_id: employeeId,
+            location_id: data.locationId,
             response_date: todayStr,
             responses: updatedResponses,
             is_complete: false,

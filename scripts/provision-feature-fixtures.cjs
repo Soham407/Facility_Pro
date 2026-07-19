@@ -737,6 +737,16 @@ async function main() {
     (await maybeSingle(supabase.from("societies").select("*").eq("id", "11111111-1111-1111-1111-111111111111").maybeSingle())) ||
     (await maybeSingle(supabase.from("societies").select("*").order("created_at").limit(1).maybeSingle()));
 
+  if (location && society && location.society_id !== society.id) {
+    await runMutation(
+      supabase
+        .from("company_locations")
+        .update({ society_id: society.id })
+        .eq("id", location.id)
+    );
+    location.society_id = society.id;
+  }
+
   if (flat) {
     await runMutation(
       supabase

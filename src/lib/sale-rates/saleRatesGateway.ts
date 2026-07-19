@@ -71,7 +71,7 @@ export async function expireActiveSaleRate(
   societyId: string | null,
   effectiveTo: string
 ): Promise<void> {
-  let query = saleRatesClient
+  const query = saleRatesClient
     .from("sale_product_rates")
     .update({
       effective_to: effectiveTo,

@@ -226,6 +226,21 @@ async function main() {
       } catch (e) {}
     }
 
+    // Ensure port is completely freed before starting the server
+    if (process.platform !== "win32") {
+      try {
+        const { execSync } = require("node:child_process");
+        const stdout = execSync(`lsof -t -i :${appPort}`, { encoding: "utf8" });
+        const pids = stdout.split("\n").map(p => p.trim()).filter(Boolean);
+        for (const portPid of pids) {
+          try {
+            process.kill(Number.parseInt(portPid, 10), "SIGKILL");
+          } catch (e) {}
+        }
+        await sleep(500);
+      } catch (e) {}
+    }
+
     console.log(`Starting Next.js server on ${appHost}:${appPort}...`);
 
     // Clean stale lock
@@ -290,12 +305,28 @@ async function main() {
   }
 
   // Cleanup
-  if (config.manageServer && fs.existsSync(pidPath)) {
-    try {
-      const pid = fs.readFileSync(pidPath, "utf8").trim();
-      process.kill(-pid, "SIGTERM");
-      fs.unlinkSync(pidPath);
-    } catch (e) {}
+  if (config.manageServer) {
+    if (fs.existsSync(pidPath)) {
+      try {
+        const pid = fs.readFileSync(pidPath, "utf8").trim();
+        process.kill(-pid, "SIGTERM");
+        fs.unlinkSync(pidPath);
+      } catch (e) {}
+    }
+
+    // Hard-kill any remaining next/webpack background compilers listening on the port
+    if (process.platform !== "win32") {
+      try {
+        const { execSync } = require("node:child_process");
+        const stdout = execSync(`lsof -t -i :${appPort}`, { encoding: "utf8" });
+        const pids = stdout.split("\n").map(p => p.trim()).filter(Boolean);
+        for (const portPid of pids) {
+          try {
+            process.kill(Number.parseInt(portPid, 10), "SIGKILL");
+          } catch (e) {}
+        }
+      } catch (e) {}
+    }
   }
 
   process.exit(exitCode);

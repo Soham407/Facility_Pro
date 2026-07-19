@@ -124,6 +124,7 @@ function DashboardPageContent() {
       case "site_supervisor": return <SiteSupervisorDashboard />;
       case "society_manager": return <SocietyManagerDashboard />;
       case "field_technician": return <ServiceBoyDashboard />;
+      case "service_boy": return <ServiceBoyDashboard />;
       case "resident": return <ResidentDashboard />;
       case "super_admin": return <SuperAdminDashboard />;
       case "ac_technician": return <ACTechnicianDashboard />;

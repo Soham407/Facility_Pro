@@ -36,6 +36,7 @@ const ROLE_REDIRECTS: Record<string, string> = {
   supplier: "/supplier",
   vendor: "/supplier",
   resident: "/resident",
+  delivery_agent: "/delivery",
   delivery_boy: "/delivery",
   security_guard: "/dashboard",
   security_supervisor: "/dashboard",

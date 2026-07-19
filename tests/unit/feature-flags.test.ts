@@ -99,4 +99,12 @@ describe("feature flags", () => {
       },
     ]);
   });
+
+  it("keeps the service-boy portal live in the base client scope", async () => {
+    const featureFlags = await loadFeatureFlags();
+
+    expect(featureFlags.isRouteFrozen("/service-boy")).toBe(false);
+    expect(featureFlags.isNavHrefFrozen("/service-boy")).toBe(false);
+    expect(featureFlags.isNavItemFrozen("My Jobs")).toBe(false);
+  });
 });

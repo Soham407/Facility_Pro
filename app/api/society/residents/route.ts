@@ -82,8 +82,6 @@ const RESIDENT_MANAGEMENT_ROLES = new Set([
   "admin",
   "super_admin",
   "society_manager",
-  "security_supervisor",
-  "security_guard",
 ]);
 
 async function getAuthorizedResidentManager() {

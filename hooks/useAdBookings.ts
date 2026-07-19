@@ -80,11 +80,22 @@ export function useAdBookings(adSpaceId?: string) {
 
   const approveBooking = async (bookingId: string, approverId: string) => {
     try {
+      const { data: approverRow, error: approverError } = await supabase
+        .from("users")
+        .select("employee_id")
+        .eq("id", approverId)
+        .single();
+
+      if (approverError) throw approverError;
+      if (!approverRow?.employee_id) {
+        throw new Error("Approver employee record not found");
+      }
+
       const { error } = await supabase
         .from("printing_ad_bookings")
         .update({
           status: "approved",
-          approved_by: approverId,
+          approved_by: approverRow.employee_id,
           approved_at: new Date().toISOString(),
         })
         .eq("id", bookingId);

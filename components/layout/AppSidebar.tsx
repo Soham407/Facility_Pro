@@ -13,14 +13,10 @@ import {
   Home,
   Receipt,
   Ticket,
-  BarChart3,
-  Settings,
   ChevronDown,
   Truck,
   ShoppingCart,
   Menu,
-  LayoutGrid,
-  HardDrive,
   ClipboardCheck,
   ShieldCheck,
 } from "lucide-react";
@@ -62,7 +58,13 @@ interface NavGroup {
   adminOnly?: boolean;
 }
 
-const ADMIN_ONLY_NAV_PATHS = new Set(["/admin/config", "/admin/service-indents", "/admin/material-indents", "/admin/waitlist", "/admin/audit-logs"]);
+const ADMIN_ONLY_NAV_PATHS = new Set([
+  "/admin/config",
+  "/admin/service-indents",
+  "/admin/material-indents",
+  "/admin/waitlist",
+  "/admin/audit-logs",
+]);
 
 const navigation: NavGroup[] = [
   {
@@ -72,172 +74,128 @@ const navigation: NavGroup[] = [
     ],
   },
   {
-    title: "Workforce & HR",
+    title: "Company & HRMS",
     items: [
       {
         title: "Company Master",
         href: "/company",
         icon: Building2,
         children: [
-          { title: "Organization Roles", href: "/company/roles" },
+          { title: "Role Master", href: "/company/roles" },
           { title: "Designations", href: "/company/designations" },
           { title: "Employee Directory", href: "/company/employees" },
           { title: "User Management", href: "/company/users" },
-          { title: "Location Master", href: "/company/locations" },
         ],
       },
       {
-        title: "HRMS Suite",
+        title: "HRMS Master",
         href: "/hrms",
         icon: Users,
         children: [
-          { title: "Recruitment", href: "/hrms/recruitment" },
-          { title: "Employee Profiles", href: "/hrms/profiles" },
-          { title: "Attendance Tracking", href: "/hrms/attendance" },
-          { title: "Leave Management", href: "/hrms/leave" },
-          { title: "Payroll Ledger", href: "/hrms/payroll" },
-          { title: "Compliance Vault", href: "/hrms/documents" },
-          { title: "Shift Master", href: "/hrms/shifts" },
-          { title: "Specialized Profiles", href: "/hrms/specialized-profiles" },
+          { title: "Leave Type Master", href: "/hrms/leave" },
+          { title: "Holiday Master", href: "/hrms/holidays" },
+          { title: "Company Event", href: "/hrms/events" },
+          { title: "Company Location Master", href: "/company/locations" },
         ],
       },
     ],
   },
   {
-    title: "Operations",
+    title: "Supply & Services",
     items: [
       {
-        title: "Work Orders",
-        href: "/service-requests",
-        icon: ClipboardCheck,
-        children: [
-          { title: "Request Queue", href: "/service-requests" },
-          { title: "Kanban Board", href: "/service-requests/board" },
-          { title: "Log New Request", href: "/service-requests/new" },
-          { title: "Field Queue (Assigned)", href: "/service-boy" },
-        ],
-      },
-      {
-        title: "Assets & Maintenance",
-        href: "/assets",
-        icon: HardDrive,
-        children: [
-          { title: "Asset Registry", href: "/assets" },
-          { title: "Maintenance Schedules", href: "/assets/maintenance" },
-          { title: "Asset Categories", href: "/assets/categories" },
-          { title: "QR Code Lab", href: "/assets/qr-codes" },
-        ],
-      },
-      {
-        title: "Supply Chain",
+        title: "Supply Master",
         href: "/inventory",
         icon: Package,
         children: [
-          { title: "Product & Supplier Master", href: "/inventory/products" },
-          { title: "Stock & Warehouses", href: "/inventory/warehouses" },
-          { title: "Material Receipts (GRN)", href: "/inventory/grn" },
-          { title: "Purchase Orders", href: "/inventory/purchase-orders" },
-          { title: "Buyer Request Review", href: "/inventory/requests" },
-          { title: "Material Forwarding", href: "/admin/material-indents" },
-          { title: "Requests & Approvals", href: "/inventory/indents/create" },
-          { title: "Mapping & Rates", href: "/inventory/supplier-products" },
+          { title: "Product Category", href: "/inventory/categories" },
+          { title: "Product Subcategory", href: "/inventory/subcategories" },
+          { title: "Product Master", href: "/inventory/products" },
+          { title: "Supplier Details", href: "/inventory/suppliers" },
+          { title: "Supplier Wise Product", href: "/inventory/supplier-products" },
+          { title: "Supplier Wise Product Rate", href: "/inventory/supplier-rates" },
+          { title: "Sale Product Rate", href: "/inventory/sales-rates" },
         ],
       },
       {
-        title: "Operations Config",
+        title: "Procurement Workflow",
+        href: "/service-requests",
+        icon: ClipboardCheck,
+        children: [
+          { title: "Buyer Request Review", href: "/inventory/requests" },
+          { title: "Service Requests", href: "/service-requests" },
+          { title: "Create Indent", href: "/inventory/indents/create" },
+          { title: "Purchase Orders", href: "/inventory/purchase-orders" },
+          { title: "Material Receipts", href: "/inventory/grn" },
+        ],
+      },
+      {
+        title: "Service Masters",
         href: "/services",
         icon: Wrench,
         children: [
-          { title: "Checklist Builders", href: "/services/masters/checklists" },
-          { title: "Task Templates", href: "/services/masters/tasks" },
-          { title: "Service Mapping", href: "/services/masters/service-tasks" },
-          { title: "Security Ops", href: "/services/security" },
-          { title: "HVAC & AC", href: "/services/ac" },
+          { title: "Daily Checklist Master", href: "/services/masters/checklists" },
+          { title: "Vendor Wise Services", href: "/services/masters/vendor-services" },
+          { title: "Work Master", href: "/services/masters/work-master" },
+          { title: "Services Wise Work", href: "/services/masters/service-tasks" },
+          { title: "Security Services", href: "/services/security" },
+          { title: "Air Conditioner Services", href: "/services/ac" },
+          { title: "Pest Control Services", href: "/services/pest-control" },
           { title: "Plantation Services", href: "/services/plantation" },
+          { title: "Printing & Advertising", href: "/services/printing" },
         ],
-      },
-      {
-        title: "Guard Management",
-        href: "/admin/guards",
-        icon: ShieldCheck,
       },
     ],
   },
   {
-    title: "Residences",
+    title: "Security & Society",
     items: [
       {
-        title: "Society & Residents",
+        title: "Security Operations",
         href: "/society",
         icon: Home,
         children: [
-          { title: "Guard Station",      href: "/guard" },
-          { title: "Resident Directory", href: "/society/residents" },
+          { title: "Guard Station", href: "/guard" },
           { title: "Visitor Management", href: "/society/visitors" },
-          { title: "Incident Alerts", href: "/society/panic-alerts" },
+          { title: "Resident Directory", href: "/society/residents" },
+          { title: "Panic Alerts", href: "/society/panic-alerts" },
           { title: "Facility Checklists", href: "/society/checklists" },
           { title: "Emergency Directory", href: "/society/emergency" },
-          { title: "Resident Portal", href: "/society/my-flat" },
-          /* Temporarily hidden
-          { title: "Guest Invitation", href: "/society/my-flat?action=invite" },
-          */
         ],
       },
       {
-        title: "Society Setup",
-        href: "/admin/societies",
-        icon: Building2,
+        title: "Guard Oversight",
+        href: "/admin/guards",
+        icon: ShieldCheck,
         children: [
-          { title: "Manage Societies", href: "/admin/societies" },
+          { title: "Guard Management", href: "/admin/guards" },
+          { title: "Society Setup", href: "/admin/societies" },
+          { title: "Resident Records", href: "/admin/residents" },
         ],
-      },
-      {
-        title: "Residents",
-        href: "/admin/residents",
-        icon: Users,
       },
     ],
   },
   {
-    title: "Finance & Analytics",
+    title: "Finance & Tickets",
     items: [
       {
         title: "Finance & Accounts",
         href: "/finance",
         icon: Receipt,
         children: [
-          { title: "Billing & Receipts", href: "/finance/buyer-billing" },
+          { title: "Buyer Billing", href: "/finance/buyer-billing" },
           { title: "Sale Bills", href: "/finance/sale-bills" },
+          { title: "Supplier Bills", href: "/finance/supplier-bills" },
+          { title: "Payment Ledger", href: "/finance/payments" },
           { title: "3-Way Reconciliation", href: "/finance/reconciliation" },
-          { title: "Supplier Payouts", href: "/finance/supplier-bills" },
-          { title: "Universal Ledger", href: "/finance/payments" },
-          { title: "Audit & Compliance", href: "/finance/compliance" },
         ],
       },
       {
-        title: "Intelligence Hub",
-        href: "/reports",
-        icon: BarChart3,
-        children: [
-          { title: "Attendance Analysis", href: "/reports/attendance" },
-          { title: "Financial Health", href: "/reports/financial" },
-          { title: "Operational Excellence", href: "/reports/services" },
-          { title: "Resource Consumption", href: "/reports/inventory" },
-        ],
-      },
-    ],
-  },
-  {
-    title: "Support & Tickets",
-    items: [
-      {
-        title: "Quality Tickets",
+        title: "Behavior Tickets",
         href: "/tickets",
         icon: Ticket,
         children: [
           { title: "Behavioral Incident", href: "/tickets/behavior" },
-          { title: "Quality Assurance", href: "/tickets/quality" },
-          { title: "Material Returns", href: "/tickets/returns" },
         ],
       },
     ],
@@ -246,13 +204,13 @@ const navigation: NavGroup[] = [
     title: "Buyer Portal",
     items: [
       {
-        title: "My Services",
+        title: "Buyer Workflow",
         href: "/buyer",
         icon: ShoppingCart,
         children: [
-          { title: "All Requests",         href: "/buyer/requests" },
-          { title: "New Request",          href: "/buyer/requests/new" },
-          { title: "Invoices & Payments",  href: "/buyer/invoices" },
+          { title: "All Requests", href: "/buyer/requests" },
+          { title: "New Request", href: "/buyer/requests/new" },
+          { title: "Invoices & Payments", href: "/buyer/invoices" },
         ],
       },
     ],
@@ -261,51 +219,15 @@ const navigation: NavGroup[] = [
     title: "Supplier Portal",
     items: [
       {
-        title: "Order Management",
+        title: "Supplier Workflow",
         href: "/supplier",
         icon: Truck,
         children: [
-          { title: "Pending Indents",   href: "/supplier/indents" },
-          { title: "Purchase Orders",   href: "/supplier/purchase-orders" },
-          { title: "Service Orders",    href: "/supplier/service-orders" },
-          { title: "Returns",           href: "/supplier/returns" },
-          { title: "My Profile",        href: "/supplier/profile" },
-          { title: "My Bills",          href: "/supplier/bills" },
-        ],
-      },
-    ],
-  },
-  {
-    title: "Portals",
-    adminOnly: true,
-    items: [
-      {
-        title: "Partners & Portals",
-        href: "/portals",
-        icon: LayoutGrid,
-        children: [
-          { title: "Buyer Interface",    href: "/buyer" },
-          { title: "Supplier Interface", href: "/supplier" },
-        ],
-      },
-    ],
-  },
-  {
-    title: "System",
-    items: [
-      {
-        title: "Settings",
-        href: "/settings",
-        icon: Settings,
-        children: [
-          { title: "Admin Management", href: "/settings/admins" },
-          { title: "Service Indents", href: "/admin/service-indents" },
-          { title: "Material Indents", href: "/admin/material-indents" },
-          { title: "Waitlist", href: "/admin/waitlist" },
-          { title: "Role & Permissions", href: "/settings/permissions" },
-          { title: "Audit Logs", href: "/admin/audit-logs" },
-          { title: "System Configuration", href: "/admin/config" },
-          { title: "Notifications", href: "/settings/notifications" },
+          { title: "Pending Indents", href: "/supplier/indents" },
+          { title: "Purchase Orders", href: "/supplier/purchase-orders" },
+          { title: "Service Orders", href: "/supplier/service-orders" },
+          { title: "Supplier Bills", href: "/supplier/bills" },
+          { title: "Supplier Profile", href: "/supplier/profile" },
         ],
       },
     ],
@@ -333,6 +255,10 @@ function isPortalGroupVisible(
   }
 
   return true;
+}
+
+function getCollapsedItemHref(item: NavItem) {
+  return item.children?.[0]?.href ?? item.href;
 }
 
 export function AppSidebar({ collapsed, onToggle, className, isMobile }: AppSidebarProps) {
@@ -529,7 +455,7 @@ export function AppSidebar({ collapsed, onToggle, className, isMobile }: AppSide
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <Link
-                              href={item.href}
+                              href={getCollapsedItemHref(item)}
                               className={cn(
                                 "nav-item",
                                 isActive(item.href) ? "nav-item-active" : "nav-item-inactive"

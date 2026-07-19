@@ -281,9 +281,15 @@ export default function SupplierBillsPage() {
     {
       id: "actions",
       cell: ({ row }) => (
-        <DropdownMenu>
+          <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="h-8 w-8" disabled={isValidating && selectedBill?.id === row.original.id}>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8"
+              aria-label={`Open payout controls for bill ${row.original.bill_number}`}
+              disabled={isValidating && selectedBill?.id === row.original.id}
+            >
               {isValidating && selectedBill?.id === row.original.id ? <Loader2 className="h-4 w-4 animate-spin" /> : <MoreHorizontal className="h-4 w-4" />}
             </Button>
           </DropdownMenuTrigger>

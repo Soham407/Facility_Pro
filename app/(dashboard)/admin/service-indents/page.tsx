@@ -59,7 +59,7 @@ export default function AdminServiceIndentsPage() {
     linkRequestToIndent,
     fetchRequestById,
     refresh: refreshRequests,
-  } = useBuyerRequests();
+  } = useBuyerRequests({ scope: "all", userId: user?.id ?? null });
   const { createIndent, submitForApproval, approveIndent } = useIndents();
   const {
     getSuppliersByServiceType,

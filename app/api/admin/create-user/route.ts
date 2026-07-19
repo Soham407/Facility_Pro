@@ -25,12 +25,12 @@ const ADMIN_TIER_ROLES = new Set(["admin", "super_admin"]);
 const STAFF_ROLES = new Set([
   "security_guard",
   "security_supervisor",
-  "service_boy",
+  "field_technician",
   "ac_technician",
   "pest_control_technician",
   "storekeeper",
   "site_supervisor",
-  "delivery_boy",
+  "delivery_agent",
   "company_hod",
   "account",
 ]);

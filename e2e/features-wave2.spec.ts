@@ -8,7 +8,9 @@ const workflowFeatures = scopedFeatureMatrix.filter(
 );
 
 test.describe("Wave 2 Scoped Workflows", () => {
-  test.describe.configure({ timeout: 300_000 });
+  // These workflows mutate shared fixture users, inventory, and request chains.
+  // Run them serially so one scenario cannot invalidate another mid-flight.
+  test.describe.configure({ mode: "serial", timeout: 300_000 });
 
   for (const feature of workflowFeatures) {
     test(`${feature.featureKey} workflow`, async ({ browser }, testInfo) => {

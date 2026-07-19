@@ -100,21 +100,7 @@
     }
   },
   {
-    "role": "vendor",
-    "email": "vendor@test.com",
-    "fullName": "Vendor",
-    "username": "vendor",
-    "expectedLandingPath": "/supplier",
-    "allowedPath": "/supplier/indents",
-    "blockedPath": "/buyer",
-    "journey": {
-      "path": "/supplier/indents",
-      "label": "Supplier Portal Alias",
-      "readyText": "Incoming Requests"
-    }
-  },
-  {
-    "role": "delivery_boy",
+    "role": "delivery_agent",
     "email": "delivery@test.com",
     "fullName": "Delivery Associate",
     "username": "delivery",
@@ -171,7 +157,7 @@
     }
   },
   {
-    "role": "service_boy",
+    "role": "field_technician",
     "email": "serviceboy@test.com",
     "fullName": "Service Technician",
     "username": "serviceboy",

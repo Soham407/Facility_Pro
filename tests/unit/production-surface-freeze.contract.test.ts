@@ -7,18 +7,29 @@ import {
 } from "../helpers/source-files";
 
 describe("production surface freeze", () => {
-  it("removes printing and advertising from client-facing surfaces", async () => {
-    const sidebar = await readRepoFile("components/layout/AppSidebar.tsx");
+  it("keeps test-only dashboard chunks out of the checked-in production service worker", async () => {
+    const serviceWorker = await readRepoFile("public/sw.js");
+
+    expect(
+      sourceContainsNone(serviceWorker, [
+        "app/(dashboard)/test-guard/",
+        "app/(dashboard)/test-resident/",
+        "app/(dashboard)/test-delivery/",
+      ])
+    ).toBe(true);
+  });
+
+  it("keeps printing and advertising as an admin-owned production service surface", async () => {
     const buyerDashboard = await readRepoFile("app/(dashboard)/buyer/page.tsx");
     const buyerRequestForm = await readRepoFile("app/(dashboard)/buyer/requests/new/page.tsx");
     const deploymentMasters = await readRepoFile("hooks/useServiceDeploymentMasters.ts");
     const printingRoute = await readRepoFile("app/(dashboard)/services/printing/page.tsx");
 
-    expect(sourceContainsNone(sidebar, ["Printing & Ads", "/services/printing"])).toBe(true);
     expect(sourceContainsNone(buyerDashboard, ["Printing & Advertising", "category=printing"])).toBe(true);
     expect(sourceContainsNone(buyerRequestForm, ["Printing Services Request", 'printing: "printing"'])).toBe(true);
     expect(sourceContainsNone(deploymentMasters, ['value: "printing"', "printing & advertising"])).toBe(true);
-    expect(sourceContainsAll(printingRoute, ["notFound()"])).toBe(true);
+    expect(sourceContainsAll(printingRoute, ["Printing & Advertising", "IDPrintingModule", "AdBookingDialog"])).toBe(true);
+    expect(sourceContainsNone(printingRoute, ["notFound()"])).toBe(true);
   });
 
   it("hides known incomplete action controls instead of surfacing unavailable toasts", async () => {

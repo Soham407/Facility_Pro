@@ -9,7 +9,13 @@ import { updateSession } from "@/src/lib/supabase/middleware";
  * Public paths that don't require authentication.
  * All other paths require a valid session.
  */
-const PUBLIC_PATHS = ["/login", "/api/auth", "/api/waitlist", "/api/mobile/demo-otp"];
+const PUBLIC_PATHS = [
+  "/login",
+  "/api/auth",
+  "/api/waitlist",
+  "/api/mobile/demo-otp",
+  "/api/finance/payments/webhook",
+];
 
 /**
  * API routes exempt from middleware RBAC checks.
@@ -21,12 +27,13 @@ const PUBLIC_PATHS = ["/login", "/api/auth", "/api/waitlist", "/api/mobile/demo-
  * 3. Adding/updating tests that verify role enforcement
  */
 const API_PERMISSION_EXEMPTIONS = [
-  "/api/society/residents", // ✅ Validates role: admin, society_manager only
+  "/api/society/residents", // ✅ Validates role: admin, super_admin, society_manager only
   "/api/society/visitors", // ✅ Validates role: admin, super_admin, society_manager in handler
   "/api/society/visitors/", // ✅ Validates role: admin, society_manager, guard only (see VISITOR_MANAGEMENT_ROLES in handler)
   "/api/users/change-password", // ✅ Validates role: authenticated users can change their own password
   "/api/residents/unlinked", // ✅ Validates role: admin, society_manager only
   "/api/supplier/service-indent-response", // Service supplier accept route validates authenticated supplier/vendor ownership in the handler
+  "/api/supplier/returns", // Supplier RTV route validates authenticated supplier/vendor ownership in the handler
 ];
 
 /**

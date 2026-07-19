@@ -253,7 +253,7 @@ export default function SecurityCommandPage() {
   // Table columns
   const columns: ColumnDef<SecurityGuard>[] = [
     {
-      accessorKey: "employee",
+      accessorKey: "guard_code",
       header: "Guard Details",
       cell: ({ row }) => {
         const guard = row.original;

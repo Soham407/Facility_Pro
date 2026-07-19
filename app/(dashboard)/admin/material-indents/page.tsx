@@ -80,7 +80,7 @@ export default function AdminMaterialIndentsPage() {
     linkRequestToIndent,
     fetchRequestById,
     refresh: refreshRequests,
-  } = useBuyerRequests();
+  } = useBuyerRequests({ scope: "all", userId: user?.id ?? null });
   const { createIndent, addIndentItem, approveIndent } = useIndents();
   const { suppliers, isLoading: isLoadingSuppliers, refresh: refreshSuppliers } = useSuppliers({ status: "active" });
   const isAccessDenied = Boolean(role && role !== "admin" && role !== "super_admin");

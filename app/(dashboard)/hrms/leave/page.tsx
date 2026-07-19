@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { DataTable } from "@/components/shared/DataTable";
 import { Button } from "@/components/ui/button";
@@ -233,8 +234,10 @@ function AdminLeaveView() {
             <Button variant="outline" className="gap-2">
               <Filter className="h-4 w-4" /> Filter Quota
             </Button>
-            <Button className="gap-2 shadow-sm">
-              <Plus className="h-4 w-4" /> Add Configuration
+            <Button asChild className="gap-2 shadow-sm">
+              <Link href="/hrms/leave/config">
+                <Plus className="h-4 w-4" /> Add Configuration
+              </Link>
             </Button>
           </div>
         }
