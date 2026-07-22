@@ -31,6 +31,8 @@ import { useServices } from "@/hooks/useServices";
 import { Progress } from "@/components/ui/progress";
 import { PPEChecklistDialog } from "@/components/dialogs/PPEChecklistDialog";
 import { useSpillKits, SPILL_KIT_STATUS_CONFIG } from "@/hooks/useSpillKits";
+import { usePestControlPPE } from "@/hooks/usePestControlPPE";
+import { PPE_CHECKLIST_ITEMS } from "@/src/lib/pest-control/ppeTransforms";
 import { useMemo } from "react";
 import { ServiceCode } from "@/src/lib/service-codes";
 import type { ServiceRequestWithDetails } from "@/src/types/operations";
@@ -77,6 +79,8 @@ export default function PestControlPage() {
   const activeRequestId =
     requests.find((r: ServiceRequestWithDetails) => ["open", "assigned", "in_progress"].includes(r.status || ""))?.id ||
     requests[0]?.id;
+
+  const { ppeVerification } = usePestControlPPE(undefined, activeRequestId);
 
   const columns: ColumnDef<ServiceRequestWithDetails>[] = [
     {
@@ -395,22 +399,21 @@ export default function PestControlPage() {
                             <CardDescription className="text-xs">Technicians must verify these items before dispatch.</CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-4">
-                            {[
-                                { item: "Chemical Resistant Gloves", mandatory: true, status: "Verified" },
-                                { item: "N95 Respiration Mask", mandatory: true, status: "Verified" },
-                                { item: "Protective Eyewear/Goggles", mandatory: true, status: "Pending" },
-                                { item: "First Aid & Spill Kit", mandatory: true, status: "Verified" },
-                            ].map((ppe, i) => (
+                            {PPE_CHECKLIST_ITEMS.map((ppe, i) => {
+                                const isVerified = ppeVerification ? ppeVerification[ppe.id as keyof typeof ppeVerification] : false;
+                                const status = isVerified ? "Verified" : "Pending";
+                                return (
                                 <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-background border shadow-sm">
                                     <div className="flex items-center gap-3">
-                                        <div className={cn("h-6 w-6 rounded-full flex items-center justify-center", ppe.status === "Verified" ? "bg-success/20 text-success" : "bg-warning/20 text-warning")}>
+                                        <div className={cn("h-6 w-6 rounded-full flex items-center justify-center", status === "Verified" ? "bg-success/20 text-success" : "bg-warning/20 text-warning")}>
                                             <ShieldCheck className="h-3.5 w-3.5" />
                                         </div>
-                                        <span className="text-xs font-bold">{ppe.item}</span>
+                                        <span className="text-xs font-bold">{ppe.label}</span>
                                     </div>
-                                    <Badge variant="secondary" className="text-[10px] font-bold uppercase">{ppe.status}</Badge>
+                                    <Badge variant="secondary" className="text-[10px] font-bold uppercase">{status}</Badge>
                                 </div>
-                            ))}
+                                );
+                            })}
                             <PPEChecklistDialog serviceRequestId={activeRequestId}>
                               <Button className="w-full shadow-lg shadow-primary/20">Submit Site Readiness Report</Button>
                             </PPEChecklistDialog>
