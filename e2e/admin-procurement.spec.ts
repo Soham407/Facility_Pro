@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 import { loginAsRole } from "./helpers/auth";
+import { createServiceRoleClient } from "./helpers/db";
 
 // Admin procurement flow: login -> purchase orders -> open create dialog -> verify list state
 test.describe("Admin Procurement Flow", () => {
@@ -33,8 +34,12 @@ test.describe("Admin Procurement Flow", () => {
   });
 
   test("loads at least one product in admin procurement setup", async ({ page }) => {
+    const client = createServiceRoleClient();
+    const { data: product } = await client.from("products").select("id").limit(1).single();
+    if (!product) throw new Error("No products found in DB for the test to run");
+    
     // Navigate with the correct seeded product ID to bypass the redirect guard
-    await page.goto("/inventory/indents/create?productId=d02eed5d-7e3f-465b-ba3d-985f23f398bd");
+    await page.goto(`/inventory/indents/create?productId=${product.id}`);
     
     // Verify the page loads the consolidated form
     await expect(page.getByRole("heading", { name: /Create Indent from Alert/i }).first()).toBeVisible({ timeout: 10_000 });
