@@ -5,7 +5,7 @@ const files = fs.readdirSync('e2e').filter(f => f.endsWith('.spec.ts'));
 for (const file of files) {
   console.log(`Running e2e/${file}...`);
   try {
-    execSync(`npx playwright test e2e/${file} --reporter=json > e2e_results.json`, { stdio: 'ignore' });
+    execSync(`npx playwright test e2e/${file} --reporter=json --workers=1 > e2e_results.json`, { stdio: 'ignore' });
   } catch (e) {
     let resultText = fs.readFileSync('e2e_results.json', 'utf8');
     const startIdx = resultText.indexOf('{');

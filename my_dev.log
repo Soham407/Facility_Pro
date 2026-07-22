@@ -580,3 +580,3285 @@ Guard onboarding failed {
 [PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
 [PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
  GET /api/society/residents 200 in 77ms (compile: 1864µs, proxy.ts: 31ms, render: 44ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 46ms (compile: 2ms, proxy.ts: 6ms, render: 38ms)
+ GET /login 200 in 73ms (compile: 7ms, proxy.ts: 11ms, render: 54ms)
+ GET /login 200 in 73ms (compile: 7ms, proxy.ts: 11ms, render: 55ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 183ms (compile: 16ms, proxy.ts: 61ms, render: 106ms)
+ GET /dashboard 200 in 185ms (compile: 14ms, proxy.ts: 63ms, render: 108ms)
+ GET /dashboard 200 in 191ms (compile: 26ms, proxy.ts: 97ms, render: 67ms)
+[PROXY] Request to /services/security
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /services/security
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /services/security
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /services/security 200 in 252ms (compile: 21ms, proxy.ts: 65ms, render: 166ms)
+ GET /services/security 200 in 253ms (compile: 19ms, proxy.ts: 68ms, render: 166ms)
+ GET /services/security 200 in 227ms (compile: 21ms, proxy.ts: 107ms, render: 99ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 65ms (compile: 11ms, proxy.ts: 17ms, render: 38ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 97ms (compile: 4ms, proxy.ts: 54ms, render: 39ms)
+[PROXY] Request to /api/admin/guard-onboarding
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /api/admin/guard-onboarding
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ POST /api/admin/guard-onboarding 201 in 212ms (compile: 2ms, proxy.ts: 45ms, render: 165ms)
+ POST /api/admin/guard-onboarding 201 in 204ms (compile: 2ms, proxy.ts: 39ms, render: 163ms)
+[PROXY] Request to /services/security
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /api/admin/guard-onboarding
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /services/security 200 in 139ms (compile: 14ms, proxy.ts: 76ms, render: 50ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 41ms (compile: 3ms, proxy.ts: 7ms, render: 31ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ POST /api/admin/guard-onboarding 201 in 237ms (compile: 1516µs, proxy.ts: 70ms, render: 166ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 97ms (compile: 5ms, proxy.ts: 52ms, render: 40ms)
+[PROXY] Request to /society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /login 200 in 63ms (compile: 4ms, proxy.ts: 7ms, render: 52ms)
+ GET /society/residents 200 in 104ms (compile: 14ms, proxy.ts: 42ms, render: 48ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 122ms (compile: 12ms, proxy.ts: 51ms, render: 58ms)
+[PROXY] Request to /society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /society/residents 200 in 129ms (compile: 13ms, proxy.ts: 63ms, render: 53ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 34ms (compile: 4ms, proxy.ts: 8ms, render: 23ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 81ms (compile: 4ms, proxy.ts: 45ms, render: 32ms)
+[PROXY] Request to /society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /society/residents 200 in 77ms (compile: 2ms, proxy.ts: 43ms, render: 32ms)
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /api/society/residents 200 in 130ms (compile: 1482µs, proxy.ts: 51ms, render: 78ms)
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /api/society/residents 200 in 152ms (compile: 2ms, proxy.ts: 71ms, render: 78ms)
+ GET /api/society/residents 200 in 151ms (compile: 2ms, proxy.ts: 72ms, render: 77ms)
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /api/society/residents 200 in 136ms (compile: 4ms, proxy.ts: 55ms, render: 77ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /api/society/residents 200 in 145ms (compile: 4ms, proxy.ts: 66ms, render: 75ms)
+ GET /api/society/residents 200 in 147ms (compile: 3ms, proxy.ts: 65ms, render: 79ms)
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ POST /api/society/residents 200 in 233ms (compile: 2ms, proxy.ts: 55ms, render: 176ms)
+ POST /api/society/residents 200 in 226ms (compile: 1905µs, proxy.ts: 51ms, render: 173ms)
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /api/society/residents 200 in 148ms (compile: 3ms, proxy.ts: 62ms, render: 83ms)
+ GET /api/society/residents 200 in 150ms (compile: 4ms, proxy.ts: 63ms, render: 83ms)
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ POST /api/society/residents 200 in 223ms (compile: 2ms, proxy.ts: 50ms, render: 170ms)
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /api/society/residents 200 in 108ms (compile: 1560µs, proxy.ts: 51ms, render: 55ms)
+[PROXY] Request to /api/admin/guard-onboarding
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ POST /api/admin/guard-onboarding 201 in 182ms (compile: 1439µs, proxy.ts: 33ms, render: 148ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 18ms (compile: 1153µs, proxy.ts: 4ms, render: 14ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 67ms (compile: 1771µs, proxy.ts: 45ms, render: 20ms)
+[PROXY] Request to /society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /society/residents 200 in 55ms (compile: 1421µs, proxy.ts: 33ms, render: 21ms)
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /api/society/residents 200 in 74ms (compile: 1219µs, proxy.ts: 37ms, render: 35ms)
+ GET /api/society/residents 200 in 68ms (compile: 954µs, proxy.ts: 29ms, render: 38ms)
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ POST /api/society/residents 200 in 160ms (compile: 1047µs, proxy.ts: 42ms, render: 117ms)
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /api/society/residents 200 in 62ms (compile: 1047µs, proxy.ts: 27ms, render: 34ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 105ms (compile: 1472µs, proxy.ts: 11ms, render: 92ms)
+ GET /login 200 in 108ms (compile: 9ms, proxy.ts: 5ms, render: 94ms)
+ GET /login 200 in 126ms (compile: 5ms, proxy.ts: 19ms, render: 103ms)
+ GET /login 200 in 152ms (compile: 11ms, proxy.ts: 38ms, render: 103ms)
+ GET /login 200 in 157ms (compile: 11ms, proxy.ts: 38ms, render: 108ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 148ms (compile: 25ms, proxy.ts: 48ms, render: 75ms)
+ GET /login 200 in 149ms (compile: 25ms, proxy.ts: 48ms, render: 76ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 366ms (compile: 51ms, proxy.ts: 78ms, render: 237ms)
+ GET /dashboard 200 in 366ms (compile: 50ms, proxy.ts: 79ms, render: 237ms)
+ GET /dashboard 200 in 372ms (compile: 73ms, proxy.ts: 124ms, render: 175ms)
+ GET /dashboard 200 in 372ms (compile: 35ms, proxy.ts: 162ms, render: 176ms)
+ GET /dashboard 200 in 343ms (compile: 31ms, proxy.ts: 137ms, render: 176ms)
+ GET /dashboard 200 in 374ms (compile: 30ms, proxy.ts: 167ms, render: 177ms)
+ GET /dashboard 200 in 347ms (compile: 29ms, proxy.ts: 138ms, render: 180ms)
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /inventory/indents/verification
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /inventory/indents/create
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /services/masters/vendor-services
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+○ Compiling /inventory/indents/create ...
+⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /inventory/purchase-orders 200 in 5.5s (compile: 4.8s, proxy.ts: 78ms, render: 645ms)
+ GET /inventory/purchase-orders 200 in 5.4s (compile: 4.7s, proxy.ts: 98ms, render: 646ms)
+ GET /inventory/purchase-orders 200 in 5.4s (compile: 4.7s, proxy.ts: 88ms, render: 647ms)
+ GET /services/masters/vendor-services 200 in 5.4s (compile: 4.7s, proxy.ts: 88ms, render: 648ms)
+ GET /inventory/purchase-orders 200 in 5.4s (compile: 4.7s, proxy.ts: 95ms, render: 655ms)
+ GET /inventory/indents/create?productId=d02eed5d-7e3f-465b-ba3d-985f23f398bd 200 in 5.4s (compile: 4.7s, proxy.ts: 95ms, render: 658ms)
+ GET /inventory/indents/verification 200 in 5.5s (compile: 4.8s, proxy.ts: 89ms, render: 660ms)
+[PROXY] Request to /inventory
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 1892ms (compile: 1664ms, proxy.ts: 26ms, render: 202ms)
+ GET /login 200 in 1893ms (compile: 1664ms, proxy.ts: 26ms, render: 203ms)
+ GET /login 200 in 1895ms (compile: 1663ms, proxy.ts: 26ms, render: 205ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 78ms (compile: 13ms, proxy.ts: 17ms, render: 48ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /dashboard 200 in 443ms (compile: 59ms, proxy.ts: 65ms, render: 318ms)
+ GET /dashboard 200 in 443ms (compile: 61ms, proxy.ts: 64ms, render: 319ms)
+ GET /dashboard 200 in 422ms (compile: 45ms, proxy.ts: 57ms, render: 320ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /login 200 in 98ms (compile: 14ms, proxy.ts: 21ms, render: 63ms)
+[PROXY] Request to /finance/reconciliation
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /inventory/grn
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /finance/supplier-bills
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 213ms (compile: 34ms, proxy.ts: 82ms, render: 97ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /login 200 in 109ms (compile: 22ms, proxy.ts: 27ms, render: 60ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /finance/reconciliation 200 in 2.3s (compile: 1853ms, proxy.ts: 95ms, render: 317ms)
+ GET /finance/supplier-bills 200 in 2.2s (compile: 1823ms, proxy.ts: 83ms, render: 318ms)
+ GET /inventory/grn 200 in 2.4s (compile: 1840ms, proxy.ts: 65ms, render: 460ms)
+ GET /login 200 in 526ms (compile: 24ms, proxy.ts: 271ms, render: 230ms)
+ GET /dashboard 200 in 2.4s (compile: 86ms, proxy.ts: 2.0s, render: 248ms)
+ GET /dashboard 200 in 619ms (compile: 17ms, proxy.ts: 355ms, render: 248ms)
+ GET /inventory/purchase-orders 200 in 680ms (compile: 190ms, proxy.ts: 356ms, render: 134ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /inventory/indents/create
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 272ms (compile: 27ms, proxy.ts: 99ms, render: 146ms)
+ GET /inventory/indents/create?productId=d02eed5d-7e3f-465b-ba3d-985f23f398bd 200 in 242ms (compile: 39ms, proxy.ts: 76ms, render: 126ms)
+ GET /inventory/purchase-orders 200 in 245ms (compile: 68ms, proxy.ts: 78ms, render: 99ms)
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /inventory/purchase-orders 200 in 274ms (compile: 44ms, proxy.ts: 157ms, render: 73ms)
+[PROXY] Request to /inventory
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /inventory 200 in 89ms (compile: 13ms, proxy.ts: 56ms, render: 19ms)
+[PROXY] Request to /inventory
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /inventory 200 in 245ms (compile: 14ms, proxy.ts: 198ms, render: 33ms)
+ GET /login 200 in 52ms (compile: 11ms, proxy.ts: 13ms, render: 29ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 39ms (compile: 7ms, proxy.ts: 7ms, render: 24ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 65ms (compile: 27ms, proxy.ts: 9ms, render: 29ms)
+ GET /dashboard 200 in 104ms (compile: 7ms, proxy.ts: 42ms, render: 55ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 85ms (compile: 3ms, proxy.ts: 46ms, render: 36ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 32ms (compile: 2ms, proxy.ts: 6ms, render: 24ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 135ms (compile: 4ms, proxy.ts: 83ms, render: 48ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /inventory/grn
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 552ms (compile: 119ms, proxy.ts: 291ms, render: 142ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /dashboard 200 in 643ms (compile: 7ms, proxy.ts: 557ms, render: 79ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 140ms (compile: 23ms, proxy.ts: 17ms, render: 100ms)
+ GET /inventory/grn 200 in 398ms (compile: 57ms, proxy.ts: 254ms, render: 87ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /services/masters/vendor-services
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /dashboard 200 in 242ms (compile: 38ms, proxy.ts: 143ms, render: 60ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /services/masters/vendor-services 200 in 349ms (compile: 50ms, proxy.ts: 131ms, render: 169ms)
+ GET /login 200 in 208ms (compile: 5ms, proxy.ts: 138ms, render: 65ms)
+ GET /dashboard 200 in 354ms (compile: 33ms, proxy.ts: 233ms, render: 89ms)
+ GET /inventory/purchase-orders 200 in 160ms (compile: 18ms, proxy.ts: 64ms, render: 78ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 234ms (compile: 8ms, proxy.ts: 148ms, render: 78ms)
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /finance/supplier-bills
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /inventory/indents/verification
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /finance/reconciliation
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /inventory/indents/verification 200 in 713ms (compile: 243ms, proxy.ts: 264ms, render: 206ms)
+ GET /inventory/purchase-orders 200 in 1538ms (compile: 187ms, proxy.ts: 1081ms, render: 269ms)
+ GET /finance/supplier-bills 200 in 1538ms (compile: 200ms, proxy.ts: 1084ms, render: 254ms)
+ GET /finance/reconciliation 200 in 716ms (compile: 192ms, proxy.ts: 435ms, render: 89ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 58ms (compile: 3ms, proxy.ts: 16ms, render: 39ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 93ms (compile: 3ms, proxy.ts: 49ms, render: 41ms)
+[PROXY] Request to /inventory/indents/create
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /inventory/indents/create?productId=d02eed5d-7e3f-465b-ba3d-985f23f398bd 200 in 88ms (compile: 4ms, proxy.ts: 45ms, render: 39ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 35ms (compile: 6ms, proxy.ts: 7ms, render: 22ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 138ms (compile: 4ms, proxy.ts: 85ms, render: 49ms)
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /inventory
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /inventory
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /inventory/purchase-orders 200 in 123ms (compile: 8ms, proxy.ts: 52ms, render: 63ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /inventory 200 in 95ms (compile: 10ms, proxy.ts: 56ms, render: 30ms)
+ GET /inventory 200 in 96ms (compile: 6ms, proxy.ts: 60ms, render: 31ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 33ms (compile: 3ms, proxy.ts: 7ms, render: 23ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 116ms (compile: 3ms, proxy.ts: 67ms, render: 46ms)
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /login 200 in 81ms (compile: 3ms, proxy.ts: 8ms, render: 70ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /inventory/purchase-orders 200 in 148ms (compile: 13ms, proxy.ts: 68ms, render: 67ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 82ms (compile: 18ms, proxy.ts: 12ms, render: 51ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /dashboard 200 in 185ms (compile: 14ms, proxy.ts: 107ms, render: 64ms)
+[PROXY] Request to /finance/supplier-bills
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 134ms (compile: 4ms, proxy.ts: 94ms, render: 35ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /finance/supplier-bills 200 in 165ms (compile: 15ms, proxy.ts: 62ms, render: 88ms)
+[PROXY] Request to /services/masters/vendor-services
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 83ms (compile: 5ms, proxy.ts: 8ms, render: 69ms)
+ GET /login 200 in 113ms (compile: 37ms, proxy.ts: 35ms, render: 41ms)
+ GET /services/masters/vendor-services 200 in 175ms (compile: 14ms, proxy.ts: 77ms, render: 84ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /login 200 in 69ms (compile: 11ms, proxy.ts: 13ms, render: 45ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /dashboard 200 in 239ms (compile: 10ms, proxy.ts: 91ms, render: 139ms)
+ GET /dashboard 200 in 216ms (compile: 9ms, proxy.ts: 67ms, render: 140ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 138ms (compile: 24ms, proxy.ts: 16ms, render: 98ms)
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /inventory/indents/verification
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 247ms (compile: 16ms, proxy.ts: 107ms, render: 124ms)
+ GET /inventory/purchase-orders 200 in 230ms (compile: 40ms, proxy.ts: 51ms, render: 139ms)
+ GET /inventory/indents/verification 200 in 236ms (compile: 47ms, proxy.ts: 77ms, render: 112ms)
+[PROXY] Request to /inventory/grn
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /dashboard 200 in 198ms (compile: 23ms, proxy.ts: 90ms, render: 86ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /finance/reconciliation
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /inventory/grn 200 in 186ms (compile: 32ms, proxy.ts: 81ms, render: 73ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /finance/reconciliation 200 in 170ms (compile: 20ms, proxy.ts: 79ms, render: 71ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 45ms (compile: 1792µs, proxy.ts: 8ms, render: 35ms)
+ GET /login 200 in 45ms (compile: 1793µs, proxy.ts: 8ms, render: 36ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /login 200 in 51ms (compile: 4ms, proxy.ts: 8ms, render: 39ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /dashboard 200 in 179ms (compile: 19ms, proxy.ts: 48ms, render: 112ms)
+ GET /dashboard 200 in 187ms (compile: 17ms, proxy.ts: 50ms, render: 119ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /dashboard 200 in 163ms (compile: 27ms, proxy.ts: 77ms, render: 59ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 227ms (compile: 15ms, proxy.ts: 22ms, render: 190ms)
+ GET /login 200 in 263ms (compile: 63ms, proxy.ts: 52ms, render: 148ms)
+ GET /login 200 in 241ms (compile: 11ms, proxy.ts: 81ms, render: 149ms)
+ GET /inventory/purchase-orders 200 in 388ms (compile: 48ms, proxy.ts: 99ms, render: 241ms)
+ GET /inventory/purchase-orders 200 in 389ms (compile: 46ms, proxy.ts: 101ms, render: 242ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /inventory/purchase-orders 200 in 335ms (compile: 120ms, proxy.ts: 100ms, render: 115ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /dashboard 200 in 218ms (compile: 10ms, proxy.ts: 68ms, render: 140ms)
+ GET /dashboard 200 in 265ms (compile: 44ms, proxy.ts: 80ms, render: 141ms)
+ GET /dashboard 200 in 224ms (compile: 8ms, proxy.ts: 70ms, render: 146ms)
+ GET /login 200 in 127ms (compile: 21ms, proxy.ts: 30ms, render: 76ms)
+[PROXY] Request to /inventory/indents/create
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /services/masters/vendor-services
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /inventory/purchase-orders
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /services/masters/vendor-services 200 in 275ms (compile: 36ms, proxy.ts: 85ms, render: 154ms)
+ GET /inventory/indents/create?productId=d02eed5d-7e3f-465b-ba3d-985f23f398bd 200 in 285ms (compile: 61ms, proxy.ts: 84ms, render: 139ms)
+ GET /inventory/purchase-orders 200 in 288ms (compile: 79ms, proxy.ts: 87ms, render: 123ms)
+ GET /dashboard 200 in 289ms (compile: 85ms, proxy.ts: 87ms, render: 116ms)
+[PROXY] Request to /inventory/indents/verification
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /inventory/indents/verification 200 in 220ms (compile: 37ms, proxy.ts: 75ms, render: 108ms)
+[PROXY] Request to /inventory
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /inventory 200 in 107ms (compile: 18ms, proxy.ts: 73ms, render: 16ms)
+[PROXY] Request to /inventory
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /inventory 200 in 188ms (compile: 57ms, proxy.ts: 112ms, render: 19ms)
+ GET /login 200 in 107ms (compile: 7ms, proxy.ts: 20ms, render: 81ms)
+ GET /login 200 in 111ms (compile: 7ms, proxy.ts: 20ms, render: 85ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 70ms (compile: 7ms, proxy.ts: 15ms, render: 48ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 225ms (compile: 20ms, proxy.ts: 83ms, render: 123ms)
+ GET /dashboard 200 in 227ms (compile: 18ms, proxy.ts: 85ms, render: 124ms)
+ GET /dashboard 200 in 168ms (compile: 25ms, proxy.ts: 75ms, render: 67ms)
+[PROXY] Request to /finance/supplier-bills
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /inventory/grn
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /finance/reconciliation
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /finance/supplier-bills 200 in 178ms (compile: 19ms, proxy.ts: 59ms, render: 100ms)
+ GET /inventory/grn 200 in 178ms (compile: 42ms, proxy.ts: 60ms, render: 76ms)
+ GET /finance/reconciliation 200 in 174ms (compile: 40ms, proxy.ts: 73ms, render: 61ms)
+[PROXY] Request to /api/admin/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 109ms (compile: 7ms, proxy.ts: 6ms, render: 97ms)
+ GET /login 200 in 108ms (compile: 1317µs, proxy.ts: 10ms, render: 97ms)
+ GET /login 200 in 110ms (compile: 1309µs, proxy.ts: 10ms, render: 99ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 160ms (compile: 10ms, proxy.ts: 56ms, render: 94ms)
+ GET /login 200 in 164ms (compile: 10ms, proxy.ts: 56ms, render: 97ms)
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 158ms (compile: 26ms, proxy.ts: 38ms, render: 94ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /supplier
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 130ms (compile: 20ms, proxy.ts: 44ms, render: 66ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000008
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000002
+[PROXY] Request to /delivery
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000006
+ GET /dashboard 200 in 291ms (compile: 38ms, proxy.ts: 93ms, render: 160ms)
+ GET /dashboard 200 in 279ms (compile: 28ms, proxy.ts: 91ms, render: 161ms)
+ GET /buyer 200 in 2.6s (compile: 2.0s, proxy.ts: 94ms, render: 492ms)
+[PROXY] Request to /api/admin/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/admin/users/00000000-0000-0000-0000-000000000001/suspend
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /supplier 200 in 2.6s (compile: 1968ms, proxy.ts: 72ms, render: 566ms)
+ GET /delivery 200 in 2.6s (compile: 1890ms, proxy.ts: 101ms, render: 566ms)
+ GET /buyer 200 in 2.6s (compile: 1912ms, proxy.ts: 104ms, render: 568ms)
+ GET /dashboard 200 in 2.6s (compile: 1968ms, proxy.ts: 72ms, render: 575ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000008
+[PROXY] Request to /api/admin/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/admin/create-user
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/admin/users/00000000-0000-0000-0000-000000000001/role
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/admin/create-user
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /buyer/requests
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000006
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000002
+ GET /api/admin/residents 200 in 2.4s (compile: 1519ms, proxy.ts: 696ms, render: 185ms)
+ GET /login 200 in 263ms (compile: 21ms, proxy.ts: 79ms, render: 163ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ POST /api/admin/create-user 400 in 3.3s (compile: 1400ms, proxy.ts: 1660ms, render: 268ms)
+[PROXY] User from updateSession: 843d33d1-d339-4bbf-8cf0-b7386dd5a22e
+ GET /buyer/requests 200 in 1925ms (compile: 1410ms, proxy.ts: 222ms, render: 293ms)
+ GET /login 200 in 351ms (compile: 13ms, proxy.ts: 198ms, render: 140ms)
+ GET /login 200 in 385ms (compile: 13ms, proxy.ts: 198ms, render: 174ms)
+ GET /login 200 in 507ms (compile: 13ms, proxy.ts: 198ms, render: 296ms)
+ GET /login 200 in 511ms (compile: 13ms, proxy.ts: 198ms, render: 300ms)
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /supplier
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000002
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 617ms (compile: 62ms, proxy.ts: 314ms, render: 242ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /login 200 in 191ms (compile: 23ms, proxy.ts: 27ms, render: 141ms)
+ GET /api/society/residents 403 in 241ms (compile: 37ms, proxy.ts: 78ms, render: 126ms)
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 843d33d1-d339-4bbf-8cf0-b7386dd5a22e
+ GET /supplier 200 in 316ms (compile: 74ms, proxy.ts: 70ms, render: 173ms)
+ GET /buyer 200 in 319ms (compile: 97ms, proxy.ts: 71ms, render: 151ms)
+[PROXY] User from updateSession: 843d33d1-d339-4bbf-8cf0-b7386dd5a22e
+ GET /dashboard 200 in 325ms (compile: 121ms, proxy.ts: 73ms, render: 131ms)
+ GET /dashboard 200 in 300ms (compile: 74ms, proxy.ts: 93ms, render: 133ms)
+ GET /api/society/residents 200 in 281ms (compile: 13ms, proxy.ts: 172ms, render: 96ms)
+[PROXY] Request to /api/supplier/service-indent-response
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/supplier/service-indent-response
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/supplier/service-indent-response
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/super-admin/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000002
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 265ms (compile: 51ms, proxy.ts: 83ms, render: 131ms)
+[PROXY] Request to /api/super-admin/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/admin/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+ POST /api/supplier/service-indent-response 400 in 1773ms (compile: 1607ms, proxy.ts: 113ms, render: 53ms)
+ POST /api/supplier/service-indent-response 403 in 1778ms (compile: 1606ms, proxy.ts: 114ms, render: 59ms)
+ POST /api/supplier/service-indent-response 403 in 1780ms (compile: 1604ms, proxy.ts: 116ms, render: 60ms)
+[PROXY] User from updateSession: 843d33d1-d339-4bbf-8cf0-b7386dd5a22e
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /api/admin/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /api/admin/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 134ms (compile: 19ms, proxy.ts: 6ms, render: 109ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 78ms (compile: 5ms, proxy.ts: 13ms, render: 61ms)
+ GET /login 200 in 81ms (compile: 5ms, proxy.ts: 13ms, render: 64ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /supplier
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 77ms (compile: 11ms, proxy.ts: 15ms, render: 51ms)
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000002
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /login 200 in 331ms (compile: 182ms, proxy.ts: 16ms, render: 133ms)
+ GET /dashboard 200 in 401ms (compile: 48ms, proxy.ts: 56ms, render: 296ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 189ms (compile: 75ms, proxy.ts: 22ms, render: 92ms)
+ GET /buyer 200 in 428ms (compile: 54ms, proxy.ts: 196ms, render: 178ms)
+ GET /supplier 200 in 428ms (compile: 66ms, proxy.ts: 196ms, render: 166ms)
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] Request to /api/admin/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /login 200 in 172ms (compile: 45ms, proxy.ts: 28ms, render: 99ms)
+ GET /dashboard 200 in 304ms (compile: 60ms, proxy.ts: 91ms, render: 152ms)
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000008
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] Request to /api/admin/create-user
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /delivery
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000002
+[PROXY] Request to /api/admin/create-user
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /api/admin/residents 200 in 233ms (compile: 52ms, proxy.ts: 94ms, render: 87ms)
+ GET /api/society/residents 403 in 193ms (compile: 30ms, proxy.ts: 77ms, render: 86ms)
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000006
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /buyer 200 in 349ms (compile: 53ms, proxy.ts: 91ms, render: 205ms)
+ POST /api/admin/create-user 400 in 202ms (compile: 32ms, proxy.ts: 101ms, render: 69ms)
+[PROXY] Request to /api/admin/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /dashboard 200 in 360ms (compile: 87ms, proxy.ts: 87ms, render: 186ms)
+ GET /delivery 200 in 293ms (compile: 61ms, proxy.ts: 120ms, render: 112ms)
+[PROXY] Request to /api/admin/users/00000000-0000-0000-0000-000000000001/suspend
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] Request to /api/admin/users/00000000-0000-0000-0000-000000000001/role
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000008
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000006
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 129ms (compile: 15ms, proxy.ts: 21ms, render: 93ms)
+ GET /login 200 in 130ms (compile: 15ms, proxy.ts: 21ms, render: 93ms)
+ GET /login 200 in 131ms (compile: 15ms, proxy.ts: 21ms, render: 94ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 97ms (compile: 17ms, proxy.ts: 27ms, render: 53ms)
+[PROXY] Request to /supplier
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: 843d33d1-d339-4bbf-8cf0-b7386dd5a22e
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000002
+ GET /login 200 in 168ms (compile: 30ms, proxy.ts: 54ms, render: 84ms)
+ GET /login 200 in 178ms (compile: 76ms, proxy.ts: 13ms, render: 89ms)
+ GET /dashboard 200 in 259ms (compile: 23ms, proxy.ts: 65ms, render: 171ms)
+ GET /dashboard 200 in 260ms (compile: 16ms, proxy.ts: 72ms, render: 173ms)
+ GET /buyer 200 in 261ms (compile: 61ms, proxy.ts: 68ms, render: 132ms)
+ GET /supplier 200 in 267ms (compile: 67ms, proxy.ts: 96ms, render: 103ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/supplier/service-indent-response
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/society/residents
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/supplier/service-indent-response
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: 843d33d1-d339-4bbf-8cf0-b7386dd5a22e
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /api/supplier/service-indent-response
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: 843d33d1-d339-4bbf-8cf0-b7386dd5a22e
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000002
+ POST /api/supplier/service-indent-response 403 in 184ms (compile: 14ms, proxy.ts: 89ms, render: 82ms)
+ POST /api/supplier/service-indent-response 403 in 185ms (compile: 17ms, proxy.ts: 86ms, render: 83ms)
+ GET /api/society/residents 200 in 212ms (compile: 15ms, proxy.ts: 85ms, render: 112ms)
+ POST /api/supplier/service-indent-response 400 in 159ms (compile: 13ms, proxy.ts: 63ms, render: 83ms)
+ GET /dashboard 200 in 263ms (compile: 51ms, proxy.ts: 83ms, render: 128ms)
+ GET /dashboard 200 in 263ms (compile: 46ms, proxy.ts: 89ms, render: 129ms)
+[PROXY] Request to /api/super-admin/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/super-admin/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 843d33d1-d339-4bbf-8cf0-b7386dd5a22e
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /api/waitlist
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+ POST /api/waitlist 400 in 1244ms (compile: 1237ms, proxy.ts: 3ms, render: 4ms)
+[PROXY] Request to /api/users/reset-password
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /api/auth/client-ip
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 164ms (compile: 12ms, proxy.ts: 29ms, render: 123ms)
+ GET /login 200 in 164ms (compile: 12ms, proxy.ts: 29ms, render: 123ms)
+ GET /login 200 in 166ms (compile: 12ms, proxy.ts: 29ms, render: 125ms)
+ GET /login 200 in 168ms (compile: 12ms, proxy.ts: 29ms, render: 128ms)
+ GET /api/auth/client-ip 200 in 1331ms (compile: 1302ms, proxy.ts: 24ms, render: 4ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /api/auth/client-ip
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /api/auth/client-ip 200 in 27ms (compile: 5ms, proxy.ts: 22ms, render: 1191µs)
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: dca3e970-8e5c-46da-a2db-1d41cbc92ef7
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /api/users/reset-password
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+ GET /login 200 in 167ms (compile: 14ms, proxy.ts: 24ms, render: 129ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /buyer 200 in 383ms (compile: 26ms, proxy.ts: 96ms, render: 262ms)
+ GET /dashboard 200 in 392ms (compile: 96ms, proxy.ts: 98ms, render: 198ms)
+ GET /dashboard 200 in 392ms (compile: 97ms, proxy.ts: 97ms, render: 198ms)
+ GET /dashboard 200 in 393ms (compile: 96ms, proxy.ts: 98ms, render: 199ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /api/super-admin/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/assets/generate-qr-batch
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/super-admin/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/users/reset-password
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: dca3e970-8e5c-46da-a2db-1d41cbc92ef7
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 272ms (compile: 46ms, proxy.ts: 80ms, render: 146ms)
+[PROXY] Request to /api/waitlist
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+ POST /api/waitlist 400 in 1640ms (compile: 4ms, proxy.ts: 1634ms, render: 2ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /api/assets/generate-qr-batch
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ POST /api/super-admin/admins 400 in 1888ms (compile: 1651ms, proxy.ts: 112ms, render: 124ms)
+ POST /api/users/reset-password 403 in 1894ms (compile: 1655ms, proxy.ts: 108ms, render: 130ms)
+ GET /login 200 in 166ms (compile: 15ms, proxy.ts: 44ms, render: 107ms)
+ GET /login 200 in 168ms (compile: 15ms, proxy.ts: 44ms, render: 108ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /api/auth/client-ip
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /api/auth/client-ip 200 in 50ms (compile: 10ms, proxy.ts: 38ms, render: 2ms)
+ POST /api/assets/generate-qr-batch 400 in 1762ms (compile: 1506ms, proxy.ts: 139ms, render: 117ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: dca3e970-8e5c-46da-a2db-1d41cbc92ef7
+[PROXY] Request to /api/waitlist
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 159ms (compile: 22ms, proxy.ts: 42ms, render: 95ms)
+ GET /login 200 in 326ms (compile: 22ms, proxy.ts: 42ms, render: 262ms)
+ POST /api/waitlist 400 in 180ms (compile: 172ms, proxy.ts: 6ms, render: 1345µs)
+ GET /login 200 in 227ms (compile: 179ms, proxy.ts: 6ms, render: 42ms)
+ GET /dashboard 200 in 383ms (compile: 40ms, proxy.ts: 147ms, render: 196ms)
+ GET /dashboard 200 in 385ms (compile: 39ms, proxy.ts: 148ms, render: 198ms)
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /api/super-admin/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/users/reset-password
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: dca3e970-8e5c-46da-a2db-1d41cbc92ef7
+[PROXY] Request to /api/users/reset-password
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+ POST /api/super-admin/admins 400 in 344ms (compile: 104ms, proxy.ts: 195ms, render: 45ms)
+ GET /dashboard 200 in 410ms (compile: 24ms, proxy.ts: 74ms, render: 312ms)
+ GET /dashboard 200 in 401ms (compile: 17ms, proxy.ts: 72ms, render: 312ms)
+ POST /api/users/reset-password 403 in 411ms (compile: 102ms, proxy.ts: 181ms, render: 128ms)
+ GET /buyer 200 in 546ms (compile: 188ms, proxy.ts: 79ms, render: 278ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /api/assets/generate-qr-batch
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/super-admin/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /login 200 in 393ms (compile: 24ms, proxy.ts: 155ms, render: 214ms)
+ POST /api/assets/generate-qr-batch 400 in 257ms (compile: 31ms, proxy.ts: 73ms, render: 153ms)
+[PROXY] Request to /api/assets/generate-qr-batch
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /login 200 in 63ms (compile: 6ms, proxy.ts: 11ms, render: 46ms)
+ GET /dashboard 200 in 198ms (compile: 8ms, proxy.ts: 90ms, render: 101ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/users/reset-password
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 126ms (compile: 9ms, proxy.ts: 53ms, render: 64ms)
+ POST /api/users/reset-password 403 in 107ms (compile: 7ms, proxy.ts: 55ms, render: 46ms)
+[PROXY] Request to /api/super-admin/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /api/auth/client-ip
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+ GET /api/auth/client-ip 200 in 40ms (compile: 7ms, proxy.ts: 13ms, render: 20ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /api/users/reset-password
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+ GET /login 200 in 58ms (compile: 8ms, proxy.ts: 12ms, render: 37ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 34ms (compile: 2ms, proxy.ts: 6ms, render: 25ms)
+[PROXY] User from updateSession: dca3e970-8e5c-46da-a2db-1d41cbc92ef7
+ GET /dashboard 200 in 120ms (compile: 16ms, proxy.ts: 58ms, render: 46ms)
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] Request to /api/super-admin/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 42ms (compile: 4ms, proxy.ts: 6ms, render: 32ms)
+[PROXY] User from updateSession: dca3e970-8e5c-46da-a2db-1d41cbc92ef7
+ GET /buyer 200 in 143ms (compile: 12ms, proxy.ts: 64ms, render: 67ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ POST /api/super-admin/admins 400 in 130ms (compile: 7ms, proxy.ts: 53ms, render: 71ms)
+[PROXY] Request to /api/assets/generate-qr-batch
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+ GET /dashboard 200 in 128ms (compile: 13ms, proxy.ts: 62ms, render: 53ms)
+[PROXY] Request to /api/assets/generate-qr-batch
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /api/waitlist
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+ POST /api/waitlist 400 in 46ms (compile: 6ms, proxy.ts: 38ms, render: 2ms)
+ GET /login 200 in 63ms (compile: 6ms, proxy.ts: 9ms, render: 48ms)
+ POST /api/assets/generate-qr-batch 400 in 137ms (compile: 8ms, proxy.ts: 76ms, render: 53ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 127ms (compile: 10ms, proxy.ts: 54ms, render: 64ms)
+[PROXY] Request to /api/users/reset-password
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ POST /api/users/reset-password 403 in 127ms (compile: 4ms, proxy.ts: 69ms, render: 53ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 63ms (compile: 9ms, proxy.ts: 9ms, render: 46ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 62ms (compile: 7ms, proxy.ts: 8ms, render: 48ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 148ms (compile: 12ms, proxy.ts: 10ms, render: 126ms)
+ GET /login 200 in 163ms (compile: 20ms, proxy.ts: 38ms, render: 105ms)
+ GET /dashboard 200 in 231ms (compile: 67ms, proxy.ts: 62ms, render: 102ms)
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: dca3e970-8e5c-46da-a2db-1d41cbc92ef7
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] Request to /api/assets/generate-qr-batch
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 293ms (compile: 27ms, proxy.ts: 132ms, render: 134ms)
+ GET /buyer 200 in 216ms (compile: 31ms, proxy.ts: 77ms, render: 108ms)
+ POST /api/assets/generate-qr-batch 400 in 186ms (compile: 17ms, proxy.ts: 115ms, render: 53ms)
+ GET /dashboard 200 in 213ms (compile: 25ms, proxy.ts: 68ms, render: 120ms)
+[PROXY] Request to /api/super-admin/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /api/assets/generate-qr-batch
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /api/super-admin/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: aaaa0001-0000-0000-0000-000000000001
+[PROXY] User from updateSession: dca3e970-8e5c-46da-a2db-1d41cbc92ef7
+ POST /api/super-admin/admins 400 in 129ms (compile: 7ms, proxy.ts: 72ms, render: 50ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 51ms (compile: 8ms, proxy.ts: 8ms, render: 35ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /login 200 in 87ms (compile: 5ms, proxy.ts: 14ms, render: 68ms)
+ GET /login 200 in 116ms (compile: 7ms, proxy.ts: 37ms, render: 72ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /dashboard 200 in 158ms (compile: 16ms, proxy.ts: 80ms, render: 63ms)
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 151ms (compile: 19ms, proxy.ts: 51ms, render: 81ms)
+ GET /dashboard 200 in 181ms (compile: 38ms, proxy.ts: 60ms, render: 83ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /dashboard 200 in 127ms (compile: 14ms, proxy.ts: 50ms, render: 63ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 150ms (compile: 17ms, proxy.ts: 59ms, render: 74ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /dashboard 200 in 162ms (compile: 16ms, proxy.ts: 68ms, render: 78ms)
+ GET /login 200 in 69ms (compile: 11ms, proxy.ts: 16ms, render: 42ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 99ms (compile: 12ms, proxy.ts: 52ms, render: 35ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 111ms (compile: 16ms, proxy.ts: 56ms, render: 39ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 25ms (compile: 3ms, proxy.ts: 4ms, render: 18ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 57ms (compile: 3ms, proxy.ts: 6ms, render: 48ms)
+ GET /login 200 in 63ms (compile: 7ms, proxy.ts: 22ms, render: 34ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 170ms (compile: 11ms, proxy.ts: 69ms, render: 91ms)
+ GET /dashboard 200 in 134ms (compile: 12ms, proxy.ts: 41ms, render: 81ms)
+ GET /dashboard 200 in 145ms (compile: 12ms, proxy.ts: 51ms, render: 81ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 159ms (compile: 10ms, proxy.ts: 49ms, render: 100ms)
+ GET /dashboard 200 in 168ms (compile: 18ms, proxy.ts: 65ms, render: 85ms)
+ GET /dashboard 200 in 165ms (compile: 17ms, proxy.ts: 62ms, render: 86ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 38ms (compile: 1974µs, proxy.ts: 10ms, render: 27ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 25ms (compile: 1166µs, proxy.ts: 4ms, render: 20ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 65ms (compile: 1747µs, proxy.ts: 37ms, render: 26ms)
+[PROXY] Request to /hrms/attendance
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /hrms/attendance 200 in 2.9s (compile: 2.7s, proxy.ts: 26ms, render: 176ms)
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 479ms (compile: 26ms, proxy.ts: 307ms, render: 146ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 122ms (compile: 3ms, proxy.ts: 52ms, render: 67ms)
+ GET /dashboard 200 in 124ms (compile: 2ms, proxy.ts: 53ms, render: 69ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 52ms (compile: 1693µs, proxy.ts: 29ms, render: 21ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 36ms (compile: 6ms, proxy.ts: 4ms, render: 27ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 72ms (compile: 4ms, proxy.ts: 38ms, render: 31ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 67ms (compile: 4ms, proxy.ts: 38ms, render: 25ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 20ms (compile: 900µs, proxy.ts: 5ms, render: 14ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 69ms (compile: 1755µs, proxy.ts: 40ms, render: 27ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 71ms (compile: 2ms, proxy.ts: 41ms, render: 28ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 17ms (compile: 893µs, proxy.ts: 4ms, render: 13ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 60ms (compile: 1858µs, proxy.ts: 33ms, render: 25ms)
+[PROXY] Request to /hrms/attendance
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /hrms/attendance 200 in 67ms (compile: 2ms, proxy.ts: 36ms, render: 29ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 23ms (compile: 1177µs, proxy.ts: 4ms, render: 18ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 67ms (compile: 4ms, proxy.ts: 7ms, render: 55ms)
+ GET /login 200 in 68ms (compile: 4ms, proxy.ts: 7ms, render: 56ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 198ms (compile: 10ms, proxy.ts: 62ms, render: 126ms)
+ GET /dashboard 200 in 181ms (compile: 16ms, proxy.ts: 66ms, render: 99ms)
+ GET /dashboard 200 in 184ms (compile: 15ms, proxy.ts: 69ms, render: 100ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 160ms (compile: 13ms, proxy.ts: 56ms, render: 91ms)
+ GET /dashboard 200 in 166ms (compile: 10ms, proxy.ts: 77ms, render: 79ms)
+ GET /dashboard 200 in 166ms (compile: 32ms, proxy.ts: 54ms, render: 80ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 44ms (compile: 8ms, proxy.ts: 11ms, render: 24ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 139ms (compile: 10ms, proxy.ts: 51ms, render: 79ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 128ms (compile: 10ms, proxy.ts: 52ms, render: 65ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 69ms (compile: 2ms, proxy.ts: 9ms, render: 58ms)
+ GET /login 200 in 72ms (compile: 2ms, proxy.ts: 9ms, render: 61ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+ GET /login 200 in 69ms (compile: 10ms, proxy.ts: 13ms, render: 45ms)
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 175ms (compile: 14ms, proxy.ts: 62ms, render: 99ms)
+ GET /dashboard 200 in 178ms (compile: 12ms, proxy.ts: 63ms, render: 103ms)
+ GET /dashboard 200 in 147ms (compile: 17ms, proxy.ts: 62ms, render: 68ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 173ms (compile: 18ms, proxy.ts: 64ms, render: 91ms)
+ GET /dashboard 200 in 175ms (compile: 18ms, proxy.ts: 65ms, render: 93ms)
+ GET /dashboard 200 in 150ms (compile: 16ms, proxy.ts: 76ms, render: 58ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 27ms (compile: 1424µs, proxy.ts: 6ms, render: 20ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 58ms (compile: 1755µs, proxy.ts: 33ms, render: 24ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 60ms (compile: 1508µs, proxy.ts: 38ms, render: 20ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 18ms (compile: 1119µs, proxy.ts: 3ms, render: 14ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 20ms (compile: 1431µs, proxy.ts: 5ms, render: 14ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 60ms (compile: 1911µs, proxy.ts: 34ms, render: 24ms)
+[PROXY] Request to /hrms/attendance
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /hrms/attendance 200 in 52ms (compile: 2ms, proxy.ts: 30ms, render: 20ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 89ms (compile: 8ms, proxy.ts: 42ms, render: 39ms)
+[PROXY] Request to /hrms/attendance
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /hrms/attendance 200 in 52ms (compile: 2ms, proxy.ts: 30ms, render: 20ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 30ms (compile: 1097µs, proxy.ts: 3ms, render: 26ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 64ms (compile: 1724µs, proxy.ts: 34ms, render: 28ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 64ms (compile: 2ms, proxy.ts: 36ms, render: 26ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 18ms (compile: 1028µs, proxy.ts: 5ms, render: 12ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 63ms (compile: 1905µs, proxy.ts: 32ms, render: 29ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 59ms (compile: 1822µs, proxy.ts: 32ms, render: 25ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 20ms (compile: 3ms, proxy.ts: 3ms, render: 13ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 58ms (compile: 4ms, proxy.ts: 31ms, render: 23ms)
+[PROXY] Request to /hrms/attendance
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /hrms/attendance 200 in 62ms (compile: 2ms, proxy.ts: 36ms, render: 24ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 23ms (compile: 1606µs, proxy.ts: 6ms, render: 15ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 62ms (compile: 1580µs, proxy.ts: 39ms, render: 22ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 52ms (compile: 2ms, proxy.ts: 31ms, render: 19ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 16ms (compile: 878µs, proxy.ts: 3ms, render: 12ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 57ms (compile: 1354µs, proxy.ts: 38ms, render: 18ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 55ms (compile: 1383µs, proxy.ts: 34ms, render: 20ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 17ms (compile: 1093µs, proxy.ts: 3ms, render: 13ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 42ms (compile: 1434µs, proxy.ts: 24ms, render: 17ms)
+[PROXY] Request to /hrms/attendance
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /hrms/attendance 200 in 55ms (compile: 1709µs, proxy.ts: 35ms, render: 19ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 16ms (compile: 926µs, proxy.ts: 3ms, render: 11ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 46ms (compile: 1387µs, proxy.ts: 25ms, render: 19ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 47ms (compile: 1383µs, proxy.ts: 25ms, render: 20ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 16ms (compile: 917µs, proxy.ts: 3ms, render: 12ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 66ms (compile: 1513µs, proxy.ts: 45ms, render: 20ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 59ms (compile: 1348µs, proxy.ts: 36ms, render: 21ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 16ms (compile: 876µs, proxy.ts: 3ms, render: 12ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 44ms (compile: 1443µs, proxy.ts: 25ms, render: 18ms)
+[PROXY] Request to /hrms/attendance
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /hrms/attendance 200 in 45ms (compile: 1402µs, proxy.ts: 27ms, render: 17ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 18ms (compile: 964µs, proxy.ts: 3ms, render: 13ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 60ms (compile: 1821µs, proxy.ts: 32ms, render: 26ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 62ms (compile: 1810µs, proxy.ts: 34ms, render: 26ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 17ms (compile: 865µs, proxy.ts: 3ms, render: 13ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 57ms (compile: 1546µs, proxy.ts: 29ms, render: 26ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: 294d6354-97cd-4aa3-b211-b7ff17718237
+ GET /dashboard 200 in 60ms (compile: 1723µs, proxy.ts: 31ms, render: 27ms)
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] RAW COOKIE: undefined
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+ GET /login 200 in 18ms (compile: 915µs, proxy.ts: 3ms, render: 14ms)
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /dashboard 200 in 62ms (compile: 2ms, proxy.ts: 34ms, render: 26ms)
+[PROXY] Request to /hrms/attendance
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] RAW COOKIE (first 30 chars): base64-eyJhY2Nlc3NfdG9rZW4iOiJ
+[PROXY] User from updateSession: c203c2b4-0881-4a34-bd5e-23921bc7c6f5
+ GET /hrms/attendance 200 in 59ms (compile: 1991µs, proxy.ts: 32ms, render: 25ms)

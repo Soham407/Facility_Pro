@@ -1,4 +1,4 @@
-◇ injected env (7) from .env.local // tip: ⌁ auth for agents [www.vestauth.com]
+◇ injected env (7) from .env.local // tip: ◈ secrets for agents [www.dotenvx.com]
 ┌─────────┬───────────────────────────┬───────────────────────────┬────────────────────────────────────────┬────────────────────────────────────────┬───────────┬───────────────────────┐
 │ (index) │ role                      │ email                     │ authUserId                             │ publicUserId                           │ status    │ notes                 │
 ├─────────┼───────────────────────────┼───────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┼───────────┼───────────────────────┤
@@ -141,20 +141,20 @@
   },
   "suites": [
     {
-      "title": "admin-onboarding-demo.spec.ts",
-      "file": "admin-onboarding-demo.spec.ts",
+      "title": "attendance-geofence-demo.spec.ts",
+      "file": "attendance-geofence-demo.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Admin onboarding demo",
-          "file": "admin-onboarding-demo.spec.ts",
-          "line": 17,
+          "title": "Attendance Geofence Demo Pack",
+          "file": "attendance-geofence-demo.spec.ts",
+          "line": 138,
           "column": 6,
           "specs": [
             {
-              "title": "admin can onboard a guard from the security page",
+              "title": "guard cannot start shift when outside the assigned geo-fence",
               "ok": false,
               "tags": [],
               "tests": [
@@ -169,66 +169,39 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 23170,
+                      "duration": 20,
                       "error": {
-                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n",
-                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59",
-                        "location": {
-                          "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
-                          "column": 59,
-                          "line": 63
-                        },
-                        "snippet": "  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });"
+                        "value": "{\n  code: '42703',\n  details: null,\n  hint: null,\n  message: 'column employee_shift_assignments.assigned_from does not exist'\n}"
                       },
                       "errors": [
                         {
-                          "location": {
-                            "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
-                            "column": 59,
-                            "line": 63
-                          },
-                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n\n  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59"
+                          "message": "{\n  code: '42703',\n  details: null,\n  hint: null,\n  message: 'column employee_shift_assignments.assigned_from does not exist'\n}"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-22T19:10:35.901Z",
+                      "startTime": "2026-07-22T19:17:39.005Z",
                       "annotations": [],
                       "attachments": [
                         {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-chromium/test-failed-1.png"
-                        },
-                        {
-                          "name": "error-context",
-                          "contentType": "text/markdown",
-                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-chromium/error-context.md"
-                        },
-                        {
                           "name": "trace",
                           "contentType": "application/zip",
-                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-chromium/trace.zip"
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/attendance-geofence-demo-A-abe34-side-the-assigned-geo-fence-chromium/trace.zip"
                         }
-                      ],
-                      "errorLocation": {
-                        "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
-                        "column": 59,
-                        "line": 63
-                      }
+                      ]
                     }
                   ],
                   "status": "unexpected"
                 }
               ],
-              "id": "742285984bca249e653a-63810ba067ddb07ff356",
-              "file": "admin-onboarding-demo.spec.ts",
-              "line": 20,
+              "id": "b4a3217166fd5165e091-b2ab34826a5eaa8ce6dd",
+              "file": "attendance-geofence-demo.spec.ts",
+              "line": 141,
               "column": 7
             },
             {
-              "title": "admin can create a resident with linked login and status badges",
+              "title": "guard can clock in with selfie + gps, clock out, and admin can verify the attendance record",
               "ok": true,
               "tags": [],
               "tests": [
@@ -248,7 +221,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-22T19:10:59.520Z",
+                      "startTime": "2026-07-22T19:17:39.302Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -256,13 +229,13 @@
                   "status": "skipped"
                 }
               ],
-              "id": "742285984bca249e653a-f4733d162a2bd7b3db76",
-              "file": "admin-onboarding-demo.spec.ts",
-              "line": 152,
+              "id": "b4a3217166fd5165e091-00da9e30a059f4bd8c57",
+              "file": "attendance-geofence-demo.spec.ts",
+              "line": 168,
               "column": 7
             },
             {
-              "title": "admin can onboard a guard from the security page",
+              "title": "guard cannot start shift when outside the assigned geo-fence",
               "ok": false,
               "tags": [],
               "tests": [
@@ -277,66 +250,39 @@
                       "workerIndex": 1,
                       "parallelIndex": 1,
                       "status": "failed",
-                      "duration": 26548,
+                      "duration": 19,
                       "error": {
-                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n",
-                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59",
-                        "location": {
-                          "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
-                          "column": 59,
-                          "line": 63
-                        },
-                        "snippet": "  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });"
+                        "value": "{\n  code: '42703',\n  details: null,\n  hint: null,\n  message: 'column employee_shift_assignments.assigned_from does not exist'\n}"
                       },
                       "errors": [
                         {
-                          "location": {
-                            "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
-                            "column": 59,
-                            "line": 63
-                          },
-                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n\n  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59"
+                          "message": "{\n  code: '42703',\n  details: null,\n  hint: null,\n  message: 'column employee_shift_assignments.assigned_from does not exist'\n}"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-22T19:10:35.901Z",
+                      "startTime": "2026-07-22T19:17:39.004Z",
                       "annotations": [],
                       "attachments": [
                         {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-firefox/test-failed-1.png"
-                        },
-                        {
-                          "name": "error-context",
-                          "contentType": "text/markdown",
-                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-firefox/error-context.md"
-                        },
-                        {
                           "name": "trace",
                           "contentType": "application/zip",
-                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-firefox/trace.zip"
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/attendance-geofence-demo-A-abe34-side-the-assigned-geo-fence-firefox/trace.zip"
                         }
-                      ],
-                      "errorLocation": {
-                        "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
-                        "column": 59,
-                        "line": 63
-                      }
+                      ]
                     }
                   ],
                   "status": "unexpected"
                 }
               ],
-              "id": "742285984bca249e653a-bac2ab7378cb63a92ff3",
-              "file": "admin-onboarding-demo.spec.ts",
-              "line": 20,
+              "id": "b4a3217166fd5165e091-a8da575c52052216767d",
+              "file": "attendance-geofence-demo.spec.ts",
+              "line": 141,
               "column": 7
             },
             {
-              "title": "admin can create a resident with linked login and status badges",
+              "title": "guard can clock in with selfie + gps, clock out, and admin can verify the attendance record",
               "ok": true,
               "tags": [],
               "tests": [
@@ -356,7 +302,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-22T19:11:03.395Z",
+                      "startTime": "2026-07-22T19:17:39.723Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -364,13 +310,13 @@
                   "status": "skipped"
                 }
               ],
-              "id": "742285984bca249e653a-d8400732da317adf3b1e",
-              "file": "admin-onboarding-demo.spec.ts",
-              "line": 152,
+              "id": "b4a3217166fd5165e091-f7dba0cea1c2f2bb6af8",
+              "file": "attendance-geofence-demo.spec.ts",
+              "line": 168,
               "column": 7
             },
             {
-              "title": "admin can onboard a guard from the security page",
+              "title": "guard cannot start shift when outside the assigned geo-fence",
               "ok": false,
               "tags": [],
               "tests": [
@@ -385,66 +331,39 @@
                       "workerIndex": 2,
                       "parallelIndex": 2,
                       "status": "failed",
-                      "duration": 23908,
+                      "duration": 23,
                       "error": {
-                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n",
-                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59",
-                        "location": {
-                          "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
-                          "column": 59,
-                          "line": 63
-                        },
-                        "snippet": "  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });"
+                        "value": "{\n  code: '42703',\n  details: null,\n  hint: null,\n  message: 'column employee_shift_assignments.assigned_from does not exist'\n}"
                       },
                       "errors": [
                         {
-                          "location": {
-                            "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
-                            "column": 59,
-                            "line": 63
-                          },
-                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n\n  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59"
+                          "message": "{\n  code: '42703',\n  details: null,\n  hint: null,\n  message: 'column employee_shift_assignments.assigned_from does not exist'\n}"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-22T19:10:35.903Z",
+                      "startTime": "2026-07-22T19:17:39.005Z",
                       "annotations": [],
                       "attachments": [
                         {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-webkit/test-failed-1.png"
-                        },
-                        {
-                          "name": "error-context",
-                          "contentType": "text/markdown",
-                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-webkit/error-context.md"
-                        },
-                        {
                           "name": "trace",
                           "contentType": "application/zip",
-                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-webkit/trace.zip"
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/attendance-geofence-demo-A-abe34-side-the-assigned-geo-fence-webkit/trace.zip"
                         }
-                      ],
-                      "errorLocation": {
-                        "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
-                        "column": 59,
-                        "line": 63
-                      }
+                      ]
                     }
                   ],
                   "status": "unexpected"
                 }
               ],
-              "id": "742285984bca249e653a-232a21998b7589212632",
-              "file": "admin-onboarding-demo.spec.ts",
-              "line": 20,
+              "id": "b4a3217166fd5165e091-f4ece282ad07cea28e4f",
+              "file": "attendance-geofence-demo.spec.ts",
+              "line": 141,
               "column": 7
             },
             {
-              "title": "admin can create a resident with linked login and status badges",
+              "title": "guard can clock in with selfie + gps, clock out, and admin can verify the attendance record",
               "ok": true,
               "tags": [],
               "tests": [
@@ -464,7 +383,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-22T19:11:00.048Z",
+                      "startTime": "2026-07-22T19:17:39.151Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -472,13 +391,13 @@
                   "status": "skipped"
                 }
               ],
-              "id": "742285984bca249e653a-2e41fe909263ff039dc5",
-              "file": "admin-onboarding-demo.spec.ts",
-              "line": 152,
+              "id": "b4a3217166fd5165e091-9ea9251e0d3c48417983",
+              "file": "attendance-geofence-demo.spec.ts",
+              "line": 168,
               "column": 7
             },
             {
-              "title": "admin can onboard a guard from the security page",
+              "title": "guard cannot start shift when outside the assigned geo-fence",
               "ok": false,
               "tags": [],
               "tests": [
@@ -493,66 +412,39 @@
                       "workerIndex": 3,
                       "parallelIndex": 3,
                       "status": "failed",
-                      "duration": 23173,
+                      "duration": 22,
                       "error": {
-                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n",
-                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59",
-                        "location": {
-                          "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
-                          "column": 59,
-                          "line": 63
-                        },
-                        "snippet": "  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });"
+                        "value": "{\n  code: '42703',\n  details: null,\n  hint: null,\n  message: 'column employee_shift_assignments.assigned_from does not exist'\n}"
                       },
                       "errors": [
                         {
-                          "location": {
-                            "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
-                            "column": 59,
-                            "line": 63
-                          },
-                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n\n  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59"
+                          "message": "{\n  code: '42703',\n  details: null,\n  hint: null,\n  message: 'column employee_shift_assignments.assigned_from does not exist'\n}"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-22T19:10:35.900Z",
+                      "startTime": "2026-07-22T19:17:39.005Z",
                       "annotations": [],
                       "attachments": [
                         {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-mobile-chrome/test-failed-1.png"
-                        },
-                        {
-                          "name": "error-context",
-                          "contentType": "text/markdown",
-                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-mobile-chrome/error-context.md"
-                        },
-                        {
                           "name": "trace",
                           "contentType": "application/zip",
-                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-mobile-chrome/trace.zip"
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/attendance-geofence-demo-A-abe34-side-the-assigned-geo-fence-mobile-chrome/trace.zip"
                         }
-                      ],
-                      "errorLocation": {
-                        "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
-                        "column": 59,
-                        "line": 63
-                      }
+                      ]
                     }
                   ],
                   "status": "unexpected"
                 }
               ],
-              "id": "742285984bca249e653a-62a8576b1ef313aaf38b",
-              "file": "admin-onboarding-demo.spec.ts",
-              "line": 20,
+              "id": "b4a3217166fd5165e091-a30a8b8d5ec55f76044c",
+              "file": "attendance-geofence-demo.spec.ts",
+              "line": 141,
               "column": 7
             },
             {
-              "title": "admin can create a resident with linked login and status badges",
+              "title": "guard can clock in with selfie + gps, clock out, and admin can verify the attendance record",
               "ok": true,
               "tags": [],
               "tests": [
@@ -572,7 +464,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-07-22T19:10:59.520Z",
+                      "startTime": "2026-07-22T19:17:39.373Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -580,9 +472,9 @@
                   "status": "skipped"
                 }
               ],
-              "id": "742285984bca249e653a-481a1a8159a48016a4c0",
-              "file": "admin-onboarding-demo.spec.ts",
-              "line": 152,
+              "id": "b4a3217166fd5165e091-15e6b7870e4d7cec0065",
+              "file": "attendance-geofence-demo.spec.ts",
+              "line": 168,
               "column": 7
             }
           ]
@@ -592,8 +484,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-07-22T19:10:33.715Z",
-    "duration": 29702.475,
+    "startTime": "2026-07-22T19:17:37.212Z",
+    "duration": 2519.673,
     "expected": 0,
     "skipped": 4,
     "unexpected": 4,

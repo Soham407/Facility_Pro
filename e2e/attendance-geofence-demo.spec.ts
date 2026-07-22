@@ -71,10 +71,10 @@ async function widenGuardShiftWindow(employeeId: string) {
   const client = createServiceRoleClient();
   const { data: assignment, error: assignmentError } = await client
     .from("employee_shift_assignments")
-    .select("shift_id, assigned_from")
+    .select("shift_id, effective_from")
     .eq("employee_id", employeeId)
     .eq("is_active", true)
-    .order("assigned_from", { ascending: false })
+    .order("effective_from", { ascending: false })
     .limit(1)
     .maybeSingle();
 
