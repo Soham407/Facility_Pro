@@ -7,10 +7,11 @@ import type { RoleJourneyCheck, RoleTestConfig } from "../role-matrix";
 import { getRoleTestConfig } from "../role-matrix";
 
 const SUPABASE_PROJECT_REF = "wwhbdgwfodumognpkgrf";
-const SUPABASE_TOKEN_URL = `https://${SUPABASE_PROJECT_REF}.supabase.co/auth/v1/token`;
-const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3aGJkZ3dmb2R1bW9nbnBrZ3JmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAxMzYyOTgsImV4cCI6MjA4NTcxMjI5OH0.Iw5KYmIP_OHalA2tyHAiKSI6xQa-EE5urL_4aEygzg0";
-const SESSION_COOKIE_NAME = `sb-${SUPABASE_PROJECT_REF}-auth-token`;
+const fallbackUrl = "https://" + SUPABASE_PROJECT_REF + ".supabase.co";
+const SUPABASE_TOKEN_URL = (process.env.NEXT_PUBLIC_SUPABASE_URL || fallbackUrl) + "/auth/v1/token";
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3aGJkZ3dmb2R1bW9nbnBrZ3JmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAxMzYyOTgsImV4cCI6MjA4NTcxMjI5OH0.Iw5KYmIP_OHalA2tyHAiKSI6xQa-EE5urL_4aEygzg0";
+const isLocal = !!process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_URL.includes("127.0.0.1");
+const SESSION_COOKIE_NAME = isLocal ? "sb-127-auth-token" : `sb-${SUPABASE_PROJECT_REF}-auth-token`;
 const BASE64_PREFIX = "base64-";
 const MAX_COOKIE_CHUNK = 3180;
 

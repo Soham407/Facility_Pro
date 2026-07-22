@@ -1,0 +1,131 @@
+
+> temp_next@0.1.0 test:e2e:full:existing
+> node scripts/run-playwright-suite.cjs full --reporter=json
+
+◇ injected env (7) from .env.local // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+{
+  "config": {
+    "configFile": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/playwright.config.ts",
+    "rootDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/global-setup.ts",
+    "globalTeardown": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/global-teardown.ts",
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e",
+        "testIgnore": [
+          "**/visual-regression.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e",
+        "testIgnore": [
+          "**/visual-regression.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e",
+        "testIgnore": [
+          "**/visual-regression.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "mobile-chrome",
+        "name": "mobile-chrome",
+        "testDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e",
+        "testIgnore": [
+          "**/visual-regression.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "runAgents": "none",
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.58.2",
+    "workers": 7,
+    "webServer": {
+      "command": "npm run start -- --hostname 127.0.0.1",
+      "url": "http://127.0.0.1:3000",
+      "reuseExistingServer": true,
+      "timeout": 180000
+    }
+  },
+  "suites": [],
+  "errors": [
+    {
+      "message": "Error: Command failed: /Users/sohambhutkar/.hermes/node/bin/node /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/scripts/provision-role-test-users.cjs",
+      "stack": "Error: Command failed: /Users/sohambhutkar/.hermes/node/bin/node /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/scripts/provision-role-test-users.cjs\n    at globalSetup (/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/global-setup.ts:18:17)",
+      "location": {
+        "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/global-setup.ts",
+        "column": 17,
+        "line": 18
+      },
+      "snippet": "\u001b[90m   at \u001b[39mglobal-setup.ts:18\n\n  16 |\n  17 |   for (const scriptPath of scripts) {\n> 18 |     execFileSync(process.execPath, [scriptPath], {\n     |                 ^\n  19 |       cwd: process.cwd(),\n  20 |       stdio: \"inherit\",\n  21 |       env: process.env,"
+    }
+  ],
+  "stats": {
+    "startTime": "2026-07-22T16:10:05.562Z",
+    "duration": 729.847,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

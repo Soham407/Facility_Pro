@@ -237,7 +237,7 @@ export async function POST(request: NextRequest) {
         .insert({
           employee_id: employeeId,
           shift_id: payload.shift_id,
-          assigned_from: new Date().toISOString().split("T")[0],
+          effective_from: new Date().toISOString().split("T")[0],
           is_active: true,
           assigned_by: null,
         })

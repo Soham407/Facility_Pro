@@ -28,6 +28,15 @@
 -- SECTION 1: MISSING ROLES
 -- =============================================================================
 INSERT INTO roles (role_name, role_display_name, is_active) VALUES
+  ('admin', 'Admin', true),
+  ('buyer', 'Buyer', true),
+  ('supplier', 'Supplier', true),
+  ('vendor', 'Vendor', true),
+  ('security_guard', 'Security Guard', true),
+  ('security_supervisor', 'Security Supervisor', true),
+  ('society_manager', 'Society Manager', true),
+  ('resident', 'Resident', true),
+  ('account', 'Account', true),
   ('company_md',   'Company MD',   true),
   ('company_hod',  'Company HOD',  true),
   ('delivery_boy', 'Delivery Boy', true),

@@ -1,0 +1,602 @@
+◇ injected env (7) from .env.local // tip: ⌁ auth for agents [www.vestauth.com]
+┌─────────┬───────────────────────────┬───────────────────────────┬────────────────────────────────────────┬────────────────────────────────────────┬───────────┬───────────────────────┐
+│ (index) │ role                      │ email                     │ authUserId                             │ publicUserId                           │ status    │ notes                 │
+├─────────┼───────────────────────────┼───────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┼───────────┼───────────────────────┤
+│ 0       │ 'super_admin'             │ 'superadmin@test.com'     │ 'dca3e970-8e5c-46da-a2db-1d41cbc92ef7' │ 'dca3e970-8e5c-46da-a2db-1d41cbc92ef7' │ 'updated' │ 'normalized password' │
+│ 1       │ 'admin'                   │ 'admin@test.com'          │ 'c203c2b4-0881-4a34-bd5e-23921bc7c6f5' │ 'c203c2b4-0881-4a34-bd5e-23921bc7c6f5' │ 'updated' │ 'normalized password' │
+│ 2       │ 'company_md'              │ 'md@test.com'             │ 'aaaa0001-0000-0000-0000-000000000004' │ 'aaaa0001-0000-0000-0000-000000000004' │ 'updated' │ 'normalized password' │
+│ 3       │ 'company_hod'             │ 'hod@test.com'            │ 'aaaa0001-0000-0000-0000-000000000003' │ 'aaaa0001-0000-0000-0000-000000000003' │ 'updated' │ 'normalized password' │
+│ 4       │ 'account'                 │ 'account@test.com'        │ 'aaaa0001-0000-0000-0000-000000000005' │ 'aaaa0001-0000-0000-0000-000000000005' │ 'updated' │ 'normalized password' │
+│ 5       │ 'buyer'                   │ 'buyer@test.com'          │ 'aaaa0001-0000-0000-0000-000000000001' │ 'aaaa0001-0000-0000-0000-000000000001' │ 'updated' │ 'normalized password' │
+│ 6       │ 'supplier'                │ 'supplier@test.com'       │ 'aaaa0001-0000-0000-0000-000000000002' │ 'aaaa0001-0000-0000-0000-000000000002' │ 'updated' │ 'normalized password' │
+│ 7       │ 'delivery_agent'          │ 'delivery@test.com'       │ 'aaaa0001-0000-0000-0000-000000000006' │ 'aaaa0001-0000-0000-0000-000000000006' │ 'updated' │ 'normalized password' │
+│ 8       │ 'security_guard'          │ 'guard@test.com'          │ '294d6354-97cd-4aa3-b211-b7ff17718237' │ '294d6354-97cd-4aa3-b211-b7ff17718237' │ 'updated' │ 'normalized password' │
+│ 9       │ 'security_supervisor'     │ 'supervisor@test.com'     │ 'aaaa0001-0000-0000-0000-000000000009' │ 'aaaa0001-0000-0000-0000-000000000009' │ 'updated' │ 'normalized password' │
+│ 10      │ 'society_manager'         │ 'societymanager@test.com' │ '843d33d1-d339-4bbf-8cf0-b7386dd5a22e' │ '843d33d1-d339-4bbf-8cf0-b7386dd5a22e' │ 'updated' │ 'normalized password' │
+│ 11      │ 'field_technician'        │ 'serviceboy@test.com'     │ 'aaaa0001-0000-0000-0000-000000000010' │ 'aaaa0001-0000-0000-0000-000000000010' │ 'updated' │ 'normalized password' │
+│ 12      │ 'resident'                │ 'resident@test.com'       │ '6a6554a6-33ad-4d56-8be3-ca1dcf97fe51' │ '6a6554a6-33ad-4d56-8be3-ca1dcf97fe51' │ 'updated' │ 'normalized password' │
+│ 13      │ 'storekeeper'             │ 'storekeeper@test.com'    │ 'aaaa0001-0000-0000-0000-000000000008' │ 'aaaa0001-0000-0000-0000-000000000008' │ 'updated' │ 'normalized password' │
+│ 14      │ 'site_supervisor'         │ 'sitesupervisor@test.com' │ '9a4d53f1-75a3-4012-bc98-fa9006f5fa1d' │ '9a4d53f1-75a3-4012-bc98-fa9006f5fa1d' │ 'updated' │ 'normalized password' │
+│ 15      │ 'ac_technician'           │ 'actech@test.com'         │ '4f3d37bd-9b98-40a1-ac34-9b2aa3cdc436' │ '4f3d37bd-9b98-40a1-ac34-9b2aa3cdc436' │ 'updated' │ 'normalized password' │
+│ 16      │ 'pest_control_technician' │ 'pesttech@test.com'       │ '3c5c7e69-74d4-4b83-98e8-4484589f1f3a' │ '3c5c7e69-74d4-4b83-98e8-4484589f1f3a' │ 'updated' │ 'normalized password' │
+└─────────┴───────────────────────────┴───────────────────────────┴────────────────────────────────────────┴────────────────────────────────────────┴───────────┴───────────────────────┘
+┌─────────┬────────────────────────────┬────────────────────────────────────────┐
+│ (index) │ key                        │ value                                  │
+├─────────┼────────────────────────────┼────────────────────────────────────────┤
+│ 0       │ 'locationId'               │ '393418b4-6f0a-4a32-8b6c-d660c7b647d5' │
+│ 1       │ 'societyId'                │ '99c4176c-ec4f-4ac8-97c6-c46964ef6f1a' │
+│ 2       │ 'flatId'                   │ '314d5560-0a3e-4d02-8ebe-f45c47ff8aa3' │
+│ 3       │ 'acTechnicianEmployeeId'   │ '842fefa2-3946-46b3-aff1-ba1057f2fc30' │
+│ 4       │ 'pestTechnicianEmployeeId' │ 'b0491082-6d88-499f-ae42-32c982d2d75c' │
+│ 5       │ 'guardRecordId'            │ 'fc1899b9-4d31-491a-a526-66e2b8e0142f' │
+└─────────┴────────────────────────────┴────────────────────────────────────────┘
+{
+  "config": {
+    "configFile": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/playwright.config.ts",
+    "rootDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/global-setup.ts",
+    "globalTeardown": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/global-teardown.ts",
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e",
+        "testIgnore": [
+          "**/visual-regression.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e",
+        "testIgnore": [
+          "**/visual-regression.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e",
+        "testIgnore": [
+          "**/visual-regression.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "mobile-chrome",
+        "name": "mobile-chrome",
+        "testDir": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e",
+        "testIgnore": [
+          "**/visual-regression.spec.ts"
+        ],
+        "testMatch": [
+          "**/*.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "runAgents": "none",
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.58.2",
+    "workers": 7,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "admin-onboarding-demo.spec.ts",
+      "file": "admin-onboarding-demo.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Admin onboarding demo",
+          "file": "admin-onboarding-demo.spec.ts",
+          "line": 17,
+          "column": 6,
+          "specs": [
+            {
+              "title": "admin can onboard a guard from the security page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 23170,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59",
+                        "location": {
+                          "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
+                          "column": 59,
+                          "line": 63
+                        },
+                        "snippet": "  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
+                            "column": 59,
+                            "line": 63
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n\n  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-22T19:10:35.901Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-chromium/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
+                        "column": 59,
+                        "line": 63
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "742285984bca249e653a-63810ba067ddb07ff356",
+              "file": "admin-onboarding-demo.spec.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "admin can create a resident with linked login and status badges",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-22T19:10:59.520Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "742285984bca249e653a-f4733d162a2bd7b3db76",
+              "file": "admin-onboarding-demo.spec.ts",
+              "line": 152,
+              "column": 7
+            },
+            {
+              "title": "admin can onboard a guard from the security page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 26548,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59",
+                        "location": {
+                          "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
+                          "column": 59,
+                          "line": 63
+                        },
+                        "snippet": "  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
+                            "column": 59,
+                            "line": 63
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n\n  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-22T19:10:35.901Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-firefox/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-firefox/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-firefox/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
+                        "column": 59,
+                        "line": 63
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "742285984bca249e653a-bac2ab7378cb63a92ff3",
+              "file": "admin-onboarding-demo.spec.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "admin can create a resident with linked login and status badges",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-22T19:11:03.395Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "742285984bca249e653a-d8400732da317adf3b1e",
+              "file": "admin-onboarding-demo.spec.ts",
+              "line": 152,
+              "column": 7
+            },
+            {
+              "title": "admin can onboard a guard from the security page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 23908,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59",
+                        "location": {
+                          "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
+                          "column": 59,
+                          "line": 63
+                        },
+                        "snippet": "  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
+                            "column": 59,
+                            "line": 63
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n\n  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-22T19:10:35.903Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-webkit/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-webkit/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
+                        "column": 59,
+                        "line": 63
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "742285984bca249e653a-232a21998b7589212632",
+              "file": "admin-onboarding-demo.spec.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "admin can create a resident with linked login and status badges",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-22T19:11:00.048Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "742285984bca249e653a-2e41fe909263ff039dc5",
+              "file": "admin-onboarding-demo.spec.ts",
+              "line": 152,
+              "column": 7
+            },
+            {
+              "title": "admin can onboard a guard from the security page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chrome",
+                  "projectName": "mobile-chrome",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 23173,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59",
+                        "location": {
+                          "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
+                          "column": 59,
+                          "line": 63
+                        },
+                        "snippet": "  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
+                            "column": 59,
+                            "line": 63
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\nExpected: visible\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: /onboard security guard/i }).getByText(/temporary password/i)\u001b[22m\n\n\n  61 |     await dialog.getByRole(\"button\", { name: /create guard/i }).click();\n  62 |\n> 63 |     await expect(dialog.getByText(/temporary password/i)).toBeVisible({ timeout: 20_000 });\n     |                                                           ^\n  64 |     await expect(dialog.getByText(guardEmail)).toBeVisible();\n  65 |\n  66 |     const authUsers = await client.auth.admin.listUsers({ page: 1, perPage: 1000 });\n    at /Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts:63:59"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-22T19:10:35.900Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-mobile-chrome/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-mobile-chrome/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/test-results/playwright/admin-onboarding-demo-Admi-f7838-uard-from-the-security-page-mobile-chrome/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/sohambhutkar/projects/Clients/facility-platform/Solvesxx_web/e2e/admin-onboarding-demo.spec.ts",
+                        "column": 59,
+                        "line": 63
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "742285984bca249e653a-62a8576b1ef313aaf38b",
+              "file": "admin-onboarding-demo.spec.ts",
+              "line": 20,
+              "column": 7
+            },
+            {
+              "title": "admin can create a resident with linked login and status badges",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chrome",
+                  "projectName": "mobile-chrome",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-07-22T19:10:59.520Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "742285984bca249e653a-481a1a8159a48016a4c0",
+              "file": "admin-onboarding-demo.spec.ts",
+              "line": 152,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-07-22T19:10:33.715Z",
+    "duration": 29702.475,
+    "expected": 0,
+    "skipped": 4,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

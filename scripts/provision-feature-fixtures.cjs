@@ -152,7 +152,7 @@ async function ensureShiftAssignment(supabase, employeeId, shiftId) {
     if (
       existingById.employee_id !== employeeId ||
       existingById.shift_id !== shiftId ||
-      existingById.assigned_from !== "2026-01-01" ||
+      existingById.effective_from !== "2026-01-01" ||
       existingById.is_active !== true
     ) {
       return runMutation(
@@ -161,8 +161,7 @@ async function ensureShiftAssignment(supabase, employeeId, shiftId) {
           .update({
             employee_id: employeeId,
             shift_id: shiftId,
-            assigned_from: "2026-01-01",
-            assigned_to: null,
+            effective_from: "2026-01-01",
             is_active: true,
           })
           .eq("id", assignmentId)
@@ -170,7 +169,6 @@ async function ensureShiftAssignment(supabase, employeeId, shiftId) {
           .single()
       );
     }
-
     return existingById;
   }
 
@@ -192,18 +190,16 @@ async function ensureShiftAssignment(supabase, employeeId, shiftId) {
     supabase
       .from("employee_shift_assignments")
       .insert({
-        id: assignmentId,
         employee_id: employeeId,
         shift_id: shiftId,
-        assigned_from: "2026-01-01",
+        effective_from: "2026-01-01",
+        effective_to: null,
         is_active: true,
-      })
-      .select()
-      .single()
+      }).single()
   );
 }
 
-async function ensureTechnicianProfile(supabase, employeeId, skills, specialization) {
+async function ensureTechnicianProfile(supabase, employeeId, skills) {
   const existing = await findByEq(supabase, "technician_profiles", "employee_id", employeeId);
   if (existing) {
     const nextSkills = JSON.stringify(skills);
@@ -214,7 +210,6 @@ async function ensureTechnicianProfile(supabase, employeeId, skills, specializat
     if (
       currentSkills !== nextSkills ||
       currentCertifications !== nextCertifications ||
-      existing.specialization !== specialization ||
       existing.is_active !== true
     ) {
       return runMutation(
@@ -223,7 +218,6 @@ async function ensureTechnicianProfile(supabase, employeeId, skills, specializat
           .update({
             skills,
             certifications: ["E2E_CERTIFIED"],
-            specialization,
             is_active: true,
           })
           .eq("id", existing.id)
@@ -243,7 +237,6 @@ async function ensureTechnicianProfile(supabase, employeeId, skills, specializat
         employee_id: employeeId,
         skills,
         certifications: ["E2E_CERTIFIED"],
-        specialization,
         is_active: true,
       })
       .select()

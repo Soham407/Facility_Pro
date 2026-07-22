@@ -1,0 +1,32 @@
+◇ injected env (7) from .env.local // tip: ⌘ override existing { override: true }
+┌─────────┬───────────────────────────┬───────────────────────────┬────────────────────────────────────────┬────────────────────────────────────────┬───────────┬───────────────────────┐
+│ (index) │ role                      │ email                     │ authUserId                             │ publicUserId                           │ status    │ notes                 │
+├─────────┼───────────────────────────┼───────────────────────────┼────────────────────────────────────────┼────────────────────────────────────────┼───────────┼───────────────────────┤
+│ 0       │ 'super_admin'             │ 'superadmin@test.com'     │ '1bb62415-a735-42c7-b1e6-c0bb7b86a63d' │ '1bb62415-a735-42c7-b1e6-c0bb7b86a63d' │ 'updated' │ 'normalized password' │
+│ 1       │ 'admin'                   │ 'admin@test.com'          │ 'ba8661e4-e7d2-4dc7-adda-f05623b6b700' │ 'ba8661e4-e7d2-4dc7-adda-f05623b6b700' │ 'updated' │ 'normalized password' │
+│ 2       │ 'company_md'              │ 'md@test.com'             │ 'aaaa0001-0000-0000-0000-000000000004' │ 'aaaa0001-0000-0000-0000-000000000004' │ 'updated' │ 'normalized password' │
+│ 3       │ 'company_hod'             │ 'hod@test.com'            │ 'aaaa0001-0000-0000-0000-000000000003' │ 'aaaa0001-0000-0000-0000-000000000003' │ 'updated' │ 'normalized password' │
+│ 4       │ 'account'                 │ 'account@test.com'        │ 'aaaa0001-0000-0000-0000-000000000005' │ 'aaaa0001-0000-0000-0000-000000000005' │ 'updated' │ 'normalized password' │
+│ 5       │ 'buyer'                   │ 'buyer@test.com'          │ 'aaaa0001-0000-0000-0000-000000000001' │ 'aaaa0001-0000-0000-0000-000000000001' │ 'updated' │ 'normalized password' │
+│ 6       │ 'supplier'                │ 'supplier@test.com'       │ 'aaaa0001-0000-0000-0000-000000000002' │ 'aaaa0001-0000-0000-0000-000000000002' │ 'updated' │ 'normalized password' │
+│ 7       │ 'delivery_agent'          │ 'delivery@test.com'       │ 'aaaa0001-0000-0000-0000-000000000006' │ 'aaaa0001-0000-0000-0000-000000000006' │ 'updated' │ 'normalized password' │
+│ 8       │ 'security_guard'          │ 'guard@test.com'          │ 'fa55763c-f690-433c-a761-c7a4bbaa22d3' │ 'fa55763c-f690-433c-a761-c7a4bbaa22d3' │ 'updated' │ 'normalized password' │
+│ 9       │ 'security_supervisor'     │ 'supervisor@test.com'     │ 'aaaa0001-0000-0000-0000-000000000009' │ 'aaaa0001-0000-0000-0000-000000000009' │ 'updated' │ 'normalized password' │
+│ 10      │ 'society_manager'         │ 'societymanager@test.com' │ '7392b5e5-549d-4977-9ecc-9acaa2a33e1a' │ '7392b5e5-549d-4977-9ecc-9acaa2a33e1a' │ 'updated' │ 'normalized password' │
+│ 11      │ 'field_technician'        │ 'serviceboy@test.com'     │ 'aaaa0001-0000-0000-0000-000000000010' │ 'aaaa0001-0000-0000-0000-000000000010' │ 'updated' │ 'normalized password' │
+│ 12      │ 'resident'                │ 'resident@test.com'       │ '78bf3c75-05e6-411c-8645-82baa99f7f19' │ '78bf3c75-05e6-411c-8645-82baa99f7f19' │ 'updated' │ 'normalized password' │
+│ 13      │ 'storekeeper'             │ 'storekeeper@test.com'    │ 'aaaa0001-0000-0000-0000-000000000008' │ 'aaaa0001-0000-0000-0000-000000000008' │ 'updated' │ 'normalized password' │
+│ 14      │ 'site_supervisor'         │ 'sitesupervisor@test.com' │ 'd136b6a7-3b80-45f7-b608-e18a5dd17df1' │ 'd136b6a7-3b80-45f7-b608-e18a5dd17df1' │ 'updated' │ 'normalized password' │
+│ 15      │ 'ac_technician'           │ 'actech@test.com'         │ 'fbfcedb8-036f-4bfe-93ea-c02d01004c89' │ 'fbfcedb8-036f-4bfe-93ea-c02d01004c89' │ 'updated' │ 'normalized password' │
+│ 16      │ 'pest_control_technician' │ 'pesttech@test.com'       │ '1f12f838-6fd3-4d5b-8b2e-bb1d89f42536' │ '1f12f838-6fd3-4d5b-8b2e-bb1d89f42536' │ 'updated' │ 'normalized password' │
+└─────────┴───────────────────────────┴───────────────────────────┴────────────────────────────────────────┴────────────────────────────────────────┴───────────┴───────────────────────┘
+┌─────────┬────────────────────────────┬────────────────────────────────────────┐
+│ (index) │ key                        │ value                                  │
+├─────────┼────────────────────────────┼────────────────────────────────────────┤
+│ 0       │ 'locationId'               │ '39b1148a-6976-4caf-b020-4f2134d322cb' │
+│ 1       │ 'societyId'                │ '11111111-1111-1111-1111-111111111111' │
+│ 2       │ 'flatId'                   │ '43e69e3e-702d-4602-9610-3a2424cbc600' │
+│ 3       │ 'acTechnicianEmployeeId'   │ '842fefa2-3946-46b3-aff1-ba1057f2fc30' │
+│ 4       │ 'pestTechnicianEmployeeId' │ 'b0491082-6d88-499f-ae42-32c982d2d75c' │
+│ 5       │ 'guardRecordId'            │ '729c33ef-160d-45de-afdb-c811b391f70e' │
+└─────────┴────────────────────────────┴────────────────────────────────────────┘

@@ -37,14 +37,26 @@ export async function updateSession(request: NextRequest) {
     }
   )
 
+  const rawCookie = request.cookies.get('sb-127-auth-token')?.value;
+  if (rawCookie) {
+    console.log("[PROXY] RAW COOKIE (first 30 chars):", rawCookie.substring(0, 30));
+  } else {
+    console.log("[PROXY] RAW COOKIE: undefined");
+  }
+
   // IMPORTANT: Do NOT use getSession() here. getUser() sends a request to the
   // Supabase Auth server every time to revalidate the Auth token, while
   // getSession() reads from the local storage/cookie without validation.
   // Only trust getUser() for security-critical middleware checks.
   const {
     data: { user },
+    error: authError
   } = await supabase.auth.getUser()
 
+  if (authError) {
+    console.error("[PROXY] Auth Error:", authError);
+  }
+  
   let role: string | null = null;
   let permissions: string[] = []
   let isActive = true

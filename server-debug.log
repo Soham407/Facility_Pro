@@ -1,0 +1,474 @@
+
+> temp_next@0.1.0 start
+> next start
+
+▲ Next.js 16.1.6
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.13:3000
+
+✓ Starting...
+✓ Ready in 498ms
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-0-0-1-auth-token' ]
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-0-0-1-auth-token' ]
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /buyer/requests
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-0-0-1-auth-token' ]
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-0-0-1-auth-token' ]
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-0-0-1-auth-token' ]
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-0-0-1-auth-token' ]
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /buyer/requests
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-0-0-1-auth-token' ]
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-0-0-1-auth-token' ]
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] Request to /buyer/requests
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] User from updateSession: null
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /settings/audit-logs
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /settings/audit-logs
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /settings/audit-logs
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /settings/audit-logs
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /settings/audit-logs
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /settings/company
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /settings/permissions
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /settings/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /settings/permissions
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /settings/permissions
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /settings/permissions
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /settings/company
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /settings/notifications
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /settings/branding
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /dashboard
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] User from updateSession: 378a7ff0-58a8-4402-a393-04b7efa71e9f
+[PROXY] Request to /login
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: []
+[PROXY] Auth Error: Error [AuthSessionMissingError]: Auth session missing!
+    at <unknown> (.next/server/middleware.js:51:15067)
+    at cQ._useSession (.next/server/middleware.js:51:12424)
+    at async cQ._getUser (.next/server/middleware.js:51:14737)
+    at async (.next/server/middleware.js:51:14531)
+    at async (.next/server/middleware.js:51:11698) {
+  __isAuthError: true,
+  status: 400,
+  code: undefined
+}
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] Request to /supplier
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /buyer/requests/new
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /buyer/requests/new
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /buyer/requests/new
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /buyer/requests/new
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] Request to /buyer/requests/new
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /buyer/requests/new
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] Request to /settings/admins
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] Request to /buyer
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] Request to /buyer/requests/new
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /buyer/requests/new
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /buyer/requests/new
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /buyer/requests/new
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] Request to /buyer/requests/new
+[PROXY] NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+[PROXY] Cookies: [ 'sb-127-auth-token' ]
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72
+[PROXY] User from updateSession: d299477d-fa40-4981-be90-5a1169d55a72

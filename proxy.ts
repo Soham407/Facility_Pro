@@ -58,6 +58,12 @@ function isInternalPath(pathname: string): boolean {
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const isApiRoute = pathname.startsWith("/api/");
+  
+  if (!isInternalPath(pathname)) {
+    console.log(`[PROXY] Request to ${pathname}`);
+    console.log(`[PROXY] NEXT_PUBLIC_SUPABASE_URL: ${process.env.NEXT_PUBLIC_SUPABASE_URL}`);
+    console.log(`[PROXY] Cookies:`, request.cookies.getAll().map(c => c.name));
+  }
 
   if (isInternalPath(pathname)) {
     return NextResponse.next();
@@ -95,6 +101,10 @@ export async function proxy(request: NextRequest) {
   const { supabaseResponse, user, role, permissions, isActive, mustChangePassword } = await updateSession(
     request
   );
+  
+  if (!isInternalPath(pathname)) {
+    console.log(`[PROXY] User from updateSession:`, user ? user.id : 'null');
+  }
 
   if (!user) {
     if (isApiRoute) {

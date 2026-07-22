@@ -20,7 +20,7 @@ test.describe("Admin onboarding demo", () => {
   test("admin can onboard a guard from the security page", async ({ page }) => {
     const client = createServiceRoleClient();
     const guardName = `Guard ${token("demo")}`;
-    const guardPhone = `9${Date.now().toString().slice(-9)}`;
+    const guardPhone = `9${Math.floor(Math.random() * 1000000000).toString().padStart(9, '0')}`;
     const guardEmail = `${token("guard")}@example.com`;
 
     const [{ data: location }, { data: shift }] = await Promise.all([
@@ -152,7 +152,7 @@ test.describe("Admin onboarding demo", () => {
   test("admin can create a resident with linked login and status badges", async ({ page }) => {
     const client = createServiceRoleClient();
     const residentName = `Resident ${token("demo")}`;
-    const residentPhone = `8${Date.now().toString().slice(-9)}`;
+    const residentPhone = `8${Math.floor(Math.random() * 1000000000).toString().padStart(9, '0')}`;
     const residentEmail = `${token("resident")}@example.com`;
     const tempPassword = "Resident@123";
 
