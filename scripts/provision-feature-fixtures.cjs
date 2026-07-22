@@ -656,7 +656,21 @@ async function main() {
 
   const leaveType =
     (await maybeSingle(supabase.from("leave_types").select("*").eq("leave_type", "sick_leave").maybeSingle())) ||
-    (await maybeSingle(supabase.from("leave_types").select("*").order("created_at").limit(1).maybeSingle()));
+    (await maybeSingle(supabase.from("leave_types").select("*").order("created_at").limit(1).maybeSingle())) ||
+    (await runMutation(
+      supabase
+        .from("leave_types")
+        .insert({
+          id: stableUuid("leave-type:sick"),
+          leave_type: "sick_leave",
+          leave_name: "Sick Leave",
+          yearly_quota: 12,
+          can_carry_forward: false,
+          requires_approval: true
+        })
+        .select()
+        .single()
+    ));
 
   const paymentMethod =
     (await maybeSingle(supabase.from("payment_methods").select("*").order("created_at").limit(1).maybeSingle())) ||
@@ -674,7 +688,22 @@ async function main() {
         .single()
     ));
 
-  const serviceRows = await runMutation(supabase.from("services").select("id, service_code, service_name"));
+  let serviceRows = await runMutation(supabase.from("services").select("id, service_code, service_name"));
+  if (!serviceRows || serviceRows.length === 0) {
+    const ac = await runMutation(supabase.from("services").insert({
+      id: stableUuid("service:ac"),
+      service_code: "AC-REP",
+      service_name: "AC Repair",
+      is_active: true
+    }).select().single());
+    const pest = await runMutation(supabase.from("services").insert({
+      id: stableUuid("service:pest"),
+      service_code: "PEST-01",
+      service_name: "Pest Control",
+      is_active: true
+    }).select().single());
+    serviceRows = [ac, pest];
+  }
   const acService =
     serviceRows.find((row) => row.service_code === "AC-REP") ||
     serviceRows.find((row) => String(row.service_name).toLowerCase().includes("ac")) ||
@@ -682,7 +711,7 @@ async function main() {
   const pestService =
     serviceRows.find((row) => String(row.service_name).toLowerCase().includes("pest")) ||
     serviceRows.find((row) => row.service_code !== "AC-REP") ||
-    serviceRows[0];
+    serviceRows[1] || serviceRows[0];
 
   const product =
     (await maybeSingle(supabase.from("products").select("*").order("created_at").limit(1).maybeSingle()));
