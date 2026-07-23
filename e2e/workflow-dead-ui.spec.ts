@@ -136,6 +136,7 @@ test.describe("Admin — Workflow & Dead-UI Audit", () => {
   });
 
   test("settings/admins: Invite Admin button opens dialog with temp password", async ({ page }) => {
+    await loginAsRole(page, "super_admin");
     await page.goto("/settings/admins", { waitUntil: "load" });
     await page.waitForTimeout(1_000);
 
