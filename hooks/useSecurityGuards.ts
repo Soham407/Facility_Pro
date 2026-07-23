@@ -60,8 +60,8 @@ export function useSecurityGuards(initialFilters?: GuardFilters) {
   );
 
   // Fetch all guards with details
-  const fetchGuards = useCallback(async () => {
-    setIsLoading(true);
+  const fetchGuards = useCallback(async (background = false) => {
+    if (!background) setIsLoading(true);
     setError(null);
 
     try {
@@ -178,7 +178,7 @@ export function useSecurityGuards(initialFilters?: GuardFilters) {
         variant: "destructive",
       });
     } finally {
-      setIsLoading(false);
+      if (!background) setIsLoading(false);
     }
   }, [filters, toast]);
 
@@ -318,7 +318,7 @@ export function useSecurityGuards(initialFilters?: GuardFilters) {
     setFilters,
     
     // Refresh
-    refresh: fetchGuards,
+    refresh: () => fetchGuards(true),
     refreshLocations: fetchGuardLocations,
   };
 }
