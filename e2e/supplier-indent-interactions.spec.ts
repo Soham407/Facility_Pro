@@ -99,12 +99,17 @@ test.describe("Supplier Indent Interactions", () => {
 
   test.beforeEach(async ({ page }) => {
     await loginAsRole(page, "supplier");
-    await page.goto("/supplier/indents");
+    await page.waitForURL("**/supplier");
     await expect(page.locator("main")).toBeVisible({ timeout: 20_000 });
   });
 
   test("supplier can accept a forwarded indent", async ({ page }) => {
     const indent = await insertForwardedIndent();
+    
+    // Use client-side navigation to bypass WebKit fetch caching on reload
+    await page.getByRole("link", { name: "View all requests" }).click();
+    await page.waitForURL("**/supplier/indents*");
+    await expect(page.locator("main")).toBeVisible({ timeout: 20_000 });
 
     // Capture page console output for diagnostics
     const consoleLogs: string[] = [];
@@ -125,8 +130,6 @@ test.describe("Supplier Indent Interactions", () => {
       await route.fulfill({ response: resp });
     });
 
-    await page.reload();
-    await expect(page.locator("main")).toBeVisible({ timeout: 20_000 });
     // Wait for the initial data fetch AND any realtime-triggered refetches to settle.
     // Without this, a rerender mid-click detaches the button from React's event tree.
     await page.waitForLoadState("networkidle");
@@ -166,8 +169,9 @@ test.describe("Supplier Indent Interactions", () => {
 
   test("supplier can reject a forwarded indent with a reason", async ({ page }) => {
     const indent = await insertForwardedIndent();
-
-    await page.reload();
+    // Use client-side navigation to bypass WebKit fetch caching on reload
+    await page.getByRole("link", { name: "View all requests" }).click();
+    await page.waitForURL("**/supplier/indents*");
     await expect(page.locator("main")).toBeVisible({ timeout: 20_000 });
 
     const label = indentLabel(indent);
@@ -213,7 +217,9 @@ test.describe("Supplier Indent Interactions", () => {
     // Insert an already-accepted indent (shows Details button, not Accept/Reject)
     const indent = await insertForwardedIndent({ status: "indent_accepted" });
 
-    await page.reload();
+    // Use client-side navigation to bypass WebKit fetch caching on reload
+    await page.getByRole("link", { name: "View all requests" }).click();
+    await page.waitForURL("**/supplier/indents*");
     await expect(page.locator("main")).toBeVisible({ timeout: 20_000 });
 
     const label = indentLabel(indent);
