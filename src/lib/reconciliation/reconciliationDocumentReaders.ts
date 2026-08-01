@@ -1,3 +1,5 @@
+import { z } from "zod";
+import { purchaseOrderItemsRowSchema, materialReceiptItemsRowSchema, purchaseBillItemsRowSchema } from "@/src/types/schema";
 import { supabase } from "@/src/lib/supabaseClient";
 import type { DocumentItemRow } from "@/src/lib/reconciliation/reconciliationTransforms";
 
@@ -53,18 +55,21 @@ export async function fetchDocumentItems(documentType: DocumentType, parentId: s
 
 export async function fetchUnmatchedItems(documentType: DocumentType): Promise<DocumentItemRow[]> {
   if (documentType === "po") {
-    const { data, error } = await supabase.from("purchase_order_items").select("*").gt("unmatched_qty", 0);
+    const { data: rawData, error } = await supabase.from("purchase_order_items").select("*").gt("unmatched_qty", 0);
+      const data = rawData ? z.array(purchaseOrderItemsRowSchema.passthrough()).parse(rawData) : [];
     if (error) throw error;
     return (data || []) as DocumentItemRow[];
   }
 
   if (documentType === "grn") {
-    const { data, error } = await supabase.from("material_receipt_items").select("*").gt("unmatched_qty", 0);
+    const { data: rawData, error } = await supabase.from("material_receipt_items").select("*").gt("unmatched_qty", 0);
+      const data = rawData ? z.array(materialReceiptItemsRowSchema.passthrough()).parse(rawData) : [];
     if (error) throw error;
     return (data || []) as DocumentItemRow[];
   }
 
-  const { data, error } = await supabase.from("purchase_bill_items").select("*").gt("unmatched_qty", 0);
+  const { data: rawData, error } = await supabase.from("purchase_bill_items").select("*").gt("unmatched_qty", 0);
+    const data = rawData ? z.array(purchaseBillItemsRowSchema.passthrough()).parse(rawData) : [];
   if (error) throw error;
   return (data || []) as DocumentItemRow[];
 }

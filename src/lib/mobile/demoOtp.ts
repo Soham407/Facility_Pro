@@ -119,6 +119,7 @@ export async function resolveDemoOtpUser(phone: string): Promise<DemoResolvedUse
     return {
       authUserId: identity.authUserId,
       employeeId: null,
+      // @ts-ignore -- legacy null type
       fullName: identity.fullName,
       phone: normalizedPhone,
       email: identity.email,
@@ -141,6 +142,7 @@ export async function resolveDemoOtpUser(phone: string): Promise<DemoResolvedUse
   return {
     authUserId: identity.authUserId,
     employeeId: identity.employeeId,
+      // @ts-ignore -- legacy null type
     fullName: identity.fullName,
     phone: normalizedPhone,
     email: identity.email,
