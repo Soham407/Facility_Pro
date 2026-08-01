@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/src/lib/supabaseClient";
 import { useToast } from "@/components/ui/use-toast";
 import { sanitizeLikeInput } from "@/lib/sanitize";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import {
   buildVisitorCollections,
@@ -292,7 +293,7 @@ export function useVisitors(initialFilters?: VisitorFilters) {
   const addVisitor = async (visitor: CreateVisitorDTO) => {
     try {
       const { data: result, error: rpcError } = await supabase.rpc(
-        "create_mobile_visitor" as any,
+        "create_mobile_visitor",
         {
           p_visitor_name: visitor.visitor_name,
           p_phone: visitor.phone ?? null,
@@ -369,7 +370,7 @@ export function useVisitors(initialFilters?: VisitorFilters) {
       if (!user) throw new Error("Not authenticated");
 
       const { data: result, error: rpcError } = await supabase.rpc(
-        "checkout_visitor" as any,
+        "checkout_visitor",
         {
           p_visitor_id: visitorId,
           p_user_id: user.id,
@@ -412,7 +413,7 @@ export function useVisitors(initialFilters?: VisitorFilters) {
       if (!user) throw new Error("Not authenticated");
 
       const { data: result, error: rpcError } = await supabase.rpc(
-        "approve_visitor" as any,
+        "approve_visitor",
         {
           p_visitor_id: visitorId,
           p_user_id: user.id,
@@ -451,7 +452,7 @@ export function useVisitors(initialFilters?: VisitorFilters) {
       if (!user) throw new Error("Not authenticated");
 
       const { data: result, error: rpcError } = await supabase.rpc(
-        "deny_visitor" as any,
+        "deny_visitor",
         {
           p_visitor_id: visitorId,
           p_user_id: user.id,

@@ -6,7 +6,7 @@ export async function getManagedSocietyIdsForUser(
   supabaseAdmin: ServiceClient,
   authUserId: string,
 ): Promise<Set<string>> {
-  const employeesQuery = supabaseAdmin.from("employees") as any;
+  const employeesQuery = supabaseAdmin.from("employees");
   const employeeSelect = employeesQuery?.select?.("id");
   const employeeLookup = employeeSelect?.eq?.("auth_user_id", authUserId);
 
