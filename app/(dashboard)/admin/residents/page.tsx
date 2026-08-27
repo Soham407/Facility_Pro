@@ -37,9 +37,11 @@ import {
   UpdateResidentPayload,
   useResidents,
 } from "@/hooks/useResidents";
+import { useSocieties } from "@/hooks/useSocieties";
+import { useBuildings } from "@/hooks/useBuildings";
+import { useFlats } from "@/hooks/useFlats";
 import { probeAdminResidenceSetupReads } from "@/src/lib/admin/residenceSetupReadProbe";
 import { toast } from "sonner";
-import { supabase } from "@/src/lib/supabaseClient";
 
 interface SocietyOption {
   id: string;
@@ -87,7 +89,7 @@ const emptyEditForm: UpdateResidentPayload = {
 export default function ResidentsPage() {
   const {
     residents,
-    isLoading,
+    isLoading: isResidentsLoading,
     stats,
     createResident,
     updateResident,
@@ -102,10 +104,18 @@ export default function ResidentsPage() {
   const [newCredentials, setNewCredentials] = useState<{ email: string; password: string } | null>(null);
   const [createForm, setCreateForm] = useState<CreateResidentPayload>(emptyCreateForm);
   const [editForm, setEditForm] = useState<UpdateResidentPayload>(emptyEditForm);
-  const [societies, setSocieties] = useState<SocietyOption[]>([]);
-  const [buildings, setBuildings] = useState<BuildingOption[]>([]);
-  const [flats, setFlats] = useState<FlatOption[]>([]);
-  const [selectedBuildingId, setSelectedBuildingId] = useState("");
+  
+  const [selectedSocietyId, setSelectedSocietyId] = useState<string>("");
+  const [selectedBuildingId, setSelectedBuildingId] = useState<string>("");
+
+  const { societies: societiesData } = useSocieties();
+  const { buildings: buildingsData } = useBuildings(selectedSocietyId || null);
+  const { flats: flatsData } = useFlats(selectedSocietyId || null, selectedBuildingId || null);
+
+  const societies = useMemo(() => societiesData.filter((s: any) => s.is_active !== false).map((s: any) => ({ id: s.id, society_name: s.society_name })), [societiesData]);
+  const buildings = useMemo(() => buildingsData.filter((b: any) => b.is_active !== false).map((b: any) => ({ id: b.id, building_name: b.building_name })), [buildingsData]);
+  const flats = useMemo(() => flatsData.filter((f: any) => f.is_active !== false && f.is_occupied === false).map((f: any) => ({ id: f.id, flat_number: f.flat_number })), [flatsData]);
+
   const [setupReadError, setSetupReadError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -113,7 +123,7 @@ export default function ResidentsPage() {
 
     async function verifyResidenceSetupReads() {
       try {
-        await probeAdminResidenceSetupReads(supabase);
+        await probeAdminResidenceSetupReads();
         if (active) {
           setSetupReadError(null);
         }
@@ -131,95 +141,10 @@ export default function ResidentsPage() {
     };
   }, []);
 
-  useEffect(() => {
-    let active = true;
-
-    async function loadSocieties() {
-      const { data, error } = await supabase
-        .from("societies")
-        .select("id, society_name")
-        .eq("is_active", true)
-        .order("society_name");
-
-      if (!active || error) {
-        return;
-      }
-
-      setSocieties((data ?? []) as SocietyOption[]);
-    }
-
-    void loadSocieties();
-
-    return () => {
-      active = false;
-    };
-  }, []);
-
-  useEffect(() => {
-    let active = true;
-
-    async function loadBuildings() {
-      if (!createForm.society_id) {
-        setBuildings([]);
-        return;
-      }
-
-      const { data, error } = await supabase
-        .from("buildings")
-        .select("id, building_name")
-        .eq("society_id", createForm.society_id)
-        .eq("is_active", true)
-        .order("building_name");
-
-      if (!active || error) {
-        return;
-      }
-
-      setBuildings((data ?? []) as BuildingOption[]);
-    }
-
-    void loadBuildings();
-
-    return () => {
-      active = false;
-    };
-  }, [createForm.society_id]);
-
-  useEffect(() => {
-    let active = true;
-
-    async function loadFlats() {
-      if (!selectedBuildingId) {
-        setFlats([]);
-        return;
-      }
-
-      const { data, error } = await supabase
-        .from("flats")
-        .select("id, flat_number")
-        .eq("building_id", selectedBuildingId)
-        .eq("is_occupied", false)
-        .eq("is_active", true)
-        .order("flat_number");
-
-      if (!active || error) {
-        return;
-      }
-
-      setFlats((data ?? []) as FlatOption[]);
-    }
-
-    void loadFlats();
-
-    return () => {
-      active = false;
-    };
-  }, [selectedBuildingId]);
-
   function openCreate() {
     setCreateForm(emptyCreateForm);
+    setSelectedSocietyId("");
     setSelectedBuildingId("");
-    setBuildings([]);
     setFlats([]);
     setCreateDialogOpen(true);
   }

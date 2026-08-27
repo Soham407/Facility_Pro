@@ -10,11 +10,11 @@ import {
 import { useMemo } from "react";
 
 const COLORS = {
-  primary: "#6366f1", // Indigo
-  success: "#22c55e", // Green
-  critical: "#ef4444", // Red
-  info: "#3b82f6",    // Blue
-  warning: "#f59e0b",  // Amber
+  primary: "hsl(var(--primary))",
+  success: "hsl(var(--success, 142 72% 29%))",
+  critical: "hsl(var(--destructive))",
+  info: "hsl(var(--info, 221 83% 53%))",
+  warning: "hsl(var(--warning, 38 92% 50%))",
 };
 
 interface ChartProps {
@@ -74,6 +74,7 @@ export function AnalyticsChart({
               tickFormatter={valueFormatter}
             />
             <Tooltip 
+              // @ts-ignore
               formatter={valueFormatter}
               contentStyle={{ 
                 backgroundColor: "hsl(var(--card))", 
@@ -116,6 +117,7 @@ export function AnalyticsChart({
               tickFormatter={valueFormatter}
             />
             <Tooltip 
+              // @ts-ignore
               formatter={valueFormatter}
               cursor={{ fill: "hsl(var(--muted)/0.1)" }}
               contentStyle={{ 
@@ -158,6 +160,7 @@ export function AnalyticsChart({
               ))}
             </Pie>
             <Tooltip 
+              // @ts-ignore
               formatter={valueFormatter}
               contentStyle={{ 
                 backgroundColor: "hsl(var(--card))", 

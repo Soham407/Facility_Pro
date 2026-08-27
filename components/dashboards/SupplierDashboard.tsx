@@ -60,7 +60,7 @@ export function SupplierDashboard() {
             {isLoading ? (
               <div className="flex justify-center py-8"><Loader2 className="h-6 w-6 animate-spin text-muted-foreground" /></div>
             ) : recentPOs.length === 0 ? (
-              <div className="py-8 text-center text-sm text-muted-foreground">No purchase orders yet</div>
+              <div className="py-8 text-center text-sm text-muted-foreground">No purchase orders assigned yet. New orders will appear here as they are created.</div>
             ) : (
               <div className="divide-y">
                 {recentPOs.map((po) => (

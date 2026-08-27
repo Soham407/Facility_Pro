@@ -31,7 +31,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { WorkMasterDialog } from "@/components/dialogs/WorkMasterDialog";
 import { LinkWorkDialog } from "@/components/dialogs/LinkWorkDialog";
-import { supabase } from "@/src/lib/supabaseClient";
+
 
 function summarizeWorkMasterOverview(workItems: WorkMaster[], serviceWorkLinks: typeof useWorkMaster extends (...args: any[]) => infer R ? R extends { serviceWorkLinks: infer S } ? S : never : never) {
   return {
@@ -50,7 +50,8 @@ export default function WorkMasterPage() {
     serviceWorkLinks,
     isLoading, 
     error, 
-    refresh 
+    refresh,
+    deleteWorkItem
   } = useWorkMaster();
 
   const [isWorkDialogOpen, setIsWorkDialogOpen] = useState(false);
@@ -74,8 +75,7 @@ export default function WorkMasterPage() {
 
   const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to deactivate this work item?")) {
-      await supabase.from("work_master").delete().eq("id", id);
-      refresh();
+      await deleteWorkItem(id, true);
     }
   };
 
@@ -166,8 +166,8 @@ export default function WorkMasterPage() {
   return (
     <div className="animate-fade-in space-y-8 pb-10">
       <PageHeader
-        title="Work Master"
-        description="Define standardized work items, tasks, and job types that can be linked to service categories."
+        title="Work Catalog"
+        description="Manage tasks, job types, and work items linked to service categories."
         actions={
           <div className="flex gap-2">
             <Button 

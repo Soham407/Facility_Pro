@@ -1,269 +1,172 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
-import { format } from "date-fns";
-import { ColumnDef } from "@tanstack/react-table";
-import { AlertCircle, Check, Loader2, RefreshCw, X } from "lucide-react";
-
-import {
-  WAITLIST_STATUS_CONFIG,
-  type WaitlistEntry,
-  type WaitlistStatus,
-  useWaitlist,
-} from "@/hooks/useWaitlist";
-import { PageHeader } from "@/components/shared/PageHeader";
+import React, { useState } from "react";
+import { useWaitlist, WAITLIST_STATUSES, WAITLIST_STATUS_CONFIG, WaitlistStatus } from "@/hooks/useWaitlist";
 import { DataTable } from "@/components/shared/DataTable";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Users, Clock, CheckCircle2, XCircle, MoreHorizontal, RefreshCw } from "lucide-react";
+import { toast } from "sonner";
 
-const STATUS_FILTER_OPTIONS: Array<{
-  value: WaitlistStatus | "all";
-  label: string;
-}> = [
-  { value: "all", label: "All statuses" },
-  { value: "pending", label: "Pending" },
-  { value: "approved", label: "Approved" },
-  { value: "rejected", label: "Rejected" },
-];
+export default function WaitlistPage() {
+  const { entries, stats, isLoading, refresh, updateWaitlistStatus, isUpdatingStatus } = useWaitlist();
+  const [updatingId, setUpdatingId] = useState<string | null>(null);
 
-export default function AdminWaitlistPage() {
-  const {
-    entries,
-    stats,
-    isLoading,
-    error,
-    refresh,
-    updateWaitlistStatus,
-    isUpdatingStatus,
-  } = useWaitlist();
-  const [statusFilter, setStatusFilter] = useState<WaitlistStatus | "all">("all");
-  const [pendingAction, setPendingAction] = useState<{
-    id: string;
-    status: WaitlistStatus;
-  } | null>(null);
-
-  const filteredEntries = useMemo(() => {
-    if (statusFilter === "all") {
-      return entries;
+  const handleStatusChange = async (id: string, status: WaitlistStatus) => {
+    setUpdatingId(id);
+    try {
+      await updateWaitlistStatus({ id, status });
+      toast.success(`Entry ${status === "approved" ? "approved" : status === "rejected" ? "rejected" : "set to pending"}`);
+      refresh();
+    } catch {
+      toast.error("Failed to update status");
+    } finally {
+      setUpdatingId(null);
     }
+  };
 
-    return entries.filter((entry) => entry.status === statusFilter);
-  }, [entries, statusFilter]);
-
-  const handleStatusChange = useCallback(
-    async (id: string, status: WaitlistStatus) => {
-      setPendingAction({ id, status });
-
-      try {
-        await updateWaitlistStatus({ id, status });
-      } finally {
-        setPendingAction((current) => (current?.id === id ? null : current));
-      }
+  const columns: ColumnDef<(typeof entries)[0]>[] = [
+    {
+      accessorKey: "name",
+      header: "Name",
+      cell: ({ row }) => (
+        <span className="font-medium text-foreground">
+          {row.original.name || "—"}
+        </span>
+      ),
     },
-    [updateWaitlistStatus]
-  );
-
-  const columns: ColumnDef<WaitlistEntry>[] = useMemo(
-    () => [
-      {
-        accessorKey: "name",
-        header: "Name",
-        cell: ({ row }) => (
-          <span className="font-medium text-foreground">
-            {row.original.name || "Not provided"}
-          </span>
-        ),
+    {
+      accessorKey: "email",
+      header: "Email",
+      cell: ({ row }) => (
+        <span className="text-muted-foreground">{row.original.email}</span>
+      ),
+    },
+    {
+      accessorKey: "company",
+      header: "Company",
+      cell: ({ row }) => (
+        <span className="text-muted-foreground">
+          {row.original.company || "—"}
+        </span>
+      ),
+    },
+    {
+      accessorKey: "created_at",
+      header: "Submitted",
+      cell: ({ row }) => (
+        <span className="text-xs text-muted-foreground">
+          {row.original.created_at
+            ? new Date(row.original.created_at).toLocaleDateString("en-IN", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })
+            : "—"}
+        </span>
+      ),
+    },
+    {
+      accessorKey: "status",
+      header: "Status",
+      cell: ({ row }) => {
+        const status = row.original.status;
+        const config = WAITLIST_STATUS_CONFIG[status];
+        return (
+          <Badge variant="outline" className={config.className}>
+            {config.label}
+          </Badge>
+        );
       },
-      {
-        accessorKey: "email",
-        header: "Email",
-        cell: ({ row }) => (
-          <span className="text-sm text-foreground/80">{row.original.email}</span>
-        ),
-      },
-      {
-        accessorKey: "company",
-        header: "Company",
-        cell: ({ row }) => (
-          <span className="text-sm text-muted-foreground">
-            {row.original.company || "Not provided"}
-          </span>
-        ),
-      },
-      {
-        accessorKey: "created_at",
-        header: "Created",
-        cell: ({ row }) => (
-          <span className="text-sm text-muted-foreground">
-            {row.original.created_at
-              ? format(new Date(row.original.created_at), "PPp")
-              : "Unknown"}
-          </span>
-        ),
-      },
-      {
-        accessorKey: "status",
-        header: "Status",
-        cell: ({ row }) => {
-          const config = WAITLIST_STATUS_CONFIG[row.original.status];
-
-          return (
-            <Badge variant="outline" className={config.className}>
-              {config.label}
-            </Badge>
-          );
-        },
-      },
-      {
-        id: "actions",
-        header: "Actions",
-        cell: ({ row }) => {
-          const { id, status } = row.original;
-          const isPendingForRow = pendingAction?.id === id;
-          const isApproving =
-            isPendingForRow && pendingAction?.status === "approved" && isUpdatingStatus;
-          const isRejecting =
-            isPendingForRow && pendingAction?.status === "rejected" && isUpdatingStatus;
-
-          return (
-            <div className="flex items-center justify-end gap-2">
-              <Button
-                size="sm"
-                variant={status === "approved" ? "default" : "outline"}
-                className={
-                  status === "approved"
-                    ? ""
-                    : "border-success/30 text-success hover:bg-success/10 hover:text-success"
-                }
-                disabled={isUpdatingStatus || status === "approved"}
-                onClick={() => handleStatusChange(id, "approved")}
-              >
-                {isApproving ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
+    },
+    {
+      id: "actions",
+      header: "",
+      cell: ({ row }) => {
+        const entry = row.original;
+        const isUpdating = updatingId === entry.id && isUpdatingStatus;
+        return (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="h-8 w-8 p-0" disabled={isUpdating}>
+                {isUpdating ? (
+                  <RefreshCw className="h-4 w-4 animate-spin" />
                 ) : (
-                  <Check className="h-4 w-4" />
+                  <MoreHorizontal className="h-4 w-4" />
                 )}
-                <span className="ml-1">Approve</span>
               </Button>
-              <Button
-                size="sm"
-                variant={status === "rejected" ? "destructive" : "outline"}
-                className={
-                  status === "rejected"
-                    ? ""
-                    : "border-destructive/30 text-destructive hover:bg-destructive/10 hover:text-destructive"
-                }
-                disabled={isUpdatingStatus || status === "rejected"}
-                onClick={() => handleStatusChange(id, "rejected")}
-              >
-                {isRejecting ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  <X className="h-4 w-4" />
-                )}
-                <span className="ml-1">Reject</span>
-              </Button>
-            </div>
-          );
-        },
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {WAITLIST_STATUSES.filter((s) => s !== entry.status).map((status) => (
+                <DropdownMenuItem
+                  key={status}
+                  onClick={() => handleStatusChange(entry.id, status)}
+                >
+                  {status === "approved" && <CheckCircle2 className="mr-2 h-4 w-4 text-success" />}
+                  {status === "rejected" && <XCircle className="mr-2 h-4 w-4 text-destructive" />}
+                  {status === "pending" && <Clock className="mr-2 h-4 w-4 text-warning" />}
+                  Mark as {WAITLIST_STATUS_CONFIG[status].label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        );
       },
-    ],
-    [handleStatusChange, isUpdatingStatus, pendingAction]
-  );
+    },
+  ];
+
+  const statCards = [
+    { label: "Total", value: stats.total, icon: Users, color: "text-primary" },
+    { label: "Pending", value: stats.pending, icon: Clock, color: "text-warning" },
+    { label: "Approved", value: stats.approved, icon: CheckCircle2, color: "text-success" },
+    { label: "Rejected", value: stats.rejected, icon: XCircle, color: "text-destructive" },
+  ];
 
   return (
-    <div className="animate-fade-in space-y-6">
-      <PageHeader
-        title="Waitlist"
-        description="Review landing-page sign-ups and manage their approval status."
-        actions={
-          <Button
-            variant="outline"
-            className="gap-2"
-            onClick={refresh}
-            disabled={isLoading}
-          >
-            <RefreshCw className="h-4 w-4" />
-            Refresh
-          </Button>
-        }
-      />
-
-      <div className="grid gap-4 md:grid-cols-4">
-        <WaitlistStatCard label="Total" value={stats.total} />
-        <WaitlistStatCard label="Pending" value={stats.pending} />
-        <WaitlistStatCard label="Approved" value={stats.approved} />
-        <WaitlistStatCard label="Rejected" value={stats.rejected} />
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight">Waitlist Management</h1>
+          <p className="text-muted-foreground text-sm mt-1">
+            Review and manage platform access requests
+          </p>
+        </div>
+        <Button variant="outline" size="sm" onClick={refresh} className="gap-2">
+          <RefreshCw className="h-4 w-4" />
+          Refresh
+        </Button>
       </div>
 
-      {error && (
-        <Alert variant="destructive">
-          <AlertCircle className="h-4 w-4" />
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
-      )}
+      <div className="grid gap-4 md:grid-cols-4">
+        {statCards.map((card) => (
+          <Card key={card.label}>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-muted-foreground">
+                {card.label}
+              </CardTitle>
+              <card.icon className={`h-4 w-4 ${card.color}`} />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{card.value}</div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
 
       <DataTable
         columns={columns}
-        data={filteredEntries}
+        data={entries}
         searchKey="email"
         isLoading={isLoading}
-        filterActive={statusFilter !== "all"}
-        filterContent={
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="waitlist-status-filter">Status</Label>
-              <Select
-                value={statusFilter}
-                onValueChange={(value) =>
-                  setStatusFilter(value as WaitlistStatus | "all")
-                }
-              >
-                <SelectTrigger id="waitlist-status-filter">
-                  <SelectValue placeholder="Filter by status" />
-                </SelectTrigger>
-                <SelectContent>
-                  {STATUS_FILTER_OPTIONS.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            {statusFilter !== "all" && (
-              <Button
-                variant="ghost"
-                size="sm"
-                className="w-full"
-                onClick={() => setStatusFilter("all")}
-              >
-                Clear Filter
-              </Button>
-            )}
-          </div>
-        }
       />
-    </div>
-  );
-}
-
-function WaitlistStatCard({ label, value }: { label: string; value: number }) {
-  return (
-    <div className="rounded-xl border bg-card p-5 shadow-sm">
-      <p className="text-[11px] font-black uppercase tracking-[0.15em] text-muted-foreground">
-        {label}
-      </p>
-      <p className="mt-3 text-3xl font-bold tracking-tight">{value}</p>
     </div>
   );
 }

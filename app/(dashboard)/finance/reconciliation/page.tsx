@@ -102,7 +102,7 @@ export default function ReconciliationHubPage() {
   const columns: ColumnDef<Reconciliation>[] = [
     {
       accessorKey: "supplier_name",
-      header: "Vendor Entity",
+      header: "Vendor Name",
       cell: ({ row }) => (
         <div className="flex flex-col text-left">
             <span className="font-bold text-sm ">{row.original.supplier_name}</span>
@@ -217,8 +217,8 @@ export default function ReconciliationHubPage() {
   return (
     <div className="animate-fade-in space-y-8 pb-20">
       <PageHeader
-        title="Triple-Match Reconciliation"
-        description="Establishing financial truth by reconciling Purchase Orders, Material Receipts (GRN), and Supplier Bills."
+        title="Invoice & Order Matching"
+        description="Verify accuracy by matching Purchase Orders, Delivery Checklists (GRN), and Vendor Invoices."
         actions={
           <div className="flex gap-2">
             <Button variant="outline" className="gap-2">

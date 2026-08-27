@@ -1,5 +1,8 @@
 "use client";
 
+import { z } from "zod";
+import { flatsRowSchema } from "@/src/types/schema";
+
 import { useEffect, useState } from "react";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { DataTable } from "@/components/shared/DataTable";
@@ -20,8 +23,9 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { supabase } from "@/src/lib/supabaseClient";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { fetchAllActiveFlats } from "@/hooks/useFlats";
+import { fetchResidentDirectory } from "@/hooks/useResidents";
 
 import {
   Dialog,
@@ -116,13 +120,18 @@ export default function ResidentsPage() {
   }, []);
 
   const fetchFlats = async () => {
-    const { data } = await supabase.from('flats').select('id, flat_number, buildings(building_name)').eq('is_active', true);
-    if (data) {
-       setFlats((data as FlatRow[]).map((f) => ({
-         id: f.id,
-         flat_number: f.flat_number,
-         building_name: Array.isArray(f.buildings) ? f.buildings[0]?.building_name : f.buildings?.building_name
-       })));
+    try {
+      const rawData = await fetchAllActiveFlats();
+      const data = rawData ? z.array(flatsRowSchema.passthrough()).parse(rawData) : [];
+      if (data) {
+        setFlats((data as FlatRow[]).map((f) => ({
+          id: f.id,
+          flat_number: f.flat_number,
+          building_name: Array.isArray(f.buildings) ? f.buildings[0]?.building_name : f.buildings?.building_name
+        })));
+      }
+    } catch (err) {
+      console.error("Failed to fetch flats:", err);
     }
   };
 
@@ -138,25 +147,14 @@ export default function ResidentsPage() {
 
       const supportRows = (payload.residents || []) as ResidentSupportRow[];
       const residentIds = supportRows.map((resident) => resident.id).filter(Boolean);
-      const directoryResult =
-        residentIds.length > 0
-          ? await supabase
-              .from("resident_directory")
-              .select("id, full_name, flat_number, building_name, is_primary_contact, masked_phone")
-              .in("id", residentIds)
-              .eq("is_active", true)
-          : { data: [], error: null };
-
-      if (directoryResult.error) {
-        throw directoryResult.error;
-      }
+      const directoryData = await fetchResidentDirectory(residentIds);
 
       const uniqueFlats = new Set<string>();
       const supportByResidentId = new Map<string, ResidentSupportRow>(
         supportRows.map((resident) => [resident.id, resident])
       );
       const directoryByResidentId = new Map<string, { id: string; full_name?: string | null; flat_number?: string | null; building_name?: string | null; is_primary_contact?: boolean | null; masked_phone?: string | null }>(
-        ((directoryResult.data || []) as Array<{ id: string; full_name?: string | null; flat_number?: string | null; building_name?: string | null; is_primary_contact?: boolean | null; masked_phone?: string | null }>).map((residentView) => [residentView.id, residentView])
+        (directoryData as Array<{ id: string; full_name?: string | null; flat_number?: string | null; building_name?: string | null; is_primary_contact?: boolean | null; masked_phone?: string | null }>).map((residentView) => [residentView.id, residentView])
       );
 
       const formattedResidents: Resident[] = supportRows.map((support) => {

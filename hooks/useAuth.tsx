@@ -15,6 +15,9 @@ interface AuthContextType {
   permissions: string[];
   isActive: boolean;
   isLoading: boolean;
+  signIn: (email: string, password: string) => Promise<{ user: User | null; error: Error | null; roleName: string | null; mustChangePassword: boolean }>;
+  updatePassword: (password: string) => Promise<{ error: string | null }>;
+  getAuthUser: () => Promise<{ user: User | null; roleName: string | null; mustChangePassword: boolean }>;
   signOut: () => Promise<void>;
 }
 
@@ -107,6 +110,52 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     router.refresh();
   };
 
+  const getAuthUser = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return { user: null, roleName: null, mustChangePassword: false };
+
+    const { data: userData } = await supabase
+      .from("users")
+      .select("roles(role_name), must_change_password")
+      .eq("id", user.id)
+      .single();
+
+    const roleRecord = Array.isArray((userData as any)?.roles)
+      ? (userData as any)?.roles[0]
+      : (userData as any)?.roles;
+
+    return { 
+      user, 
+      roleName: roleRecord?.role_name ?? null, 
+      mustChangePassword: !!(userData as any)?.must_change_password 
+    };
+  };
+
+  const signIn = async (email: string, password: string) => {
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error || !data.user) {
+      return { user: null, error, roleName: null, mustChangePassword: false };
+    }
+
+    const authData = await getAuthUser();
+    return { ...authData, error: null };
+  };
+
+  const updatePassword = async (newPassword: string) => {
+    const res = await fetch("/api/users/change-password", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ new_password: newPassword }),
+    });
+
+    if (!res.ok) {
+      const result = await res.json();
+      return { error: result.error || "Failed to change password." };
+    }
+    return { error: null };
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -116,6 +165,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         permissions,
         isActive,
         isLoading,
+        signIn,
+        updatePassword,
+        getAuthUser,
         signOut,
       }}
     >

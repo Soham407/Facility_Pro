@@ -71,3 +71,14 @@ nul
 .ai-orchestrator/logs/
 .ai-orchestrator/state/
 .ai-orchestrator/reports/
+
+# Dev/test output artifacts (never commit — they create phantom diffs)
+my_dev.log
+e2e_results.json
+e2e_results.txt
+test-results.json
+test-failures.log
+graphify-out/
+.graphify_*
+.playwright-cli/
+scratch/

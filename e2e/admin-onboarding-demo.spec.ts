@@ -180,6 +180,11 @@ test.describe("Admin onboarding demo", () => {
     await selectOption(page, dialog, 0, flatOptionLabel);
     await dialog.getByLabel(/^email$/i).fill(residentEmail);
     await dialog.getByLabel(/temporary password/i).fill(tempPassword);
+
+    // Verify form state to debug WebKit disabled button flake
+    await expect(dialog.getByLabel(/full name/i)).toHaveValue(residentName);
+    await expect(dialog.getByRole("combobox").nth(0)).toHaveText(flatOptionLabel);
+
     const createResidentResponse = page.waitForResponse(
       (response) =>
         response.url().includes("/api/society/residents") &&

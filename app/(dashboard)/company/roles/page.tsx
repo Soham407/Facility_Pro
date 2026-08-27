@@ -243,8 +243,8 @@ export default function RolesPage() {
   return (
     <div className="animate-fade-in space-y-6">
       <PageHeader
-        title="Role Master"
-        description="Define and manage system access levels and operational permissions."
+        title="Roles & Permissions"
+        description="Define user roles and manage access levels across the platform."
         actions={
           <div className="flex gap-2">
             <Button 

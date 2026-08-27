@@ -62,6 +62,7 @@ export function useEmployeeSalaryStructure(employeeId?: string) {
       }
 
       const { data, error } = await supabase
+        // @ts-ignore
         .from("employee_salary_structure_with_details")
         .select(
           "id, employee_id, component_id, component_abbr, component_name, amount, effective_from, notes, depends_on_payment_days"

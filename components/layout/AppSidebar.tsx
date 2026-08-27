@@ -40,9 +40,20 @@ import {
   isNavHrefFrozen,
   FEATURE_FUTURE_PHASE 
 } from "@/src/lib/featureFlags";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { canAccessPath } from "@/src/lib/platform/permissions";
+import { FeatureToggle } from "@/components/shared/FeatureToggle";
 import { BRAND_LEGAL_NAME, BRAND_NAME, BRAND_PORTAL_LABEL } from "@/src/lib/brand";
+
+const MISSING_FEATURE_PATHS = new Set([
+  "/services/ac",
+  "/services/pest-control",
+  "/services/plantation",
+  "/services/printing",
+  "/admin/ad-space",
+  "/admin/recruitment"
+]);
 
 
 interface NavItem {
@@ -74,28 +85,28 @@ const navigation: NavGroup[] = [
     ],
   },
   {
-    title: "Company & HRMS",
+    title: "Company & HR",
     items: [
       {
-        title: "Company Master",
+        title: "Company Setup",
         href: "/company",
         icon: Building2,
         children: [
-          { title: "Role Master", href: "/company/roles" },
-          { title: "Designations", href: "/company/designations" },
-          { title: "Employee Directory", href: "/company/employees" },
-          { title: "User Management", href: "/company/users" },
+          { title: "Roles & Permissions", href: "/company/roles" },
+          { title: "Job Titles", href: "/company/designations" },
+          { title: "Team Directory", href: "/company/employees" },
+          { title: "App Users", href: "/company/users" },
         ],
       },
       {
-        title: "HRMS Master",
+        title: "HR & Staff Setup",
         href: "/hrms",
         icon: Users,
         children: [
-          { title: "Leave Type Master", href: "/hrms/leave" },
-          { title: "Holiday Master", href: "/hrms/holidays" },
-          { title: "Company Event", href: "/hrms/events" },
-          { title: "Company Location Master", href: "/company/locations" },
+          { title: "Leave Types", href: "/hrms/leave" },
+          { title: "Holidays", href: "/hrms/holidays" },
+          { title: "Company Events", href: "/hrms/events" },
+          { title: "Company Locations", href: "/company/locations" },
         ],
       },
     ],
@@ -104,40 +115,40 @@ const navigation: NavGroup[] = [
     title: "Supply & Services",
     items: [
       {
-        title: "Supply Master",
+        title: "Inventory & Catalog",
         href: "/inventory",
         icon: Package,
         children: [
-          { title: "Product Category", href: "/inventory/categories" },
-          { title: "Product Subcategory", href: "/inventory/subcategories" },
-          { title: "Product Master", href: "/inventory/products" },
-          { title: "Supplier Details", href: "/inventory/suppliers" },
-          { title: "Supplier Wise Product", href: "/inventory/supplier-products" },
-          { title: "Supplier Wise Product Rate", href: "/inventory/supplier-rates" },
-          { title: "Sale Product Rate", href: "/inventory/sales-rates" },
+          { title: "Categories", href: "/inventory/categories" },
+          { title: "Subcategories", href: "/inventory/subcategories" },
+          { title: "Product Catalog", href: "/inventory/products" },
+          { title: "Suppliers & Vendors", href: "/inventory/suppliers" },
+          { title: "Supplier Products", href: "/inventory/supplier-products" },
+          { title: "Supplier Product Rates", href: "/inventory/supplier-rates" },
+          { title: "Selling Prices", href: "/inventory/sales-rates" },
         ],
       },
       {
-        title: "Procurement Workflow",
+        title: "Orders & Requests",
         href: "/service-requests",
         icon: ClipboardCheck,
         children: [
-          { title: "Buyer Request Review", href: "/inventory/requests" },
+          { title: "Buyer Requests", href: "/inventory/requests" },
           { title: "Service Requests", href: "/service-requests" },
-          { title: "Create Indent", href: "/inventory/indents/create" },
+          { title: "Create Order Request", href: "/inventory/indents/create" },
           { title: "Purchase Orders", href: "/inventory/purchase-orders" },
-          { title: "Material Receipts", href: "/inventory/grn" },
+          { title: "Received Items (GRN)", href: "/inventory/grn" },
         ],
       },
       {
-        title: "Service Masters",
+        title: "Services Catalog",
         href: "/services",
         icon: Wrench,
         children: [
-          { title: "Daily Checklist Master", href: "/services/masters/checklists" },
-          { title: "Vendor Wise Services", href: "/services/masters/vendor-services" },
-          { title: "Work Master", href: "/services/masters/work-master" },
-          { title: "Services Wise Work", href: "/services/masters/service-tasks" },
+          { title: "Daily Checklists", href: "/services/masters/checklists" },
+          { title: "Vendor Services", href: "/services/masters/vendor-services" },
+          { title: "Work Catalog", href: "/services/masters/work-master" },
+          { title: "Service Tasks", href: "/services/masters/service-tasks" },
           { title: "Security Services", href: "/services/security" },
           { title: "Air Conditioner Services", href: "/services/ac" },
           { title: "Pest Control Services", href: "/services/pest-control" },
@@ -170,7 +181,7 @@ const navigation: NavGroup[] = [
         children: [
           { title: "Guard Management", href: "/admin/guards" },
           { title: "Society Setup", href: "/admin/societies" },
-          { title: "Resident Records", href: "/admin/residents" },
+          { title: "Resident Directory", href: "/admin/residents" },
         ],
       },
     ],
@@ -179,23 +190,23 @@ const navigation: NavGroup[] = [
     title: "Finance & Tickets",
     items: [
       {
-        title: "Finance & Accounts",
+        title: "Finance & Billing",
         href: "/finance",
         icon: Receipt,
         children: [
-          { title: "Buyer Billing", href: "/finance/buyer-billing" },
-          { title: "Sale Bills", href: "/finance/sale-bills" },
-          { title: "Supplier Bills", href: "/finance/supplier-bills" },
-          { title: "Payment Ledger", href: "/finance/payments" },
-          { title: "3-Way Reconciliation", href: "/finance/reconciliation" },
+          { title: "Customer Invoices", href: "/finance/buyer-billing" },
+          { title: "Sales Bills", href: "/finance/sale-bills" },
+          { title: "Vendor Invoices", href: "/finance/supplier-bills" },
+          { title: "Payment History", href: "/finance/payments" },
+          { title: "Invoice & Order Matching", href: "/finance/reconciliation" },
         ],
       },
       {
-        title: "Behavior Tickets",
+        title: "Incident Reports",
         href: "/tickets",
         icon: Ticket,
         children: [
-          { title: "Behavioral Incident", href: "/tickets/behavior" },
+          { title: "Reported Incidents", href: "/tickets/behavior" },
         ],
       },
     ],
@@ -223,7 +234,7 @@ const navigation: NavGroup[] = [
         href: "/supplier",
         icon: Truck,
         children: [
-          { title: "Pending Indents", href: "/supplier/indents" },
+          { title: "Pending Orders", href: "/supplier/indents" },
           { title: "Purchase Orders", href: "/supplier/purchase-orders" },
           { title: "Service Orders", href: "/supplier/service-orders" },
           { title: "Supplier Bills", href: "/supplier/bills" },
@@ -503,18 +514,23 @@ export function AppSidebar({ collapsed, onToggle, className, isMobile }: AppSide
                             id={`nav-group-${item.title.replace(/\s+/g, '-').toLowerCase()}`}
                           >
                             {item.children.map((child) => (
+                              <FeatureToggle
+                                key={child.href}
+                                featureId={`nav-${child.title.replace(/\s+/g, '-').toLowerCase()}`}
+                                isActive={!MISSING_FEATURE_PATHS.has(child.href)}
+                              >
                                 <Link
-                                              key={child.href}
-                                              href={child.href}
-                                              className={cn(
-                                                "block py-2 px-3 text-sm rounded-lg transition-all duration-200",
-                                                pathname === child.href
-                                                  ? "text-sidebar-primary-foreground font-semibold bg-sidebar-primary flex items-center before:content-[''] before:w-1 before:h-4 before:bg-sidebar-primary-foreground before:mr-2 before:rounded-full shadow-glow"
-                                                  : "text-sidebar-foreground/60 hover:text-sidebar-foreground hover:bg-sidebar-foreground/10 pl-6 font-medium"
-                                              )}
-                                            >
-                                {child.title}
-                              </Link>
+                                  href={child.href}
+                                  className={cn(
+                                    "block py-2 px-3 text-sm rounded-lg transition-all duration-200",
+                                    pathname === child.href
+                                      ? "text-sidebar-primary-foreground font-semibold bg-sidebar-primary flex items-center before:content-[''] before:w-1 before:h-4 before:bg-sidebar-primary-foreground before:mr-2 before:rounded-full shadow-glow"
+                                      : "text-sidebar-foreground/60 hover:text-sidebar-foreground hover:bg-sidebar-foreground/10 pl-6 font-medium"
+                                  )}
+                                >
+                                  {child.title}
+                                </Link>
+                              </FeatureToggle>
                             ))}
                           </CollapsibleContent>
                         </Collapsible>

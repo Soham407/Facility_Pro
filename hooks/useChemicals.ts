@@ -166,6 +166,7 @@ export function useChemicals() {
 
       // Also try updating in pest_control_chemicals (domain specific)
       await supabase
+        // @ts-ignore
         .from("pest_control_chemicals")
         .update({ expiry_date: expiryDate })
         .eq("product_id", productId)

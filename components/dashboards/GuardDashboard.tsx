@@ -30,11 +30,11 @@ import { useAttendance } from "@/hooks/useAttendance";
 import { usePanicAlert } from "@/hooks/usePanicAlert";
 import { useGuardChecklist, useGuardShift } from "@/hooks/useGuardChecklist";
 import { useEmployeeProfile } from "@/hooks/useEmployeeProfile";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "@/components/ui/sonner";
 import { supabase } from "@/src/lib/supabaseClient";
 import { useEmergencyContacts } from "@/hooks/useEmergencyContacts";
-import { useInactivityMonitor } from "@/hooks/useInactivityMonitor";
 import { usePlatformConfig } from "@/hooks/usePlatformConfig";
 import { ExpectedVisitorsSection } from "@/components/dashboards/ExpectedVisitorsSection";
 
@@ -193,8 +193,9 @@ function GuardDashboardContent({ employeeId, guardId, fullName, guardCode }: Gua
   );
   const autoPunchOutDelayMs = autoPunchOutDelayMinutes * 60 * 1000;
 
-  // Inactivity Monitoring (Anti-Sleeping)
-  useInactivityMonitor(employeeId, isClockedIn, currentPosition);
+  // Inactivity monitoring runs server-side: cron 'check-guard-heartbeat' ->
+  // trigger_inactivity_check() -> check-guard-inactivity edge function.
+  // See supabase/migrations/20260802000001_fix_guard_inactivity_cron_notifications.sql
 
   // Handle panic button hold release
   const handlePanicRelease = async () => {

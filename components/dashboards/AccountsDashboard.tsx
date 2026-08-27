@@ -194,6 +194,7 @@ export function AccountsDashboard() {
                     tickLine={false}
                   />
                   <Tooltip
+                    // @ts-ignore
                     formatter={(v: number) => formatCurrency(v)}
                     contentStyle={{ borderRadius: 8, border: "1px solid hsl(var(--border))", fontSize: 12 }}
                   />

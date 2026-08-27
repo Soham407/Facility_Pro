@@ -1,3 +1,5 @@
+import { z } from "zod";
+import { dailyChecklistsRowSchema, attendanceLogsRowSchema } from "@/src/types/schema";
 import { createClient } from "@supabase/supabase-js";
 import fs from "fs";
 
@@ -29,11 +31,13 @@ async function run() {
   }
   
   // Fetch columns via a simple select
-  const { data: q1, error: e1 } = await supabase.from("daily_checklists").select("*").limit(1);
+  const { data: rawQ1, error: e1 } = await supabase.from("daily_checklists").select("*").limit(1);
+    const q1 = rawQ1 ? z.array(dailyChecklistsRowSchema.passthrough()).parse(rawQ1) : [];
   console.log("daily_checklists:* error:", e1?.message);
   if(q1 && q1.length > 0) console.log("daily_checklists cols:", Object.keys(q1[0]));
 
-  const { data: q2, error: e2 } = await supabase.from("attendance_logs").select("*").limit(1);
+  const { data: rawQ2, error: e2 } = await supabase.from("attendance_logs").select("*").limit(1);
+    const q2 = rawQ2 ? z.array(attendanceLogsRowSchema.passthrough()).parse(rawQ2) : [];
   console.log("attendance_logs:* error:", e2?.message);
   if(q2 && q2.length > 0) console.log("attendance_logs cols:", Object.keys(q2[0]));
 

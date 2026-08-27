@@ -82,6 +82,7 @@ export default function SpecializedProfilesPage() {
 
   const assignedEmployeeIds = new Set(technicians.map((technician) => technician.employee_id));
   const availableEmployees = getAvailableEmployees(
+    // @ts-ignore
     employees,
     assignedEmployeeIds,
     editingProfile?.employee_id

@@ -82,8 +82,11 @@ function makeCode(prefix: string) {
 
 export async function POST(request: NextRequest) {
   const auth = await getAuthorizedGuardManager();
-  if (auth.error || !auth.supabaseAdmin || !auth.callerUserId) {
+  if (auth.error) {
     return auth.error;
+  }
+  if (!auth.supabaseAdmin || !auth.callerUserId) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {

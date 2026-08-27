@@ -26,8 +26,7 @@ import {
 } from "@/components/ui/select";
 import { Wrench, Loader2, FileText } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import { supabase } from "@/src/lib/supabaseClient";
-import type { Database } from "@/src/types/supabase";
+import { useServiceRequests } from "@/hooks/useServiceRequests";
 
 const formSchema = z.object({
   title: z.string().min(5, "Title must be at least 5 characters"),
@@ -50,6 +49,7 @@ interface NewJobOrderDialogProps {
 export function NewJobOrderDialog({ children, serviceType = "Service", onSuccess }: NewJobOrderDialogProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { toast } = useToast();
+  const { createRequest } = useServiceRequests();
 
   const form = useForm<FormInput, unknown, FormValues>({
     resolver: zodResolver(formSchema),
@@ -71,24 +71,21 @@ export function NewJobOrderDialog({ children, serviceType = "Service", onSuccess
 
   const handleSubmit = async (values: FormValues) => {
     try {
-      type ServiceRequestInsert = Database["public"]["Tables"]["service_requests"]["Insert"];
-      const requestNumber = `SR-${Date.now().toString(36).toUpperCase()}`;
       const description = values.location
         ? `${values.description}\n\nLocation: ${values.location}`
         : values.description;
-      const payload: ServiceRequestInsert = {
-        request_number: requestNumber,
+      
+      const payload = {
         description,
         type: values.category || serviceType,
-        priority: values.priority as ServiceRequestInsert["priority"],
-        status: "open",
-        created_at: new Date().toISOString(),
+        priority: values.priority as "low" | "normal" | "high" | "urgent",
         title: values.title,
         estimated_duration_minutes: values.estimatedHours ? Math.round(Number(values.estimatedHours) * 60) : null,
       };
-      const { error } = await supabase.from("service_requests").insert(payload);
+      
+      const { success, error } = await createRequest(payload);
 
-      if (error) throw error;
+      if (!success) throw new Error(error || "Failed to create request");
 
       toast({
         title: "Job Order Created",

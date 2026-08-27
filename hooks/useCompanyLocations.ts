@@ -1,3 +1,4 @@
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { useSupabaseMutation } from "@/hooks/lib/useSupabaseMutation";
 import { useSupabaseQuery } from "@/hooks/lib/useSupabaseQuery";

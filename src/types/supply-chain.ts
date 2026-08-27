@@ -27,9 +27,21 @@ export type SupplierProduct = Database['public']['Tables']['supplier_products'][
 export type SupplierProductInsert = Database['public']['Tables']['supplier_products']['Insert'];
 export type SupplierProductUpdate = Database['public']['Tables']['supplier_products']['Update'];
 
-export type SupplierRate = Database['public']['Tables']['supplier_rates']['Row'];
-export type SupplierRateInsert = Database['public']['Tables']['supplier_rates']['Insert'];
-export type SupplierRateUpdate = Database['public']['Tables']['supplier_rates']['Update'];
+type SafeTableRow<K extends string, Fallback = Record<string, any>> = K extends keyof Database['public']['Tables']
+  ? Database['public']['Tables'][K]['Row']
+  : Fallback;
+
+type SafeTableInsert<K extends string, Fallback = Record<string, any>> = K extends keyof Database['public']['Tables']
+  ? Database['public']['Tables'][K]['Insert']
+  : Fallback;
+
+type SafeTableUpdate<K extends string, Fallback = Record<string, any>> = K extends keyof Database['public']['Tables']
+  ? Database['public']['Tables'][K]['Update']
+  : Fallback;
+
+export type SupplierRate = SafeTableRow<'supplier_rates', Database['public']['Tables']['suppliers_wise_product_rates']['Row']>;
+export type SupplierRateInsert = SafeTableInsert<'supplier_rates', Database['public']['Tables']['suppliers_wise_product_rates']['Insert']>;
+export type SupplierRateUpdate = SafeTableUpdate<'supplier_rates', Database['public']['Tables']['suppliers_wise_product_rates']['Update']>;
 
 export type SaleProductRate = Database['public']['Tables']['sale_product_rates']['Row'];
 export type SaleProductRateInsert = Database['public']['Tables']['sale_product_rates']['Insert'];
@@ -96,7 +108,7 @@ export interface SupplierProductExtended extends SupplierProduct {
 }
 
 /** Extended Supplier Rate type with all Phase D columns */
-export interface SupplierRateExtended extends SupplierRate {
+export type SupplierRateExtended = SupplierRate & {
   currency?: string | null;
   created_by?: string | null;
   effective_to?: string | null;
@@ -104,10 +116,10 @@ export interface SupplierRateExtended extends SupplierRate {
   gst_percentage?: number | null;
   min_qty_for_price?: number | null;
   notes?: string | null;
-}
+};
 
 /** Extended Sale Product Rate type with all Phase D columns */
-export interface SaleProductRateExtended extends SaleProductRate {
+export type SaleProductRateExtended = SaleProductRate & {
   currency?: string | null;
   created_by?: string | null;
   society_id?: string | null;
@@ -116,7 +128,7 @@ export interface SaleProductRateExtended extends SaleProductRate {
   margin_percentage?: number | null;
   base_cost?: number | null;
   notes?: string | null;
-}
+};
 
 // ===== UI DISPLAY TYPES =====
 

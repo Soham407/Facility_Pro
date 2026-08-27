@@ -34,8 +34,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { useFlats, FlatRow, CreateFlatPayload } from "@/hooks/useFlats";
-import { supabase } from "@/src/lib/supabaseClient";
-import type { BuildingRow } from "@/hooks/useBuildings";
+import { useBuildings, type BuildingRow } from "@/hooks/useBuildings";
+import { useSocieties } from "@/hooks/useSocieties";
 
 function StatCard({ label, value }: { label: string; value: number }) {
   return (
@@ -102,18 +102,20 @@ export default function BuildingDetailPage() {
   const [editing, setEditing] = useState<FlatRow | null>(null);
   const [form, setForm] = useState<CreateFlatPayload>(emptyForm);
 
+  const { buildings, isLoading: isLoadingBuildings } = useBuildings(societyId);
+  const { societies, isLoading: isLoadingSocieties } = useSocieties();
+
   useEffect(() => {
-    if (!buildingId || !societyId) return;
-    setBuildingLoading(true);
-    Promise.all([
-      supabase.from("buildings").select("*").eq("id", buildingId).single(),
-      supabase.from("societies").select("society_name").eq("id", societyId).single(),
-    ]).then(([buildingRes, societyRes]) => {
-      setBuilding(buildingRes.data as BuildingRow | null);
-      setSocietyName(societyRes.data?.society_name ?? "");
-      setBuildingLoading(false);
-    });
-  }, [buildingId, societyId]);
+    if (isLoadingBuildings || isLoadingSocieties) {
+      setBuildingLoading(true);
+      return;
+    }
+    const foundBuilding = buildings.find(b => b.id === buildingId);
+    const foundSociety = societies.find(s => s.id === societyId);
+    setBuilding(foundBuilding as BuildingRow | null);
+    setSocietyName(foundSociety?.society_name ?? "");
+    setBuildingLoading(false);
+  }, [buildings, societies, buildingId, societyId, isLoadingBuildings, isLoadingSocieties]);
 
   function openCreate() {
     setEditing(null);

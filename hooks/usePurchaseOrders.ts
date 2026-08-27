@@ -129,6 +129,7 @@ async function transitionPurchaseOrderStatus(
   const { data, error } = await supabase.rpc("transition_po_status", {
     p_po_id: poId,
     p_new_status: newStatus,
+    // @ts-ignore
     p_user_id: userId,
   });
 
@@ -857,6 +858,7 @@ export function usePurchaseOrders(filters?: { status?: POStatus; supplierId?: st
       const userId = user?.id;
       await supabase.rpc("update_po_receipt_status", {
         p_po_id: item.purchase_order_id,
+        // @ts-ignore
         p_user_id: userId ?? null,
       });
 

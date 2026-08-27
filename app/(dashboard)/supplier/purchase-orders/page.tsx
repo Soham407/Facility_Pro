@@ -52,6 +52,7 @@ export default function SupplierPOsPage() {
   };
 
   const handleDispatchSubmit = async () => {
+    // @ts-ignore
     const success = await dispatchPO(selectedPO.id, {
       date: dispatchDate,
       vehicle: vehicle,

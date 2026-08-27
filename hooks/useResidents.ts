@@ -129,3 +129,17 @@ export function useResidents() {
     stats,
   };
 }
+
+export async function fetchResidentDirectory(residentIds: string[]) {
+  if (residentIds.length === 0) return [];
+  
+  const { data, error } = await supabase
+    // @ts-ignore
+    .from("resident_directory")
+    .select("id, full_name, flat_number, building_name, is_primary_contact, masked_phone")
+    .in("id", residentIds)
+    .eq("is_active", true);
+
+  if (error) throw error;
+  return data ?? [];
+}

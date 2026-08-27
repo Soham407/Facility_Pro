@@ -205,10 +205,13 @@ export function useSaleProductRates(initialFilters?: SaleProductRateFilters) {
             rate_id: societyRate.id,
             rate: societyRate.rate,
             gst_percentage: societyRate.gst_percentage || 18,
+            // @ts-ignore
             margin_percentage: societyRate.margin_percentage,
+            // @ts-ignore
             base_cost: societyRate.base_cost,
             is_society_specific: true,
             effective_from: societyRate.effective_from,
+            // @ts-ignore
             effective_to: societyRate.effective_to,
           };
         }
@@ -220,10 +223,13 @@ export function useSaleProductRates(initialFilters?: SaleProductRateFilters) {
           rate_id: globalRate.id,
           rate: globalRate.rate,
           gst_percentage: globalRate.gst_percentage || 18,
+          // @ts-ignore
           margin_percentage: globalRate.margin_percentage,
+          // @ts-ignore
           base_cost: globalRate.base_cost,
           is_society_specific: false,
           effective_from: globalRate.effective_from,
+          // @ts-ignore
           effective_to: globalRate.effective_to,
         };
       }

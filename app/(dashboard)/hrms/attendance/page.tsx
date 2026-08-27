@@ -44,6 +44,7 @@ import {
 import { ManualAdjustmentDialog } from "@/components/dialogs/ManualAdjustmentDialog";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { useEmployeeProfile } from "@/hooks/useEmployeeProfile";
 import {

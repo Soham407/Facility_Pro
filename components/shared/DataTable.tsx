@@ -25,6 +25,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ChevronLeft, ChevronRight, Search, SlidersHorizontal, FileDown } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { downloadCSV } from "@/lib/utils/csvExport";
 
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -78,6 +79,22 @@ export function DataTable<TData, TValue>({
     },
   });
 
+  const handleExport = React.useCallback(() => {
+    const rows = table.getFilteredRowModel().rows;
+    if (!rows.length) return;
+    const exportData = rows.map((row) => {
+      const rowData: Record<string, unknown> = {};
+      row.getVisibleCells().forEach((cell) => {
+        const header = cell.column.columnDef.header;
+        const key = typeof header === "string" ? header : cell.column.id;
+        const value = cell.getValue();
+        rowData[key] = value ?? "";
+      });
+      return rowData;
+    });
+    downloadCSV(searchKey || "export", exportData as Record<string, any>[]);
+  }, [table, searchKey]);
+
   const pageCount = Math.min(table.getPageCount(), 5);
   const pageNumbers = Array.from({ length: pageCount }, (_, i) => i + 1);
 
@@ -129,7 +146,7 @@ export function DataTable<TData, TValue>({
               Filters
             </Button>
           )}
-          <Button variant="outline" size="sm" className="h-9 gap-2">
+          <Button variant="outline" size="sm" className="h-9 gap-2" onClick={handleExport}>
             <FileDown className="h-4 w-4" />
             Export
           </Button>

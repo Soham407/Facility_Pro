@@ -153,8 +153,8 @@ export default function LocationsPage() {
   return (
     <div className="animate-fade-in space-y-6">
       <PageHeader
-        title="Company Location Master"
-        description="Maintain physical sites and geo-fence points used across attendance, security, service, and inventory workflows."
+        title="Company Locations"
+        description="Manage company sites and physical locations across operations."
         actions={
           <Button className="gap-2" onClick={handleAdd}>
             <Plus className="h-4 w-4" />

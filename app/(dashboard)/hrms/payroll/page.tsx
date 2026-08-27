@@ -57,6 +57,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 
 // Initial form state for creating payroll cycle

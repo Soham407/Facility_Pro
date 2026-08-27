@@ -70,7 +70,7 @@ const CreateSocietySchema = z.object({
 
 export async function GET(request: NextRequest) {
   const auth = await getAuthorizedSocietyAdmin();
-  if (auth.error || !auth.supabaseAdmin) return auth.error;
+  if (auth.error || !auth.supabaseAdmin) return auth.error || NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   try {
     const { searchParams } = new URL(request.url);
@@ -99,7 +99,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   const auth = await getAuthorizedSocietyAdmin();
-  if (auth.error || !auth.supabaseAdmin || !auth.callerUserId) return auth.error;
+  if (auth.error || !auth.supabaseAdmin || !auth.callerUserId) return auth.error || NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   try {
     const body = await request.json();

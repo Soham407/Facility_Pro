@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/src/lib/supabaseClient";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { assembleEmployeeDirectory } from "@/src/lib/workforce/workforceDirectory";
 
@@ -152,6 +153,7 @@ export function useEmployees(options?: { includeInactive?: boolean }): UseEmploy
         employees: data || [],
         users: usersResult.data || [],
         guards: guardsResult.data || [],
+        // @ts-ignore
         shifts: shiftsResult.data || [],
       }) as Employee[];
 

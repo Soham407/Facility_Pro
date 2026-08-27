@@ -7,6 +7,7 @@ import { AlertCircle, ArrowRight, Loader2, LogIn, Package, QrCode } from "lucide
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { useQrCodes } from "@/hooks/useQrCodes";
 

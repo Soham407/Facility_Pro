@@ -5,13 +5,9 @@ const files = fs.readdirSync('e2e').filter(f => f.endsWith('.spec.ts'));
 for (const file of files) {
   console.log(`Running e2e/${file}...`);
   try {
-    execSync(`npx playwright test e2e/${file} --reporter=json --workers=1 > e2e_results.json`, { stdio: 'ignore' });
+    execSync(`PLAYWRIGHT_JSON_OUTPUT_NAME=e2e_results.json npx playwright test e2e/${file} --reporter=json --workers=1`, { stdio: 'ignore' });
   } catch (e) {
     let resultText = fs.readFileSync('e2e_results.json', 'utf8');
-    const startIdx = resultText.indexOf('{');
-    if (startIdx !== -1) {
-      resultText = resultText.substring(startIdx);
-    }
     const result = JSON.parse(resultText);
     const failedSpecs = result.suites?.flatMap(s => s.suites?.flatMap(ss => ss.specs?.filter(sp => !sp.ok) || []) || []) || [];
     if (failedSpecs.length > 0) {

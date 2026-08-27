@@ -35,19 +35,8 @@ import {
 } from "@/components/ui/select";
 import { useWorkMaster, WorkMaster } from "@/hooks/useWorkMaster";
 import { toast } from "sonner";
-import { supabase as supabaseTyped } from "@/src/lib/supabaseClient";
-const supabase = supabaseTyped;
 
 const EMPTY_FORM = { work_name: "", skill_level_required: "", standard_time_minutes: "", priority: "medium", description: "" };
-
-function isMissingColumnError(error: unknown) {
-  const message =
-    error && typeof error === "object" && "message" in error
-      ? String((error as { message?: unknown }).message || "")
-      : "";
-
-  return /Could not find the .* column|column .* does not exist/i.test(message);
-}
 
 function summarizeWorkMasterStats(workItems: WorkMaster[]) {
   return {
@@ -68,15 +57,11 @@ function getWorkPriorityClassName(priority: string) {
 }
 
 export default function WorkTasksPage() {
-  const { workItems, isLoading, error, createWorkItem, refresh } = useWorkMaster();
+  const { workItems, isLoading, error, createWorkItem, updateWorkItem, deleteWorkItem, refresh } = useWorkMaster();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editTarget, setEditTarget] = useState<WorkMaster | null>(null);
   const [form, setForm] = useState(EMPTY_FORM);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  function toWorkMasterUpdate(isActive: boolean): Record<string, boolean> {
-    return { is_active: isActive };
-  }
 
   const openCreate = () => {
     setEditTarget(null);
@@ -101,25 +86,14 @@ export default function WorkTasksPage() {
     setIsSubmitting(true);
     try {
       if (editTarget) {
-        let { error } = await supabase.from("work_master").update({
+        await updateWorkItem(editTarget.id, {
           work_name: form.work_name,
           skill_level_required: form.skill_level_required || null,
           standard_time_minutes: form.standard_time_minutes ? parseInt(form.standard_time_minutes) : null,
           priority: form.priority,
           description: form.description || null,
-        }).eq("id", editTarget.id);
-
-        if (error && isMissingColumnError(error)) {
-          const fallbackResult = await supabase.from("work_master").update({
-            work_name: form.work_name,
-            description: form.description || null,
-          }).eq("id", editTarget.id);
-          error = fallbackResult.error;
-        }
-
-        if (error) throw error;
+        });
         toast.success("Task updated");
-        refresh();
       } else {
         const created = await createWorkItem({
           work_code: `WM-${Date.now()}`,
@@ -146,21 +120,8 @@ export default function WorkTasksPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      let { error } = await supabase.from("work_master").update(toWorkMasterUpdate(false)).eq("id", id);
-
-      if (error && isMissingColumnError(error)) {
-        const fallbackResult = await supabase.from("work_master").delete().eq("id", id);
-        error = fallbackResult.error;
-        if (!error) {
-          toast.success("Task removed");
-          refresh();
-          return;
-        }
-      }
-
-      if (error) throw error;
+      await deleteWorkItem(id, false);
       toast.success("Task archived");
-      refresh();
     } catch (err: unknown) {
       toast.error(err instanceof Error ? err.message : "Failed to archive task");
     }

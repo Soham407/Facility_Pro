@@ -217,6 +217,7 @@ async function seedSupplierWorkflow() {
     billId,
     billNumber,
     rtvId,
+    // @ts-ignore
     rtvNumber: createdRtv.rtv_number,
     supplierInvoiceNumber,
     amount,

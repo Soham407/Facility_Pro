@@ -265,9 +265,10 @@ export function AssetList({
           {!isLoading && !error && (
             <div className="space-y-3">
               {assets.length === 0 ? (
-                <div className="text-center py-12">
+                <div className="text-center py-12 space-y-2">
                   <Package className="h-12 w-12 mx-auto text-muted-foreground/30" />
-                  <p className="mt-2 text-sm text-muted-foreground">No assets found</p>
+                  <p className="text-base font-medium">You don't have any assets yet</p>
+                  <p className="text-sm text-muted-foreground">Click 'Add Asset' to start tracking your inventory and equipment.</p>
                 </div>
               ) : (
                 assets.map((asset) => (

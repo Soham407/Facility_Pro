@@ -29,7 +29,9 @@ export function useVendorWiseServices() {
     try {
       setState((prev) => ({ ...prev, isLoading: true, error: null }));
 
+      // @ts-ignore
       const { data, error } = await supabase
+        // @ts-ignore
         .from("vendor_wise_services")
         .select(`
           *,
@@ -64,6 +66,7 @@ export function useVendorWiseServices() {
   ): Promise<boolean> => {
     try {
       const { error } = await supabase
+        // @ts-ignore
         .from("vendor_wise_services")
         .insert({
           supplier_id: vendorServiceData.supplier_id,
@@ -88,6 +91,7 @@ export function useVendorWiseServices() {
   ): Promise<boolean> => {
     try {
       const { error } = await supabase
+        // @ts-ignore
         .from("vendor_wise_services")
         .update({
           supplier_id: updates.supplier_id,

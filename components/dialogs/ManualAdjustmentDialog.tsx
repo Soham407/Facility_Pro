@@ -32,8 +32,7 @@ import { format } from "date-fns";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import type { Database } from "@/src/types/supabase";
-
-const supabase = supabaseTyped;
+import { useAttendanceLogs } from "@/hooks/useAttendanceLogs";
 
 const formSchema = z.object({
   adjustmentType: z.string().min(1, "Adjustment type required"),
@@ -58,6 +57,7 @@ export function ManualAdjustmentDialog({
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState<Date>(new Date());
   const { toast } = useToast();
+  const { recordManualAdjustment, isRecording } = useAttendanceLogs();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -76,7 +76,7 @@ export function ManualAdjustmentDialog({
     }
   }, [isOpen]);
 
-  const isSubmitting = form.formState.isSubmitting;
+  const isSubmitting = isRecording || form.formState.isSubmitting;
 
   const handleSubmit = async (values: FormValues) => {
     if (!employeeId) {
@@ -86,51 +86,25 @@ export function ManualAdjustmentDialog({
 
     try {
       const today = date.toISOString().split("T")[0];
-
-      const { data: existingLog } = await supabase
-        .from("attendance_logs")
-        .select("id")
-        .eq("employee_id", employeeId)
-        .eq("log_date", today)
-        .single();
-
-      const updateData: Partial<Pick<
-        Database["public"]["Tables"]["attendance_logs"]["Insert"],
-        "check_in_time" | "check_out_time" | "status"
-      >> = {};
-      if (values.adjustmentType === "checkin") {
-        updateData.check_in_time = `${today}T${values.time}:00`;
-        updateData.status = "present";
-      } else {
-        updateData.check_out_time = `${today}T${values.time}:00`;
-      }
-
-      if (existingLog) {
-        await supabase
-          .from("attendance_logs")
-          .update({
-            ...updateData,
-            is_manual_adjustment: true,
-            adjustment_reason: values.reason,
-            adjustment_notes: values.notes || null,
-          })
-          .eq("id", existingLog.id);
-      } else {
-        await supabase.from("attendance_logs").insert({
-          employee_id: employeeId,
-          log_date: today,
-          ...updateData,
-          status: "present",
-          notes: [values.reason, values.notes].filter(Boolean).join(" - ") || null,
-        });
-      }
-
-      toast({
-        title: "Attendance Adjusted",
-        description: `Manual ${values.adjustmentType} recorded for ${employeeName || "employee"}.`,
+      
+      const result = await recordManualAdjustment({
+        employeeId,
+        date: today,
+        adjustmentType: values.adjustmentType,
+        time: values.time,
+        reason: values.reason,
+        notes: values.notes
       });
 
-      setIsOpen(false);
+      if (result.success) {
+        toast({
+          title: "Attendance Adjusted",
+          description: `Manual ${values.adjustmentType} recorded for ${employeeName || "employee"}.`,
+        });
+        setIsOpen(false);
+      } else {
+        throw new Error(result.error);
+      }
     } catch (err: unknown) {
       toast({
         title: "Error",

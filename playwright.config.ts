@@ -26,8 +26,8 @@ const fullTestIgnore = visualEnabled ? [] : ["**/visual-regression.spec.ts"];
 export default defineConfig({
   testDir: "./e2e",
   outputDir: "./test-results/playwright",
-  globalSetup: "./e2e/global-setup.ts",
-  globalTeardown: "./e2e/global-teardown.ts",
+  // globalSetup: "./e2e/global-setup.ts",
+  // globalTeardown: "./e2e/global-teardown.ts",
   timeout: 60_000,
   expect: { timeout: 5_000 },
   fullyParallel: true,
@@ -40,10 +40,11 @@ export default defineConfig({
     baseURL,
     screenshot: "only-on-failure",
     trace: "retain-on-failure",
+    permissions: ["geolocation"],
   },
   webServer: manageServer
     ? {
-        command: "npm run start -- --hostname 127.0.0.1",
+        command: "npm run dev -- --hostname 127.0.0.1",
         url: baseURL,
         reuseExistingServer: true,
         timeout: 180_000,
@@ -52,34 +53,41 @@ export default defineConfig({
   projects:
     suiteMode === "smoke"
       ? [
+          { name: 'setup', testMatch: /.*\.setup\.ts/ },
           {
             name: "smoke-chromium",
-            use: { ...devices["Desktop Chrome"] },
+            use: { ...devices["Desktop Chrome"], storageState: 'e2e/.auth/user.json' },
+            dependencies: ['setup'],
             testMatch: smokeTestMatch,
           },
         ]
       : [
+          { name: 'setup', testMatch: /.*\.setup\.ts/ },
           {
             name: "chromium",
-            use: { ...devices["Desktop Chrome"] },
+            use: { ...devices["Desktop Chrome"], storageState: 'e2e/.auth/user.json' },
+            dependencies: ['setup'],
             testMatch: ["**/*.spec.ts"],
             testIgnore: fullTestIgnore,
           },
           {
             name: "firefox",
-            use: { ...devices["Desktop Firefox"] },
+            use: { ...devices["Desktop Firefox"], storageState: 'e2e/.auth/user.json' },
+            dependencies: ['setup'],
             testMatch: ["**/*.spec.ts"],
             testIgnore: fullTestIgnore,
           },
           {
             name: "webkit",
-            use: { ...devices["Desktop Safari"] },
+            use: { ...devices["Desktop Safari"], storageState: 'e2e/.auth/user.json' },
+            dependencies: ['setup'],
             testMatch: ["**/*.spec.ts"],
             testIgnore: fullTestIgnore,
           },
           {
             name: "mobile-chrome",
-            use: { ...devices["Pixel 5"] },
+            use: { ...devices["Pixel 5"], storageState: 'e2e/.auth/user.json' },
+            dependencies: ['setup'],
             testMatch: ["**/*.spec.ts"],
             testIgnore: fullTestIgnore,
           },

@@ -1,0 +1,16 @@
+Request Failed: http://127.0.0.1:3000/_next/static/chunks/app/(dashboard)/supplier/page.js - NS_BINDING_ABORTED
+Request Failed: http://127.0.0.1:3000/_next/static/chunks/app/layout.js - NS_BINDING_ABORTED
+Request Failed: http://127.0.0.1:3000/_next/static/chunks/app/(dashboard)/layout.js - NS_BINDING_ABORTED
+Request Failed: http://127.0.0.1:3000/_next/static/chunks/main-app.js?v=1785092736640 - NS_BINDING_ABORTED
+Request Failed: http://127.0.0.1:3000/_next/static/chunks/app/(dashboard)/supplier/layout.js - NS_BINDING_ABORTED
+Request Failed: http://127.0.0.1:54321/auth/v1/user - NS_BINDING_ABORTED
+Console Error: Error
+Console Error: Error fetching service requests: JSHandle@object
+Console Error: Error fetching service requests: JSHandle@object
+Console Error: Error fetching service requests: JSHandle@object
+Console Error: Error fetching checklist: JSHandle@object
+Console Error: Error fetching emergency contacts: JSHandle@object
+Console Error: Error fetching checklist: JSHandle@object
+Console Error: Error fetching emergency contacts: JSHandle@object
+Request Failed: http://127.0.0.1:3000/_next/static/webpack/28bb2c9424280cb6.webpack.hot-update.json - NS_BINDING_ABORTED
+Request Failed: http://127.0.0.1:3000/guard - NS_BINDING_ABORTED

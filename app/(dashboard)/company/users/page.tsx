@@ -199,11 +199,11 @@ export default function UsersPage() {
   return (
     <div className="animate-fade-in space-y-6">
       <PageHeader
-        title="User Master"
-        description="Provision system access and monitor secure identity portal accounts."
+        title="App Users"
+        description="Manage system accounts, user roles, and login access."
         actions={
           <Button className="gap-2 shadow-primary/20" onClick={() => setProvisionDialogOpen(true)}>
-            <Plus className="h-4 w-4" /> Provision New User
+            <Plus className="h-4 w-4" /> Add New User
           </Button>
         }
       />

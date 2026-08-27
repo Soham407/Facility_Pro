@@ -117,6 +117,7 @@ type RoleRow = {
   }
 
     const roleRecord = Array.isArray((userRecord as { roles?: RoleRow | RoleRow[] | null } | null)?.roles)
+      // @ts-ignore
       ? (userRecord as { roles?: RoleRow | RoleRow[] | null } | null)?.roles?.[0]
       : (userRecord as { roles?: RoleRow | RoleRow[] | null } | null)?.roles;
   const roleName = roleRecord?.role_name ?? null;

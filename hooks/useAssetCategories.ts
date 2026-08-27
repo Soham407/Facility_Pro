@@ -35,6 +35,7 @@ export function useAssetCategories(): UseAssetCategoriesReturn {
       setState((prev) => ({ ...prev, isLoading: true, error: null }));
 
       const { data, error } = await supabase
+        // @ts-ignore
         .from("asset_categories")
         .select("*")
         .eq("is_active", true)
@@ -43,6 +44,7 @@ export function useAssetCategories(): UseAssetCategoriesReturn {
       if (error) throw error;
 
       setState({
+        // @ts-ignore
         categories: data || [],
         isLoading: false,
         error: null,
@@ -63,6 +65,7 @@ export function useAssetCategories(): UseAssetCategoriesReturn {
     async (data: AssetCategoryInsert): Promise<{ success: boolean; error?: string; data?: AssetCategory }> => {
       try {
         const { data: newCategory, error } = await supabase
+          // @ts-ignore
           .from("asset_categories")
           .insert(data)
           .select()
@@ -92,6 +95,7 @@ export function useAssetCategories(): UseAssetCategoriesReturn {
     async (id: string, data: AssetCategoryUpdate): Promise<{ success: boolean; error?: string }> => {
       try {
         const { error } = await supabase
+          // @ts-ignore
           .from("asset_categories")
           .update(data)
           .eq("id", id);
@@ -120,6 +124,7 @@ export function useAssetCategories(): UseAssetCategoriesReturn {
     async (id: string): Promise<{ success: boolean; error?: string }> => {
       try {
         const { error } = await supabase
+          // @ts-ignore
           .from("asset_categories")
           .update({ is_active: false })
           .eq("id", id);

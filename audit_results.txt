@@ -1,0 +1,24 @@
+WARNING (Uses @ts-ignore): src/lib/notifications.ts
+WARNING (Uses @ts-ignore): src/lib/reconciliation/reconciliationTransforms.ts
+WARNING (Uses @ts-ignore): src/lib/reconciliation/reconciliationDocumentReaders.ts
+WARNING (Uses @ts-ignore): src/lib/supplier-bills/supplierBillTransforms.ts
+WARNING (Uses @ts-ignore): src/lib/purchase-orders/purchaseOrderTransforms.ts
+WARNING (Uses @ts-ignore): src/lib/buyer-invoices/buyerInvoiceTransforms.ts
+WARNING (Uses @ts-ignore): src/lib/sale-bills/saleBillTransforms.ts
+WARNING (Uses 'as any'): src/lib/society/managedSocieties.ts
+WARNING (Uses @ts-ignore): src/lib/hrms/salaryStructureTransforms.ts
+WARNING (Uses @ts-ignore): src/lib/rtv/rtvTransforms.ts
+WARNING (Uses @ts-ignore): src/lib/mobile/demoOtp.ts
+WARNING (Uses @ts-ignore): src/lib/grn/grnTransforms.ts
+WARNING (Uses @ts-ignore): src/lib/payroll/payrollTransforms.ts
+WARNING (Uses @ts-ignore): src/lib/sale-rates/saleProductRateTransforms.ts
+WARNING (Uses @ts-ignore): src/lib/supplier-portal/supplierPortalActions.ts
+WARNING (Uses @ts-ignore): src/lib/indents/indentTransforms.ts
+WARNING (Uses @ts-ignore): src/lib/buyer-requests/buyerRequestTransforms.ts
+WARNING (Uses @ts-ignore): src/lib/analytics/reportLoaders.ts
+WARNING (Uses @ts-ignore): src/lib/analytics/reportPageTransforms.ts
+VIOLATION (UI Direct Supabase Client): app/api/waitlist/route.ts
+VIOLATION (UI Direct Supabase Client): app/api/users/reset-password/route.ts
+VIOLATION (UI Direct Supabase Client): app/api/users/change-password/route.ts
+VIOLATION (UI Direct Supabase Client): app/(dashboard)/settings/page.tsx
+WARNING (Mock Data): app/(dashboard)/finance/supplier-bills/page.tsx

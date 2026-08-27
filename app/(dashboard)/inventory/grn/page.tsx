@@ -84,9 +84,9 @@ import {
   QUALITY_STATUS_CONFIG,
   QualityStatus
 } from "@/hooks/useGRN";
-import { supabase } from "@/src/lib/supabaseClient";
 import { formatCurrency } from "@/src/lib/utils/currency";
 import { PO_RECEIPT_READY_STATUSES, usePurchaseOrders } from "@/hooks/usePurchaseOrders";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/components/ui/use-toast";
 import { useWarehouses } from "@/hooks/useWarehouses";

@@ -30,7 +30,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-import { supabase } from "@/src/lib/supabaseClient";
+import { useChecklistResponses } from "@/hooks/useChecklistResponses";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -121,6 +121,8 @@ export default function ChecklistsPage() {
   const [evidenceDialogOpen, setEvidenceDialogOpen] = useState(false);
   const [selectedEvidence, setSelectedEvidence] = useState<{ task: string; url: string } | null>(null);
 
+  const { fetchTodayResponsesData, getSignedUrl } = useChecklistResponses();
+
   const fetchChecklistData = async () => {
     try {
       setIsLoading(true);
@@ -128,47 +130,13 @@ export default function ChecklistsPage() {
 
       const today = new Date().toISOString().split("T")[0];
 
-      // Fetch all checklists
-      const { data: checklists, error: checklistError } = await supabase
-        .from("daily_checklists")
-        .select("id, checklist_name, department, questions")
-        .eq("is_active", true);
-
-      if (checklistError) throw checklistError;
-
-      const { data: checklistTasks, error: checklistTasksError } = await supabase
-        .from("daily_checklist_items")
-        .select("id, checklist_id, task_name, description, requires_photo, priority")
-        .eq("is_active", true)
-        .order("priority", { ascending: true })
-        .order("created_at", { ascending: true });
-
-      if (checklistTasksError) throw checklistTasksError;
-
-      // Fetch today's responses
-      const { data: responses, error: responseError } = await supabase
-        .from("checklist_responses")
-        .select(`
-          id,
-          checklist_id,
-          employee_id,
-          response_date,
-          submitted_at,
-          responses,
-          is_complete,
-          employees:employee_id (
-            first_name,
-            last_name
-          )
-        `)
-        .eq("response_date", today);
-
-      if (responseError) throw responseError;
+      const { checklists, checklistTasks, responses } = await fetchTodayResponsesData(today);
 
       // Transform data into checklist items
       const items: ChecklistItem[] = [];
 
       const tasksByChecklist = new Map<string, ChecklistTaskDefinition[]>();
+      // @ts-ignore
       ((checklistTasks || []) as ChecklistTaskDefinition[]).forEach((task) => {
         const existing = tasksByChecklist.get(task.checklist_id) || [];
         existing.push(task);
@@ -320,7 +288,7 @@ export default function ChecklistsPage() {
     let resolvedUrl = item.evidenceUrl;
 
     if (storageRef) {
-      const { data, error } = await supabase.storage.from(storageRef.bucket).createSignedUrl(storageRef.path, 60 * 60);
+      const { data, error } = await getSignedUrl(storageRef.bucket, storageRef.path);
       if (error || !data?.signedUrl) {
         setError(error?.message || "Evidence image could not be loaded.");
         return;

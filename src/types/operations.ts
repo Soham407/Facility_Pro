@@ -5,6 +5,23 @@
 
 import { Database } from './supabase';
 
+// Helper generic types for safe schema access across database migrations
+type SafeTableRow<K extends string, Fallback = Record<string, any>> = K extends keyof Database['public']['Tables']
+  ? Database['public']['Tables'][K]['Row']
+  : Fallback;
+
+type SafeTableInsert<K extends string, Fallback = Record<string, any>> = K extends keyof Database['public']['Tables']
+  ? Database['public']['Tables'][K]['Insert']
+  : Fallback;
+
+type SafeTableUpdate<K extends string, Fallback = Record<string, any>> = K extends keyof Database['public']['Tables']
+  ? Database['public']['Tables'][K]['Update']
+  : Fallback;
+
+type SafeViewRow<K extends string, Fallback = Record<string, any>> = K extends keyof Database['public']['Views']
+  ? Database['public']['Views'][K]['Row']
+  : Fallback;
+
 // ===== ENUMS =====
 export type AssetStatus = Database['public']['Enums']['asset_status'];
 export type ServicePriority = Database['public']['Enums']['service_priority'];
@@ -13,20 +30,20 @@ export type JobSessionStatus = Database['public']['Enums']['job_session_status']
 export type MaintenanceFrequency = Database['public']['Enums']['maintenance_frequency'];
 
 // ===== TABLE ROW TYPES =====
-export type AssetCategory = Database['public']['Tables']['asset_categories']['Row'];
-export type AssetCategoryInsert = Database['public']['Tables']['asset_categories']['Insert'];
-export type AssetCategoryUpdate = Database['public']['Tables']['asset_categories']['Update'];
+export type AssetCategory = SafeTableRow<'asset_categories'>;
+export type AssetCategoryInsert = SafeTableInsert<'asset_categories'>;
+export type AssetCategoryUpdate = SafeTableUpdate<'asset_categories'>;
 
-export type Asset = Database['public']['Tables']['assets']['Row'];
-export type AssetInsert = Database['public']['Tables']['assets']['Insert'];
-export type AssetUpdate = Database['public']['Tables']['assets']['Update'];
+export type Asset = SafeTableRow<'assets', Database['public']['Tables']['asset_master']['Row']>;
+export type AssetInsert = SafeTableInsert<'assets', Database['public']['Tables']['asset_master']['Insert']>;
+export type AssetUpdate = SafeTableUpdate<'assets', Database['public']['Tables']['asset_master']['Update']>;
 
-export type QrCode = Database['public']['Tables']['qr_codes']['Row'];
-export type QrCodeInsert = Database['public']['Tables']['qr_codes']['Insert'];
-export type QrCodeUpdate = Database['public']['Tables']['qr_codes']['Update'];
+export type QrCode = SafeTableRow<'qr_codes'>;
+export type QrCodeInsert = SafeTableInsert<'qr_codes'>;
+export type QrCodeUpdate = SafeTableUpdate<'qr_codes'>;
 
-export type QrScan = Database['public']['Tables']['qr_scans']['Row'];
-export type QrScanInsert = Database['public']['Tables']['qr_scans']['Insert'];
+export type QrScan = SafeTableRow<'qr_scans'>;
+export type QrScanInsert = SafeTableInsert<'qr_scans'>;
 
 export type Service = Database['public']['Tables']['services']['Row'];
 export type ServiceInsert = Database['public']['Tables']['services']['Insert'];
@@ -42,16 +59,16 @@ export type ServiceRequest = Database['public']['Tables']['service_requests']['R
 export type ServiceRequestInsert = Database['public']['Tables']['service_requests']['Insert'];
 export type ServiceRequestUpdate = Database['public']['Tables']['service_requests']['Update'];
 
-export type MaintenanceSchedule = Database['public']['Tables']['maintenance_schedules']['Row'];
-export type MaintenanceScheduleInsert = Database['public']['Tables']['maintenance_schedules']['Insert'];
-export type MaintenanceScheduleUpdate = Database['public']['Tables']['maintenance_schedules']['Update'];
+export type MaintenanceSchedule = SafeTableRow<'maintenance_schedules'>;
+export type MaintenanceScheduleInsert = SafeTableInsert<'maintenance_schedules'>;
+export type MaintenanceScheduleUpdate = SafeTableUpdate<'maintenance_schedules'>;
 
-export type JobSession = Database['public']['Tables']['job_sessions']['Row'];
-export type JobSessionInsert = Database['public']['Tables']['job_sessions']['Insert'];
-export type JobSessionUpdate = Database['public']['Tables']['job_sessions']['Update'];
+export type JobSession = SafeTableRow<'job_sessions'>;
+export type JobSessionInsert = SafeTableInsert<'job_sessions'>;
+export type JobSessionUpdate = SafeTableUpdate<'job_sessions'>;
 
-export type JobPhoto = Database['public']['Tables']['job_photos']['Row'];
-export type JobPhotoInsert = Database['public']['Tables']['job_photos']['Insert'];
+export type JobPhoto = SafeTableRow<'job_photos'>;
+export type JobPhotoInsert = SafeTableInsert<'job_photos'>;
 
 export type Warehouse = Database['public']['Tables']['warehouses']['Row'];
 export type WarehouseInsert = Database['public']['Tables']['warehouses']['Insert'];
@@ -61,23 +78,23 @@ export type StockBatch = Database['public']['Tables']['stock_batches']['Row'];
 export type StockBatchInsert = Database['public']['Tables']['stock_batches']['Insert'];
 export type StockBatchUpdate = Database['public']['Tables']['stock_batches']['Update'];
 
-export type JobMaterialUsed = Database['public']['Tables']['job_materials_used']['Row'];
-export type JobMaterialUsedInsert = Database['public']['Tables']['job_materials_used']['Insert'];
+export type JobMaterialUsed = SafeTableRow<'job_materials_used'>;
+export type JobMaterialUsedInsert = SafeTableInsert<'job_materials_used'>;
 
-export type ReorderRule = Database['public']['Tables']['reorder_rules']['Row'];
-export type ReorderRuleInsert = Database['public']['Tables']['reorder_rules']['Insert'];
-export type ReorderRuleUpdate = Database['public']['Tables']['reorder_rules']['Update'];
+export type ReorderRule = SafeTableRow<'reorder_rules'>;
+export type ReorderRuleInsert = SafeTableInsert<'reorder_rules'>;
+export type ReorderRuleUpdate = SafeTableUpdate<'reorder_rules'>;
 
 // ===== VIEW TYPES =====
-export type AssetWithDetails = Database['public']['Views']['assets_with_details']['Row'];
-export type ServiceRequestWithDetails = Database['public']['Views']['service_requests_with_details']['Row'] & {
+export type AssetWithDetails = SafeViewRow<'assets_with_details'>;
+export type ServiceRequestWithDetails = SafeViewRow<'service_requests_with_details'> & {
   before_photo_url?: string | null;
   after_photo_url?: string | null;
   completion_signature_url?: string | null;
   completion_notes?: string | null;
   started_at?: string | null;
 };
-export type DueMaintenanceSchedule = Database['public']['Views']['due_maintenance_schedules']['Row'];
+export type DueMaintenanceSchedule = SafeViewRow<'due_maintenance_schedules'>;
 export type StockLevel = Database['public']['Views']['stock_levels']['Row'];
 
 // ===== UI-SPECIFIC INTERFACES =====

@@ -124,3 +124,13 @@ export function useFlats(societyId: string | null, buildingId: string | null) {
     stats,
   };
 }
+
+export async function fetchAllActiveFlats() {
+  const { data, error } = await supabase
+    .from("flats")
+    .select("id, flat_number, buildings(building_name)")
+    .eq("is_active", true);
+
+  if (error) throw error;
+  return data ?? [];
+}

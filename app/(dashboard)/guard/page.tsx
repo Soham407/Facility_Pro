@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useResidentLookup } from "@/hooks/useResidentLookup";
 import { usePanicAlert } from "@/hooks/usePanicAlert";
 import { useEmployeeProfile } from "@/hooks/useEmployeeProfile";
 import { useAttendance } from "@/hooks/useAttendance";
@@ -39,8 +38,6 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export default function GuardStationPage() {
-  const [query, setQuery] = useState("");
-  const { searchResidents, results, isLoading, error } = useResidentLookup();
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
   const [isCheckingOutVisitorId, setIsCheckingOutVisitorId] = useState<string | null>(null);
   const { isTriggering, isHolding, holdProgress, startHold, endHold, cancelHold, triggerPanic } = usePanicAlert();
@@ -66,7 +63,6 @@ export default function GuardStationPage() {
     todayAttendance,
   } = useAttendance(employeeId ?? undefined, guardId);
 
-  const [debouncedQuery, setDebouncedQuery] = useState(query);
   const hasCompletedShiftToday =
     !isClockedIn &&
     !!todayAttendance?.check_in_time &&
@@ -96,18 +92,6 @@ export default function GuardStationPage() {
           hour12: true,
         })
       : "--";
-
-  useEffect(() => {
-    const timer = setTimeout(() => setDebouncedQuery(query), 500);
-    return () => clearTimeout(timer);
-  }, [query]);
-
-  useEffect(() => {
-    if (debouncedQuery.length >= 2) {
-      searchResidents(debouncedQuery);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedQuery]);
 
   return (
     <div className="p-4 max-w-2xl mx-auto space-y-6 pb-24">
@@ -395,111 +379,6 @@ export default function GuardStationPage() {
         </CardContent>
       </Card>
 
-      {/* Resident Verification */}
-      <div className="space-y-3">
-        <h2 className="text-xs font-black uppercase tracking-widest text-muted-foreground">
-          Resident Verification
-        </h2>
-
-        <div className="relative">
-          <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
-          <Input
-            placeholder="Search by Name or Flat Number..."
-            className="h-12 pl-10 text-base"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          {isLoading && (
-            <div className="absolute right-3 top-3">
-              <Loader2 className="h-5 w-5 animate-spin text-primary" />
-            </div>
-          )}
-        </div>
-
-        {error && (
-          <div className="p-3 bg-destructive/10 text-destructive rounded-md text-sm font-bold">
-            {error}
-          </div>
-        )}
-
-        {!isLoading && !error && query.length >= 2 && results.length === 0 && (
-          <div className="text-center py-10 text-muted-foreground">
-            <UserCheck className="h-10 w-10 mx-auto mb-2 opacity-20" />
-            <p className="text-sm">No residents found for {query}</p>
-          </div>
-        )}
-
-        <div className="grid grid-cols-1 gap-3">
-          {results.map((resident) => (
-            <Card
-              key={resident.id}
-              className="overflow-hidden border-none shadow-card hover:shadow-lg transition-all"
-            >
-              <CardContent className="p-0">
-                <div className="bg-primary/5 p-4 flex items-center gap-4 border-b border-primary/10">
-                  <div className="h-12 w-12 rounded-full overflow-hidden bg-background ring-2 ring-primary/20 flex-shrink-0">
-                    {resident.profile_photo_url ? (
-                      <img
-                        src={resident.profile_photo_url}
-                        alt={resident.full_name}
-                        className="h-full w-full object-cover"
-                      />
-                    ) : (
-                      <div className="h-full w-full flex items-center justify-center bg-primary/10 text-primary font-bold text-lg">
-                        {resident.full_name.substring(0, 2).toUpperCase()}
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-sm truncate">{resident.full_name}</h3>
-                    <Badge
-                      variant={resident.is_owner ? "default" : "secondary"}
-                      className="text-[10px] uppercase h-5 mt-1"
-                    >
-                      {resident.is_owner ? "Owner" : "Tenant"}
-                    </Badge>
-                  </div>
-                </div>
-                <div className="p-4 space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground flex items-center gap-2">
-                      <Home className="h-4 w-4" /> Flat
-                    </span>
-                    <span className="font-bold text-foreground bg-muted px-2 py-0.5 rounded">
-                      {resident.flat_number}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground flex items-center gap-2">
-                      <UserCheck className="h-4 w-4" /> Contact
-                    </span>
-                    <span className="font-mono font-bold text-primary tracking-wider">
-                      {resident.masked_phone || "Not Linked"}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground flex items-center gap-2">
-                      <Calendar className="h-4 w-4" /> Since
-                    </span>
-                    <span className="font-medium">
-                      {resident.move_in_date
-                        ? new Date(resident.move_in_date).toLocaleDateString()
-                        : "Not set"}
-                    </span>
-                  </div>
-                  <Button
-                    className="w-full mt-1 font-bold uppercase tracking-widest text-xs"
-                    variant="outline"
-                    onClick={() => setIsRegistrationOpen(true)}
-                  >
-                    Log Visitor Entry
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
 
       <VisitorRegistrationDialog
         open={isRegistrationOpen}

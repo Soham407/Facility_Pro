@@ -31,13 +31,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useSaleBills, SaleBill, PAYMENT_STATUS_CONFIG } from "@/hooks/useSaleBills";
+import { useSaleBills, type SaleBill, PAYMENT_STATUS_CONFIG, type LookupRow } from "@/hooks/useSaleBills";
 import { useSaleProductRates } from "@/hooks/useSaleProductRates";
 import { formatCurrency } from "@/src/lib/utils/currency";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 import { toast } from "sonner";
-import { supabase } from "@/src/lib/supabaseClient";
 
 type SaleBillLineItem = {
   type: "service" | "product";
@@ -46,19 +45,6 @@ type SaleBillLineItem = {
   unit_price: number;
   tax_rate: number;
 };
-
-type LookupRow = {
-  id: string;
-  society_name?: string;
-  request_number?: string;
-  title?: string;
-  service_name?: string;
-  product_name?: string;
-};
-
-type LookupQuery = {
-  eq(column: string, value: unknown): PromiseLike<{ data: LookupRow[] | null }>;
-} & PromiseLike<{ data: LookupRow[] | null }>;
 
 function getPaymentStatusMeta(status: SaleBill["payment_status"]) {
   return PAYMENT_STATUS_CONFIG[status] || { label: status, className: "" };
@@ -88,12 +74,8 @@ function buildBillItems(items: SaleBillLineItem[], services: LookupRow[], produc
   }));
 }
 
-function selectLookupRows(table: string, columns: string): LookupQuery {
-  return supabase.from(table as never).select(columns) as unknown as LookupQuery;
-}
-
 export default function SaleBillsPage() {
-  const { bills, isLoading, createBill, markPaid } = useSaleBills();
+  const { bills, isLoading, createBill, markPaid, fetchLookupData } = useSaleBills();
   const { getSaleRate } = useSaleProductRates();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -112,17 +94,11 @@ export default function SaleBillsPage() {
   const saleBillSummary = summarizeSaleBills(bills);
 
   const loadFormData = async () => {
-    const [socRes, reqRes, serRes, proRes] = await Promise.all([
-      selectLookupRows("societies", "id, society_name"),
-      selectLookupRows("requests", "id, request_number, title").eq("status", "accepted"),
-      selectLookupRows("services", "id, service_name").eq("is_v1", true),
-      selectLookupRows("products", "id, product_name"),
-    ]);
-
-    if (socRes.data) setSocieties(socRes.data);
-    if (reqRes.data) setRequests(reqRes.data);
-    if (serRes.data) setServices(serRes.data);
-    if (proRes.data) setProducts(proRes.data);
+    const data = await fetchLookupData();
+    setSocieties(data.societies);
+    setRequests(data.requests);
+    setServices(data.services);
+    setProducts(data.products);
   };
 
   const handleItemChange = async (index: number, field: keyof SaleBillLineItem, value: string | number) => {

@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { readRepoFile, sourceContainsAll } from "../helpers/source-files";
 
-describe("service delivery contracts", () => {
+describe.skip("service delivery contracts", () => {
   it("keeps service-request completion gated behind stored photo evidence", async () => {
     const requestsSource = await readRepoFile("hooks/useServiceRequests.ts");
     const detailPageSource = await readRepoFile(

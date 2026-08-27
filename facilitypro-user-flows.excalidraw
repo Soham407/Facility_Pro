@@ -1,0 +1,3095 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "mcp-excalidraw-server",
+  "elements": [
+    {
+      "id": "msjvnsael7yaxi49m78",
+      "type": "text",
+      "x": 60,
+      "y": 40,
+      "strokeColor": "#1e1e1e",
+      "text": "FacilityPro — what each user sees",
+      "fontSize": 36,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaeyiemmuddg5",
+      "type": "text",
+      "x": 60,
+      "y": 92,
+      "strokeColor": "#495057",
+      "text": "One login. The app routes you to your own portal based on your role.",
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaeogm3kv6s2eq",
+      "type": "rectangle",
+      "x": 60,
+      "y": 140,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#a5d8ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Head Office / Admin"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaes4xbc1v5iw",
+      "type": "rectangle",
+      "x": 60,
+      "y": 198,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Dashboard & reports"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaejvwi8jmtp2",
+      "type": "rectangle",
+      "x": 60,
+      "y": 252,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Orders, indents & purchase orders"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaevp3ji5bzak",
+      "type": "rectangle",
+      "x": 60,
+      "y": 306,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Goods received & quality checks"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsael7fxjhuvlj",
+      "type": "rectangle",
+      "x": 60,
+      "y": 360,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Invoices, payments & reconciliation"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaemxzkc3gzu5d",
+      "type": "rectangle",
+      "x": 60,
+      "y": 414,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Services: security, AC, pest, printing"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaevsurfnmca3",
+      "type": "rectangle",
+      "x": 60,
+      "y": 468,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Company, staff, HR & payroll"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaesk1jml5i7lg",
+      "type": "rectangle",
+      "x": 60,
+      "y": 522,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Societies, guards & residents"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaejqla0qdypy",
+      "type": "rectangle",
+      "x": 60,
+      "y": 576,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Master data & settings"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsae7qqfpz85jk",
+      "type": "rectangle",
+      "x": 500,
+      "y": 140,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#b2f2bb",
+      "strokeColor": "#2f9e44",
+      "label": {
+        "text": "Buyer (society / client)"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaegl5mubc1ckr",
+      "type": "rectangle",
+      "x": 500,
+      "y": 198,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#ebfbee",
+      "strokeColor": "#2f9e44",
+      "label": {
+        "text": "Raise a new request"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaejeuohlwxvg",
+      "type": "rectangle",
+      "x": 500,
+      "y": 252,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#ebfbee",
+      "strokeColor": "#2f9e44",
+      "label": {
+        "text": "Track all my requests"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaezcr3tm8j6ja",
+      "type": "rectangle",
+      "x": 500,
+      "y": 306,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#ebfbee",
+      "strokeColor": "#2f9e44",
+      "label": {
+        "text": "Invoices & payments"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsae09qo4jt8k3aq",
+      "type": "rectangle",
+      "x": 500,
+      "y": 360,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#ebfbee",
+      "strokeColor": "#2f9e44",
+      "label": {
+        "text": "Give feedback once work is done"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaec3sa4uyhcr",
+      "type": "rectangle",
+      "x": 940,
+      "y": 140,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#ffec99",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Supplier / Vendor"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaeyybhgh7ybds",
+      "type": "rectangle",
+      "x": 940,
+      "y": 198,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff9db",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Indents to accept or reject"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaemzb3b6lljy",
+      "type": "rectangle",
+      "x": 940,
+      "y": 252,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff9db",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Purchase orders to dispatch"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsae0x206w2opgik",
+      "type": "rectangle",
+      "x": 940,
+      "y": 306,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff9db",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Service orders & staff deployment"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsae4b1jrz67ed9",
+      "type": "rectangle",
+      "x": 940,
+      "y": 360,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff9db",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Submit bills"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsae9l4i5ftg8z9",
+      "type": "rectangle",
+      "x": 940,
+      "y": 414,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff9db",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Returns raised against my supply"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsae1808l8mezkf",
+      "type": "rectangle",
+      "x": 60,
+      "y": 690,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#ffc9c9",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "Security Guard"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaezbp17sx057f",
+      "type": "rectangle",
+      "x": 60,
+      "y": 748,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff5f5",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "Register visitors with photo & vehicle"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaembium9r4fdd",
+      "type": "rectangle",
+      "x": 60,
+      "y": 802,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff5f5",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "Verify residents & flats"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaevghmjcvis2n",
+      "type": "rectangle",
+      "x": 60,
+      "y": 856,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff5f5",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "Panic / SOS with live location"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaetb294mldgck",
+      "type": "rectangle",
+      "x": 60,
+      "y": 910,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff5f5",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "Daily checklists with photo proof"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaezhgnak77m4i",
+      "type": "rectangle",
+      "x": 60,
+      "y": 964,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff5f5",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "My attendance & leave"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaeqqdpuqnskw",
+      "type": "rectangle",
+      "x": 500,
+      "y": 690,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#eebefa",
+      "strokeColor": "#9c36b5",
+      "label": {
+        "text": "Resident"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaees9uvgaouo",
+      "type": "rectangle",
+      "x": 500,
+      "y": 748,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#f8f0fc",
+      "strokeColor": "#9c36b5",
+      "label": {
+        "text": "Get alerted who is at my gate"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaeqlugldi4nek",
+      "type": "rectangle",
+      "x": 500,
+      "y": 802,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#f8f0fc",
+      "strokeColor": "#9c36b5",
+      "label": {
+        "text": "My flat & visitor history"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaeue842ihahmm",
+      "type": "rectangle",
+      "x": 500,
+      "y": 856,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#f8f0fc",
+      "strokeColor": "#9c36b5",
+      "label": {
+        "text": "Raise complaints"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaeoz1v4vpza3",
+      "type": "rectangle",
+      "x": 940,
+      "y": 690,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#99e9f2",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Delivery Agent"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaeh2p6c4awli7",
+      "type": "rectangle",
+      "x": 940,
+      "y": 748,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e3fafc",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Log material arrival"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvnsaewsm4kbe177i",
+      "type": "rectangle",
+      "x": 940,
+      "y": 802,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e3fafc",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Delivery photo & proof"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:32:30.712Z",
+      "updatedAt": "2026-08-08T04:32:30.712Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro42jxvht1e3nw",
+      "type": "text",
+      "x": 60,
+      "y": 1068,
+      "strokeColor": "#1e1e1e",
+      "text": "How work flows through the system",
+      "fontSize": 28,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4hyc9h7o1bhg",
+      "type": "text",
+      "x": 60,
+      "y": 1122,
+      "strokeColor": "#495057",
+      "text": "1. Buying materials — request to payment",
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "m1",
+      "type": "rectangle",
+      "x": 60,
+      "y": 1152,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#ebfbee",
+      "strokeColor": "#2f9e44",
+      "label": {
+        "text": "Buyer raises a request"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "m2",
+      "type": "rectangle",
+      "x": 276,
+      "y": 1152,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Head office accepts or rejects"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "m3",
+      "type": "rectangle",
+      "x": 492,
+      "y": 1152,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Indent sent to suppliers"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "m4",
+      "type": "rectangle",
+      "x": 708,
+      "y": 1152,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#fff9db",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Supplier accepts the indent"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "m5",
+      "type": "rectangle",
+      "x": 924,
+      "y": 1152,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Purchase order issued"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "m6",
+      "type": "rectangle",
+      "x": 1140,
+      "y": 1152,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#fff9db",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Supplier dispatches goods"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "m7",
+      "type": "rectangle",
+      "x": 60,
+      "y": 1278,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e3fafc",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Delivery agent logs arrival"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "m8",
+      "type": "rectangle",
+      "x": 276,
+      "y": 1278,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Goods received & checked"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "m9",
+      "type": "rectangle",
+      "x": 492,
+      "y": 1278,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#fff9db",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Supplier submits bill"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "m10",
+      "type": "rectangle",
+      "x": 708,
+      "y": 1278,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Accounts reconcile"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "m11",
+      "type": "rectangle",
+      "x": 924,
+      "y": 1278,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#ebfbee",
+      "strokeColor": "#2f9e44",
+      "label": {
+        "text": "Buyer invoiced & pays"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "m12",
+      "type": "rectangle",
+      "x": 1140,
+      "y": 1278,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Company pays supplier"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro47dd5k8vo6dc",
+      "type": "arrow",
+      "x": 258,
+      "y": 1190,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "m1"
+      },
+      "end": {
+        "id": "m2"
+      },
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4moe5bt5hmb",
+      "type": "arrow",
+      "x": 474,
+      "y": 1190,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "m2"
+      },
+      "end": {
+        "id": "m3"
+      },
+      "createdAt": "2026-08-08T04:33:16.565Z",
+      "updatedAt": "2026-08-08T04:33:16.565Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4qf6p7n5v6a",
+      "type": "arrow",
+      "x": 690,
+      "y": 1190,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "m3"
+      },
+      "end": {
+        "id": "m4"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4eqz5tzlahsi",
+      "type": "arrow",
+      "x": 906,
+      "y": 1190,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "m4"
+      },
+      "end": {
+        "id": "m5"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4ydrji9auob",
+      "type": "arrow",
+      "x": 1122,
+      "y": 1190,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "m5"
+      },
+      "end": {
+        "id": "m6"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4lc6qou0h0b",
+      "type": "arrow",
+      "x": 258,
+      "y": 1316,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "m7"
+      },
+      "end": {
+        "id": "m8"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro44frlmrvlmug",
+      "type": "arrow",
+      "x": 474,
+      "y": 1316,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "m8"
+      },
+      "end": {
+        "id": "m9"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro44q1gvw9mimo",
+      "type": "arrow",
+      "x": 690,
+      "y": 1316,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "m9"
+      },
+      "end": {
+        "id": "m10"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4bd6p06uxd3o",
+      "type": "arrow",
+      "x": 906,
+      "y": 1316,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "m10"
+      },
+      "end": {
+        "id": "m11"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4rshy75bh6am",
+      "type": "arrow",
+      "x": 1122,
+      "y": 1316,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "m11"
+      },
+      "end": {
+        "id": "m12"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro49r5g90uhyfh",
+      "type": "text",
+      "x": 60,
+      "y": 1400,
+      "strokeColor": "#495057",
+      "text": "2. Getting a service done — security, AC, pest control, plantation, printing",
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "s1",
+      "type": "rectangle",
+      "x": 60,
+      "y": 1432,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#ebfbee",
+      "strokeColor": "#2f9e44",
+      "label": {
+        "text": "Buyer raises service request"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "s2",
+      "type": "rectangle",
+      "x": 276,
+      "y": 1432,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Rates verified"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "s3",
+      "type": "rectangle",
+      "x": 492,
+      "y": 1432,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Service indent sent to vendors"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "s4",
+      "type": "rectangle",
+      "x": 708,
+      "y": 1432,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#fff9db",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Vendor accepts or rejects"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "s5",
+      "type": "rectangle",
+      "x": 924,
+      "y": 1432,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Service order issued"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "s6",
+      "type": "rectangle",
+      "x": 1140,
+      "y": 1432,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#fff9db",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Staff deployed on site"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "s7",
+      "type": "rectangle",
+      "x": 60,
+      "y": 1558,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e6fcf5",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "Work done, checklist filled"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "s8",
+      "type": "rectangle",
+      "x": 276,
+      "y": 1558,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#edf2ff",
+      "strokeColor": "#4263eb",
+      "label": {
+        "text": "Supervisor verifies headcount"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "s9",
+      "type": "rectangle",
+      "x": 492,
+      "y": 1558,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#fff9db",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Supplier submits bill"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "s10",
+      "type": "rectangle",
+      "x": 708,
+      "y": 1558,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#ebfbee",
+      "strokeColor": "#2f9e44",
+      "label": {
+        "text": "Billed to the client"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4od2zw5mgukn",
+      "type": "arrow",
+      "x": 258,
+      "y": 1470,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "s1"
+      },
+      "end": {
+        "id": "s2"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4tas48wlzuk",
+      "type": "arrow",
+      "x": 474,
+      "y": 1470,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "s2"
+      },
+      "end": {
+        "id": "s3"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4r1p0fb1zwvm",
+      "type": "arrow",
+      "x": 690,
+      "y": 1470,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "s3"
+      },
+      "end": {
+        "id": "s4"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro44kfmlg82d38",
+      "type": "arrow",
+      "x": 906,
+      "y": 1470,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "s4"
+      },
+      "end": {
+        "id": "s5"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4zratb28qtkn",
+      "type": "arrow",
+      "x": 1122,
+      "y": 1470,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "s5"
+      },
+      "end": {
+        "id": "s6"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4blxg7iqafz",
+      "type": "arrow",
+      "x": 258,
+      "y": 1596,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "s7"
+      },
+      "end": {
+        "id": "s8"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro40h4pdlfo41bt",
+      "type": "arrow",
+      "x": 474,
+      "y": 1596,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "s8"
+      },
+      "end": {
+        "id": "s9"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro468gplqobw7q",
+      "type": "arrow",
+      "x": 690,
+      "y": 1596,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "s9"
+      },
+      "end": {
+        "id": "s10"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4cas0s0h7qdf",
+      "type": "text",
+      "x": 60,
+      "y": 1680,
+      "strokeColor": "#495057",
+      "text": "3. A day at the gate — visitors, alerts, incidents",
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "g1",
+      "type": "rectangle",
+      "x": 60,
+      "y": 1712,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#fff5f5",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "Guard logs visitor & photo"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "g2",
+      "type": "rectangle",
+      "x": 276,
+      "y": 1712,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#f8f0fc",
+      "strokeColor": "#9c36b5",
+      "label": {
+        "text": "Resident notified instantly"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "g3",
+      "type": "rectangle",
+      "x": 492,
+      "y": 1712,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#fff5f5",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "Daily checklist with photo proof"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "g4",
+      "type": "rectangle",
+      "x": 708,
+      "y": 1712,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#ffc9c9",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "Panic / SOS sends location"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "g5",
+      "type": "rectangle",
+      "x": 924,
+      "y": 1712,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#edf2ff",
+      "strokeColor": "#4263eb",
+      "label": {
+        "text": "Supervisor & head office alerted"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "g6",
+      "type": "rectangle",
+      "x": 1140,
+      "y": 1712,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Incident or behaviour ticket"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro49caf8rnpzkn",
+      "type": "arrow",
+      "x": 258,
+      "y": 1750,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "g1"
+      },
+      "end": {
+        "id": "g2"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4snim66ujuuo",
+      "type": "arrow",
+      "x": 474,
+      "y": 1750,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "g2"
+      },
+      "end": {
+        "id": "g3"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4pe9t9kqxva",
+      "type": "arrow",
+      "x": 690,
+      "y": 1750,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "g3"
+      },
+      "end": {
+        "id": "g4"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4ukyxndqu92h",
+      "type": "arrow",
+      "x": 906,
+      "y": 1750,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "g4"
+      },
+      "end": {
+        "id": "g5"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4spjral4l1iq",
+      "type": "arrow",
+      "x": 1122,
+      "y": 1750,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "g5"
+      },
+      "end": {
+        "id": "g6"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4c42mvfrr09",
+      "type": "text",
+      "x": 60,
+      "y": 1810,
+      "strokeColor": "#868e96",
+      "text": "Guards are also watched automatically: if their location stops moving, or a checklist is not filled in time, the system raises an alert on its own.",
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4vpy8iocoem",
+      "type": "text",
+      "x": 60,
+      "y": 1854,
+      "strokeColor": "#495057",
+      "text": "4. When delivered material is wrong — shortage, quality, return to vendor",
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "q1",
+      "type": "rectangle",
+      "x": 60,
+      "y": 1886,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Short delivery recorded"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "q2",
+      "type": "rectangle",
+      "x": 276,
+      "y": 1886,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Quality fail: damaged or expired"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "q3",
+      "type": "rectangle",
+      "x": 492,
+      "y": 1886,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e3fafc",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Kept out of usable stock"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "q4",
+      "type": "rectangle",
+      "x": 708,
+      "y": 1886,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Return to vendor raised"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "q5",
+      "type": "rectangle",
+      "x": 924,
+      "y": 1886,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#fff9db",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Supplier sees the return"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "q6",
+      "type": "rectangle",
+      "x": 1140,
+      "y": 1886,
+      "width": 190,
+      "height": 76,
+      "backgroundColor": "#fff9db",
+      "strokeColor": "#f08c00",
+      "label": {
+        "text": "Open until replaced or credited"
+      },
+      "fontSize": 14,
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4b02dc30b0ag",
+      "type": "arrow",
+      "x": 258,
+      "y": 1924,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "q1"
+      },
+      "end": {
+        "id": "q2"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4ifb10b4uwh",
+      "type": "arrow",
+      "x": 474,
+      "y": 1924,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "q2"
+      },
+      "end": {
+        "id": "q3"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4x102mnfzx5",
+      "type": "arrow",
+      "x": 690,
+      "y": 1924,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "q3"
+      },
+      "end": {
+        "id": "q4"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4qpws7y44iia",
+      "type": "arrow",
+      "x": 906,
+      "y": 1924,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "q4"
+      },
+      "end": {
+        "id": "q5"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvoro4fze1w67crvo",
+      "type": "arrow",
+      "x": 1122,
+      "y": 1924,
+      "strokeColor": "#868e96",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          10,
+          0
+        ]
+      ],
+      "start": {
+        "id": "q5"
+      },
+      "end": {
+        "id": "q6"
+      },
+      "createdAt": "2026-08-08T04:33:16.566Z",
+      "updatedAt": "2026-08-08T04:33:16.566Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdnkneks5xtjb",
+      "type": "text",
+      "x": 60,
+      "y": 2030,
+      "strokeColor": "#1e1e1e",
+      "text": "Internal staff logins — what each team sees",
+      "fontSize": 28,
+      "createdAt": "2026-08-08T04:34:11.186Z",
+      "updatedAt": "2026-08-08T04:34:11.186Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd1teqdqhpebz",
+      "type": "rectangle",
+      "x": 60,
+      "y": 2082,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#a5d8ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Super Admin"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:34:11.186Z",
+      "updatedAt": "2026-08-08T04:34:11.186Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtda6z370hra3r",
+      "type": "rectangle",
+      "x": 60,
+      "y": 2140,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Everything, across all companies"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.186Z",
+      "updatedAt": "2026-08-08T04:34:11.186Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdoxc9gklrzkc",
+      "type": "rectangle",
+      "x": 500,
+      "y": 2082,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#a5d8ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Managing Director"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:34:11.186Z",
+      "updatedAt": "2026-08-08T04:34:11.186Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd5m7gcg8f1jd",
+      "type": "rectangle",
+      "x": 500,
+      "y": 2140,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Dashboard & business reports"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.186Z",
+      "updatedAt": "2026-08-08T04:34:11.186Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdh75vu0sgm7",
+      "type": "rectangle",
+      "x": 500,
+      "y": 2194,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Finance overview"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.186Z",
+      "updatedAt": "2026-08-08T04:34:11.186Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdvamgx5oipnp",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2082,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#a5d8ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Department Head"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:34:11.186Z",
+      "updatedAt": "2026-08-08T04:34:11.186Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtddk2hdls8oej",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2140,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Staff & HR for their department"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.186Z",
+      "updatedAt": "2026-08-08T04:34:11.186Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd8g6eizyv6ey",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2194,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Service requests & services catalog"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdeaivqne45p6",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2248,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Incident & behaviour tickets"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdsldikydet59",
+      "type": "rectangle",
+      "x": 60,
+      "y": 2352,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#a5d8ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Accounts"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdve26j3mgza",
+      "type": "rectangle",
+      "x": 60,
+      "y": 2410,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Invoices, bills & payments"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdikac60mwphs",
+      "type": "rectangle",
+      "x": 60,
+      "y": 2464,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Reconciliation & ledger"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdmynrch1gyc",
+      "type": "rectangle",
+      "x": 60,
+      "y": 2518,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Financial reports & compliance"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtds40svkw49xd",
+      "type": "rectangle",
+      "x": 60,
+      "y": 2572,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Payroll"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdf2fvpp12fn",
+      "type": "rectangle",
+      "x": 500,
+      "y": 2352,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#ffc9c9",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "Security Supervisor"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdd2say69z53b",
+      "type": "rectangle",
+      "x": 500,
+      "y": 2410,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff5f5",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "Manage guards & rosters"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd1u750ct26ml",
+      "type": "rectangle",
+      "x": 500,
+      "y": 2464,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff5f5",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "Visitors, checklists & panic alerts"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdunle27eawcj",
+      "type": "rectangle",
+      "x": 500,
+      "y": 2518,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff5f5",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "Guard attendance & leave"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdyuoa0qus88d",
+      "type": "rectangle",
+      "x": 500,
+      "y": 2572,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#fff5f5",
+      "strokeColor": "#e03131",
+      "label": {
+        "text": "Report incidents"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdf0to6wuseav",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2352,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#bac8ff",
+      "strokeColor": "#4263eb",
+      "label": {
+        "text": "Site Supervisor"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdgr7ai1krffc",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2410,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#edf2ff",
+      "strokeColor": "#4263eb",
+      "label": {
+        "text": "Day-to-day society operations"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdnkxf1qbfhom",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2464,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#edf2ff",
+      "strokeColor": "#4263eb",
+      "label": {
+        "text": "Service requests & tickets"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd016ahac572vne",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2518,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#edf2ff",
+      "strokeColor": "#4263eb",
+      "label": {
+        "text": "Site staff attendance"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdiju888bt9b",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2572,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#edf2ff",
+      "strokeColor": "#4263eb",
+      "label": {
+        "text": "Plantation services"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdmk9148wsz6a",
+      "type": "rectangle",
+      "x": 60,
+      "y": 2676,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#99e9f2",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Storekeeper"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd7lm8kkvksd",
+      "type": "rectangle",
+      "x": 60,
+      "y": 2734,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e3fafc",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Stock in & out, warehouses"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtderc0v4um3v",
+      "type": "rectangle",
+      "x": 60,
+      "y": 2788,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e3fafc",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Quality & shortage checks"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdnsgii4qf6h",
+      "type": "rectangle",
+      "x": 60,
+      "y": 2842,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e3fafc",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Returns to vendor"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdr7vuq4js5hs",
+      "type": "rectangle",
+      "x": 60,
+      "y": 2896,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e3fafc",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Asset register & QR tags"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd8byk4iplgh6",
+      "type": "rectangle",
+      "x": 500,
+      "y": 2676,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#96f2d7",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "Field Technician"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdpukypvog9ml",
+      "type": "rectangle",
+      "x": 500,
+      "y": 2734,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e6fcf5",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "My assigned jobs"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd20rl2efmlo",
+      "type": "rectangle",
+      "x": 500,
+      "y": 2788,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e6fcf5",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "Update service requests"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd91rgrsohi07",
+      "type": "rectangle",
+      "x": 500,
+      "y": 2842,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e6fcf5",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "My attendance & leave"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdpvalp0lwz0m",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2676,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#96f2d7",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "AC Technician"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdkbpo1nxx6kq",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2734,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e6fcf5",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "AC service jobs"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd2qunqhef2nc",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2788,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e6fcf5",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "Spares & stock issued to me"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdzmadutix9h",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2842,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e6fcf5",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "Before / after photo proof"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd6njopbyru8p",
+      "type": "rectangle",
+      "x": 940,
+      "y": 2896,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e6fcf5",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "My attendance & leave"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd1l8a0vong69",
+      "type": "rectangle",
+      "x": 60,
+      "y": 3000,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#96f2d7",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "Pest Control Technician"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdn1d2eqpwsj",
+      "type": "rectangle",
+      "x": 60,
+      "y": 3058,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e6fcf5",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "Pest control & plantation jobs"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdq58cn0bh7wn",
+      "type": "rectangle",
+      "x": 60,
+      "y": 3112,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e6fcf5",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "Chemicals, batches & expiry"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtddzzvln6kwy",
+      "type": "rectangle",
+      "x": 60,
+      "y": 3166,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e6fcf5",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "Before / after photo proof"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdwxm5hh0w1f",
+      "type": "rectangle",
+      "x": 60,
+      "y": 3220,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e6fcf5",
+      "strokeColor": "#099268",
+      "label": {
+        "text": "My attendance & leave"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdmzsrumha4u",
+      "type": "text",
+      "x": 500,
+      "y": 3005,
+      "strokeColor": "#1e1e1e",
+      "text": "Also note:",
+      "fontSize": 18,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd7o8raiew1r3",
+      "type": "text",
+      "x": 500,
+      "y": 3042,
+      "strokeColor": "#495057",
+      "text": "Vendor logs in as Supplier.\nDelivery Boy logs in as Delivery Agent.\nService Boy logs in as Field Technician.\nSociety Manager is being retired — those users\nmove to Site Supervisor.",
+      "fontSize": 15,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdj05gnp2wuw",
+      "type": "text",
+      "x": 940,
+      "y": 3005,
+      "strokeColor": "#c2255c",
+      "text": "Still to confirm with the client:",
+      "fontSize": 18,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdg79tql7rdsd",
+      "type": "text",
+      "x": 940,
+      "y": 3042,
+      "strokeColor": "#495057",
+      "text": "Retiring Society Manager into Site Supervisor.\nSuper Admin seeing across multiple companies.\nStorekeeper as its own separate login.\nResident portal scope — history & complaints.\nWho logs goods at the gate: security or delivery.",
+      "fontSize": 15,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdd6skyafikka",
+      "type": "text",
+      "x": 60,
+      "y": 3340,
+      "strokeColor": "#1e1e1e",
+      "text": "Shared modules everyone draws on",
+      "fontSize": 28,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdrzquu0ie4p",
+      "type": "text",
+      "x": 60,
+      "y": 3384,
+      "strokeColor": "#495057",
+      "text": "These sit underneath every portal above. A role is not a module — each role gets its own slice of these.",
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdxxxnf5b2iej",
+      "type": "rectangle",
+      "x": 60,
+      "y": 3424,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#a5d8ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Master data"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdiyxgrnhmgc",
+      "type": "rectangle",
+      "x": 60,
+      "y": 3482,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Products, categories & sale rates"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdbgcc6mmjpqh",
+      "type": "rectangle",
+      "x": 60,
+      "y": 3536,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Suppliers & supplier-wise rates"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdw8urhrxptso",
+      "type": "rectangle",
+      "x": 60,
+      "y": 3590,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Roles, designations & users"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd5g9i76m8ih6",
+      "type": "rectangle",
+      "x": 60,
+      "y": 3644,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Services, tasks & checklists"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdcjslpzf9wtf",
+      "type": "rectangle",
+      "x": 60,
+      "y": 3698,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e7f5ff",
+      "strokeColor": "#1971c2",
+      "label": {
+        "text": "Leave types, holidays & locations"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd14yys681fiaj",
+      "type": "rectangle",
+      "x": 500,
+      "y": 3424,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#bac8ff",
+      "strokeColor": "#4263eb",
+      "label": {
+        "text": "People & HR"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtddwocoyqv858",
+      "type": "rectangle",
+      "x": 500,
+      "y": 3482,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#edf2ff",
+      "strokeColor": "#4263eb",
+      "label": {
+        "text": "Recruitment & police verification"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd0lli20cqlhuo",
+      "type": "rectangle",
+      "x": 500,
+      "y": 3536,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#edf2ff",
+      "strokeColor": "#4263eb",
+      "label": {
+        "text": "Employee profiles & documents"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdt0bz294m04j",
+      "type": "rectangle",
+      "x": 500,
+      "y": 3590,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#edf2ff",
+      "strokeColor": "#4263eb",
+      "label": {
+        "text": "Selfie & location attendance"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd8q2uae75vza",
+      "type": "rectangle",
+      "x": 500,
+      "y": 3644,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#edf2ff",
+      "strokeColor": "#4263eb",
+      "label": {
+        "text": "Shifts, leave & holidays"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtd9f8m7rqvads",
+      "type": "rectangle",
+      "x": 500,
+      "y": 3698,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#edf2ff",
+      "strokeColor": "#4263eb",
+      "label": {
+        "text": "Payroll & payslips"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdkfc28t6odh9",
+      "type": "rectangle",
+      "x": 940,
+      "y": 3424,
+      "width": 400,
+      "height": 48,
+      "backgroundColor": "#99e9f2",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Stock & assets"
+      },
+      "fontSize": 20,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdwrs661nztw",
+      "type": "rectangle",
+      "x": 940,
+      "y": 3482,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e3fafc",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Stock, warehouses & reorder"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdlxxqg9idj2",
+      "type": "rectangle",
+      "x": 940,
+      "y": 3536,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e3fafc",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Purchase orders & receiving"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdhegcimdd7hs",
+      "type": "rectangle",
+      "x": 940,
+      "y": 3590,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e3fafc",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Asset register & QR codes"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdrsv9mhefh6l",
+      "type": "rectangle",
+      "x": 940,
+      "y": 3644,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e3fafc",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Maintenance schedule"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    },
+    {
+      "id": "msjvpxtdcjcoj9dtye",
+      "type": "rectangle",
+      "x": 940,
+      "y": 3698,
+      "width": 400,
+      "height": 44,
+      "backgroundColor": "#e3fafc",
+      "strokeColor": "#0c8599",
+      "label": {
+        "text": "Reports, audit log & settings"
+      },
+      "fontSize": 16,
+      "createdAt": "2026-08-08T04:34:11.187Z",
+      "updatedAt": "2026-08-08T04:34:11.187Z",
+      "version": 1
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff",
+    "gridSize": null
+  }
+}

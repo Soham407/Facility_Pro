@@ -39,6 +39,7 @@ import {
 import { AppSidebar } from "./AppSidebar";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 import {

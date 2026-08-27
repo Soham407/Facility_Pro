@@ -101,7 +101,7 @@ test.describe("Admin — Workflow & Dead-UI Audit", () => {
     await page.waitForLoadState("networkidle");
 
     const createBtn = page
-      .getByRole("button", { name: /create|new|add|report/i })
+      .getByRole("button", { name: /create|new|add|report|raise/i })
       .first();
     await expect(createBtn).toBeVisible({ timeout: 5_000 });
     // May show a toast if required data (employees) is missing — both outcomes are valid
@@ -652,7 +652,7 @@ test.describe("Company HOD — Workflow & Dead-UI Audit", () => {
     await page.goto("/hrms/attendance", { waitUntil: "load" });
     await page.waitForTimeout(1_000);
 
-    const fetchBtn = page.getByRole("button", { name: /fetch|load|search/i }).first();
+    const fetchBtn = page.getByRole("button", { name: /fetch|load|search|sync/i }).first();
     if (await fetchBtn.isVisible({ timeout: 5_000 }).catch(() => false)) {
       // Fetch may open a date picker dialog or trigger an API call
       await clickAndExpect(page, fetchBtn, ["api_called", "dom_changed", "toast_appeared", "dialog_opened"], 4_000);

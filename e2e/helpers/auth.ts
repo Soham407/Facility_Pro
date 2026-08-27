@@ -286,7 +286,23 @@ export async function loginAsRole(page: Page, configOrRole: RoleTestConfig | App
 export async function expectAllowedRoute(page: Page, configOrRole: RoleTestConfig | AppRole) {
   const config = getRoleConfig(configOrRole);
 
-  await page.goto(config.allowedPath);
+  try {
+    // Use client-side navigation to prevent full page reloads and interruption errors
+    await page.evaluate((path) => {
+      const a = document.createElement("a");
+      a.href = path;
+      a.id = "test-allow-navigation-link";
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => a.remove(), 1000);
+    }, config.allowedPath);
+  } catch (error) {
+    if (!(error instanceof Error) || !error.message.includes("interrupted by another navigation")) {
+      throw error;
+    }
+  }
+
   await waitForPath(page, config.allowedPath);
   await expect(page).not.toHaveURL(/\/login|error=(?:forbidden|feature_disabled|inactive|no_role)/i);
   await expect(page.locator("main")).not.toContainText(/feature not available/i);
@@ -298,7 +314,23 @@ export async function expectBlockedRoute(page: Page, configOrRole: RoleTestConfi
     new Set(["/dashboard", config.expectedLandingPath])
   );
 
-  await page.goto(config.blockedPath);
+  try {
+    // Use client-side navigation to prevent full page reloads that cause role fetch race conditions in WebKit
+    await page.evaluate((path) => {
+      const a = document.createElement("a");
+      a.href = path;
+      a.id = "test-navigation-link";
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => a.remove(), 1000);
+    }, config.blockedPath);
+  } catch (error) {
+    if (!(error instanceof Error) || !error.message.includes("interrupted by another navigation")) {
+      throw error;
+    }
+  }
+
   await page.waitForURL(
     (url) =>
       url.pathname !== config.blockedPath &&
@@ -320,7 +352,22 @@ export async function expectJourneyRoute(page: Page, configOrRole: RoleTestConfi
   const config = getRoleConfig(configOrRole);
   const journey = config.journey;
 
-  await page.goto(journey.path);
+  try {
+    // Use client-side navigation to prevent full page reloads and interruption errors
+    await page.evaluate((path) => {
+      const a = document.createElement("a");
+      a.href = path;
+      a.id = "test-journey-navigation-link";
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => a.remove(), 1000);
+    }, journey.path);
+  } catch (error) {
+    if (!(error instanceof Error) || !error.message.includes("interrupted by another navigation")) {
+      throw error;
+    }
+  }
   await waitForPath(page, journey.path);
   await expectAnyVisible(getJourneyReadyLocators(page, journey));
 }

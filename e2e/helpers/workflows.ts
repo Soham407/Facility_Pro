@@ -915,7 +915,7 @@ async function runSuperAdminRuntimeChain(browser: Browser, feature: ScopedFeatur
       role_display_name: string | null;
       permissions: string[] | null;
     }>(client, "roles", "role_name", "ac_technician");
-    const originalPermissions = Array.from(new Set(targetRole.permissions ?? []));
+    const originalPermissions = Array.from(new Set(Array.isArray(targetRole.permissions) ? targetRole.permissions : []));
     const targetPermission = "platform.audit_logs.view";
     const roleDisplayName = targetRole.role_display_name ?? "AC Technician";
     const restoreAuditAccess = originalPermissions.includes(targetPermission);

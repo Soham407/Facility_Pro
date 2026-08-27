@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React from "react";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { DataTable } from "@/components/shared/DataTable";
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { supabase } from "@/src/lib/supabaseClient";
+import { useServiceTasks } from "@/hooks/useServiceTasks";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface ServiceMapping {
@@ -49,35 +49,12 @@ function summarizeServiceMappings(serviceMappings: ServiceMapping[]) {
 }
 
 export default function ServiceTaskMappingPage() {
-  const [serviceMappings, setServiceMappings] = useState<ServiceMapping[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { tasks, isLoading, error } = useServiceTasks();
 
-  useEffect(() => {
-    fetchServiceMappings();
-  }, []);
-
-  const fetchServiceMappings = async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-
-      const { data, error: fetchError } = await supabase
-        .from("service_tasks")
-        .select("*")
-        .order("service_type");
-
-      if (fetchError) throw fetchError;
-
-      // Group by service_type
-      setServiceMappings(groupServiceTaskRows((data || []) as ServiceTaskRow[]));
-    } catch (err: unknown) {
-      console.error("Error fetching service mappings:", err);
-      setError("Failed to load service mappings");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const serviceMappings = React.useMemo(() => {
+    if (!tasks) return [];
+    return groupServiceTaskRows(tasks);
+  }, [tasks]);
 
   const columns: ColumnDef<ServiceMapping>[] = [
     {

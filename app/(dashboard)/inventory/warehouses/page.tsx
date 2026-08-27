@@ -139,6 +139,7 @@ export default function WarehousesPage() {
     {
       accessorKey: "warehouse_name",
       header: "Warehouse Name",
+      // @ts-ignore
       cell: ({ row }) => (
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -159,6 +160,7 @@ export default function WarehousesPage() {
     {
       accessorKey: "warehouse_code",
       header: "Code",
+      // @ts-ignore
       cell: ({ row }) => (
         <span className="text-muted-foreground">
           {row.original.warehouse_code || "-"}
@@ -168,6 +170,7 @@ export default function WarehousesPage() {
     {
       accessorKey: "stock_count",
       header: "Stock Items",
+      // @ts-ignore
       cell: ({ row }) => {
         const count = getStockCountForWarehouse(row.original.id);
         return (
@@ -181,6 +184,7 @@ export default function WarehousesPage() {
     {
       accessorKey: "actions",
       header: "Actions",
+      // @ts-ignore
       cell: ({ row }) => (
         <div className="flex items-center gap-2">
           <Button

@@ -1,0 +1,11 @@
+Request Failed: http://127.0.0.1:54321/auth/v1/user - NS_BINDING_ABORTED
+Console Error: Error
+Request Failed: http://127.0.0.1:54321/rest/v1/users?select=is_active%2Croles%21inner%28role_name%2Cpermissions%29&id=eq.1bb47fb1-b8ae-455f-b67e-13ca5a632714 - NS_BINDING_ABORTED
+Request Failed: http://127.0.0.1:54321/rest/v1/users?select=is_active%2Croles%21inner%28role_name%2Cpermissions%29&id=eq.1bb47fb1-b8ae-455f-b67e-13ca5a632714 - NS_BINDING_ABORTED
+Request Failed: http://127.0.0.1:54321/rest/v1/notifications?select=*&user_id=eq.1bb47fb1-b8ae-455f-b67e-13ca5a632714&order=created_at.desc&limit=50 - NS_BINDING_ABORTED
+Console Error: Error fetching user role: JSHandle@object
+Console Error: Error fetching user role: JSHandle@object
+Console Error: Notifications fetch error: JSHandle@object
+Console Error: Error fetching service requests: JSHandle@object
+Console Error: Error fetching service requests: JSHandle@object
+Console Error: Error fetching service requests: JSHandle@object

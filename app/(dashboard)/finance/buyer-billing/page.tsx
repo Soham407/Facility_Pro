@@ -34,6 +34,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useBuyerInvoices, INVOICE_STATUS_CONFIG, PAYMENT_STATUS_CONFIG, BuyerInvoice } from "@/hooks/useBuyerInvoices";
 import { useFinance } from "@/hooks/useFinance";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { formatCurrency } from "@/src/lib/utils/currency";
 import { Badge } from "@/components/ui/badge";

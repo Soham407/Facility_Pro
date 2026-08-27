@@ -31,7 +31,6 @@ test.describe("Auth and RBAC Edge Cases", () => {
   test("shows platform settings links to super admin users", async ({ page }) => {
     await loginAsRole(page, "super_admin");
 
-    await page.goto("/dashboard");
     await page.getByRole("button", { name: /settings/i }).click();
 
     await expect(page.getByRole("link", { name: /Admin Management/i }).first()).toBeVisible();
@@ -51,6 +50,7 @@ test.describe("Auth and RBAC Edge Cases", () => {
   test("routes buyers away from super admin management pages", async ({ page }) => {
     await loginAsRole(page, "buyer");
     await expectBlockedRoute(page, "buyer");
+    
     await page.goto("/settings/admins");
 
     const currentUrl = new URL(page.url());

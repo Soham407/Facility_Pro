@@ -192,8 +192,8 @@ export default function HolidayCalendarPage() {
   return (
     <div className="animate-fade-in space-y-6">
       <PageHeader
-        title="Holiday Master"
-        description="Unified calendar of National and Regional holidays utilized for payroll and statutory pay calculations."
+        title="Company Holidays"
+        description="Calendar of official company and statutory holidays."
         actions={
           <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>
             <DialogTrigger asChild>

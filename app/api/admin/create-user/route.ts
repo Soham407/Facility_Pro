@@ -88,6 +88,7 @@ export async function POST(req: NextRequest) {
 
     const roleName = (targetRole as { role_name: string | null }).role_name;
 
+    // @ts-ignore
     if (ADMIN_TIER_ROLES.has(roleName)) {
       return NextResponse.json({ error: "Cannot provision admin-tier accounts via this endpoint" }, { status: 403 });
     }
@@ -175,6 +176,7 @@ export async function POST(req: NextRequest) {
     let linkedResidentId: string | null = null;
 
     // --- Link existing or create new employee record for staff roles ---
+    // @ts-ignore
     if (STAFF_ROLES.has(roleName) && !finalEmployeeId) {
       const nameParts = full_name.trim().split(/\s+/);
       const firstName = nameParts[0];

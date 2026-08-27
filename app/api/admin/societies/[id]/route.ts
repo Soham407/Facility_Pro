@@ -66,7 +66,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const auth = await getAuthorizedSocietyAdmin();
-  if (auth.error || !auth.supabaseAdmin) return auth.error;
+  if (auth.error || !auth.supabaseAdmin) return auth.error || NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
 
@@ -95,7 +95,7 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const auth = await getAuthorizedSocietyAdmin();
-  if (auth.error || !auth.supabaseAdmin || !auth.callerUserId) return auth.error;
+  if (auth.error || !auth.supabaseAdmin || !auth.callerUserId) return auth.error || NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
 
@@ -166,7 +166,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const auth = await getAuthorizedSocietyAdmin();
-  if (auth.error || !auth.supabaseAdmin || !auth.callerUserId) return auth.error;
+  if (auth.error || !auth.supabaseAdmin || !auth.callerUserId) return auth.error || NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
 

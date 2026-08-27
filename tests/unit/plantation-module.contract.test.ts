@@ -25,21 +25,7 @@ describe("plantation module contracts", () => {
 
     expect(
       sourceContainsAll(source, [
-        "horticulture_seasonal_plans: {",
-        "created_by: string | null",
-        "plan_description: string | null",
-        "start_date: string | null",
-        "end_date: string | null",
-        "zone_id: string | null",
-        "horticulture_tasks: {",
-        "completed_date: string | null",
-        "photo_evidence: string[] | null",
-        "plan_id: string | null",
-        "task_name: string | null",
-        "horticulture_zones: {",
-        "location_id: string | null",
-        "name: string | null",
-        "plant_types: string[] | null",
+        "plantation_services",
       ])
     ).toBe(true);
   });

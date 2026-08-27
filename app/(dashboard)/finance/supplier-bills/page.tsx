@@ -51,6 +51,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useSupplierBills, BILL_STATUS_CONFIG, PAYMENT_STATUS_CONFIG, SupplierBill } from "@/hooks/useSupplierBills";
 import { useFinance } from "@/hooks/useFinance";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { formatCurrency } from "@/src/lib/utils/currency";
 import { useReconciliation } from "@/hooks/useReconciliation";

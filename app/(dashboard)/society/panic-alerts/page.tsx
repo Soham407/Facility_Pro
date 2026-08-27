@@ -38,7 +38,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { usePanicAlertHistory, PanicAlert, AlertType } from "@/hooks/usePanicAlertHistory";
 import { useEmergencyContacts } from "@/hooks/useEmergencyContacts";
-import { supabase } from "@/src/lib/supabaseClient";
+
 
 interface PanicAlertDetails {
   id: string;
@@ -80,6 +80,7 @@ export default function PanicAlertsPage() {
     error,
     resolveAlert,
     getAlertDetails,
+    getSignedUrl,
     getAlertTypeLabel,
     getTimeAgo,
     filters,
@@ -135,7 +136,7 @@ export default function PanicAlertsPage() {
 
       const storageRef = parseStorageRef(rawPhotoUrl);
       if (storageRef) {
-        const { data, error } = await supabase.storage.from(storageRef.bucket).createSignedUrl(storageRef.path, 60 * 60);
+        const { data, error } = await getSignedUrl(storageRef.bucket, storageRef.path);
         if (!error && data?.signedUrl) {
           photoUrl = data.signedUrl;
         }

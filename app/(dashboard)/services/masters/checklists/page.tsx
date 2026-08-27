@@ -171,7 +171,7 @@ export default function ChecklistMasterPage() {
         <div className="grid gap-6 md:grid-cols-3">
           {[
             { label: "Active Forms", value: activeCount, sub: "Live in guard app", icon: ShieldCheck, color: "text-success" },
-            { label: "Questions Defined", value: totalQuestions, sub: "Across all schemas", icon: HelpCircle, color: "text-info" },
+            { label: "Questions Defined", value: totalQuestions, sub: "Across all checklists", icon: HelpCircle, color: "text-info" },
             { label: "Pending Drafts", value: draftCount, sub: "Requiring review", icon: Settings, color: "text-warning" },
           ].map((stat, i) => (
               <Card key={i} className="border-none shadow-card ring-1 ring-border p-4">

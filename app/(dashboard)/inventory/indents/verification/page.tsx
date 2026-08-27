@@ -74,6 +74,7 @@ import {
   AlertDescription,
   AlertTitle,
 } from "@/components/ui/alert";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 
 // ============================================

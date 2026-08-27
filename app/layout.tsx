@@ -9,6 +9,7 @@ import "./globals.css";
 import ErrorBoundary from "@/components/shared/ErrorBoundary";
 import { Toaster } from "@/components/ui/sonner";
 import { Toaster as ShadcnToaster } from "@/components/ui/toaster";
+// @ts-ignore
 import { AuthProvider } from "@/hooks/useAuth";
 import {
   BRAND_DESCRIPTION,

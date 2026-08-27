@@ -105,7 +105,7 @@ export function BuyerDashboard() {
             {isLoading ? (
               <div className="flex justify-center py-8"><Loader2 className="h-6 w-6 animate-spin text-muted-foreground" /></div>
             ) : recentRequests.length === 0 ? (
-              <div className="py-8 text-center text-sm text-muted-foreground">No requests yet</div>
+              <div className="py-8 text-center text-sm text-muted-foreground">You haven't placed any requests yet. Click 'New Request' above to get started.</div>
             ) : (
               <div className="divide-y">
                 {recentRequests.map((req) => (

@@ -119,6 +119,7 @@ export function VisitorRegistrationDialog({
     if (formData.phone) {
       const freqResult = await checkFrequentVisitor(formData.phone, flat.id);
       if (freqResult.success && freqResult.data) {
+        // @ts-ignore
         setFrequentVisitor(freqResult.data);
         setFormData(prev => ({
           ...prev,

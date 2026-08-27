@@ -34,7 +34,8 @@ import { useServices } from "@/hooks/useServices";
 import { useAssets } from "@/hooks/useAssets";
 import type { AssetWithDetails, CreateServiceRequestForm } from "@/src/types/operations";
 import { SERVICE_PRIORITY, SERVICE_PRIORITY_LABELS } from "@/src/lib/constants";
-import { supabase } from "@/src/lib/supabaseClient";
+import { useCompanyLocations } from "@/hooks/useCompanyLocations";
+import { useSocieties } from "@/hooks/useSocieties";
 import { toast } from "sonner";
 import { InlineLoader } from "@/components/ui/async-boundary";
 
@@ -44,15 +45,6 @@ interface ServiceRequestFormProps {
   onCancel?: () => void;
 }
 
-interface Location {
-  id: string;
-  location_name: string;
-}
-
-interface Society {
-  id: string;
-  society_name: string;
-}
 
 export function ServiceRequestForm({
   preselectedAsset,
@@ -63,11 +55,14 @@ export function ServiceRequestForm({
   const { services, isLoading: isServicesLoading } = useServices();
   const { assets: allAssets, isLoading: isAssetsLoading } = useAssets();
 
-const [isSubmitting, setIsSubmitting] = useState(false);
-  const [locations, setLocations] = useState<Location[]>([]);
-  const [societies, setSocieties] = useState<Society[]>([]);
-  const [referenceDataError, setReferenceDataError] = useState<string | null>(null);
-  const [isLoadingReferenceData, setIsLoadingReferenceData] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { locations, isLoading: isLoadingLocations, error: locError } = useCompanyLocations();
+  const { societies, isLoading: isLoadingSocieties, error: socError } = useSocieties();
+
+  const isLoadingReferenceData = isLoadingLocations || isLoadingSocieties;
+  const referenceDataError = [locError, socError].filter(Boolean).length > 0 
+    ? "Failed to load reference data" 
+    : null;
 
   // Form state
   const [formData, setFormData] = useState<CreateServiceRequestForm>({
@@ -89,45 +84,6 @@ const [isSubmitting, setIsSubmitting] = useState(false);
     scheduling?: string;
   }>({});
 
-// Fetch locations and societies
-  useEffect(() => {
-    async function fetchReferenceData() {
-      setReferenceDataError(null);
-      setIsLoadingReferenceData(true);
-      try {
-        const [locRes, socRes] = await Promise.all([
-          supabase.from("company_locations").select("id, location_name").eq("is_active", true),
-          supabase.from("societies").select("id, society_name").eq("is_active", true),
-        ]);
-
-        // Check for errors in locations response
-        if (locRes.error) {
-          console.error("Error fetching locations:", locRes.error);
-          setReferenceDataError(`Failed to load locations: ${locRes.error.message}`);
-        } else if (locRes.data && locRes.data.length > 0) {
-          setLocations(locRes.data);
-        }
-
-        // Check for errors in societies response
-        if (socRes.error) {
-          console.error("Error fetching societies:", socRes.error);
-          setReferenceDataError((prev) => 
-            prev ? `${prev}; Failed to load societies: ${socRes.error!.message}` : `Failed to load societies: ${socRes.error!.message}`
-          );
-        } else if (socRes.data && socRes.data.length > 0) {
-          setSocieties(socRes.data);
-        }
-      } catch (err) {
-        console.error("Error fetching reference data:", err);
-        const errorMessage = err instanceof Error ? err.message : "Unknown error occurred";
-        setReferenceDataError(`Failed to load reference data: ${errorMessage}`);
-      } finally {
-        setIsLoadingReferenceData(false);
-      }
-    }
-
-    fetchReferenceData();
-  }, []);
 
   // Update location when asset is selected
   useEffect(() => {

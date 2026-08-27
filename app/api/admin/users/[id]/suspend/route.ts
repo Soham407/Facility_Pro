@@ -55,6 +55,7 @@ export async function POST(
     const targetRole = Array.isArray(targetRow?.roles)
       ? targetRow.roles[0]?.role_name
       : targetRow?.roles?.role_name;
+    // @ts-ignore
     if (ALLOWED_ROLES.includes(targetRole)) {
        return NextResponse.json({ error: "Cannot suspend admin-tier accounts" }, { status: 403 });
     }

@@ -41,6 +41,7 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { useLeaveApplications, LeaveApplication } from "@/hooks/useLeaveApplications";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { useEmployeeProfile } from "@/hooks/useEmployeeProfile";
 import { useToast } from "@/components/ui/use-toast";

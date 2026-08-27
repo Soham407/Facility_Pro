@@ -41,6 +41,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { useVisitors, Visitor } from "@/hooks/useVisitors";
 import { VisitorRegistrationDialog } from "@/components/society/VisitorRegistrationDialog";

@@ -1,3 +1,6 @@
+import { z } from "zod";
+import { shortageNotesRowSchema } from "@/src/types/schema";
+
 "use client";
 
 import { PageHeader } from "@/components/shared/PageHeader";
@@ -5,20 +8,8 @@ import { DataTable } from "@/components/shared/DataTable";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { 
-  Box, 
-  AlertTriangle, 
-  FileWarning, 
-  ArrowLeftRight, 
-  Plus, 
-  MoreHorizontal,
-  FileSearch,
-  Camera,
-  Layers,
-  CheckCircle2,
-  RefreshCw,
-  AlertCircle
-} from "lucide-react";
+import { X, ImageIcon, Upload, Camera, Layers, CheckCircle2, RefreshCw, AlertCircle, Box, AlertTriangle, FileWarning, ArrowLeftRight, Plus, MoreHorizontal, FileSearch } from "lucide-react";
+import { FeatureToggle } from "@/components/shared/FeatureToggle";
 import { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -46,8 +37,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { supabase as supabaseTyped } from "@/src/lib/supabaseClient";
-const supabase = supabaseTyped;
 import { toast } from "sonner";
 import { format } from "date-fns";
 
@@ -104,7 +93,7 @@ export default function QualityTicketsPage() {
   const [error, setError] = useState<string | null>(null);
 
   const { materialReceipts, isLoading: grnLoading, error: grnError, fetchGRNItems } = useGRN();
-  const { notes: shortageNotes, isLoading: shortageLoading, stats: shortageStats } = useShortageNotes();
+  const { notes: shortageNotes, isLoading: shortageLoading, stats: shortageStats, createNote, uploadEvidence } = useShortageNotes();
   const { logs: auditLogs } = useAuditLogs();
 
   const [logDiscrepancyOpen, setLogDiscrepancyOpen] = useState(false);
@@ -116,46 +105,50 @@ export default function QualityTicketsPage() {
     expected_qty: "",
     actual_qty: "",
     vendor: "",
+    batch_number: "",
   });
+  const [evidenceFiles, setEvidenceFiles] = useState<File[]>([]);
+  const [uploadingPhotos, setUploadingPhotos] = useState(false);
 
   const handleLogDiscrepancy = async () => {
     if (!discrepancyForm.item_description) return;
     setIsSubmittingDiscrepancy(true);
     try {
       const anchorReceipt = materialReceipts[0];
-      const { data: note, error } = await supabase.from("shortage_notes").insert({
-        note_number: `SN-${Date.now()}`,
+      
+      const photoUrls: string[] = [];
+      if (evidenceFiles.length > 0) {
+        setUploadingPhotos(true);
+        for (const file of evidenceFiles) {
+          const ext = file.name.split(".").pop();
+          const path = `quality-evidence/temp/${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
+          const url = await uploadEvidence(file, path);
+          photoUrls.push(url);
+        }
+        setUploadingPhotos(false);
+      }
+
+      const res = await createNote({
         po_id: anchorReceipt?.purchase_order_id || "",
         supplier_id: anchorReceipt?.supplier_id || "",
-        grn_id: anchorReceipt?.id || null,
-        status: "open",
-        total_shortage_value: 0,
-      }).select().single();
-
-      if (error) throw error;
-
-      const items: ManualShortageNoteItem[] = [{
-        product_name: discrepancyForm.item_description,
-        shortage_quantity: Math.max(0, (parseFloat(discrepancyForm.expected_qty) || 0) - (parseFloat(discrepancyForm.actual_qty) || 0)),
-        unit: "units",
-      }];
-
-      const { error: itemsError } = await supabase.from("shortage_note_items").insert(
-        items.map((item) => ({
-          shortage_note_id: note.id,
-          product_name: item.product_name,
-          shortage_quantity: item.shortage_quantity,
-          unit: item.unit,
+        grn_id: anchorReceipt?.id || undefined,
+        items: [{
+          product_name: discrepancyForm.item_description,
           ordered_quantity: parseFloat(discrepancyForm.expected_qty) || 0,
           received_quantity: parseFloat(discrepancyForm.actual_qty) || 0,
-          notes: `Manual discrepancy logged for ${discrepancyForm.vendor || "Unknown"}`,
-        }))
-      );
+          unit: "units",
+          batch_number: discrepancyForm.batch_number || undefined,
+          photo_urls: photoUrls.length > 0 ? photoUrls : undefined,
+          notes: `Manual discrepancy logged for ${discrepancyForm.vendor || "Unknown"}${discrepancyForm.batch_number ? ` | Batch: ${discrepancyForm.batch_number}` : ""}`,
+        }]
+      });
 
-      if (itemsError) throw itemsError;
+      if (!res.success) throw new Error("Failed to create note");
+
       toast.success("Discrepancy logged successfully");
       setLogDiscrepancyOpen(false);
-      setDiscrepancyForm({ item_description: "", issue_type: "Shortage", expected_qty: "", actual_qty: "", vendor: "" });
+      setDiscrepancyForm({ item_description: "", issue_type: "Shortage", expected_qty: "", actual_qty: "", vendor: "", batch_number: "" });
+      setEvidenceFiles([]);
     } catch (err: unknown) {
       toast.error(err instanceof Error ? err.message : "Failed to log discrepancy");
     } finally {
@@ -290,12 +283,16 @@ export default function QualityTicketsPage() {
       id: "actions",
       cell: () => (
         <div className="flex items-center gap-1">
-             <Button variant="ghost" size="icon" className="h-8 w-8 text-primary">
-                <Camera className="h-4 w-4" />
-             </Button>
-             <Button variant="ghost" size="icon" className="h-8 w-8">
-                <MoreHorizontal className="h-4 w-4" />
-             </Button>
+             <FeatureToggle featureId="ticket-inline-camera" isActive={false}>
+               <Button variant="ghost" size="icon" className="h-8 w-8 text-primary">
+                  <Camera className="h-4 w-4" />
+               </Button>
+             </FeatureToggle>
+             <FeatureToggle featureId="ticket-inline-actions" isActive={false}>
+               <Button variant="ghost" size="icon" className="h-8 w-8">
+                  <MoreHorizontal className="h-4 w-4" />
+               </Button>
+             </FeatureToggle>
         </div>
       ),
     },
@@ -489,6 +486,53 @@ export default function QualityTicketsPage() {
             <div className="space-y-2">
               <Label>Vendor / Supplier</Label>
               <Input value={discrepancyForm.vendor} onChange={e => setDiscrepancyForm({ ...discrepancyForm, vendor: e.target.value })} placeholder="Supplier name" />
+            </div>
+            <div className="space-y-2">
+              <Label>Batch Number</Label>
+              <Input
+                value={discrepancyForm.batch_number}
+                onChange={e => setDiscrepancyForm({ ...discrepancyForm, batch_number: e.target.value })}
+                placeholder="e.g., BATCH-2026-07-001"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>Photo Evidence</Label>
+              <div className="flex flex-col gap-2">
+                <label className="flex items-center gap-2 px-3 py-2 rounded-md border border-dashed border-border cursor-pointer hover:border-primary hover:bg-primary/5 transition-colors">
+                  <Upload className="h-4 w-4 text-muted-foreground" />
+                  <span className="text-sm text-muted-foreground">
+                    {evidenceFiles.length > 0 ? `${evidenceFiles.length} file(s) selected` : "Upload photos of damaged/expired items"}
+                  </span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    className="hidden"
+                    onChange={(e) => {
+                      if (e.target.files) {
+                        setEvidenceFiles(Array.from(e.target.files));
+                      }
+                    }}
+                  />
+                </label>
+                {evidenceFiles.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {evidenceFiles.map((file, i) => (
+                      <div key={i} className="flex items-center gap-1 bg-muted/50 rounded px-2 py-1 text-xs">
+                        <ImageIcon className="h-3 w-3" />
+                        <span className="max-w-[120px] truncate">{file.name}</span>
+                        <button
+                          type="button"
+                          onClick={() => setEvidenceFiles(prev => prev.filter((_, idx) => idx !== i))}
+                          className="text-muted-foreground hover:text-destructive"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           <DialogFooter>

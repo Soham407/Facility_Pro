@@ -211,6 +211,10 @@ export function usePanicAlertHistory(initialFilters?: AlertFilters) {
     }
   };
 
+  const getSignedUrl = async (bucket: string, path: string) => {
+    return await supabase.storage.from(bucket).createSignedUrl(path, 60 * 60);
+  };
+
   // Get alert type label
   // Real-time subscription for new alerts
   useEffect(() => {
@@ -284,6 +288,7 @@ export function usePanicAlertHistory(initialFilters?: AlertFilters) {
     // Actions
     resolveAlert,
     getAlertDetails,
+    getSignedUrl,
     
     // Helpers
     getAlertTypeLabel,

@@ -23,29 +23,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { toast } from "sonner";
-import { supabase } from "@/src/lib/supabaseClient";
-import {
-  BRAND_LEGAL_NAME,
-  BRAND_NAME,
-  BRAND_PORTAL_LABEL,
-  BRAND_TAGLINE,
-} from "@/src/lib/brand";
-
-type UserAuthRow = {
-  must_change_password?: boolean | null;
-  roles?:
-    | { role_name?: string | null }
-    | Array<{ role_name?: string | null }>
-    | null;
-};
-
-function getRoleName(authRow: UserAuthRow | null) {
-  const roleRecord = Array.isArray(authRow?.roles)
-    ? authRow?.roles[0]
-    : authRow?.roles;
-
-  return roleRecord?.role_name ?? null;
-}
+import { useAuth } from "@/hooks/useAuth";
 
 async function waitForPersistedAuthCookie(timeoutMs = 3_000) {
   const deadline = Date.now() + timeoutMs;
@@ -107,6 +85,7 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { signIn } = useAuth();
   const prefersReducedMotion = useReducedMotion() ?? false;
 
   const containerVariants = createContainerVariants(prefersReducedMotion);
@@ -117,48 +96,33 @@ export default function LoginPage() {
     setIsLoading(true);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+      const { user, error, roleName, mustChangePassword } = await signIn(email, password);
 
-      if (error) {
+      if (error || !user) {
         toast.error("Invalid email or password.");
         setIsLoading(false);
         return;
       }
 
-      if (data.user) {
-        const { data: userData } = await supabase
-          .from("users")
-          .select("roles(role_name), must_change_password")
-          .eq("id", data.user.id)
-          .single();
-
-        const authRow = userData as UserAuthRow | null;
-
-        if (authRow?.must_change_password) {
-          window.location.assign("/change-password");
-          return;
-        }
-
-        const userRole = getRoleName(authRow);
-
-        const roleRedirects: Record<string, string> = {
-          buyer: "/buyer",
-          supplier: "/supplier",
-          vendor: "/supplier",
-          resident: "/resident",
-          delivery_agent: "/delivery",
-          delivery_boy: "/delivery",
-          security_guard: "/dashboard",
-          security_supervisor: "/dashboard",
-        };
-
-        toast.success(`Welcome to ${BRAND_NAME}.`);
-        await waitForPersistedAuthCookie();
-        window.location.assign(roleRedirects[userRole] ?? "/dashboard");
+      if (mustChangePassword) {
+        window.location.assign("/change-password");
+        return;
       }
+
+      const roleRedirects: Record<string, string> = {
+        buyer: "/buyer",
+        supplier: "/supplier",
+        vendor: "/supplier",
+        resident: "/resident",
+        delivery_agent: "/delivery",
+        delivery_boy: "/delivery",
+        security_guard: "/dashboard",
+        security_supervisor: "/dashboard",
+      };
+
+      toast.success(`Welcome to ${BRAND_NAME}.`);
+      await waitForPersistedAuthCookie();
+      window.location.assign(roleRedirects[roleName ?? ""] ?? "/dashboard");
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "An unexpected error occurred.";
       toast.error(message);

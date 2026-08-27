@@ -27,16 +27,16 @@ import {
 
 // Predefined colors for categories
 const CATEGORY_COLORS = [
-  { name: "Blue", value: "#3B82F6" },
-  { name: "Green", value: "#22C55E" },
-  { name: "Red", value: "#EF4444" },
-  { name: "Yellow", value: "#EAB308" },
-  { name: "Purple", value: "#A855F7" },
-  { name: "Pink", value: "#EC4899" },
-  { name: "Orange", value: "#F97316" },
-  { name: "Cyan", value: "#06B6D4" },
-  { name: "Gray", value: "#6B7280" },
-  { name: "Indigo", value: "#6366F1" },
+  { name: "Primary", value: "hsl(var(--primary))" },
+  { name: "Secondary", value: "hsl(var(--secondary))" },
+  { name: "Destructive", value: "hsl(var(--destructive))" },
+  { name: "Muted", value: "hsl(var(--muted))" },
+  { name: "Accent", value: "hsl(var(--accent))" },
+  { name: "Foreground", value: "hsl(var(--foreground))" },
+  { name: "Card", value: "hsl(var(--card))" },
+  { name: "Popover", value: "hsl(var(--popover))" },
+  { name: "Border", value: "hsl(var(--border))" },
+  { name: "Input", value: "hsl(var(--input))" },
 ];
 
 interface CategoryFormData {

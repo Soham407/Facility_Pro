@@ -253,25 +253,3 @@ export async function sendReorderAlertNotification(
   }
 }
 
-/**
- * Send visitor arrival notification to resident
- * Includes visitor photo URL in the FCM data payload so the resident app can display the photo.
- */
-export async function sendVisitorArrivalNotification(
-  residentUserId: string,
-  visitorName: string,
-  flatNumber: string,
-  photoUrl?: string
-): Promise<void> {
-  await sendNotification({
-    user_id: residentUserId,
-    title: 'New Visitor at Gate',
-    body: `Dear Resident, ${visitorName} is at the gate for Flat ${flatNumber}.`,
-    channel: 'both',
-    data: {
-      type: 'visitor_arrival',
-      flat_number: flatNumber,
-      ...(photoUrl ? { photo_url: photoUrl } : {}),
-    },
-  });
-}

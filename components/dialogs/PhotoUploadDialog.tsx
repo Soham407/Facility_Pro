@@ -15,6 +15,9 @@ import { Button } from "@/components/ui/button";
 import { Camera, Upload, X, CheckCircle2, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { Database } from "@/src/types/supabase";
+import { useServiceRequests } from "@/hooks/useServiceRequests";
+import { useJobSessions } from "@/hooks/useJobSessions";
+import { useJobPhotos } from "@/hooks/useJobPhotos";
 
 interface PhotoUploadDialogProps {
   serviceRequestId: string;
@@ -38,6 +41,10 @@ export function PhotoUploadDialog({
   
   const beforeInputRef = useRef<HTMLInputElement>(null);
   const afterInputRef = useRef<HTMLInputElement>(null);
+
+  const { updateRequest } = useServiceRequests();
+  const { getSessionsByRequest } = useJobSessions();
+  const { addPhotos } = useJobPhotos();
 
   const validateFile = (file: File): boolean => {
     if (!file.type.startsWith('image/')) {
@@ -135,20 +142,12 @@ export function PhotoUploadDialog({
         }
 
         if (Object.keys(requestEvidencePatch).length > 0) {
-          await supabase
-            .from("service_requests")
-            .update(requestEvidencePatch)
-            .eq("id", serviceRequestId);
+          await updateRequest(serviceRequestId, requestEvidencePatch);
         }
 
         // Then link photo rows only if a real job session exists.
-        const { data: latestSession } = await supabase
-          .from("job_sessions")
-          .select("id")
-          .eq("service_request_id", serviceRequestId)
-          .order("created_at", { ascending: false })
-          .limit(1)
-          .maybeSingle();
+        const sessions = await getSessionsByRequest(serviceRequestId);
+        const latestSession = sessions[0];
 
         if (latestSession?.id) {
           type JobPhotoInsert = Database["public"]["Tables"]["job_photos"]["Insert"];
@@ -158,7 +157,7 @@ export function PhotoUploadDialog({
           ];
 
           if (allPhotos.length > 0) {
-            await supabase.from("job_photos").insert(allPhotos);
+            await addPhotos(allPhotos);
           }
         }
       } catch (dbErr) {

@@ -116,7 +116,7 @@ const columns: ColumnDef<AuditLog>[] = [
               </pre>
             </div>
           </div>
-          {row.original.metadata && (
+          {Boolean(row.original.metadata) && (
             <div className="mt-4">
               <h4 className="text-[10px] font-black uppercase text-muted-foreground mb-2">
                 Metadata

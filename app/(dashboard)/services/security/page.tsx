@@ -44,8 +44,9 @@ import { useSecurityGuards, SecurityGuard, GuardGrade } from "@/hooks/useSecurit
 import { useCompanyLocations } from "@/hooks/useCompanyLocations";
 import { useShifts } from "@/hooks/useShifts";
 import { useDesignations } from "@/hooks/useDesignations";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
-import { supabase } from "@/src/lib/supabaseClient";
+
 import {
   Dialog,
   DialogContent,

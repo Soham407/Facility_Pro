@@ -918,8 +918,8 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
     routes: ["/service-requests"],
     primaryRoles: ["site_supervisor"],
     fixtureProfile: "service_ops",
-    wave1Checks: [{ route: "/service-requests", readyText: "Service Requests", ctaText: "New Request", entityChecks: [{ table: "service_requests", minCount: 1 }] }],
-    expectedEntities: ["service_requests"],
+    wave1Checks: [{ route: "/service-requests", readyText: "Service Requests", ctaText: "New Request", entityChecks: [{ table: "requests", minCount: 1 }] }],
+    expectedEntities: ["requests"],
     expectedNotifications: [],
   }),
   feature({
@@ -930,8 +930,8 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
     routes: ["/service-requests/board"],
     primaryRoles: ["site_supervisor"],
     fixtureProfile: "service_ops",
-    wave1Checks: [{ route: "/service-requests/board", secondaryText: "In Progress", entityChecks: [{ table: "service_requests", minCount: 1 }] }],
-    expectedEntities: ["service_requests"],
+    wave1Checks: [{ route: "/service-requests/board", secondaryText: "In Progress", entityChecks: [{ table: "requests", minCount: 1 }] }],
+    expectedEntities: ["requests"],
     expectedNotifications: [],
   }),
   feature({
@@ -943,7 +943,7 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
     primaryRoles: ["site_supervisor"],
     fixtureProfile: "service_ops",
     wave1Checks: [{ route: "/service-requests/new", readyText: "Create Service Request", ctaText: "Create Request" }],
-    expectedEntities: ["service_requests", "services", "company_locations", "societies"],
+    expectedEntities: ["requests", "services", "company_locations", "societies"],
     expectedNotifications: [],
   }),
   feature({
@@ -955,7 +955,7 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
     primaryRoles: ["ac_technician"],
     fixtureProfile: "service_ops",
     wave1Checks: [{ route: "/services/ac", readyText: "Air Conditioner Services" }],
-    expectedEntities: ["service_requests", "services", "technician_profiles"],
+    expectedEntities: ["requests", "services", "technician_profiles"],
     expectedNotifications: [],
   }),
   feature({
@@ -967,7 +967,7 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
     primaryRoles: ["pest_control_technician"],
     fixtureProfile: "service_ops",
     wave1Checks: [{ route: "/services/pest-control", readyText: "Pest Control Services" }],
-    expectedEntities: ["service_requests", "services", "pest_control_ppe_verifications"],
+    expectedEntities: ["requests", "services", "pest_control_ppe_verifications"],
     expectedNotifications: [],
   }),
   feature({
@@ -979,7 +979,7 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
     primaryRoles: ["field_technician"],
     fixtureProfile: "service_ops",
     wave1Checks: [{ route: "/service-boy", readyText: "Technician Portal" }],
-    expectedEntities: ["service_requests", "job_sessions"],
+    expectedEntities: ["requests", "job_sessions"],
     expectedNotifications: [],
   }),
   feature({
@@ -991,7 +991,7 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
     primaryRoles: ["site_supervisor"],
     fixtureProfile: "service_ops",
     wave1Checks: [{ route: "/dashboard" }],
-    expectedEntities: ["service_requests", "attendance_logs"],
+    expectedEntities: ["requests", "attendance_logs"],
     expectedNotifications: [],
   }),
   feature({
@@ -1003,7 +1003,7 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
     primaryRoles: ["field_technician"],
     fixtureProfile: "service_ops",
     wave1Checks: [{ route: "/dashboard" }],
-    expectedEntities: ["service_requests", "job_sessions"],
+    expectedEntities: ["requests", "job_sessions"],
     expectedNotifications: [],
   }),
   feature({
@@ -1015,7 +1015,7 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
     primaryRoles: ["ac_technician"],
     fixtureProfile: "service_ops",
     wave1Checks: [{ route: "/dashboard" }],
-    expectedEntities: ["service_requests", "job_sessions"],
+    expectedEntities: ["requests", "job_sessions"],
     expectedNotifications: [],
   }),
   feature({
@@ -1027,7 +1027,7 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
     primaryRoles: ["pest_control_technician"],
     fixtureProfile: "service_ops",
     wave1Checks: [{ route: "/dashboard" }],
-    expectedEntities: ["service_requests", "job_sessions"],
+    expectedEntities: ["requests", "job_sessions"],
     expectedNotifications: [],
   }),
   feature({
@@ -1039,7 +1039,7 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
     primaryRoles: ["admin"],
     fixtureProfile: "hrms_core",
     wave1Checks: [{ route: "/service-requests", readyText: "Service Requests" }],
-    expectedEntities: ["attendance_logs", "leave_applications", "payroll_cycles", "service_requests", "job_sessions"],
+    expectedEntities: ["attendance_logs", "leave_applications", "payroll_cycles", "requests", "job_sessions"],
     expectedNotifications: ["leave_status_update"],
   }),
   feature({
@@ -1050,8 +1050,8 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
     routes: ["/hrms/payroll", "/service-requests"],
     primaryRoles: ["admin"],
     fixtureProfile: "hrms_core",
-    wave1Checks: [{ route: "/hrms/payroll", entityChecks: [{ table: "attendance_logs", minCount: 1 }, { table: "leave_applications", minCount: 1 }, { table: "service_requests", minCount: 1 }] }],
-    expectedEntities: ["attendance_logs", "leave_applications", "payroll_cycles", "payslips", "candidates", "background_verifications", "service_requests", "job_sessions", "job_photos", "job_materials_used"],
+    wave1Checks: [{ route: "/hrms/payroll", entityChecks: [{ table: "attendance_logs", minCount: 1 }, { table: "leave_applications", minCount: 1 }, { table: "requests", minCount: 1 }] }],
+    expectedEntities: ["attendance_logs", "leave_applications", "payroll_cycles", "payslips", "candidates", "background_verifications", "requests", "job_sessions", "job_photos", "job_materials_used"],
     expectedNotifications: ["leave_status_update"],
   }),
   feature({
@@ -1087,9 +1087,9 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
       title: "Request creation, assignment, before/after evidence, and completion",
       ownerRoles: ["site_supervisor", "ac_technician"],
       statusTransitions: ["service_requests.open -> assigned -> in_progress -> completed"],
-      evidenceTables: ["service_requests", "job_sessions", "job_photos"],
+      evidenceTables: ["requests", "job_sessions", "job_photos"],
     },
-    expectedEntities: ["service_requests", "job_sessions", "job_photos"],
+    expectedEntities: ["requests", "job_sessions", "job_photos"],
     expectedNotifications: [],
   }),
   feature({
@@ -1125,9 +1125,9 @@ const hrmsServiceFeatures: ScopedFeatureTestConfig[] = [
       title: "PPE verification, chemical logging, and closure",
       ownerRoles: ["pest_control_technician", "site_supervisor"],
       statusTransitions: ["service_requests.open -> in_progress -> completed"],
-      evidenceTables: ["service_requests", "job_sessions", "job_materials_used", "pest_control_ppe_verifications"],
+      evidenceTables: ["requests", "job_sessions", "job_materials_used", "pest_control_ppe_verifications"],
     },
-    expectedEntities: ["service_requests", "job_sessions", "job_materials_used", "pest_control_ppe_verifications"],
+    expectedEntities: ["requests", "job_sessions", "job_materials_used", "pest_control_ppe_verifications"],
     expectedNotifications: [],
   }),
 ];

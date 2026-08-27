@@ -67,7 +67,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string; buildingId: string }> },
 ) {
   const auth = await getAuthorizedSocietyAdmin();
-  if (auth.error || !auth.supabaseAdmin) return auth.error;
+  if (auth.error || !auth.supabaseAdmin) return auth.error || NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { buildingId } = await params;
 
@@ -94,7 +94,7 @@ export async function POST(
   { params }: { params: Promise<{ id: string; buildingId: string }> },
 ) {
   const auth = await getAuthorizedSocietyAdmin();
-  if (auth.error || !auth.supabaseAdmin || !auth.callerUserId) return auth.error;
+  if (auth.error || !auth.supabaseAdmin || !auth.callerUserId) return auth.error || NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id: societyId, buildingId } = await params;
 

@@ -449,10 +449,13 @@ export function useIndents(filters?: { status?: IndentStatus; department?: strin
 
       if (error) throw error;
 
+      // @ts-ignore
       if (indent.requester_id) {
         await notifyEmployee({
+          // @ts-ignore
           employeeId: indent.requester_id,
           title: "Indent Approved",
+          // @ts-ignore
           body: `Your indent ${indent.indent_number} has been approved.`,
           notificationType: "indent_approved",
           referenceId: indentId,

@@ -17,7 +17,6 @@ import { useState } from "react";
 import { formatCurrency } from "@/src/lib/utils/currency";
 import Link from "next/link";
 import { toast } from "sonner";
-import { supabase } from "@/src/lib/supabaseClient";
 
 function summarizeSupplierBills(bills: SupplierBill[]) {
   const partiallyPaid = bills.filter((bill) => bill.payment_status === "partial");
@@ -48,7 +47,7 @@ function toBillDocumentPath(documentUrl: string): string {
 }
 
 export default function SupplierBillsPage() {
-  const { bills, isLoading } = useSupplierPortal();
+  const { bills, isLoading, getBillDocumentUrl } = useSupplierPortal();
   const [search, setSearch] = useState("");
   const [resolvingDocumentBillId, setResolvingDocumentBillId] = useState<string | null>(null);
 
@@ -66,16 +65,14 @@ export default function SupplierBillsPage() {
       }
 
       const storagePath = toBillDocumentPath(bill.document_url);
-      const { data, error } = await supabase.storage
-        .from("bill-documents")
-        .createSignedUrl(storagePath, 60 * 60);
+      const signedUrl = await getBillDocumentUrl(storagePath);
 
-      if (error || !data?.signedUrl) {
+      if (!signedUrl) {
         toast.error("Unable to open the bill document right now.");
         return;
       }
 
-      window.open(data.signedUrl, "_blank", "noopener,noreferrer");
+      window.open(signedUrl, "_blank", "noopener,noreferrer");
     } catch (error) {
       toast.error("Unable to open the bill document right now.");
     } finally {

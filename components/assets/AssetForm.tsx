@@ -34,7 +34,10 @@ import { useAssets } from "@/hooks/useAssets";
 import { useAssetCategories } from "@/hooks/useAssetCategories";
 import type { AssetWithDetails, CreateAssetForm, AssetStatus } from "@/src/types/operations";
 import { ASSET_STATUS, ASSET_STATUS_LABELS } from "@/src/lib/constants";
-import { supabase } from "@/src/lib/supabaseClient";
+import { useCompanyLocations } from "@/hooks/useCompanyLocations";
+import { useSocieties } from "@/hooks/useSocieties";
+import { useSuppliers } from "@/hooks/useSuppliers";
+// removed supabase client since we use hooks now
 import { toast } from "sonner";
 import { InlineLoader } from "@/components/ui/async-boundary";
 
@@ -44,32 +47,20 @@ interface AssetFormProps {
   onCancel?: () => void;
 }
 
-interface Location {
-  id: string;
-  location_name: string;
-  location_code: string;
-}
-
-interface Society {
-  id: string;
-  society_name: string;
-}
-
-interface Supplier {
-  id: string;
-  supplier_name: string;
-}
 
 export function AssetForm({ asset, onSuccess, onCancel }: AssetFormProps) {
   const { createAsset, updateAsset } = useAssets();
   const { categories, isLoading: isCategoriesLoading } = useAssetCategories();
 
-const [isSubmitting, setIsSubmitting] = useState(false);
-  const [locations, setLocations] = useState<Location[]>([]);
-  const [societies, setSocieties] = useState<Society[]>([]);
-  const [suppliers, setSuppliers] = useState<Supplier[]>([]);
-  const [isLoadingReferenceData, setIsLoadingReferenceData] = useState(true);
-  const [referenceDataError, setReferenceDataError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { locations, isLoading: isLoadingLocations, error: locError } = useCompanyLocations();
+  const { societies, isLoading: isLoadingSocieties, error: socError } = useSocieties();
+  const { suppliers, isLoading: isLoadingSuppliers, error: supError } = useSuppliers();
+
+  const isLoadingReferenceData = isLoadingLocations || isLoadingSocieties || isLoadingSuppliers;
+  const referenceDataError = [locError, socError, supError].filter(Boolean).length > 0 
+    ? "Failed to load reference data" 
+    : null;
 
   // Form state
   const [formData, setFormData] = useState<CreateAssetForm>({
@@ -90,47 +81,6 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [status, setStatus] = useState<AssetStatus>(asset?.status || "functional");
 
-// Fetch locations, societies, and suppliers
-  useEffect(() => {
-    async function fetchReferenceData() {
-      setIsLoadingReferenceData(true);
-      setReferenceDataError(null);
-      try {
-        const [locRes, socRes, supRes] = await Promise.all([
-          supabase.from("company_locations").select("id, location_name, location_code").eq("is_active", true),
-          supabase.from("societies").select("id, society_name").eq("is_active", true),
-          supabase.from("suppliers").select("id, supplier_name").eq("is_active", true),
-        ]);
-
-        if (locRes.error) {
-          setReferenceDataError(`Failed to load locations: ${locRes.error.message}`);
-        } else if (locRes.data) {
-          setLocations(locRes.data);
-        }
-        
-        if (socRes.error) {
-          setReferenceDataError(prev => prev ? `${prev}; Failed to load societies` : `Failed to load societies: ${socRes.error.message}`);
-        } else if (socRes.data) {
-          setSocieties(socRes.data);
-        }
-        
-        if (supRes.error) {
-          setReferenceDataError(prev => prev ? `${prev}; Failed to load suppliers` : `Failed to load suppliers: ${supRes.error.message}`);
-        } else if (supRes.data) {
-          setSuppliers(supRes.data);
-        }
-      } catch (err) {
-        console.error("Error fetching reference data:", err);
-        const errorMessage = err instanceof Error ? err.message : "Unknown error";
-        setReferenceDataError(`Failed to load reference data: ${errorMessage}`);
-        toast.error("Failed to load form options. Please refresh.");
-      } finally {
-        setIsLoadingReferenceData(false);
-      }
-    }
-
-    fetchReferenceData();
-  }, []);
 
   // Handle submit
   const handleSubmit = async (e: React.FormEvent) => {
@@ -146,6 +96,7 @@ try {
           return;
         }
         const result = await updateAsset(asset.id, {
+          // @ts-ignore
           name: formData.name,
           description: formData.description || null,
           category_id: formData.categoryId,
@@ -171,6 +122,7 @@ try {
       } else {
         // Create new asset
         const result = await createAsset({
+          // @ts-ignore
           name: formData.name,
           description: formData.description || null,
           category_id: formData.categoryId,

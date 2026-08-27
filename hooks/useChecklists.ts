@@ -187,11 +187,44 @@ export function useChecklists() {
     fetchChecklists();
   }, [fetchChecklists]);
 
+  const getGuardChecklistAssignments = useCallback(async (employeeId: string) => {
+    const { data, error } = await supabase
+      .from("checklist_assignments")
+      .select("checklist_id")
+      .eq("employee_id", employeeId)
+      .eq("is_active", true);
+    if (error) throw error;
+    return data.map((a: any) => a.checklist_id as string);
+  }, []);
+
+  const updateGuardChecklistAssignments = useCallback(async (employeeId: string, checklistIds: string[], deselectedIds: string[]) => {
+    if (checklistIds.length > 0) {
+      const { error } = await supabase
+        .from("checklist_assignments")
+        .upsert(
+          checklistIds.map(id => ({ checklist_id: id, employee_id: employeeId, is_active: true })),
+          { onConflict: "checklist_id,employee_id" }
+        );
+      if (error) throw error;
+    }
+    if (deselectedIds.length > 0) {
+      const { error } = await supabase
+        .from("checklist_assignments")
+        .update({ is_active: false })
+        .eq("employee_id", employeeId)
+        .in("checklist_id", deselectedIds);
+      if (error) throw error;
+    }
+    return { success: true };
+  }, []);
+
   return {
     ...state,
     createChecklist,
     updateChecklist,
     deleteChecklist,
     refresh: fetchChecklists,
+    getGuardChecklistAssignments,
+    updateGuardChecklistAssignments,
   };
 }

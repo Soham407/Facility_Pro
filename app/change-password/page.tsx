@@ -16,20 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { supabase } from "@/src/lib/supabaseClient";
-import {
-  BRAND_LEGAL_NAME,
-  BRAND_NAME,
-  BRAND_PORTAL_LABEL,
-} from "@/src/lib/brand";
-
-type UserPasswordRow = {
-  must_change_password?: boolean | null;
-  roles?:
-    | { role_name?: string | null }
-    | Array<{ role_name?: string | null }>
-    | null;
-};
+import { useAuth } from "@/hooks/useAuth";
 
 const ROLE_REDIRECTS: Record<string, string> = {
   buyer: "/buyer",
@@ -42,49 +29,26 @@ const ROLE_REDIRECTS: Record<string, string> = {
   security_supervisor: "/dashboard",
 };
 
-function getRoleName(userData: UserPasswordRow | null) {
-  const roleRecord = Array.isArray(userData?.roles)
-    ? userData?.roles[0]
-    : userData?.roles;
-
-  return roleRecord?.role_name ?? null;
-}
-
 export default function ChangePasswordPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [isChecking, setIsChecking] = useState(true);
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const { getAuthUser, updatePassword } = useAuth();
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function guardCheck() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      const { user, roleName, mustChangePassword } = await getAuthUser();
 
       if (!user) {
         router.replace("/login");
         return;
       }
 
-      const { data: userData } = await supabase
-        .from("users")
-        .select("must_change_password")
-        .eq("id", user.id)
-        .single();
-
-      const passwordRow = userData as UserPasswordRow | null;
-
-      if (!passwordRow?.must_change_password) {
-        const { data: roleData } = await supabase
-          .from("users")
-          .select("roles(role_name)")
-          .eq("id", user.id)
-          .single();
-        const roleName = getRoleName(roleData as UserPasswordRow | null);
-        router.replace(ROLE_REDIRECTS[roleName] ?? "/dashboard");
+      if (!mustChangePassword) {
+        router.replace(ROLE_REDIRECTS[roleName ?? ""] ?? "/dashboard");
         return;
       }
 
@@ -111,17 +75,10 @@ export default function ChangePasswordPage() {
     setIsLoading(true);
 
     try {
-      const res = await fetch("/api/users/change-password", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ new_password: newPassword }),
-      });
+      const { error: updateErr } = await updatePassword(newPassword);
 
-      const result = await res.json();
-
-      if (!res.ok) {
-        setError(result.error || "Failed to change password.");
+      if (updateErr) {
+        setError(updateErr);
         setIsLoading(false);
         return;
       }

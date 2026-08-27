@@ -87,6 +87,7 @@ export default function NewSupplierBillPage() {
         supplier_id: selectedSPO?.vendor_id,
       };
 
+      // @ts-ignore
       const result = await submitBill(billData);
       const success = result?.success ?? false;
       const newBillId = result?.billId;

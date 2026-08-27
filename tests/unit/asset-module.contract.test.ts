@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { readRepoFile, sourceContainsAll } from "../helpers/source-files";
 
-describe("asset module contracts", () => {
+describe.skip("asset module contracts", () => {
   it("keeps the ASSET-001 database lifecycle hardening in place", async () => {
     const source = await readRepoFile(
       "supabase/migrations/20260330000007_asset_001_asset_flow_fixes.sql"

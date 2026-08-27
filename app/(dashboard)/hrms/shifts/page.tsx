@@ -338,8 +338,8 @@ export default function ShiftMasterPage() {
     return (
       <div className="animate-fade-in space-y-6">
         <PageHeader
-          title="Shift Master"
-          description="Define and manage operational shift timings, rotations, and personnel deployment strength."
+          title="Work Shifts"
+          description="Define work shift timings and manage staff rosters."
         />
         <div className="flex items-center justify-center py-20">
           <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
@@ -351,8 +351,8 @@ export default function ShiftMasterPage() {
   return (
     <div className="animate-fade-in space-y-6">
       <PageHeader
-        title="Shift Master"
-        description="Define and manage operational shift timings, rotations, and personnel deployment strength."
+        title="Work Shifts"
+        description="Define work shift timings and manage staff rosters."
         actions={
           <div className="flex gap-2">
             <Dialog open={isCreateDialogOpen} onOpenChange={setIsCreateDialogOpen}>

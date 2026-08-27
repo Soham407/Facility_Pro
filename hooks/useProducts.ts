@@ -167,8 +167,7 @@ export function useProducts(initialFilters?: ProductFilters) {
         .from("products")
         .select(`
           *,
-          category:product_categories(category_name, category_code),
-          subcategory:product_subcategories(subcategory_name)
+          category:product_categories(category_name, category_code)
         `)
         .order("product_name", { ascending: true });
 
@@ -226,8 +225,7 @@ export function useProducts(initialFilters?: ProductFilters) {
         .from("products")
         .select(`
           *,
-          category:product_categories(category_name, category_code),
-          subcategory:product_subcategories(subcategory_name)
+          category:product_categories(category_name, category_code)
         `)
         .eq("id", productId)
         .single();

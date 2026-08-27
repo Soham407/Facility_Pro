@@ -49,6 +49,7 @@ export function useGuardChecklist(employeeId: string | null) {
       // Fetch the first active checklist assigned to this guard and their guard profile
       const [assignmentResult, guardProfileResult] = await Promise.all([
         supabase
+          // @ts-ignore
           .from("checklist_assignments")
           .select("checklist:daily_checklists(id, checklist_name, questions)")
           .eq("employee_id", employeeId)

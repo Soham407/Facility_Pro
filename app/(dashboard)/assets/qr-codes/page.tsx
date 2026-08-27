@@ -2,6 +2,7 @@
 
 import { QrBatchGenerator } from "@/components/qr-codes/QrBatchGenerator";
 import { PageHeader } from "@/components/shared/PageHeader";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 
 export default function QrCodesPage() {

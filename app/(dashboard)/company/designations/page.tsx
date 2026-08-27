@@ -193,6 +193,7 @@ export default function DesignationsPage() {
           <SelectContent>
             <SelectItem value="all">All Departments</SelectItem>
             {departments.map(dept => (
+              // @ts-ignore
               <SelectItem key={dept} value={dept}>{dept}</SelectItem>
             ))}
           </SelectContent>
@@ -212,11 +213,11 @@ export default function DesignationsPage() {
   return (
     <div className="animate-fade-in space-y-6">
       <PageHeader
-        title="Designation Master"
-        description="Official job titles and positions hierarchy within the organization."
+        title="Job Titles"
+        description="Manage official job titles and positions hierarchy for your team."
         actions={
           <Button className="gap-2 shadow-sm" onClick={handleAdd}>
-            <Plus className="h-4 w-4" /> Add Designation
+            <Plus className="h-4 w-4" /> Add Job Title
           </Button>
         }
       />

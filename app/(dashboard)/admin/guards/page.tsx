@@ -33,7 +33,9 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useSecurityGuards, type SecurityGuard } from "@/hooks/useSecurityGuards";
-import { supabase } from "@/src/lib/supabaseClient";
+import { useCompanyLocations } from "@/hooks/useCompanyLocations";
+import { useShifts } from "@/hooks/useShifts";
+import { useChecklists } from "@/hooks/useChecklists";
 import { toast } from "sonner";
 
 interface LocationOption {
@@ -131,54 +133,14 @@ export default function AdminGuardsPage() {
   const [assignedChecklistIds, setAssignedChecklistIds] = useState<Set<string>>(new Set());
   const [isLoadingChecklists, setIsLoadingChecklists] = useState(false);
 
-  // Shared options
-  const [locations, setLocations] = useState<LocationOption[]>([]);
-  const [shifts, setShifts] = useState<ShiftOption[]>([]);
-  const [isLoadingOptions, setIsLoadingOptions] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { locations, isLoading: isLoadingLocations } = useCompanyLocations();
+  const { shifts, isLoading: isLoadingShifts } = useShifts();
+  const { checklists: allChecklists, getGuardChecklistAssignments, updateGuardChecklistAssignments } = useChecklists();
 
-  useEffect(() => {
-    let active = true;
+  const activeLocations = useMemo(() => locations.filter(l => l.is_active !== false).map(l => ({ id: l.id, location_name: l.location_name, location_code: l.location_code || "" })), [locations]);
+  const activeShifts = useMemo(() => shifts.filter(s => s.is_active !== false).map(s => ({ id: s.id, shift_name: s.shift_name, shift_code: s.shift_code || "" })), [shifts]);
 
-    async function loadOptions() {
-      setIsLoadingOptions(true);
-
-      try {
-        const [locationsResult, shiftsResult] = await Promise.all([
-          supabase
-            .from("company_locations")
-            .select("id, location_name, location_code")
-            .eq("is_active", true)
-            .order("location_name", { ascending: true }),
-          supabase
-            .from("shifts")
-            .select("id, shift_name, shift_code")
-            .eq("is_active", true)
-            .order("shift_name", { ascending: true }),
-        ]);
-
-        if (!active) return;
-
-        if (locationsResult.error) throw locationsResult.error;
-        if (shiftsResult.error) throw shiftsResult.error;
-
-        setLocations(normalizeLocationOptions(locationsResult.data));
-        setShifts(normalizeShiftOptions(shiftsResult.data));
-      } catch (error) {
-        if (active) {
-          toast.error(error instanceof Error ? error.message : "Failed to load options");
-        }
-      } finally {
-        if (active) setIsLoadingOptions(false);
-      }
-    }
-
-    void loadOptions();
-
-    return () => {
-      active = false;
-    };
-  }, []);
+  const isLoadingOptions = isLoadingLocations || isLoadingShifts;
 
   function openFullAssignDialog(guard: SecurityGuard) {
     setFullGuard(guard);
@@ -237,34 +199,21 @@ export default function AdminGuardsPage() {
     setIsLoadingChecklists(true);
 
     try {
-      const [checklistsResult, assignmentsResult] = await Promise.all([
-        supabase
-          .from("daily_checklists")
-          .select("id, checklist_name, checklist_code, frequency")
-          .eq("is_active", true)
-          .order("checklist_name", { ascending: true }),
-        guard.employee_id
-          ? supabase
-              .from("checklist_assignments")
-              .select("checklist_id")
-              .eq("employee_id", guard.employee_id)
-              .eq("is_active", true)
-          : Promise.resolve({ data: [], error: null }),
-      ]);
+      const assignments = guard.employee_id
+        ? await getGuardChecklistAssignments(guard.employee_id)
+        : [];
 
-      if (checklistsResult.error) throw checklistsResult.error;
-      if (assignmentsResult.error) throw assignmentsResult.error;
-
-      setChecklists(normalizeChecklistOptions(checklistsResult.data));
-      setAssignedChecklistIds(
-        new Set(
-          Array.isArray(assignmentsResult.data)
-            ? assignmentsResult.data
-                .filter((assignment): assignment is { checklist_id: string } => isRecord(assignment) && typeof assignment.checklist_id === "string")
-                .map((assignment) => assignment.checklist_id)
-            : [],
-        ),
+      setChecklists(
+        allChecklists
+          .filter((c) => c.is_active)
+          .map((c) => ({
+            id: c.id,
+            checklist_name: c.checklist_name,
+            checklist_code: c.checklist_code,
+            frequency: c.frequency,
+          }))
       );
+      setAssignedChecklistIds(new Set(assignments));
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Failed to load checklists");
       setChecklistDialogOpen(false);
@@ -296,32 +245,7 @@ export default function AdminGuardsPage() {
       const allIds = checklists.map((c) => c.id);
       const deselectedIds = allIds.filter((id) => !assignedChecklistIds.has(id));
 
-      // Upsert selected checklists as active
-      if (selectedIds.length > 0) {
-        const { error: upsertError } = await supabase
-          .from("checklist_assignments")
-          .upsert(
-            selectedIds.map((checklistId) => ({
-              checklist_id: checklistId,
-              employee_id: employeeId,
-              is_active: true,
-            })),
-            { onConflict: "checklist_id,employee_id" },
-          );
-
-        if (upsertError) throw upsertError;
-      }
-
-      // Deactivate removed checklists
-      if (deselectedIds.length > 0) {
-        const { error: deactivateError } = await supabase
-          .from("checklist_assignments")
-          .update({ is_active: false })
-          .eq("employee_id", employeeId)
-          .in("checklist_id", deselectedIds);
-
-        if (deactivateError) throw deactivateError;
-      }
+      await updateGuardChecklistAssignments(employeeId, selectedIds, deselectedIds);
 
       toast.success(`Checklists updated for ${checklistGuard.employee?.first_name ?? "guard"}`);
       setChecklistDialogOpen(false);
@@ -545,7 +469,7 @@ export default function AdminGuardsPage() {
                   <SelectValue placeholder={isLoadingOptions ? "Loading options..." : "Select location"} />
                 </SelectTrigger>
                 <SelectContent>
-                  {locations.map((l) => (
+                  {activeLocations.map((l) => (
                     <SelectItem key={l.id} value={l.id}>
                       {l.location_name}
                       <span className="ml-1 text-muted-foreground text-xs">({l.location_code})</span>
@@ -568,7 +492,7 @@ export default function AdminGuardsPage() {
                   <SelectValue placeholder={isLoadingOptions ? "Loading options..." : "Select shift"} />
                 </SelectTrigger>
                 <SelectContent>
-                  {shifts.map((sh) => (
+                  {activeShifts.map((sh) => (
                     <SelectItem key={sh.id} value={sh.id}>
                       {sh.shift_name}
                       <span className="ml-1 text-muted-foreground text-xs">({sh.shift_code})</span>

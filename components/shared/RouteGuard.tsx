@@ -11,6 +11,7 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import { isRouteFrozen, FEATURE_FUTURE_PHASE } from "@/src/lib/featureFlags";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { AlertTriangle, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";

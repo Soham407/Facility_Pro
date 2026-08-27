@@ -199,7 +199,7 @@ test.describe("Society Security Interaction Pack", () => {
 
     await expect(page.getByRole("button", { name: /register new visitor/i })).toBeVisible();
     await expect(page.getByRole("button", { name: /sos .*hold 3s to trigger/i })).toBeVisible();
-    await expect(page.getByRole("button", { name: /open shift console/i })).toBeVisible();
+    await expect(page.getByRole("button", { name: /open shift console/i })).toBeVisible({ timeout: 15_000 });
 
     await page.getByRole("link", { name: /daily checklist/i }).click();
     await expect(page).toHaveURL(/\/society\/checklists$/);

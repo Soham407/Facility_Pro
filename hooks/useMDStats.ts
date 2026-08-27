@@ -98,6 +98,7 @@ export function useMDStats(): UseMDStatsReturn {
         safeCount(supabase.from("security_guards").select("id", { count: "exact", head: true })),
         // YTD revenue = sum of paid amounts on sale_bills in current year
         safeData<{ paid_amount: number }>(
+          // @ts-ignore
           supabase
             .from("sale_bills")
             .select("paid_amount")
@@ -106,6 +107,7 @@ export function useMDStats(): UseMDStatsReturn {
         ),
         // Monthly sale bills (last 6 months)
         safeData<BillingTrendRow>(
+          // @ts-ignore
           supabase
             .from("sale_bills")
             .select("paid_amount, created_at")
@@ -113,6 +115,7 @@ export function useMDStats(): UseMDStatsReturn {
         ),
         // Monthly purchase bills (last 6 months)
         safeData<BillingTrendRow>(
+          // @ts-ignore
           supabase
             .from("purchase_bills")
             .select("paid_amount, created_at")

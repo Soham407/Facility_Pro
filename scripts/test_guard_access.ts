@@ -1,3 +1,5 @@
+import { z } from "zod";
+import { visitorsRowSchema, panicAlertsRowSchema } from "@/src/types/schema";
 import { createClient } from "@supabase/supabase-js";
 import fs from "fs";
 
@@ -29,10 +31,12 @@ async function run() {
   
   console.log("Logged in as", session?.user.id);
   
-  const { data, error } = await supabase.from("visitors").select("*").limit(1);
+  const { data: rawData, error } = await supabase.from("visitors").select("*").limit(1);
+    const data = rawData ? z.array(visitorsRowSchema.passthrough()).parse(rawData) : [];
   console.log("Visitors error:", error);
   
-  const { data: alerts, error: alertsErr } = await supabase.from("panic_alerts").select("*").limit(1);
+  const { data: rawAlerts, error: alertsErr } = await supabase.from("panic_alerts").select("*").limit(1);
+    const alerts = rawAlerts ? z.array(panicAlertsRowSchema.passthrough()).parse(rawAlerts) : [];
   console.log("Alerts Error:", alertsErr);
 }
 

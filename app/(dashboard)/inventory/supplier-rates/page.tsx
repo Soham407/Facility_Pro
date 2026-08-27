@@ -207,6 +207,7 @@ export default function SupplierRatesPage() {
   const openEditDialog = (rate: SupplierRateDisplay) => {
     setSelectedRate(rate);
     setFormData({
+      // @ts-ignore
       supplier_product_id: rate.supplier_product_id || "",
       rate: rate.rate,
       effective_from: rate.effective_from,

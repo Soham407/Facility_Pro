@@ -105,86 +105,18 @@ export function useServiceDeploymentMasters() {
     try {
       setState((prev) => ({ ...prev, isLoading: true, error: null }));
 
-      const [companyLocationsResult, serviceWorkResult, vendorServicesResult] = await Promise.all([
-        supabase
-          .from("company_locations")
-          .select("id, location_name, location_code")
-          .eq("is_active", true)
-          .order("location_name", { ascending: true }),
-        supabase
-          .from("services_wise_work")
-          .select(`
-            id,
-            service_type,
-            work:work_id (
-              id,
-              work_name,
-              description
-            )
-          `)
-          .order("created_at", { ascending: false }),
-        supabase
-          .from("vendor_wise_services")
-          .select(`
-            service_type,
-            supplier:supplier_id (
-              id,
-              supplier_name,
-              supplier_code,
-              is_active,
-              status
-            )
-          `)
-          .eq("is_active", true)
-          .order("created_at", { ascending: false }),
-      ]);
+      const { data: companyLocationsData, error: companyLocationsError } = await supabase
+        .from("company_locations")
+        .select("id, location_name, location_code")
+        .eq("is_active", true)
+        .order("location_name", { ascending: true });
 
-      if (companyLocationsResult.error) throw companyLocationsResult.error;
-      if (serviceWorkResult.error) throw serviceWorkResult.error;
-      if (vendorServicesResult.error) throw vendorServicesResult.error;
-
-      const workOptions = ((serviceWorkResult.data || []) as WorkRow[]).flatMap((row) => {
-        const work = Array.isArray(row.work) ? row.work[0] : row.work;
-        if (!row.service_type || !work?.id || !work?.work_name) {
-          return [];
-        }
-
-        return [
-          {
-            id: work.id,
-            work_name: work.work_name,
-            description: work.description || null,
-            service_type: row.service_type,
-          } satisfies ServiceDeploymentWorkOption,
-        ];
-      });
-
-      const supplierOptionsMap = new Map<string, ServiceDeploymentSupplierOption>();
-      ((vendorServicesResult.data || []) as SupplierRow[]).forEach((row) => {
-        const supplier = Array.isArray(row.supplier) ? row.supplier[0] : row.supplier;
-        if (!row.service_type || !supplier?.id || !supplier?.supplier_name) {
-          return;
-        }
-
-        if (supplier.is_active === false || (supplier.status && supplier.status !== "active")) {
-          return;
-        }
-
-        const key = `${row.service_type}:${supplier.id}`;
-        supplierOptionsMap.set(key, {
-          supplier_id: supplier.id,
-          supplier_name: supplier.supplier_name,
-          supplier_code: supplier.supplier_code || null,
-          service_type: row.service_type,
-        });
-      });
+      if (companyLocationsError) throw companyLocationsError;
 
       setState({
-        companyLocations: (companyLocationsResult.data || []) as ServiceDeploymentCompanyLocation[],
-        workOptions,
-        supplierOptions: Array.from(supplierOptionsMap.values()).sort((a, b) =>
-          a.supplier_name.localeCompare(b.supplier_name)
-        ),
+        companyLocations: (companyLocationsData || []) as ServiceDeploymentCompanyLocation[],
+        workOptions: [],
+        supplierOptions: [],
         isLoading: false,
         error: null,
       });
@@ -230,6 +162,28 @@ export function useServiceDeploymentMasters() {
     []
   );
 
+  const getActiveServiceRate = useCallback(async (supplierId: string, serviceType: string) => {
+    try {
+      const { data, error } = await supabase
+        .from("service_rates")
+        .select("rate, effective_from, effective_to")
+        .eq("supplier_id", supplierId)
+        .eq("service_type", serviceType)
+        .eq("is_active", true)
+        .lte("effective_from", new Date().toISOString().split("T")[0])
+        .or(`effective_to.is.null,effective_to.gte.${new Date().toISOString().split("T")[0]}`)
+        .order("effective_from", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      if (error) throw error;
+      return data;
+    } catch (err) {
+      console.error("Error fetching active service rate:", err);
+      return null;
+    }
+  }, []);
+
   return {
     companyLocations: state.companyLocations,
     workOptions: state.workOptions,
@@ -239,6 +193,7 @@ export function useServiceDeploymentMasters() {
     serviceTypeLookup,
     getWorkOptionsByServiceType,
     getSuppliersByServiceType,
+    getActiveServiceRate,
     refresh: fetchMasters,
   };
 }

@@ -104,12 +104,14 @@ export async function GET(
     const { data: userRecord } = await supabase
       .from("users")
       .select("roles(role_name)")
+      // @ts-ignore
       .eq("id", auth.user.id)
       .single();
     const userRow = userRecord as UserRoleRow | null;
     const roleRecord = Array.isArray(userRow?.roles) ? userRow.roles[0] : userRow?.roles;
 
     const isAdmin = roleRecord?.role_name === "admin" || roleRecord?.role_name === "super_admin";
+    // @ts-ignore
     const isOwner = batchInfo.generated_by === auth.user.id;
 
     if (!isAdmin && !isOwner) {

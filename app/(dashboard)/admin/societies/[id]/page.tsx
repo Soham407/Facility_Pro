@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { ColumnDef } from "@tanstack/react-table";
 import { Layers, MoreHorizontal, Plus } from "lucide-react";
@@ -26,8 +26,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { useBuildings, BuildingRow, CreateBuildingPayload } from "@/hooks/useBuildings";
-import { supabase } from "@/src/lib/supabaseClient";
-import type { SocietyRow } from "@/hooks/useSocietyAdmin";
+import { useSocietyAdmin, type SocietyRow } from "@/hooks/useSocietyAdmin";
 
 function StatCard({ label, value }: { label: string; value: number }) {
   return (
@@ -51,8 +50,9 @@ export default function SocietyDetailPage() {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
 
-  const [society, setSociety] = useState<SocietyRow | null>(null);
-  const [societyLoading, setSocietyLoading] = useState(true);
+  const { societies, isLoading: isSocietiesLoading } = useSocietyAdmin();
+  const society = societies.find((s) => s.id === id) || null;
+  const societyLoading = isSocietiesLoading;
 
   const {
     buildings,
@@ -68,20 +68,6 @@ export default function SocietyDetailPage() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editing, setEditing] = useState<BuildingRow | null>(null);
   const [form, setForm] = useState<CreateBuildingPayload>(emptyForm);
-
-  useEffect(() => {
-    if (!id) return;
-    setSocietyLoading(true);
-    supabase
-      .from("societies")
-      .select("*")
-      .eq("id", id)
-      .single()
-      .then(({ data }) => {
-        setSociety(data as SocietyRow | null);
-        setSocietyLoading(false);
-      });
-  }, [id]);
 
   function openCreate() {
     setEditing(null);

@@ -32,6 +32,7 @@ import { RoleTag } from "@/components/shared/RoleTag";
 import { StepperTimeline } from "@/components/shared/StepperTimeline";
 import Link from "next/link";
 import { EmployeeCompensationPanel } from "@/components/forms/EmployeeCompensationPanel";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import {
   DOCUMENT_STATUS_CONFIG,

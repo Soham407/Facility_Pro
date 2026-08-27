@@ -1,0 +1,2 @@
+app/(dashboard)/society/checklists/page.tsx(38,1): error TS1109: Expression expected.
+app/(dashboard)/society/checklists/page.tsx(38,3): error TS1434: Unexpected keyword or identifier.

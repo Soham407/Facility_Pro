@@ -1,5 +1,6 @@
 "use client";
 
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { redirect } from "next/navigation";
 import { Loader2 } from "lucide-react";

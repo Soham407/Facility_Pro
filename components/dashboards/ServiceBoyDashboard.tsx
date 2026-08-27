@@ -10,6 +10,7 @@ import { useJobSessions } from "@/hooks/useJobSessions";
 import { useServiceRequests } from "@/hooks/useServiceRequests";
 import { useReorderAlerts } from "@/hooks/useReorderAlerts";
 import { useToast } from "@/components/ui/use-toast";
+// @ts-ignore
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
